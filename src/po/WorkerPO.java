@@ -2,7 +2,7 @@ package po;
 
 import java.io.Serializable;
 
-public class ClientPO implements Serializable{
+public class WorkerPO implements Serializable{
 
 	//用户编号
 		private String userId;
@@ -11,23 +11,22 @@ public class ClientPO implements Serializable{
 		private String userName;
 		//密码
 		private String password;
-		//信用值
-		private int credit;
+		
 		//联系方式
 		private String contact;
 		
-		public ClientPO(){
+		public WorkerPO(){
 			
 		}
 		
-		public ClientPO(String userId,String userName,
-				String password,int credit,String contact){
+		public WorkerPO(String userId,String userName,
+				String password,String contact){
 			super();
 			this.userId=userId;
 			
 			this.userName=userName;
 			this.password=password;
-			this.credit=credit;
+			
 			this.contact=contact;
 			
 		}
@@ -68,11 +67,5 @@ public class ClientPO implements Serializable{
 			this.userName=contact;
 		}
 		
-		public int getCredit(){
-			return credit;
-		}
 		
-		public void setCredit(int credit){
-			this.credit=credit;
-		}
 }
