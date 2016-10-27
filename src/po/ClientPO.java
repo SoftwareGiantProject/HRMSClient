@@ -1,19 +1,20 @@
 package po;
 
 import java.io.Serializable;
+// sadfafadas
 
 public class ClientPO implements Serializable{
 
-	//ÓÃ»§±àºÅ
-		private String userId;
+	//ï¿½Ã»ï¿½ï¿½ï¿½ï¿½
+		private String  userId;
 		
-		//ÓÃ»§Ãû
+		//ï¿½Ã»ï¿½ï¿½ï¿½
 		private String userName;
-		//ÃÜÂë
+		//ï¿½ï¿½ï¿½ï¿½
 		private String password;
-		//ÐÅÓÃÖµ
+		//ï¿½ï¿½ï¿½ï¿½Öµ
 		private int credit;
-		//ÁªÏµ·½Ê½
+		//ï¿½ï¿½Ïµï¿½ï¿½Ê½
 		private String contact;
 		
 		public ClientPO(){
