@@ -16,6 +16,9 @@ public class ClientPO implements Serializable{
 		//联系方式
 		private String contact;
 		
+		//生日
+		private String birthday;
+		
 		public ClientPO(){
 			
 		}
@@ -74,5 +77,13 @@ public class ClientPO implements Serializable{
 		
 		public void setCredit(int credit){
 			this.credit=credit;
+		}
+
+		public String getBirthday() {
+			return birthday;
+		}
+
+		public void setBirthday(String birthday) {
+			this.birthday = birthday;
 		}
 }

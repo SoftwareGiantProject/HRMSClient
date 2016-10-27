@@ -16,6 +16,9 @@ public class ClientVO implements Serializable {
 		//联系方式
 		private String contact;
 		
+		//生日
+		private String birthday;
+		
 		public ClientVO(){
 			
 		}
