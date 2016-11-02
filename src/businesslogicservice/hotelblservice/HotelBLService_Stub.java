@@ -1,7 +1,10 @@
 package businesslogicservice.hotelblservice;
 
+import java.util.List;
+
 import util.ResultMessage;
 import vo.HotelVO;
+import vo.HotelEvaluationVO;
 
 public class HotelBLService_Stub implements HotelBLService{
 
@@ -59,7 +62,13 @@ public class HotelBLService_Stub implements HotelBLService{
 	}
 
 	@Override
-	public ResultMessage evaluateHotel(HotelVO vo) {
+	public ResultMessage evaluateHotel(HotelEvaluationVO vo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<HotelVO> viewHistoryHotel() {
 		// TODO Auto-generated method stub
 		return null;
 	}

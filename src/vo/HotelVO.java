@@ -2,6 +2,9 @@ package vo;
 
 public class HotelVO {
 
+	//id
+    String hotel_id;
+		
 	//¾ÆµêÃû³Æ
 	String hotel_name;
 	

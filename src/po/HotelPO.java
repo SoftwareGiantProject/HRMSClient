@@ -2,6 +2,9 @@ package po;
 
 public class HotelPO {
 
+	//id
+	String hotel_id;
+	
 	//¾ÆµêÃû³Æ
 	String hotel_name;
 	
@@ -21,8 +24,9 @@ public class HotelPO {
 	String hotel_room;
 	
 	
-	public HotelPO(String hotel_name,String hotel_address,String hotel_area,String hotel_intro,
+	public HotelPO(String hotel_id,String hotel_name,String hotel_address,String hotel_area,String hotel_intro,
 			String hotel_serve,String hotel_room){
+		this.hotel_id = hotel_id;
 		this.hotel_address = hotel_address;
 		this.hotel_area = hotel_area;
 		this.hotel_intro = hotel_intro;
@@ -31,6 +35,13 @@ public class HotelPO {
 		this.hotel_serve = hotel_serve;
 	}
 	
+	public String getHotelId(){
+		return hotel_id;
+	}
+	
+	public void setHotelId(String hotel_id){
+		this.hotel_id = hotel_id;
+	}
 	public String getHotelName(){
 		return hotel_name;
 	}

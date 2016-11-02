@@ -1,5 +1,3 @@
-/businesslogicservice/
-/dataservice/
-/po/
-/util/
-/vo/
+/businesslogic.class
+/businesslogic/
+/businesslogictest/

@@ -1,6 +1,7 @@
 package businesslogicservice.hotelblservice;
 
 import util.*;
+import vo.HotelEvaluationVO;
 import vo.HotelVO;
 
 public class HotelBLService_Driver {
@@ -21,7 +22,8 @@ public class HotelBLService_Driver {
     	else if(result2 == ResultMessage.FAIL)
     		System.out.println("Modify fail");
     	
-    	ResultMessage result3 = hotelBLService.evaluateHotel(vo1);
+    	HotelEvaluationVO evo1 = new HotelEvaluationVO();
+    	ResultMessage result3 = hotelBLService.evaluateHotel(evo1);
     	if(result3 == ResultMessage.SUCCESS)
     		System.out.println("Evaluate success");
     	else if(result3 == ResultMessage.FAIL)
