@@ -5,11 +5,11 @@ import util.*;
 
 public interface OrderBLService {
 
-	public ListVO getAllList(String user_id);
-	public ListVO getHistoryList(String user_id);
-	public ListVO getCurrentList(String user_id);
-	public ListVO getUndoList(String user_id);
-	public ListVO getAbnormalList(String user_id);
+	public ListVO getAllList();
+	public ListVO getHistoryList();
+	public ListVO getCurrentList();
+	public ListVO getUndoList();
+	public ListVO getAbnormalList();
 	
 	public OrderVO getOrder(String order_id);
 	public OrderVO modifyOrder(OrderVO order,String type);

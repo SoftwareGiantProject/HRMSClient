@@ -1,85 +1,93 @@
-package businesslogicservice.orderblservice;
-
+package businesslogic.orderbl;
 import util.ResultMessage;
 import vo.CreditVO;
 import vo.ListVO;
 import vo.OrderVO;
 import vo.RoomVO;
 
-public class OrderBLService_Stub implements  OrderBLService{
 
+public class MockOrder extends Order{
 	String user_id;
 	OrderVO  order;
 	String order_id;
 	RoomVO room;
 	CreditVO credit;
 	
-	public OrderBLService_Stub(String user_id,OrderVO  order,RoomVO room,CreditVO credit,String order_id){
-		this.user_id=user_id;
-		this.order=order;
-		this.order_id=order_id;
-		this.room=room;
-		this.credit=credit;
-	}
 	
-	@Override
+	public MockOrder(String user_id){
+		
+		this.user_id=user_id;
+		
+	}
 	public ListVO getAllList() {
 		// TODO Auto-generated method stub
-		return new ListVO(user_id,"all");
+		
+		return null;
 	}
 
-	@Override
+	
 	public ListVO getHistoryList() {
 		// TODO Auto-generated method stub
-		return new ListVO(user_id,"history");
+		System.out.println("getHistoryList");
+		return null;
 	}
 
-	@Override
+	
 	public ListVO getCurrentList() {
 		// TODO Auto-generated method stub
-		return new ListVO(user_id,"current");
+		System.out.println("getCurrentList");
+		return null;
 	}
 
-	@Override
+	
 	public ListVO getUndoList() {
 		// TODO Auto-generated method stub
-		return new ListVO(user_id,"undo");
+		System.out.println("getundoList");
+		return null;
 	}
 
-	@Override
+	
 	public ListVO getAbnormalList() {
 		// TODO Auto-generated method stub
-		return new ListVO(user_id,"abnormal");
+		System.out.println("getAbnormalList");
+		return null;
 	}
 
-	@Override
+	
 	public OrderVO getOrder(String order_id) {
 		// TODO Auto-generated method stub
-		return new OrderVO(order_id);
+		System.out.println("getOrder");
+		return null;
 	}
 
-	@Override
+	
 	public OrderVO modifyOrder(OrderVO order, String type) {
 		// TODO Auto-generated method stub
-		return new OrderVO(order,type);
+		System.out.println("modifyOrder");
+		return null;
 	}
 
-	@Override
+	
 	public ResultMessage undoOrder(OrderVO order) {
 		// TODO Auto-generated method stub
-		return ResultMessage.SUCCESS;
+		System.out.println("undoOrder");
+		return null;
 	}
 
-	@Override
-	public ResultMessage checkOrder(OrderVO order_info, RoomVO room_info, CreditVO credit_info) {
+
+	public ResultMessage checkOrder(OrderVO order_info, RoomVO room_info,
+			CreditVO credit_info) {
 		// TODO Auto-generated method stub
-		return ResultMessage.SUCCESS;
+		System.out.println("checkOrder");
+		return null;
 	}
 
-	@Override
+	
 	public ResultMessage saveOrder(OrderVO order) {
 		// TODO Auto-generated method stub
-		return ResultMessage.SUCCESS;
+		System.out.println("saveOrder");
+		return null;
 	}
+	
 
 }
