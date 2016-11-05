@@ -13,4 +13,5 @@ public interface MemberBLService {
 	
 	public int getCommonMemberLevel(ClientVO client);
 	public int getCorporateMemberLevel(ClientVO client);
+	public MemberType getMemberType(ClientVO client);
 }

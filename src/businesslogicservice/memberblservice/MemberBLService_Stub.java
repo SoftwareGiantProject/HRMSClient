@@ -1,5 +1,6 @@
 package businesslogicservice.memberblservice;
 
+import util.MemberType;
 import util.ResultMessage;
 import vo.ClientVO;
 import vo.CommonMemberVO;
@@ -77,6 +78,12 @@ public MemberBLService_Stub(int coml, int corl, String combir, String corbir, St
 	public int getCorporateMemberLevel(ClientVO client) {
 		// TODO Auto-generated method stub
 		return CorporateMember_level;
+	}
+
+	@Override
+	public MemberType getMemberType(ClientVO client) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

@@ -1,5 +1,7 @@
 package businesslogicservice.roomblservice;
 
+import util.RoomConditon;
+import vo.RoomConditionDateVO;
 import vo.RoomVO;
 
 public class RoomBLService_Stub implements RoomBLService{
@@ -27,6 +29,12 @@ public class RoomBLService_Stub implements RoomBLService{
 	}
 	public RoomVO getRoomInfo(RoomVO room){
 		return room;
+	}
+
+	@Override
+	public RoomConditon getRoomCondition(RoomConditionDateVO room_condition) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
  
