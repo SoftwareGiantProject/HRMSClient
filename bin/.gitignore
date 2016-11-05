@@ -1,7 +1,3 @@
-/businesslogic/
-/businesslogicservice/
-/businesslogictest/
-/dataservice/
-/po/
-/util/
 /vo/
+/businesslogic/
+/businesslogictest/
