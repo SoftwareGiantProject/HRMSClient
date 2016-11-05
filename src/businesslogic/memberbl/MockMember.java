@@ -7,7 +7,7 @@ import vo.ClientVO;
 import vo.CommonMemberVO;
 import vo.CorporateMemberVO;
 
-public class MockMember{
+public class MockMember extends Member{
 	
 	 int CommonMember_level;
      int CorporateMember_level;

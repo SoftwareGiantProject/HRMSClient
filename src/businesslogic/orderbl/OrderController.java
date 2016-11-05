@@ -1,6 +1,6 @@
 package businesslogic.orderbl;
 import util.ResultMessage;
-import businesslogic.userbl.UserController;
+import businesslogic.userbl.ClientController;
 import vo.CreditVO;
 import vo.ListVO;
 import vo.OrderVO;
@@ -11,7 +11,7 @@ public class OrderController implements OrderBLService{
 	Order order;
 	String userid;
 	public OrderController(){
-		 userid=new ClientController().getUserid();
+		 userid=new ClientController().getuserId();
 		order=new MockOrder(userid);
 		
 	}

@@ -27,4 +27,8 @@ public interface UserBLService {
 	public ResultMessage saveModify(NetsaleVO information);
 	public ResultMessage saveModify(NetworkerVO information);
 	
+	public String getuserId();
+	public String getClientBirthday(String user_id);
+	ResultMessage addHotel(HotelVO vo);
+	
 }

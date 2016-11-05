@@ -2,6 +2,7 @@ package businesslogicservice.userblservice;
 
 import util.ResultMessage;
 import vo.ClientVO;
+import vo.HotelVO;
 import vo.WorkerVO;
 import vo.NetsaleVO;
 import vo.NetworkerVO;
@@ -115,6 +116,24 @@ public class UserBLService_Stub implements UserBLService{
 	@Override
 	public ResultMessage saveModify(NetworkerVO information){
 		return ResultMessage.SUCCESS;
+	}
+
+	@Override
+	public String getuserId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getClientBirthday(String user_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage addHotel(HotelVO vo) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	
