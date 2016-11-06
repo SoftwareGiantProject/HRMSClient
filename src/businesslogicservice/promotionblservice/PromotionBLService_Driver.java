@@ -34,7 +34,5 @@ public class PromotionBLService_Driver {
 					+ "Promotion time: " + vo2.getTime());
 		}
 		
-		PromotionVO[] vo3 = promotionBLService.getAllPromotion();
-		System.out.println(vo3);
 	}
 }

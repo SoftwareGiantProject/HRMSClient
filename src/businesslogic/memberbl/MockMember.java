@@ -27,26 +27,20 @@ public class MockMember extends Member{
      }
 
 
-     public MockMember(int coml, int corl, String combir, String corbir, String comn, String corn, MemberType mt){
+     public MockMember(int coml, String combir, String comn, MemberType mt){
 	        CommonMember_level = coml;
-            CorporateMember_level = corl;
             
             CommonMember_Birthday = combir;
-            CorporateMember_Birthday = corbir;
             
             CommonMember_number = comn;
-            CorporateMember_number = corn;
             Membertype = mt;
      }
 
-     public MockMember(int coml, int corl, String combir, String corbir, String comn, String corn, String cor, MemberType mt){
-	        CommonMember_level = coml;
+     public MockMember(int corl,String corbir, String corn, String cor, MemberType mt){
             CorporateMember_level = corl;
             
-            CommonMember_Birthday = combir;
             CorporateMember_Birthday = corbir;
             
-            CommonMember_number = comn;
             CorporateMember_number = corn;
 
             Corporate = cor;
@@ -130,6 +124,11 @@ public class MockMember extends Member{
 	
 	     return MemberType.COMMONMEMBER;
      }
+
+
+	public MemberType getMembertype() {
+		return Membertype;
+	}
 
 
 

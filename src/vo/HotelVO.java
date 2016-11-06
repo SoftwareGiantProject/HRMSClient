@@ -24,7 +24,7 @@ public class HotelVO {
 	String hotel_room;
 	
 	
-	public HotelVO(String hotel_name,String hotel_address,String hotel_area,String hotel_intro,
+	public HotelVO(String hotel_id,String hotel_name,String hotel_address,String hotel_area,String hotel_intro,
 			String hotel_serve,String hotel_room){
 		this.hotel_address = hotel_address;
 		this.hotel_area = hotel_area;
@@ -32,6 +32,10 @@ public class HotelVO {
 		this.hotel_name = hotel_name;
 		this.hotel_room = hotel_room;
 		this.hotel_serve = hotel_serve;
+	}
+	
+	public String getHotelId(){
+		return hotel_id;
 	}
 	
 	public String getHotelName(){

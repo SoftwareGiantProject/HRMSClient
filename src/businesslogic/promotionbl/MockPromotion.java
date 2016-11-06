@@ -1,11 +1,14 @@
 package businesslogic.promotionbl;
 
+import java.util.ArrayList;
+
 import po.PromotionPO;
 import util.ResultMessage;
 import vo.PromotionVO;
 
 public class MockPromotion extends Promotion{
 
+	private ArrayList<PromotionVO> promotionlist;
 	String promotionName;
 	String promotionObject;
 	double count;
@@ -13,7 +16,6 @@ public class MockPromotion extends Promotion{
 	
 
 	public MockPromotion(){
-		
 	}
 	
 	public MockPromotion(String name, String object, double count, String time){
@@ -42,10 +44,13 @@ public class MockPromotion extends Promotion{
 	public PromotionVO getPromotion(String name){
 		return null;
 	}
-	public PromotionVO[] getAllPromotion(){
+	public ArrayList<PromotionVO> getAllPromotion(){
 		return null;
 	}
-	
+
+	public ResultMessage addMemberPromotion(PromotionVO vo){
+		return ResultMessage.SUCCESS;
+	}
 	public ResultMessage addPromotion(PromotionVO vo){
 		return null;
 	}

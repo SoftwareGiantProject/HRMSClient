@@ -8,7 +8,7 @@ public class HotelBLService_Driver {
 
     public void drive(HotelBLService hotelBLService){
     	
-    	HotelVO vo1 = new HotelVO("如家连锁酒店","南京市秦淮区新街口231号","秦淮区","XXXX","XXXX","大床房，单人间，双人间");
+    	HotelVO vo1 = new HotelVO("h001","如家连锁酒店","南京市秦淮区新街口231号","秦淮区","XXXX","XXXX","大床房，单人间，双人间");
     	
     	ResultMessage result1 = hotelBLService.addHotel(vo1);
     	if(result1 == ResultMessage.EXIST)

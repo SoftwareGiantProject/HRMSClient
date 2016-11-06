@@ -2,6 +2,9 @@ package businesslogicservice.promotionblservice;
 
 import util.ResultMessage;
 import vo.PromotionVO;
+
+import java.util.ArrayList;
+
 import businesslogicservice.promotionblservice.PromotionBLService;
 
 public class PromotionBLService_Stub implements PromotionBLService{
@@ -26,9 +29,9 @@ public class PromotionBLService_Stub implements PromotionBLService{
 	}
 
 	@Override
-	public PromotionVO[] getAllPromotion() {
+	public ArrayList<PromotionVO> getAllPromotion() {
 		// TODO Auto-generated method stub
-		return new PromotionVO().getPromotionVOList();
+		return new ArrayList<PromotionVO>();
 	}
 
 	@Override
@@ -47,6 +50,12 @@ public class PromotionBLService_Stub implements PromotionBLService{
 	public ResultMessage delPromotion(PromotionVO vo) {
 		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
+	}
+
+	@Override
+	public ResultMessage addMemberPromotion(PromotionVO vo) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
