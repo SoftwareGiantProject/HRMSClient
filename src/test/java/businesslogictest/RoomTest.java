@@ -4,6 +4,9 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import businesslogic.hotelbl.MockHotel;
+import businesslogic.orderbl.MockOrder;
+import businesslogic.roombl.MockRoom;
 import util.RoomConditon;
 
 public class RoomTest {
@@ -15,14 +18,14 @@ public class RoomTest {
 	@Before
 	public void setup(){
 		double pr = 198;
-		ro = new MockRoom("大床房", 1, pr, "101", RoomConditon.UNRESERVED, "hotel001");
-		mh = new MockHotel("h001", "如家连锁酒店", "南京市秦淮区新街口231号", "秦淮区", "XXXX", "XXXX", "大床房，单人间，双人间");
+		ro = new MockRoom("澶у簥鎴�", 1, pr, "101", RoomConditon.UNRESERVED, "hotel001");
+		mh = new MockHotel("h001", "濡傚杩為攣閰掑簵", "鍗椾含甯傜Е娣尯鏂拌鍙�231鍙�", "绉︽樊鍖�", "XXXX", "XXXX", "澶у簥鎴匡紝鍗曚汉闂达紝鍙屼汉闂�");
 		mo = new MockOrder();
 	}
 
 	@Test
 	public void testgetRoom_type(){
-		assertEquals("大床房", ro.getRoom_type());
+		assertEquals("澶у簥鎴�", ro.getRoom_type());
 	}
 	
 	@Test

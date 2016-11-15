@@ -14,6 +14,9 @@ public class MockOrder extends Order{
 	CreditVO credit;
 	
 	
+	public MockOrder(){
+		
+	}
 	public MockOrder(String user_id){
 		
 		this.user_id=user_id;

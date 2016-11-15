@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import businesslogic.memberbl.MockMember;
 import businesslogic.userbl.MockClient;
 import util.MemberType;
 
