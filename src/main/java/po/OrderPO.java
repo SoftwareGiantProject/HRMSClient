@@ -1,6 +1,5 @@
 package po;
 
-import vo.*;
 
 public class OrderPO {
 	String user_id;
@@ -26,7 +25,7 @@ public class OrderPO {
 		this.people=people;
 		this.startTime=startTime;
 	}
-	public OrderPO(OrderVO order,String type){
+	public OrderPO(OrderPO order,String type){
 		
 	}
 	public OrderPO(String order_id){
