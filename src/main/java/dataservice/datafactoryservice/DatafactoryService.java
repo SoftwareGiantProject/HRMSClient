@@ -1,5 +1,8 @@
 package dataservice.datafactoryservice;
 
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
 import dataservice.creditdataservice.CreditDataService;
 import dataservice.hoteldataservice.HotelDataService;
 import dataservice.memberdataservice.MemberDataService;
@@ -8,20 +11,20 @@ import dataservice.promotiondataservice.PromotionDataService;
 import dataservice.roomdataservice.RoomDataService;
 import dataservice.userdataservice.UserDataService;
 
-public interface DatafactoryService {
+public interface DatafactoryService extends Remote {
 
-	public UserDataService UserDataServiceImpl();
+	public UserDataService getUserData() throws RemoteException;
 	
-	public MemberDataService MemberDataServiceImpl();
+	public MemberDataService getMemberData() throws RemoteException;
 	
-	public PromotionDataService PromotionDataServiceImpl();
+	public PromotionDataService getPromotionData() throws RemoteException;
 	
-	public CreditDataService CreditDataServiceImpl();
+	public CreditDataService getCreditData() throws RemoteException;
 	
-	public OrderDataService OrderDataServiceImpl();
+	public OrderDataService getOrderData() throws RemoteException;
 	
-	public HotelDataService HotelDataServiceImpl();
+	public HotelDataService getHotelData() throws RemoteException;
 	
-	public RoomDataService RoomDataServiceImpl();
+	public RoomDataService getRoomData() throws RemoteException;
 	
 }
