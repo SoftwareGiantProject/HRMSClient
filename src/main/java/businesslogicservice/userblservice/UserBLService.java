@@ -29,6 +29,5 @@ public interface UserBLService {
 	
 	public String getuserId();
 	public String getClientBirthday(String user_id);
-	ResultMessage addHotel(HotelVO vo);
 	
 }

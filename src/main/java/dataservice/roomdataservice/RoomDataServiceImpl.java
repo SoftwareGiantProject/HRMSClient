@@ -2,8 +2,10 @@ package dataservice.roomdataservice;
 
 import java.rmi.RemoteException;
 
+import po.RoomConditionDatePO;
 import po.RoomPO;
 import util.ResultMessage;
+import util.RoomConditon;
 
 public class RoomDataServiceImpl implements RoomDataService{
 
@@ -19,13 +21,12 @@ public class RoomDataServiceImpl implements RoomDataService{
 	}
 
 	@Override
-	public ResultMessage modify(RoomPO room) {
+	public RoomPO checkOut(RoomPO room_info) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
-	public RoomPO find(RoomPO room) {
+	public RoomPO reserve(RoomPO room_info) {
 		// TODO Auto-generated method stub
 		return null;
 	}

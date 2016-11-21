@@ -136,10 +136,5 @@ public class ClientController implements UserBLService{
 		return null;
 	}
 
-	@Override
-	public ResultMessage addHotel(HotelVO vo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

@@ -19,7 +19,7 @@ public class CreditController implements CreditBLService{
 	}
 
 	@Override
-	public CreditVO deposit(int change) {
+	public ResultMessage deposit(int change) {
 		return credit.deposit(change);
 	}
 

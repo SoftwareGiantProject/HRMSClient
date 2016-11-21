@@ -50,7 +50,7 @@ public class MockCredit {
 	public ResultMessage deduct(String user_id,int change){
 		return null;
 	}
-	public CreditVO deposit(int change){
+	public ResultMessage deposit(int change){
 		return null;
 	}
 }

@@ -1,5 +1,8 @@
 package businesslogic.orderbl;
 import util.ResultMessage;
+
+import java.util.ArrayList;
+
 import businesslogic.userbl.ClientController;
 import vo.CreditVO;
 import vo.ListVO;
@@ -16,39 +19,6 @@ public class OrderController implements OrderBLService{
 		
 	}
 	
-
-
-	
-	@Override
-	public ListVO getAllList() {
-		// TODO Auto-generated method stub
-		return order.getAllList();
-	}
-
-	@Override
-	public ListVO getHistoryList() {
-		// TODO Auto-generated method stub
-		return order.getHistoryList();
-	}
-
-	@Override
-	public ListVO getCurrentList() {
-		// TODO Auto-generated method stub
-		return order.getCurrentList();
-	}
-
-	@Override
-	public ListVO getUndoList() {
-		// TODO Auto-generated method stub
-		return order.getUndoList();
-	}
-
-	@Override
-	public ListVO getAbnormalList() {
-		// TODO Auto-generated method stub
-		return order.getAbnormalList();
-	}
-
 	@Override
 	public OrderVO getOrder(String order_id) {
 		// TODO Auto-generated method stub
@@ -78,6 +48,61 @@ public class OrderController implements OrderBLService{
 	public ResultMessage saveOrder(OrderVO ordervo) {
 		// TODO Auto-generated method stub
 		return order.saveOrder(ordervo);
+	}
+
+
+
+
+
+
+	@Override
+	public ArrayList<OrderVO> getAllList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
+
+
+	@Override
+	public ArrayList<OrderVO> getHistoryList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
+
+
+	@Override
+	public ArrayList<OrderVO> getCurrentList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
+
+
+	@Override
+	public ArrayList<OrderVO> getUndoList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
+
+
+	@Override
+	public ArrayList<OrderVO> getAbnormalList() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

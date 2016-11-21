@@ -1,6 +1,7 @@
 package dataservice.orderdataservice;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import po.ListPO;
 import po.OrderPO;
@@ -20,12 +21,6 @@ public class OrderDataServiceImpl implements OrderDataService{
 	}
 
 	@Override
-	public ListPO findList(String ListType) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public ResultMessage addOrder(OrderPO order) {
 		// TODO Auto-generated method stub
 		return null;
@@ -39,6 +34,11 @@ public class OrderDataServiceImpl implements OrderDataService{
 
 	@Override
 	public ResultMessage modifyOrder(OrderPO order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<OrderPO> findList(String ListType) {
 		// TODO Auto-generated method stub
 		return null;
 	}

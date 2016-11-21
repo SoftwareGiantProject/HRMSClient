@@ -24,9 +24,9 @@ public class CreditBLService_Stub implements CreditBLService{
 	}
 
 	@Override
-	public CreditVO deposit(int change) {
+	public ResultMessage deposit(int change) {
 		// TODO Auto-generated method stub
-		return new CreditVO(userId,credit);
+		return ResultMessage.SUCCESS;
 	}
 
 }

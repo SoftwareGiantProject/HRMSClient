@@ -1,15 +1,18 @@
 package businesslogicservice.orderblservice;
 
 import vo.*;
+
+import java.util.ArrayList;
+
 import util.*;
 
 public interface OrderBLService {
 
-	public ListVO getAllList();
-	public ListVO getHistoryList();
-	public ListVO getCurrentList();
-	public ListVO getUndoList();
-	public ListVO getAbnormalList();
+	public ArrayList<OrderVO> getAllList();
+	public ArrayList<OrderVO> getHistoryList();
+	public ArrayList<OrderVO> getCurrentList();
+	public ArrayList<OrderVO> getUndoList();
+	public ArrayList<OrderVO> getAbnormalList();
 	
 	public OrderVO getOrder(String order_id);
 	public OrderVO modifyOrder(OrderVO order,String type);

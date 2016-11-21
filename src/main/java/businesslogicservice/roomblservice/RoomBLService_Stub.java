@@ -42,11 +42,7 @@ public class RoomBLService_Stub implements RoomBLService{
 		return room_condition.getRoomCondition();
 	}
 
-	@Override
-	public RoomVO getRoomInfo(RoomVO room) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 	
 }
  

@@ -22,40 +22,7 @@ public class MockOrder extends Order{
 		this.user_id=user_id;
 		
 	}
-	public ListVO getAllList() {
-		// TODO Auto-generated method stub
-		
-		return null;
-	}
-
 	
-	public ListVO getHistoryList() {
-		// TODO Auto-generated method stub
-		System.out.println("getHistoryList");
-		return null;
-	}
-
-	
-	public ListVO getCurrentList() {
-		// TODO Auto-generated method stub
-		System.out.println("getCurrentList");
-		return null;
-	}
-
-	
-	public ListVO getUndoList() {
-		// TODO Auto-generated method stub
-		System.out.println("getundoList");
-		return null;
-	}
-
-	
-	public ListVO getAbnormalList() {
-		// TODO Auto-generated method stub
-		System.out.println("getAbnormalList");
-		return null;
-	}
-
 	
 	public OrderVO getOrder(String order_id) {
 		// TODO Auto-generated method stub

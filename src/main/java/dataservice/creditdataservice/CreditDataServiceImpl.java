@@ -24,10 +24,4 @@ public class CreditDataServiceImpl implements CreditDataService {
 		return null;
 	}
 
-	@Override
-	public ResultMessage trade(CreditPO po) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

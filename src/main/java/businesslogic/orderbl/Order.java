@@ -4,38 +4,12 @@ import vo.CreditVO;
 import vo.ListVO;
 import vo.OrderVO;
 import vo.RoomVO;
+
+import java.util.ArrayList;
+
 import businesslogicservice.orderblservice.*;
 public class Order implements OrderBLService{
 
-	@Override
-	public ListVO getAllList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ListVO getHistoryList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ListVO getCurrentList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ListVO getUndoList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ListVO getAbnormalList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public OrderVO getOrder(String order_id) {
@@ -64,6 +38,36 @@ public class Order implements OrderBLService{
 
 	@Override
 	public ResultMessage saveOrder(OrderVO order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<OrderVO> getAllList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<OrderVO> getHistoryList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<OrderVO> getCurrentList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<OrderVO> getUndoList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<OrderVO> getAbnormalList() {
 		// TODO Auto-generated method stub
 		return null;
 	}

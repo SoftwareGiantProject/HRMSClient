@@ -15,15 +15,15 @@ public class CreditBLService_Driver {
 			System.out.println("Get credit successfully !");
 		}
 		
-		CreditVO credit2=creditBLService.deposit(5);
-		if(credit2==new CreditVO()){
+		ResultMessage rm =creditBLService.deposit(5);
+		if(rm == ResultMessage.SUCCESS){
 			System.out.println("Deposit successfully!");
 		}
 	}
 
 }
 
-/*¹ØÓÚmainº¯Êý²¿·Ö
+/*ï¿½ï¿½ï¿½ï¿½mainï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  
 CreditBLService creditController=new CreditController();
 CreditBLService_Driver driver=new CreditBLService_Driver(creditController);

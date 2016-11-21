@@ -9,6 +9,5 @@ public interface RoomBLService {
 	public RoomVO checkOut(RoomVO room_info);
 	public RoomVO reserve(RoomVO room_info);
 	public RoomConditon getRoomCondition(RoomConditionDateVO room_condition);
-	RoomVO getRoomInfo(RoomVO room);
 
 }

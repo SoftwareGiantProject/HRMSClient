@@ -102,17 +102,6 @@ public class NetworkerController implements UserBLService{
 		return null;
 	}
 	
-	
-
-
-
-	@Override
-	public ResultMessage addHotel(HotelVO vo) {
-		
-		// TODO Auto-generated method stub
-		return ResultMessage.SUCCESS;
-	}
-
 	@Override
 	public ClientVO clientType(String userid) {
 		// TODO Auto-generated method stub

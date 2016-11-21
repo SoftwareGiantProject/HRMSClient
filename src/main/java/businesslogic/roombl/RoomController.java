@@ -30,9 +30,4 @@ public class RoomController implements RoomBLService{
 		return Room.getRoomCondition(room_condition);
 	}
 
-	@Override
-	public RoomVO getRoomInfo(RoomVO room) {
-		return null;
-	}
-
 }
