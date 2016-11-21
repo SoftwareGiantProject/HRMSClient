@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import po.ListPO;
 import po.OrderPO;
+import util.ListType;
 import util.ResultMessage;
 
 public class OrderDataServiceImpl implements OrderDataService{
@@ -37,8 +38,9 @@ public class OrderDataServiceImpl implements OrderDataService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 	@Override
-	public ArrayList<OrderPO> findList(String ListType) {
+	public ArrayList<OrderPO> findList(ListType listType) {
 		// TODO Auto-generated method stub
 		return null;
 	}

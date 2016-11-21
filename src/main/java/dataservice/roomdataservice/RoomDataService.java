@@ -2,8 +2,7 @@ package dataservice.roomdataservice;
 
 import po.*;
 import util.*;
-import vo.RoomConditionDateVO;
-import vo.RoomVO;
+
 
 public interface RoomDataService {
 
