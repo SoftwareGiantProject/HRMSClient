@@ -14,5 +14,5 @@ public interface HotelDataService {
 	
 	public ResultMessage addHotel(HotelPO po);
 	public ResultMessage modifyHotel(HotelPO po);
-	public ResultMessage evaluateHotel(HotelPO po);
+	public ResultMessage evaluateHotel(HotelEvaluationPO po);
 }
