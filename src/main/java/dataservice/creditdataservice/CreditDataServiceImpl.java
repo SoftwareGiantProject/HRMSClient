@@ -1,6 +1,7 @@
 package dataservice.creditdataservice;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import po.CreditPO;
 import util.ResultMessage;
@@ -20,6 +21,11 @@ public class CreditDataServiceImpl implements CreditDataService {
 
 	@Override
 	public ResultMessage modify(CreditPO po) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<CreditPO> getHistoryCredit(String user_id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

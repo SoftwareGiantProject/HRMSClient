@@ -1,5 +1,7 @@
 package businesslogic.creditbl;
 
+import java.util.ArrayList;
+
 import businesslogicservice.creditblservice.CreditBLService;
 import util.ResultMessage;
 import vo.CreditVO;
@@ -21,6 +23,12 @@ public class CreditController implements CreditBLService{
 	@Override
 	public ResultMessage deposit(int change) {
 		return credit.deposit(change);
+	}
+
+	@Override
+	public ArrayList<CreditVO> getHistoryCredit(String user_id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
