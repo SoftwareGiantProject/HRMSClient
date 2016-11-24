@@ -9,7 +9,7 @@ import util.*;
 public interface HotelDataService {
 
 
-	public RoomPO seekHotel(String hotel_id);
+	public HotelPO seekHotel(String hotel_id);
 	public List<HotelPO> viewHistoryHotel();
 	
 	public ResultMessage addHotel(HotelPO po);

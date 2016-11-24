@@ -17,7 +17,7 @@ private static final long serialVersionUID = 1L;
 	}
 	
 	@Override
-	public RoomPO seekHotel(String hotel_id) {
+	public HotelPO seekHotel(String hotel_id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
