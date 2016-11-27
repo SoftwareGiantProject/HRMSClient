@@ -1,6 +1,7 @@
 package dataservice.hoteldataservice;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.List;
 
 import po.HotelEvaluationPO;
@@ -17,7 +18,7 @@ private static final long serialVersionUID = 1L;
 	}
 	
 	@Override
-	public HotelPO seekHotel(String hotel_id) {
+	public HotelPO seekHotel(String hotel_name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -41,7 +42,7 @@ private static final long serialVersionUID = 1L;
 	}
 
 	@Override
-	public List<HotelPO> viewHistoryHotel() {
+	public ArrayList<HotelPO> viewHistoryHotel() {
 		// TODO Auto-generated method stub
 		return null;
 	}

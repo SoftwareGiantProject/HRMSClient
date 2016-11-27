@@ -4,19 +4,19 @@ import java.util.Date;
 
 public class HotelEvaluationVO {
 
-	//¶©µ¥±àºÅ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		String order_id;
 		
-		//¿Í»§±àºÅ
+		//ï¿½Í»ï¿½ï¿½ï¿½ï¿½
 		String user_id;
 		
-		//ÆÀ¼ÛÊ±¼ä
+		//ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
 		Date date;
 		
-		//ÆÀ¼ÛÄÚÈÝ
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		String data;
 		
-		//ÆÀ¼ÛÐÇ¼¶
+		//ï¿½ï¿½ï¿½ï¿½ï¿½Ç¼ï¿½
 		int level;
 		
 		public HotelEvaluationVO(){
@@ -30,6 +30,31 @@ public class HotelEvaluationVO {
 			this.date = date;
 			this.data = data;
 			this.level = level;
+		}
+
+
+		public String getOrder_id() {
+			return order_id;
+		}
+
+
+		public String getUser_id() {
+			return user_id;
+		}
+
+
+		public Date getDate() {
+			return date;
+		}
+
+
+		public String getData() {
+			return data;
+		}
+
+
+		public int getLevel() {
+			return level;
 		}
 		
 }

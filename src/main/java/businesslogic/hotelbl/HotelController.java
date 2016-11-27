@@ -1,5 +1,6 @@
 package businesslogic.hotelbl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import businesslogicservice.hotelblservice.HotelBLService;
@@ -9,7 +10,7 @@ import vo.HotelVO;
 
 public class HotelController implements HotelBLService {
 
-	MockHotel hotel = new MockHotel();
+	Hotel hotel = new Hotel();
 
 	@Override
 	public HotelVO viewHotel() {
@@ -17,7 +18,7 @@ public class HotelController implements HotelBLService {
 	}
 
 	@Override
-	public List<HotelVO> viewHistoryHotel() {
+	public ArrayList<HotelVO> viewHistoryHotel() {
 		return hotel.viewHistoryHotel();
 	}
 

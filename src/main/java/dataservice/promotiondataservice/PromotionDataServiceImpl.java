@@ -14,7 +14,7 @@ public class PromotionDataServiceImpl implements PromotionDataService {
 		super();
 	}
 	@Override
-	public PromotionPO findPromotion(String id) {
+	public PromotionPO findPromotion(String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -5,24 +5,28 @@ public class HotelPO {
 	//id
 	String hotel_id;
 	
-	//¾ÆµêÃû³Æ
+	//ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½
 	String hotel_name;
 	
-	//¾ÆµêµØÖ·
+	//ï¿½Æµï¿½ï¿½Ö·
 	String hotel_address;
 	
-	//¾ÆµêËùÊôÉÌÈ¦
+	//ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¦
 	String hotel_area;
 	
-	//¾Æµê¼ò½é
+	//ï¿½Æµï¿½ï¿½ï¿½
 	String hotel_intro;
 	
-	//¾ÆµêÉèÊ©·þÎñ
+	//ï¿½Æµï¿½ï¿½ï¿½Ê©ï¿½ï¿½ï¿½ï¿½
 	String hotel_serve;
 	
-	//¾Æµê¿Í·¿ÀàÐÍ
+	//ï¿½Æµï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½
 	String hotel_room;
 	
+	
+	public HotelPO(){
+		
+	}
 	
 	public HotelPO(String hotel_id,String hotel_name,String hotel_address,String hotel_area,String hotel_intro,
 			String hotel_serve,String hotel_room){

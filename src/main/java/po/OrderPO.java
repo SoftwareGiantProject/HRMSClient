@@ -1,5 +1,6 @@
 package po;
 
+import util.ListType;
 
 public class OrderPO {
 	String user_id;
@@ -10,8 +11,27 @@ public class OrderPO {
 	String executeTime;
 	int people;
 	boolean hasChild;
+	ListType listType;
 	
-	//¸÷ÖÖ¿ÉÄÜÓÃµ½µÄ¹¹Ôìº¯Êý
+	public String getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+	public String getOrder_id() {
+		return order_id;
+	}
+	public void setOrder_id(String order_id) {
+		this.order_id = order_id;
+	}
+	public ListType getListType() {
+		return listType;
+	}
+	public void setListType(ListType listType) {
+		this.listType = listType;
+	}
+	//ï¿½ï¿½ï¿½Ö¿ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½Ä¹ï¿½ï¿½ìº¯ï¿½ï¿½
 	public OrderPO(){
 		
 	}
@@ -32,7 +52,7 @@ public class OrderPO {
 		
 	}
 	
-	//¸÷ÖÖgetºÍset
+	//ï¿½ï¿½ï¿½ï¿½getï¿½ï¿½set
 	
 	public OrderPO getOrderPO(String order_id){
 		return this;
