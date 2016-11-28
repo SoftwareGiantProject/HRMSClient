@@ -3,6 +3,7 @@ package dataservice.promotiondataservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import po.MemberPromotionPO;
 import po.PromotionPO;
 import util.ResultMessage;
 
@@ -41,8 +42,14 @@ public class PromotionDataServiceImpl implements PromotionDataService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 	@Override
-	public ResultMessage addMemberPromotion(PromotionPO po) {
+	public MemberPromotionPO findMemberPromotion(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ResultMessage addMemberPromotion(MemberPromotionPO po) {
 		// TODO Auto-generated method stub
 		return null;
 	}
