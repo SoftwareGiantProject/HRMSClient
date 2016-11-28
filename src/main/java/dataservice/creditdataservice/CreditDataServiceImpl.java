@@ -29,5 +29,10 @@ public class CreditDataServiceImpl implements CreditDataService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public int getCredit(String user_id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 }

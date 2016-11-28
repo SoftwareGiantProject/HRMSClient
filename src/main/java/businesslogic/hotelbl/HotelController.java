@@ -13,8 +13,8 @@ public class HotelController implements HotelBLService {
 	Hotel hotel = new Hotel();
 
 	@Override
-	public HotelVO viewHotel() {
-		return hotel.viewHotel();
+	public HotelVO viewHotel(String name) {
+		return hotel.viewHotel(name);
 	}
 
 	@Override

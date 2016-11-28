@@ -2,14 +2,15 @@ package po;
 
 public class MemberPromotionPO {
 
+	//促销策略名称
 	private String promotionName;
-	
+	//促销对象
 	private static String promotionObject = "Member";
-	
+	//促销时间
 	private String time;
-	
+	//折扣力度
 	private double count;
-	
+	//商圈
 	private String area;
 	
 	public MemberPromotionPO(){

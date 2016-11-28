@@ -15,8 +15,10 @@ import vo.HotelVO;
 public class Hotel {
 	
 	
-	public HotelVO viewHotel(){
-		return null;
+	public HotelVO viewHotel(String name){
+		
+		HotelVO result = seekHotel(name);
+		return result;
 	}
 	
 	public ArrayList<HotelVO> viewHistoryHotel(){

@@ -39,7 +39,7 @@ public class HotelBLService_Stub implements HotelBLService{
 		}
 		
 	@Override
-	public HotelVO viewHotel() {
+	public HotelVO viewHotel(String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}

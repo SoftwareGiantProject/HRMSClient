@@ -2,39 +2,68 @@ package vo;
 
 import java.io.Serializable;
 
+import util.MemberType;
+
 public class ClientVO implements Serializable {
 
-	//用户编号
 		private String userId;
-		
-		//用户名
+		private String memberId;
 		private String userName;
-		//密码
 		private String password;
-		//信用值
 		private int credit;
-		//联系方式
 		private String contact;
-		
-		//生日
 		private String birthday;
+		private MemberType type;
 		
 		public ClientVO(){
 			
 		}
 		
-		public ClientVO(String userId,String userName,
-				String password,int credit,String contact){
+		public ClientVO(String userId,String memberId,String userName,
+				String password,int credit,String birthday,String contact,MemberType type){
 			super();
 			this.userId=userId;
-			
+			this.memberId = memberId;
 			this.userName=userName;
 			this.password=password;
 			this.credit=credit;
 			this.contact=contact;
-			
+			this.birthday = birthday;
+			this.type = type;
 		}
 		
+		public String getUserId() {
+			return userId;
+		}
+
+		public String getMemberId() {
+			return memberId;
+		}
+
+		public String getUserName() {
+			return userName;
+		}
+
+		public String getPassword() {
+			return password;
+		}
+
+		public int getCredit() {
+			return credit;
+		}
+
+		public String getContact() {
+			return contact;
+		}
+
+		public String getBirthday() {
+			return birthday;
+		}
+
+		public MemberType getType() {
+			return type;
+		}
+
 		public ClientVO getClientVO(){
 			return this;
 		}

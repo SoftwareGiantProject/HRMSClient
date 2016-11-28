@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface HotelBLService {
 
-	public HotelVO viewHotel();
+	public HotelVO viewHotel(String name);
 	public ArrayList<HotelVO> viewHistoryHotel();
 	public HotelVO seekHotel(String name);
 	
