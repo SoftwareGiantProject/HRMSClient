@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import javax.xml.transform.Templates;
 
-import dataservice.datafactoryservice.DatafactoryImpl;
+import dataservice.datafactory.DatafactoryImpl;
 import po.PromotionPO;
 import util.ResultMessage;
 import vo.PromotionVO;

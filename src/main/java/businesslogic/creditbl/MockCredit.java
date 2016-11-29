@@ -3,8 +3,8 @@ package businesslogic.creditbl;
 import java.rmi.RemoteException;
 
 import businesslogicservice.creditblservice.CreditBLService;
-import dataservice.datafactoryservice.DatafactoryImpl;
-import dataservice.datafactoryservice.DatafactoryService;
+import dataservice.datafactory.DataFactory;
+import dataservice.datafactory.DatafactoryImpl;
 import po.CreditPO;
 import util.ResultMessage;
 import vo.CreditVO;

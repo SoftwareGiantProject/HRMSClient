@@ -1,4 +1,4 @@
-package dataservice.datafactoryservice;
+package dataservice.datafactory;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -11,7 +11,7 @@ import dataservice.promotiondataservice.PromotionDataService;
 import dataservice.roomdataservice.RoomDataService;
 import dataservice.userdataservice.UserDataService;
 
-public interface DatafactoryService extends Remote {
+public interface DataFactory extends Remote {
 
 	public UserDataService getUserData() throws RemoteException;
 	

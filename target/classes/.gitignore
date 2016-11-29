@@ -1,7 +1,5 @@
+/factory/
 /META-INF/
-/po/
+/rmihelper/
 /businesslogic/
-/businesslogicservice/
 /dataservice/
-/presentation/
-/vo/

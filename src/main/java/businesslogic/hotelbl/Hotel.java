@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import com.mysql.fabric.xmlrpc.base.Array;
 
-import dataservice.datafactoryservice.DatafactoryImpl;
+import dataservice.datafactory.DatafactoryImpl;
 import po.HotelEvaluationPO;
 import po.HotelPO;
 import util.ResultMessage;
