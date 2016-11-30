@@ -18,31 +18,31 @@ private static final long serialVersionUID = 1L;
 	}
 	
 	@Override
-	public HotelPO seekHotel(String hotel_name) {
+	public HotelPO seekHotel(String hotel_name)throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage addHotel(HotelPO po) {
+	public ResultMessage addHotel(HotelPO po) throws RemoteException{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage modifyHotel(HotelPO po) {
+	public ResultMessage modifyHotel(HotelPO po) throws RemoteException{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage evaluateHotel(HotelEvaluationPO po) {
+	public ResultMessage evaluateHotel(HotelEvaluationPO po) throws RemoteException{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<HotelPO> viewHistoryHotel() {
+	public ArrayList<HotelPO> viewHistoryHotel() throws RemoteException{
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -66,13 +66,13 @@ private static final long serialVersionUID = 1L;
 	}
 
 	@Override
-	public ArrayList<HotelEvaluationPO> getAllHotelEvaluation(String hotel_name) {
+	public ArrayList<HotelEvaluationPO> getAllHotelEvaluation(String hotel_name) throws RemoteException{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<HotelPO> getAllHotel(String user_id, String hotel_id) {
+	public ArrayList<HotelPO> getAllHotel(String user_id, String hotel_id) throws RemoteException{
 		// TODO Auto-generated method stub
 		return null;
 	}
