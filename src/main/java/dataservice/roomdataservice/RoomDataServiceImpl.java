@@ -1,6 +1,7 @@
 package dataservice.roomdataservice;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import po.RoomConditionDatePO;
 import po.RoomPO;
@@ -27,6 +28,11 @@ public class RoomDataServiceImpl implements RoomDataService{
 	}
 	@Override
 	public RoomPO reserve(RoomPO room_info) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<RoomPO> findRoom(String hotel_id, String room_type) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -40,7 +40,12 @@ public class OrderDataServiceImpl implements OrderDataService{
 	}
 	
 	@Override
-	public ArrayList<OrderPO> findList(ListType listType) {
+	public ArrayList<OrderPO> findList(String ListType) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<OrderPO> getOrder(String user_id, String hotel_id) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

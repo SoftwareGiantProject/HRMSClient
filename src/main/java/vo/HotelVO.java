@@ -2,38 +2,46 @@ package vo;
 
 public class HotelVO {
 
-	//id
     String hotel_id;
 		
-	//酒店名称
 	String hotel_name;
 	
-	//酒店地址
 	String hotel_address;
 	
-	//酒店所属商圈
 	String hotel_area;
+
+	int hotel_level;
 	
-	//酒店简介
+	double hotel_score;
+	
 	String hotel_intro;
 	
-	//酒店设施服务
 	String hotel_serve;
 	
-	//酒店客房类型
 	String hotel_room;
 	
 	
 	public HotelVO(String hotel_id,String hotel_name,String hotel_address,String hotel_area,String hotel_intro,
-			String hotel_serve,String hotel_room){
+			String hotel_serve,String hotel_room,int hotel_level, double hotel_score){
 		this.hotel_address = hotel_address;
 		this.hotel_area = hotel_area;
 		this.hotel_intro = hotel_intro;
 		this.hotel_name = hotel_name;
 		this.hotel_room = hotel_room;
 		this.hotel_serve = hotel_serve;
+		this.hotel_level = hotel_level;
+		this.hotel_score = hotel_score;
 	}
 	
+	
+	public int getHotel_level() {
+		return hotel_level;
+	}
+
+	public double getHotel_score() {
+		return hotel_score;
+	}
+
 	public String getHotelId(){
 		return hotel_id;
 	}

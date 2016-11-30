@@ -17,8 +17,16 @@ import dataservice.promotiondataservice.PromotionDataService;
 import dataservice.promotiondataservice.PromotionDataServiceImpl;
 import dataservice.roomdataservice.RoomDataService;
 import dataservice.roomdataservice.RoomDataServiceImpl;
+import dataservice.userdataservice.ClientDataService;
+import dataservice.userdataservice.ClientDataServiceImpl;
+import dataservice.userdataservice.NetsaleDataService;
+import dataservice.userdataservice.NetsaleDataServiceImpl;
+import dataservice.userdataservice.NetworkerDataService;
+import dataservice.userdataservice.NetworkerDataServiceImpl;
 import dataservice.userdataservice.UserDataService;
 import dataservice.userdataservice.UserDataServiceImpl;
+import dataservice.userdataservice.WorkerDataService;
+import dataservice.userdataservice.WorkerDataServiceImpl;
 
 public class DatafactoryImpl implements DataFactory{
 
@@ -85,6 +93,30 @@ public class DatafactoryImpl implements DataFactory{
 	public RoomDataService getRoomData() throws RemoteException {
 		// TODO Auto-generated method stub
 		return new RoomDataServiceImpl();
+	}
+
+	@Override
+	public ClientDataService getClientData() throws RemoteException {
+		// TODO Auto-generated method stub
+		return new ClientDataServiceImpl();
+	}
+
+	@Override
+	public WorkerDataService getWorkerData() throws RemoteException {
+		// TODO Auto-generated method stub
+		return new WorkerDataServiceImpl();
+	}
+
+	@Override
+	public NetsaleDataService getNetsaleData() throws RemoteException {
+		// TODO Auto-generated method stub
+		return new NetsaleDataServiceImpl();
+	}
+
+	@Override
+	public NetworkerDataService getNetworkerData() throws RemoteException {
+		// TODO Auto-generated method stub
+		return new NetworkerDataServiceImpl();
 	}
 	
 	

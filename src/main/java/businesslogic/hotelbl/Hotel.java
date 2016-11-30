@@ -47,7 +47,7 @@ public class Hotel {
 			e.printStackTrace();
 		}
 		
-		HotelVO vo = new HotelVO(po.getHotelId(), po.getHotelName(), po.getHotelAddress(), po.getHotelArea(), po.getHotelIntro(), po.getHotelServe(), po.getHotelRoom());
+		HotelVO vo = new HotelVO(po.getHotelId(), po.getHotelName(), po.getHotelAddress(), po.getHotelArea(), po.getHotelIntro(), po.getHotelServe(), po.getHotelRoom(),po.getHotelLevel(),po.getHotelScore());
 		
 		
 		return vo;
@@ -102,12 +102,12 @@ public class Hotel {
 	}
 	
 	public HotelVO PoToVo(HotelPO po) {
-		HotelVO result = new HotelVO(po.getHotelId(), po.getHotelName(), po.getHotelAddress(), po.getHotelArea(), po.getHotelIntro(), po.getHotelServe(), po.getHotelRoom());
+		HotelVO result = new HotelVO(po.getHotelId(), po.getHotelName(), po.getHotelAddress(), po.getHotelArea(), po.getHotelIntro(), po.getHotelServe(), po.getHotelRoom(),po.getHotelLevel(),po.getHotelScore());
 		return result;
 	}
 	
 	public HotelPO VoToPo(HotelVO vo){
-		HotelPO result = new HotelPO(vo.getHotelId(), vo.getHotelName(), vo.getHotelAddress(), vo.getHotelArea(), vo.getHotelIntro(), vo.getHotelServe(), vo.getHotelRoom());
+		HotelPO result = new HotelPO(vo.getHotelId(), vo.getHotelName(), vo.getHotelAddress(), vo.getHotelArea(), vo.getHotelIntro(), vo.getHotelServe(), vo.getHotelRoom(),vo.getHotel_level(),vo.getHotel_score());
 		return result;
 	}
 	
