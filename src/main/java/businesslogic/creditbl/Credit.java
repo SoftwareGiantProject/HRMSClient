@@ -1,9 +1,12 @@
 package businesslogic.creditbl;
 
 import java.rmi.RemoteException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import dataservice.datafactory.DatafactoryImpl;
+
 import po.CreditPO;
 import util.ResultMessage;
 import vo.CreditVO;
@@ -16,7 +19,7 @@ public class Credit {
 		String id = user_id;
 		
 		try{
-			po = DatafactoryImpl.getInstance().getCreditData().find(id);
+			po = DatafactoryImpl.getInstance().getCreditData().find(user_id);
 		}catch(RemoteException e){
 			e.printStackTrace();
 		}
@@ -40,8 +43,15 @@ public class Credit {
 		}
 		
 		CreditPO lastcreditpo = historyPo.get(historyPo.size() - 1);
-		int lastcredit = lastcreditpo.getCredit() - money/2;           //扣除额度1/2的信用值
+		int lastcredit = lastcreditpo.getCredit() - money/2;           
+		int lastchange = -money/2;
+		Date now = new Date();
+		SimpleDateFormat matter1=new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+		String current = matter1.format(now);
+		
 		lastcreditpo.setCredit(lastcredit);
+		lastcreditpo.setChange(lastchange);
+		lastcreditpo.setTime(current);
 		
 		try{
 			result = DatafactoryImpl.getInstance().getCreditData().modify(lastcreditpo);
@@ -64,8 +74,15 @@ public class Credit {
 		}
 		
 		CreditPO lastcreditpo = historyPo.get(historyPo.size() - 1);
-		int lastcredit = lastcreditpo.getCredit() + recharge*100;           //扣除额度1/2的信用值
+		int lastcredit = lastcreditpo.getCredit() + recharge*100;           //澧炲姞鍏呭�奸搴�*100鐨勪俊鐢ㄥ��
+		int lastchange = recharge*100;
+		Date now = new Date();
+		SimpleDateFormat matter1=new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+		String current = matter1.format(now);
+		
 		lastcreditpo.setCredit(lastcredit);
+		lastcreditpo.setChange(lastchange);
+		lastcreditpo.setTime(current);
 		
 		try{
 			result = DatafactoryImpl.getInstance().getCreditData().modify(lastcreditpo);

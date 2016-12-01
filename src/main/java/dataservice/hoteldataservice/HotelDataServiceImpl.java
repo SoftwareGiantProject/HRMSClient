@@ -42,12 +42,6 @@ private static final long serialVersionUID = 1L;
 	}
 
 	@Override
-	public ArrayList<HotelPO> viewHistoryHotel() throws RemoteException{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public ArrayList<HotelPO> getReservedHotel(String user_id) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;

@@ -19,6 +19,14 @@ public CreditVO(String userId,int credit){
 	
 }
 
+public String getUserId() {
+	return userId;
+}
+
+public int getCredit() {
+	return credit;
+}
+
 public void setUserId(String userId) {
 	this.userId = userId;
 }
@@ -26,5 +34,7 @@ public void setUserId(String userId) {
 public void setCredit(int credit) {
 	this.credit = credit;
 }
+
+
 
 }

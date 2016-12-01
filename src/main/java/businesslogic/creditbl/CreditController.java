@@ -7,8 +7,12 @@ import util.ResultMessage;
 import vo.CreditVO;
 
 public class CreditController implements CreditBLService{
+	Credit credit;
 	
-	MockCredit credit = new MockCredit();
+	public CreditController() {
+		credit = new Credit();		
+	}
+
 
 	@Override
 	public CreditVO getCredit(String user_id) {
@@ -21,14 +25,8 @@ public class CreditController implements CreditBLService{
 	}
 
 	@Override
-	public ResultMessage deposit(int change) {
-		return credit.deposit(change);
-	}
-
-	@Override
-	public ArrayList<CreditVO> getHistoryCredit(String user_id) {
-		// TODO Auto-generated method stub
-		return null;
+	public ResultMessage deposit(String user_id,int change) {
+		return credit.deposit(user_id,change);
 	}
 
 }
