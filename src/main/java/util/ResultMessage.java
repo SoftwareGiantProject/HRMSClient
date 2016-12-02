@@ -1,23 +1,23 @@
 package util;
 
 public enum ResultMessage {
-	SUCCESS,//³É¹¦
-	FAIL,//Ê§°Ü
-	error,//³öÏÖ´íÎó
+	SUCCESS,//æˆåŠŸ
+	FAIL,//å¤±è´¥
+	error,//é”™è¯¯
 	
 	
-	EXIST,//ÏëÒªÌí¼ÓµÄ¶«Î÷ÔÚÊý¾Ý¿âÒÑ´æÔÚ
-	TOO_LONG,//ÊäÈëµÄÄÚÈÝ¹ý³¤
-	TOO_SHORT,//ÊäÈëµÄÄÚÈÝ¹ý¶Ì
-	UNVALID,//ÊäÈëµÄÄÚÈÝº¬ÓÐ·Ç·¨×Ö·û
-	NULL, //ÊäÈëµÄÄÚÈÝÎª¿Õ
-	NOT_FOUND,//Ã»ÓÐÕÒµ½ËùÐèÒªµÄÊý¾Ý
-	HAS_CHILDREN,//ÓÐ¶ùÍ¯
-	NO_CHILDREN,//ÎÞ¶ùÍ¯
+	EXIST,//å­˜åœ¨
+	TOO_LONG,//è¿‡é•¿
+	TOO_SHORT,//è¿‡çŸ­
+	UNVALID,//ä¸åˆé€‚
+	NULL, //ç©ºå€¼
+	NOT_FOUND,//å¯»æ‰¾ä¸åˆ°
+	HAS_CHILDREN,//æœ‰å„¿ç«¥
+	NO_CHILDREN,//æ— å„¿ç«¥
 	
 	
-	WRONG_ID,//ÓÃ»§id´íÎó
-	WRONG_PASSWORD,//ÃÜÂë´íÎó
+	WRONG_ID,//é”™è¯¯ID
+	WRONG_PASSWORD,//é”™è¯¯å¯†ç 
 	
 	
 	

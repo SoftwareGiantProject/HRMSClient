@@ -9,7 +9,6 @@ public class ListPO {
 	String user_id;
 	String type;
 	
-	//¹¹Ôìº¯Êý
 	public ListPO(){
 		
 	}
