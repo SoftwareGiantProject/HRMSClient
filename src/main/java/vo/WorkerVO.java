@@ -5,15 +5,15 @@ import java.io.Serializable;
 
 public class WorkerVO implements Serializable{
 
-	//用户编号
+	//id
 		private String userId;
 		
-		//用户名
+		//濮撳悕
 		private String userName;
-		//密码
+		//瀵嗙爜
 		private String password;
 		
-		//联系方式
+		//鑱旂郴鏂瑰紡
 		private String contact;
 		
 		public WorkerVO(){

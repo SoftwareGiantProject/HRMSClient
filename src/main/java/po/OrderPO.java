@@ -3,16 +3,18 @@ package po;
 import util.ListType;
 
 public class OrderPO {
-	String user_id;
-	String order_id;
-	String hotel_id;
-	String startTime;
-	String endTime;
-	String deadline;
-	String executeTime;
-	int people;
-	boolean hasChild;
-	ListType listType;
+	private String user_id;
+	private String order_id;
+	private String hotel_id;
+	private String startTime;
+	private String endTime;
+	private String deadline;
+	private String executeTime;
+	private String predictCheckInTime;
+	private String predictCheckOutTime;
+	private int people;
+	private boolean hasChild;
+	private ListType listType;
 
 	//各种可能用到的构造函数
 	public OrderPO(){
@@ -28,6 +30,18 @@ public class OrderPO {
 		this.hasChild=hasChild;
 		this.people=people;
 		this.startTime=startTime;
+	}
+	public String getPredictCheckInTime() {
+		return predictCheckInTime;
+	}
+	public void setPredictCheckInTime(String predictCheckInTime) {
+		this.predictCheckInTime = predictCheckInTime;
+	}
+	public String getPredictCheckOutTime() {
+		return predictCheckOutTime;
+	}
+	public void setPredictCheckOutTime(String predictCheckOutTime) {
+		this.predictCheckOutTime = predictCheckOutTime;
 	}
 	public OrderPO(OrderPO order,String type){
 		

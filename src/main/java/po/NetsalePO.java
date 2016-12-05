@@ -4,15 +4,15 @@ import java.io.Serializable;
 
 public class NetsalePO implements Serializable{
 
-	//ÓÃ»§±àºÅ
+	//ç”¨æˆ·ID
 		private String userId;
 		
-		//ÓÃ»§Ãû
+		//ç”¨æˆ·å
 		private String userName;
-		//ÃÜÂë
+		//å¯†ç 
 		private String password;
 		
-		//ÁªÏµ·½Ê½
+		//è”ç³»æ–¹å¼
 		private String contact;
 		
 		public NetsalePO(){

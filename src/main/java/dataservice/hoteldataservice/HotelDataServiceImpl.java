@@ -71,4 +71,10 @@ private static final long serialVersionUID = 1L;
 		return null;
 	}
 
+	@Override
+	public ArrayList<HotelPO> getAllHotels() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -22,17 +22,32 @@ public class RoomDataServiceImpl implements RoomDataService{
 	}
 
 	@Override
-	public RoomPO checkOut(RoomPO room_info) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public RoomPO reserve(RoomPO room_info) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
 	public ArrayList<RoomPO> findRoom(String hotel_id, String room_type) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<RoomPO> getAllRoom(String hotel_id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ResultMessage addRoomCondition(RoomConditionDatePO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ResultMessage modifyRoomCondition(RoomConditionDatePO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ResultMessage deleteRoomCondition(RoomConditionDatePO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<RoomConditionDatePO> getAllByDate(String date) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

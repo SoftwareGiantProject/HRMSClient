@@ -5,30 +5,41 @@ import java.util.Date;
 import util.RoomConditon;
 
 public class RoomConditionDatePO {
+	//é…’åº—id
+	String hotel_id;
 	
-	//·¿¼äÔ¤¶¨×¡ËŞÊ±¼ä
-	Date RoomDate;
+	//æˆ¿é—´é¢„å®šä½å®¿æ—¶é—´
+	String RoomDate;
 		
-	//·¿¼ä±àºÅ
+	//æˆ¿é—´ç¼–å·
 	String RoomNumber;
 		
-	//·¿¼ä×´Ì¬
+	//æˆ¿é—´çŠ¶æ€×´Ì¬
 	RoomConditon roomcondition;
 		
 	public RoomConditionDatePO(){
 			
 	}
 		
-	public RoomConditionDatePO(Date rd, String rn, RoomConditon rc){
+	public RoomConditionDatePO(String hotel_id,String rd, String rn, RoomConditon rc){
 		
-	    	
-	    RoomDate = rd;
-	    RoomNumber = rn;
-	    roomcondition = rc;
+	    this.hotel_id = hotel_id;	
+	    this.RoomDate = rd;
+	    this.RoomNumber = rn;
+	    this.roomcondition = rc;
 			
 	}
 	
-	public void setRoomDate(Date rd){
+	
+	public void setHotel_id(String hotel_id){
+		this.hotel_id = hotel_id;
+	}
+	
+	public String getHotel_id(){
+		return hotel_id;
+	}
+	
+	public void setRoomDate(String rd){
 		RoomDate = rd;
 	}
 	
@@ -40,7 +51,7 @@ public class RoomConditionDatePO {
 		roomcondition = rc;
 	}
 	    
-	public Date getRoomDate(){
+	public String getRoomDate(){
 	   return RoomDate;
 	}
 	    

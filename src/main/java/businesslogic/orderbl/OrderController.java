@@ -3,7 +3,7 @@ import util.ResultMessage;
 
 import java.util.ArrayList;
 
-import businesslogic.userbl.ClientController;
+import businesslogic.userbl.client.ClientController;
 import vo.CreditVO;
 import vo.ListVO;
 import vo.OrderVO;
@@ -14,7 +14,6 @@ public class OrderController implements OrderBLService{
 	Order order;
 	String userid;
 	public OrderController(){
-		 userid=new ClientController().getuserId();
 		order=new MockOrder(userid);
 		
 	}
