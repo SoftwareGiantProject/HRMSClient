@@ -8,7 +8,7 @@ public class RoomPO {
 	String Room_type;
 		
 	//房间价格
-	double Room_price;
+	int Room_price;
 	
 	//房间编号
 	String Room_number;
@@ -20,7 +20,7 @@ public class RoomPO {
 	String Hotel_id;
 	
 	
-	public RoomPO(String rt,double rp, String rnb, RoomConditon rc, String ho){
+	public RoomPO(String rt,int rp, String rnb, RoomConditon rc, String ho){
 		
 		Room_type = rt;
 		Room_price = rp;
@@ -38,7 +38,7 @@ public class RoomPO {
 		this.Room_type = rt;
 	}
 	
-	public void setRoom_price(double rp){
+	public void setRoom_price(int rp){
 		this.Room_price = rp;
 	}
 	
@@ -58,7 +58,7 @@ public class RoomPO {
 		return Room_type;
 	}
 
-	public double getRoom_price(){
+	public int getRoom_price(){
 		return Room_price;
 	}
 	

@@ -12,6 +12,8 @@ public class OrderPO {
 	private String executeTime;
 	private String predictCheckInTime;
 	private String predictCheckOutTime;
+	private String roomType;
+	private int number;
 	private int people;
 	private boolean hasChild;
 	private ListType listType;
@@ -31,6 +33,27 @@ public class OrderPO {
 		this.people=people;
 		this.startTime=startTime;
 	}
+	public OrderPO(OrderPO order,String type){
+		
+	}
+	public OrderPO(String order_id){
+		
+	}
+	
+	
+	//各种get和set
+	public String getRoomType() {
+		return roomType;
+	}
+	public void setRoomType(String roomType) {
+		this.roomType = roomType;
+	}
+	public int getNumber() {
+		return number;
+	}
+	public void setNumber(int number) {
+		this.number = number;
+	}
 	public String getPredictCheckInTime() {
 		return predictCheckInTime;
 	}
@@ -43,15 +66,6 @@ public class OrderPO {
 	public void setPredictCheckOutTime(String predictCheckOutTime) {
 		this.predictCheckOutTime = predictCheckOutTime;
 	}
-	public OrderPO(OrderPO order,String type){
-		
-	}
-	public OrderPO(String order_id){
-		
-	}
-	
-	
-	//各种get和set
 	public String getUser_id() {
 		return user_id;
 	}

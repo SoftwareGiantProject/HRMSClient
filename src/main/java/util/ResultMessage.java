@@ -2,16 +2,16 @@ package util;
 
 public enum ResultMessage {
 	SUCCESS,//成功
-	FAIL,//失败
+	FAIL,//失败	
 	error,//错误
 	
 	
-	EXIST,//存在
+	EXIST,//存在 	
 	TOO_LONG,//过长
-	TOO_SHORT,//过短
-	UNVALID,//不合适
+	TOO_SHORT,//果断
+	UNVALID,//不合法
 	NULL, //空值
-	NOT_FOUND,//寻找不到
+	NOT_FOUND,//搜寻不到
 	HAS_CHILDREN,//有儿童
 	NO_CHILDREN,//无儿童
 	

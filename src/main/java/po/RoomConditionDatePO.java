@@ -47,7 +47,7 @@ public class RoomConditionDatePO {
 		RoomNumber = rn;
 	}
 	
-	public void setRoomConditon(RoomConditon rc){
+	public void setRoomCondition(RoomConditon rc){
 		roomcondition = rc;
 	}
 	    
