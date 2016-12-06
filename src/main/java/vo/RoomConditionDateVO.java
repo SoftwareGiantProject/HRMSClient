@@ -2,32 +2,40 @@ package vo;
 
 import java.util.Date;
 
-import util.RoomConditon;
+import util.RoomCondition;
 
 public class RoomConditionDateVO {
 	
-	//·¿¼äÔ¤¶¨×¡ËŞÊ±¼ä
-	Date RoomDate;
-		
-	//·¿¼ä±àºÅ
-	String RoomNumber;
-		
-	//·¿¼ä×´Ì¬
-	RoomConditon roomcondition;
+	//é…’åº—id
+	private String hotel_id;
+	
+	//æˆ¿é—´é¢„å®šä½å®¿æ—¶é—´
+	private String RoomDate;
+			
+	//æˆ¿é—´ç¼–å·
+	private String RoomNumber;
+	
+	//æˆ¿é—´çŠ¶æ€×´Ì¬
+	private RoomCondition roomcondition;
 		
 	public RoomConditionDateVO(){
 			
 	}
 		
-	public RoomConditionDateVO(Date rd, String rn, RoomConditon rc){
-	    	
-	    RoomDate = rd;
-	    RoomNumber = rn;
-	    roomcondition = rc;
+	public RoomConditionDateVO(String hotel_id,String rd, String rn, RoomCondition rc){
+	    
+		this.hotel_id = hotel_id;
+	    this.RoomDate = rd;
+	    this.RoomNumber = rn;
+	    this.roomcondition = rc;
 			
 	}
 	    
-	public Date getRoomDate(){
+	public String getHotel_id() {
+		return hotel_id;
+	}
+
+	public String getRoomDate(){
 	    return RoomDate;
 	}
 	    
@@ -35,7 +43,7 @@ public class RoomConditionDateVO {
 	    return RoomNumber;
 	}
 	    
-	public RoomConditon getRoomCondition(){
+	public RoomCondition getRoomCondition(){
 	    return roomcondition;
 	}
 

@@ -1,6 +1,6 @@
 package vo;
 
-import util.RoomConditon;
+import util.RoomCondition;
 
 public class RoomVO {
 
@@ -17,13 +17,13 @@ public class RoomVO {
 	String Room_number;
 	
 	//房间状态
-	RoomConditon Room_condition;
+	RoomCondition Room_condition;
 	
 	//酒店编号
 	String Hotel_id;
 	
 	
-	public RoomVO(String rt, int rn, double rp, String rnb, RoomConditon rc, String ho){
+	public RoomVO(String rt, int rn, double rp, String rnb, RoomCondition rc, String ho){
 		
 		Room_type = rt;
 		Room_num = rn;
@@ -54,7 +54,7 @@ public class RoomVO {
 		return Room_number;
 	}
 	
-	public RoomConditon getRoomCondition(){
+	public RoomCondition getRoomCondition(){
 		return Room_condition;
 	}
 	

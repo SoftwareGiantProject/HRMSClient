@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import po.RoomConditionDatePO;
 import po.RoomPO;
 import util.ResultMessage;
-import util.RoomConditon;
+import util.RoomCondition;
 
 public class RoomDataServiceImpl implements RoomDataService{
 

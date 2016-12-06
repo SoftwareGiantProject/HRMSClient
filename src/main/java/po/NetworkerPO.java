@@ -4,15 +4,15 @@ import java.io.Serializable;
 
 public class NetworkerPO implements Serializable{
 
-	//ÓÃ»§±àºÅ
+	//ID
 		private String userId;
 		
-		//ÓÃ»§Ãû
+		//ç”¨æˆ·å
 		private String userName;
-		//ÃÜÂë
+		//å¯†ç 
 		private String password;
 		
-		//ÁªÏµ·½Ê½
+		//è”ç³»æ–¹å¼
 		private String contact;
 		
 		public NetworkerPO(){

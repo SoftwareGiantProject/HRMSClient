@@ -1,7 +1,7 @@
 
 package businesslogic.roombl;
 
-import util.RoomConditon;
+import util.RoomCondition;
 import vo.RoomConditionDateVO;
 import vo.RoomVO;
 
@@ -11,14 +11,14 @@ public class MockRoom{
 	int Room_num;		
 	double Room_price;	
 	String Room_number;		
-	RoomConditon Room_condition;
+	RoomCondition Room_condition;
 	String Hotel_id;
 	
 	public MockRoom(){
 		
 	}
 
-	public MockRoom(String rt, int rn, double rp, String rnb, RoomConditon rc, String ho){
+	public MockRoom(String rt, int rn, double rp, String rnb, RoomCondition rc, String ho){
 		
 		Room_type = rt;
 		Room_num = rn;
@@ -45,7 +45,7 @@ public class MockRoom{
 		return Room_number;
 	}
 	
-	public RoomConditon getRoom_condition(){
+	public RoomCondition getRoom_condition(){
 		return Room_condition;
 	}
 	
@@ -66,7 +66,7 @@ public class MockRoom{
 		return null;
 	}
 	
-	public RoomConditon getRoomCondition(RoomConditionDateVO room_condition){
+	public RoomCondition getRoomCondition(RoomConditionDateVO room_condition){
 		
 		return null;
 	}

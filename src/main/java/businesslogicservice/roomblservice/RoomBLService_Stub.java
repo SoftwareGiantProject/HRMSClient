@@ -1,6 +1,6 @@
 package businesslogicservice.roomblservice;
 
-import util.RoomConditon;
+import util.RoomCondition;
 import vo.RoomConditionDateVO;
 import vo.RoomVO;
 
@@ -10,11 +10,11 @@ public class RoomBLService_Stub implements RoomBLService{
 	int Room_num;
 	double Room_price;
 	String Room_number;
-	RoomConditon Room_condition;
+	RoomCondition Room_condition;
 	String Hotel_id;
 
 	
-	public RoomBLService_Stub(String rt, int rn, double rp, String rnb, RoomConditon rc, String hi){
+	public RoomBLService_Stub(String rt, int rn, double rp, String rnb, RoomCondition rc, String hi){
 		this.Room_type = rt;
 		this.Room_num = rn;
 		this.Room_price = rp;
@@ -37,7 +37,7 @@ public class RoomBLService_Stub implements RoomBLService{
 		return new RoomVO(room_info.getRoomType(), this.Room_num, room_info.getRoomPrice(), room_info.getRoomNumber(), room_info.getRoomCondition(), room_info.getHotel_id());
 	}
 	
-	public RoomConditon getRoomCondition(RoomConditionDateVO room_condition){
+	public RoomCondition getRoomCondition(RoomConditionDateVO room_condition){
 		
 		return room_condition.getRoomCondition();
 	}

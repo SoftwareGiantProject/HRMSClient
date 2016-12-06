@@ -2,7 +2,7 @@
 package businesslogic.roombl;
 
 import businesslogicservice.roomblservice.RoomBLService;
-import util.RoomConditon;
+import util.RoomCondition;
 import vo.RoomConditionDateVO;
 import vo.RoomVO;
 
@@ -26,7 +26,7 @@ public class RoomController implements RoomBLService{
 	}
 
 	@Override
-	public RoomConditon getRoomCondition(RoomConditionDateVO room_condition) {
+	public RoomCondition getRoomCondition(RoomConditionDateVO room_condition) {
 		return Room.getRoomCondition(room_condition);
 	}
 
