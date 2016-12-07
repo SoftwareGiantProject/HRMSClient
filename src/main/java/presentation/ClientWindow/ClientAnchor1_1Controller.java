@@ -3,8 +3,9 @@ package presentation.ClientWindow;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import vo.ClientVO;
 
-public class ClientAnchor1Controller {
+public class ClientAnchor1_1Controller {
 	@FXML
 	Label name;
 	@FXML
@@ -14,13 +15,13 @@ public class ClientAnchor1Controller {
 	@FXML
 	Label credit;
 	
-	
+	ClientVO client;
 	
 	RunClient1 runClient1;
 	
 	
 	
-	public ClientAnchor1Controller(){
+	public ClientAnchor1_1Controller(){
 		
 	}
 	
@@ -28,10 +29,10 @@ public class ClientAnchor1Controller {
 	public void initialize(){
 		try{
 			//需要调用
-			name.setText("zhangsan");
-			account.setText("151250001");
-			credit.setText("0");
-			phone.setText("000000000");
+			name.setText(client.getUserName());
+			account.setText(client.getUserId());
+			credit.setText(Integer.toString(client.getCredit()));
+			phone.setText(client.getContact());
 		    
 		    
 		}catch(Exception e){

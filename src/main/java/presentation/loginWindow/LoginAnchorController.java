@@ -1,6 +1,10 @@
 package presentation.loginWindow;
 
 
+import businesslogic.userbl.client.ClientController;
+import businesslogic.userbl.netsale.NetsaleController;
+import businesslogic.userbl.networker.NetworkerController;
+import businesslogicservice.userblservice.Login;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -17,6 +21,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import presentation.ClientWindow.RunClient1;
+import presentation.NetWorkerWindow.RunNetworker;
+import util.ResultMessage;
 public class LoginAnchorController {
 	@FXML
 	TextField accountField;
@@ -40,6 +46,9 @@ public class LoginAnchorController {
 	RunLogin runLogin;
 	
 	
+	
+	
+	
 	//构造
 	public LoginAnchorController(){
 		
@@ -47,18 +56,46 @@ public class LoginAnchorController {
 	@FXML
 	public void LoginClicked(){
 		//判断账号和密码
-		if(true){
-			RunClient1 runClient=new RunClient1();
-			try {
-				runClient.start(new Stage());
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			runLogin.getPrimaryStage().close();
+		try{
+		if(accountField.getText().charAt(0)=='s'){
 			
+			
+		}else if(accountField.getText().charAt(0)=='h'){
+			
+		}else if(accountField.getText().charAt(0)=='m'){
+			NetworkerController lg=new NetworkerController();
+			ResultMessage rm=lg.login(accountField.getText(), passwordField.getText());
+			if(rm==ResultMessage.SUCCESS){
+				RunNetworker rc=new RunNetworker();
+				rc.setanchor1(1);
+				
+				rc.start(new Stage());
+				runLogin.getPrimaryStage().close();
+			}else{
+				//添加 登录失败弹窗
+			}
+		}else{
+			ClientController lg=new ClientController();
+			ResultMessage rm=lg.login(accountField.getText(), passwordField.getText());
+			if(rm==ResultMessage.SUCCESS){
+				RunClient1 rc=new RunClient1();
+				rc.SetAnchor1(1);
+				rc.SetClientVO(lg.getClientInfo(accountField.getText()));
+				rc.start(new Stage());
+				runLogin.getPrimaryStage().close();
+			}else{
+				//添加 登录失败弹窗
+			}
 		}
+		
+		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		
 	}
+	
 	
 	
 	private void initialize() {

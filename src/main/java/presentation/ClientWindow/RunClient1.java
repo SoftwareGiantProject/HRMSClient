@@ -9,6 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import presentation.NetWorkerWindow.RunNetworker;
+import vo.ClientVO;
 
 
 public class RunClient1 extends Application {
@@ -16,6 +17,7 @@ public class RunClient1 extends Application {
 	private Stage primaryStage;
     private BorderPane rootLayout;
     private int anchor1=0;
+    private ClientVO cv;
     
     
 //    
@@ -32,7 +34,9 @@ public class RunClient1 extends Application {
     }
     
     
-    
+    public void SetClientVO(ClientVO cv){
+    	this.cv=cv;
+    }
     @Override
     public void start(Stage primaryStage)throws Exception {
         this.primaryStage = primaryStage;
