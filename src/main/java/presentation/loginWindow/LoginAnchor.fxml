@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.loginWindow.LoginAnchorController">
+   <children>
+      <AnchorPane layoutX="-115.0" layoutY="-136.0" prefHeight="400.0" prefWidth="600.0" styleClass="background">
+         <children>
+            <Label layoutX="232.0" layoutY="215.0" prefHeight="38.0" prefWidth="45.0" text="账号">
+               <font>
+                  <Font name="Microsoft YaHei" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="232.0" layoutY="284.0" text="密码">
+               <font>
+                  <Font name="Microsoft YaHei" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="accountField" layoutX="319.0" layoutY="216.0" />
+            <PasswordField fx:id="passwordField" layoutX="319.0" layoutY="276.0" />
+            <Button fx:id="loginButton" layoutX="254.0" layoutY="348.0" mnemonicParsing="false" onAction="#LoginClicked" text="登录" />
+            <Button fx:id="regiserButton" layoutX="468.0" layoutY="348.0" mnemonicParsing="false" text="注册" />
+            <ImageView fx:id="login" fitHeight="30.0" fitWidth="45.0" layoutX="210.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="register" fitHeight="30.0" fitWidth="45.0" layoutX="430.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="logo" fitHeight="58.0" fitWidth="187.0" layoutX="336.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="167.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
