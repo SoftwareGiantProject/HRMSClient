@@ -35,4 +35,5 @@ public interface NetworkerBLService {
 	
 	
 	public ResultMessage addHotel(HotelVO vo)throws RemoteException;
+
 }

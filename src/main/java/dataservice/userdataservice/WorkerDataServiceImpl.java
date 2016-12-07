@@ -1,6 +1,7 @@
 package dataservice.userdataservice;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import po.WorkerPO;
 import util.ResultMessage;
@@ -29,17 +30,10 @@ public class WorkerDataServiceImpl implements WorkerDataService{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
-	public boolean workerExist(String id) throws RemoteException {
+	public ArrayList<WorkerPO> getAllWorker() throws RemoteException {
 		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean workerLogin(String id, String password) throws RemoteException {
-		// TODO Auto-generated method stub
-		return false;
+		return null;
 	}
 
 }

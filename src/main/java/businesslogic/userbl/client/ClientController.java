@@ -5,12 +5,13 @@ import java.util.ArrayList;
 
 import businesslogic.userbl.networker.ClientInfo;
 import businesslogicservice.userblservice.ClientBLService;
+import businesslogicservice.userblservice.Login;
 import util.ResultMessage;
 import vo.ClientVO;
 import vo.CommonMemberVO;
 import vo.CorporateMemberVO;
 
-public class ClientController implements ClientBLService,ClientInfo{
+public class ClientController implements ClientBLService,ClientInfo,Login{
 
 	Client client;
 	
@@ -51,6 +52,12 @@ public class ClientController implements ClientBLService,ClientInfo{
 	@Override
 	public ArrayList<ClientVO> getAllClientInfo() throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return client.getAllClientInfo();
+	}
+
+	@Override
+	public ResultMessage login(String user_id, String password) throws RemoteException{
+		// TODO Auto-generated method stub
+		return client.login(user_id, password);
 	}
 }

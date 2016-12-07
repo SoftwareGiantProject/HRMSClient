@@ -12,11 +12,6 @@ public class NetworkerDataServiceImpl implements NetworkerDataService{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	@Override
-	public ResultMessage add(NetworkerPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public NetworkerPO findNetworker(String id) throws RemoteException {
@@ -28,18 +23,6 @@ public class NetworkerDataServiceImpl implements NetworkerDataService{
 	public ResultMessage modify(NetworkerPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public boolean networkerExist(String id) throws RemoteException {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean networkerLogin(String id, String password) throws RemoteException {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 }

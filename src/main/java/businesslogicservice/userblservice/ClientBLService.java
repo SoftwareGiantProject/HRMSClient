@@ -46,4 +46,6 @@ public interface ClientBLService {
 	 * @return
 	 */
 	public ResultMessage registCorMember(CorporateMemberVO vo);
+	
+	
 }

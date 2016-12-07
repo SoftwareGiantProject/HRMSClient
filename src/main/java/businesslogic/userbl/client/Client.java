@@ -1,6 +1,7 @@
 package businesslogic.userbl.client;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import dataservice.datafactory.DataFactory;
 import dataservice.datafactory.DatafactoryImpl;
@@ -41,6 +42,14 @@ public class Client {
 	}
 	
 	public ResultMessage registCorMember(CorporateMemberVO vo){
+		return null;
+	}
+
+	public ArrayList<ClientVO> getAllClientInfo() {
+		return null;
+	}
+	
+	public ResultMessage login(String user_id, String password){
 		return null;
 	}
 }

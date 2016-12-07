@@ -1,8 +1,11 @@
 package dataservice.userdataservice;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import po.ClientPO;
+import po.CommonMemberPO;
+import po.CorporateMemberPO;
 import util.ResultMessage;
 
 public class ClientDataServiceImpl implements ClientDataService{
@@ -32,15 +35,21 @@ public class ClientDataServiceImpl implements ClientDataService{
 	}
 
 	@Override
-	public boolean clientExist(String id) throws RemoteException {
+	public ArrayList<ClientPO> getAllClient() throws RemoteException {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
 	}
 
 	@Override
-	public boolean clientLogin(String id, String password) throws RemoteException {
+	public ResultMessage registComMember(CommonMemberPO po) throws RemoteException {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
+	}
+
+	@Override
+	public ResultMessage registCorMember(CorporateMemberPO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

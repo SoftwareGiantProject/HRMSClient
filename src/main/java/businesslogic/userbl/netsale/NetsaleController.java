@@ -4,13 +4,12 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogic.userbl.networker.NetsaleInfo;
+import businesslogicservice.userblservice.Login;
 import businesslogicservice.userblservice.NetsaleBLService;
-import dataservice.datafactory.DatafactoryImpl;
-import dataservice.userdataservice.NetsaleDataService;
 import util.ResultMessage;
 import vo.NetsaleVO;
 
-public class NetsaleController implements NetsaleBLService,NetsaleInfo{
+public class NetsaleController implements NetsaleBLService,NetsaleInfo,Login{
 	
 	private Netsale netsale;
 	
@@ -50,6 +49,12 @@ public class NetsaleController implements NetsaleBLService,NetsaleInfo{
 
 	@Override
 	public ArrayList<NetsaleVO> getAllNetsaleInfo() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage login(String user_id, String password)throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

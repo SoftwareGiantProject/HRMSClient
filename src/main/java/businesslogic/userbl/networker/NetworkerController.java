@@ -3,6 +3,7 @@ package businesslogic.userbl.networker;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogicservice.userblservice.Login;
 import businesslogicservice.userblservice.NetworkerBLService;
 import util.ResultMessage;
 import vo.ClientVO;
@@ -10,7 +11,7 @@ import vo.HotelVO;
 import vo.NetsaleVO;
 import vo.WorkerVO;
 
-public class NetworkerController implements NetworkerBLService{
+public class NetworkerController implements NetworkerBLService,Login{
 
 	private Networker networker;
 	
@@ -82,6 +83,12 @@ public class NetworkerController implements NetworkerBLService{
 	public ResultMessage addHotel(HotelVO vo) throws RemoteException{
 		// TODO Auto-generated method stub
 		return networker.addHotel(vo);
+	}
+
+	@Override
+	public ResultMessage login(String user_id, String password)throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

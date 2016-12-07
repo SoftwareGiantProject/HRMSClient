@@ -18,4 +18,6 @@ public interface NetsaleBLService {
 	 * @return
 	 */
 	public ResultMessage modifyInfo(NetsaleVO vo);
+	
+	
 }

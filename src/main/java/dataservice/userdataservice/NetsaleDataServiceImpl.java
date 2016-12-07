@@ -29,17 +29,4 @@ public class NetsaleDataServiceImpl implements NetsaleDataService{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public boolean netsaleExist(String id) throws RemoteException {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean netsaleLogin(String id, String password) throws RemoteException {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }
