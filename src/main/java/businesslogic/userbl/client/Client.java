@@ -31,9 +31,17 @@ public class Client {
 		}
 	}
 
-	public ResultMessage regist(ClientVO vo,String password){
+	public ResultMessage regist(ClientVO vo){
+		ClientPO po = vo2po(vo);
 		
-		return null;
+		ResultMessage result = ResultMessage.FAIL;
+		
+		try {
+			result = clientDataService.add(po);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return ResultMessage.SUCCESS;
 	}
 	
 	public ClientVO getClientInfo(String user_id){

@@ -13,7 +13,7 @@ public interface ClientBLService {
 	 * @param password
 	 * @return
 	 */
-	public ResultMessage regist(ClientVO vo,String password);
+	public ResultMessage regist(ClientVO vo);
 	
 	
 	/**

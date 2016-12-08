@@ -20,9 +20,9 @@ public class ClientController implements ClientBLService,ClientInfo,Login{
 	}
 
 	@Override
-	public ResultMessage regist(ClientVO vo, String password) {
+	public ResultMessage regist(ClientVO vo) {
 		// TODO Auto-generated method stub
-		return client.regist(vo, password);
+		return client.regist(vo);
 	}
 
 	@Override
