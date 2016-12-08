@@ -17,7 +17,7 @@ public class RunClient1 extends Application {
 	private Stage primaryStage;
     private BorderPane rootLayout;
     private int anchor1=0;
-    private ClientVO cv;
+    private static ClientVO cv;
     
     
 //    
@@ -36,6 +36,9 @@ public class RunClient1 extends Application {
     
     public void SetClientVO(ClientVO cv){
     	this.cv=cv;
+    }
+    public ClientVO GetClientVO(){
+    	return cv;
     }
     @Override
     public void start(Stage primaryStage)throws Exception {
@@ -168,7 +171,7 @@ public class RunClient1 extends Application {
             //set controller
             ClientAnchor2Controller controller2=loader2.getController();
             controller2.setRunClient(this);
-            
+            //other controllers
         } catch (IOException e) {
             e.printStackTrace();
         }

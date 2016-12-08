@@ -191,6 +191,9 @@ public class ClientAnchor2Controller {
 		viewInfoBt.setText("信息查看");
 //		viewInfoBt.setGraphic(new ImageView(new Image("file:src/lib/Client.png")));
 //		viewInfoBt=new Button("信息查看",new ImageView("file:src/lib/Client.png"));
+		type.setText("客户");
+		name.setText(this.runClient1.GetClientVO().getUserName());
+		id.setText(this.runClient1.GetClientVO().getUserId());
 		modifyInfoBt.setText("维护信息");
 		payCreditBt.setText("信用充值");
 		viewOrderBt.setText("浏览订单");
