@@ -7,9 +7,6 @@ public class RoomVO {
 	//房间类型
 	String Room_type;
 	
-	//房间数量
-	int Room_num;
-	
 	//房间价格
 	double Room_price;
 	
@@ -26,7 +23,6 @@ public class RoomVO {
 	public RoomVO(String rt, int rn, double rp, String rnb, RoomCondition rc, String ho){
 		
 		Room_type = rt;
-		Room_num = rn;
 		Room_price = rp;
 		Room_number = rnb;
 		Room_condition = rc;
@@ -37,11 +33,7 @@ public class RoomVO {
 	public RoomVO(){
 		
 	}
-	
-	public int getRoomNum(){
-		return Room_num;
-	}
-	
+
 	public String getRoomType(){
 		return Room_type;
 	}

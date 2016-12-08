@@ -13,7 +13,7 @@ public class ClientTest {
 	public void init(){
 		controller = new ClientController();
 	}
-	
+
 	@Test
 	public void testRegist(){
 		

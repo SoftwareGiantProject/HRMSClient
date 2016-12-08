@@ -8,6 +8,8 @@ public class WorkerVO implements Serializable{
 	//id
 		private String userId;
 		
+		//酒店id
+		private String hotel_id;
 		//姓名
 		private String userName;
 		//密码
@@ -30,6 +32,15 @@ public class WorkerVO implements Serializable{
 			
 			this.contact=contact;
 			
+		}
+
+		
+		public String getHotel_id() {
+			return hotel_id;
+		}
+
+		public void setHotel_id(String hotel_id) {
+			this.hotel_id = hotel_id;
 		}
 
 		public String getUserId() {
