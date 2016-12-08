@@ -32,31 +32,31 @@ public class NetsaleController implements NetsaleBLService,NetsaleInfo,Login{
 	@Override
 	public NetsaleVO getNetsaleInfo(String netsale_id) throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return netsale.getInfo(netsale_id);
 	}
 
 	@Override
 	public ResultMessage addNetsaleInfo(NetsaleVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return netsale.addNetsale(vo);
 	}
 
 	@Override
 	public ResultMessage modifyNetsaleInfo(NetsaleVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return netsale.modifyInfo(vo);
 	}
 
 	@Override
 	public ArrayList<NetsaleVO> getAllNetsaleInfo() throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return netsale.getAllNetsale();
 	}
 
 	@Override
 	public ResultMessage login(String user_id, String password)throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return netsale.login(user_id, password);
 	}
 	
 	

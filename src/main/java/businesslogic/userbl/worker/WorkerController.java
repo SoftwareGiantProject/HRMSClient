@@ -32,31 +32,31 @@ public class WorkerController implements WorkerBLService,WorkerInfo,Login{
 	@Override
 	public WorkerVO getWorkerInfo(String worker_id) throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return worker.getInfo(worker_id);
 	}
 
 	@Override
 	public ArrayList<WorkerVO> getAllWorkerInfo() throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return worker.getAllWorker();
 	}
 
 	@Override
 	public ResultMessage addWorker(WorkerVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return worker.addWorker(vo);
 	}
 
 	@Override
 	public ResultMessage modifyWorker(WorkerVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return worker.modifyInfo(vo);
 	}
 
 	@Override
 	public ResultMessage login(String user_id, String password)throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return worker.login(user_id, password);
 	}
 	
 	

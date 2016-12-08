@@ -7,6 +7,7 @@ import util.ResultMessage;
 import vo.ClientVO;
 import vo.HotelVO;
 import vo.NetsaleVO;
+import vo.NetworkerVO;
 import vo.WorkerVO;
 
 public interface NetworkerBLService {
@@ -33,6 +34,12 @@ public interface NetworkerBLService {
 	
 	public ArrayList<NetsaleVO> getAllNetsaleInfo()throws RemoteException;
 	
+	
+	public NetworkerVO getNetworkerInfo(String networker_id)throws RemoteException;
+	
+	public ResultMessage addNetworkerInfo(NetworkerVO vo)throws RemoteException;
+	
+	public ResultMessage modifyNetworkerInfo(NetworkerVO vo)throws RemoteException;
 	
 	public ResultMessage addHotel(HotelVO vo)throws RemoteException;
 

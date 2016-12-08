@@ -9,6 +9,7 @@ import util.ResultMessage;
 import vo.ClientVO;
 import vo.HotelVO;
 import vo.NetsaleVO;
+import vo.NetworkerVO;
 import vo.WorkerVO;
 
 public class NetworkerController implements NetworkerBLService,Login{
@@ -31,6 +32,8 @@ public class NetworkerController implements NetworkerBLService,Login{
 		return networker.getAllClientInfo();
 	}
 
+	
+	
 	@Override
 	public WorkerVO getWorkerInfo(String worker_id)throws RemoteException {
 		// TODO Auto-generated method stub
@@ -55,6 +58,8 @@ public class NetworkerController implements NetworkerBLService,Login{
 		return networker.modifyWorker(vo);
 	}
 
+	
+	
 	@Override
 	public NetsaleVO getNetsaleInfo(String netsale_id) throws RemoteException{
 		// TODO Auto-generated method stub
@@ -79,6 +84,28 @@ public class NetworkerController implements NetworkerBLService,Login{
 		return networker.getAllNetsaleInfo();
 	}
 
+	
+	
+	@Override
+	public NetworkerVO getNetworkerInfo(String networker_id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return networker.getNetworkerInfo(networker_id);
+	}
+
+	@Override
+	public ResultMessage addNetworkerInfo(NetworkerVO vo) throws RemoteException {
+		// TODO Auto-generated method stub
+		return networker.addNetworkerInfo(vo);
+	}
+
+	@Override
+	public ResultMessage modifyNetworkerInfo(NetworkerVO vo) throws RemoteException {
+		// TODO Auto-generated method stub
+		return networker.modifyNetworkerInfo(vo);
+	}
+	
+	
+	
 	@Override
 	public ResultMessage addHotel(HotelVO vo) throws RemoteException{
 		// TODO Auto-generated method stub
@@ -88,7 +115,8 @@ public class NetworkerController implements NetworkerBLService,Login{
 	@Override
 	public ResultMessage login(String user_id, String password)throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return networker.login(user_id, password);
 	}
+
 	
 }

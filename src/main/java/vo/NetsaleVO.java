@@ -4,21 +4,21 @@ import java.io.Serializable;
 
 public class NetsaleVO implements Serializable {
 
-	//ÓÃ»§±àºÅ
+		//id
 		private String userId;
 		
-		//ÓÃ»§Ãû
+		//ç”¨æˆ·å
 		private String userName;
-		//ÃÜÂë
+		//å¯†ç 
 		private String password;
 		
-		//ÁªÏµ·½Ê½
+		//è”ç³»æ–¹å¼
 		private String contact;
 		
 		public NetsaleVO(){
 			
 		}
-		
+
 		public NetsaleVO(String userId,String userName,
 				String password,String contact){
 			super();
@@ -30,4 +30,39 @@ public class NetsaleVO implements Serializable {
 			this.contact=contact;
 			
 		}
+
+		public String getUserId() {
+			return userId;
+		}
+
+		public String getUserName() {
+			return userName;
+		}
+
+		public String getPassword() {
+			return password;
+		}
+
+		public String getContact() {
+			return contact;
+		}
+		
+
+		public void setUserId(String userId) {
+			this.userId = userId;
+		}
+
+		public void setUserName(String userName) {
+			this.userName = userName;
+		}
+
+		public void setPassword(String password) {
+			this.password = password;
+		}
+
+		public void setContact(String contact) {
+			this.contact = contact;
+		}
+
 }
+

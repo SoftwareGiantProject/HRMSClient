@@ -25,4 +25,10 @@ public class NetworkerDataServiceImpl implements NetworkerDataService{
 		return null;
 	}
 
+	@Override
+	public ResultMessage add(NetworkerPO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
