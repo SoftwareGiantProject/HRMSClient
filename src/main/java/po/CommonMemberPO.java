@@ -17,6 +17,9 @@ public class CommonMemberPO {
 	MemberType Member_type;
 	
 	
+	public CommonMemberPO() {
+
+	}
 	public CommonMemberPO(int coml, String combir, String comn, MemberType mt){
 		CommonMember_level = coml;
 		CommonMember_Birthday = combir;

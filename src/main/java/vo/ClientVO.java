@@ -60,6 +60,38 @@ public class ClientVO implements Serializable {
 			return birthday;
 		}
 
+		public void setUserId(String userId) {
+			this.userId = userId;
+		}
+
+		public void setMemberId(String memberId) {
+			this.memberId = memberId;
+		}
+
+		public void setUserName(String userName) {
+			this.userName = userName;
+		}
+
+		public void setPassword(String password) {
+			this.password = password;
+		}
+
+		public void setCredit(int credit) {
+			this.credit = credit;
+		}
+
+		public void setContact(String contact) {
+			this.contact = contact;
+		}
+
+		public void setBirthday(String birthday) {
+			this.birthday = birthday;
+		}
+
+		public void setType(MemberType type) {
+			this.type = type;
+		}
+
 		public MemberType getType() {
 			return type;
 		}

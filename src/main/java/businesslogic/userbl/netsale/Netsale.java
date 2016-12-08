@@ -25,6 +25,7 @@ public class Netsale {
 	 * @return
 	 */
 	public NetsaleVO getInfo(String netsale_id){
+		
 		return null;
 	}
 	

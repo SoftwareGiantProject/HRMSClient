@@ -12,8 +12,7 @@ public class WorkerPO implements Serializable{
 		//密码
 		private String password;
 		
-		//联系方式
-		private String contact;
+		//联系方式		private String contact;
 		
 		public WorkerPO(){
 			

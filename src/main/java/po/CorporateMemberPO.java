@@ -19,7 +19,9 @@ public class CorporateMemberPO {
 	//会员类型
 	MemberType Member_type;
 	
-	
+	public CorporateMemberPO() {
+		
+	}
 	public CorporateMemberPO(int corl, String corbir, String corn, String cor, MemberType mt){
 		CorporateMember_level = corl;
 		CorporateMember_Birthday = corbir;

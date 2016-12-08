@@ -19,6 +19,8 @@ import dataservice.roomdataservice.RoomDataService;
 import dataservice.roomdataservice.RoomDataServiceImpl;
 import dataservice.userdataservice.ClientDataService;
 import dataservice.userdataservice.ClientDataServiceImpl;
+import dataservice.userdataservice.LoginIn;
+import dataservice.userdataservice.LoginInImpl;
 import dataservice.userdataservice.NetsaleDataService;
 import dataservice.userdataservice.NetsaleDataServiceImpl;
 import dataservice.userdataservice.NetworkerDataService;
@@ -118,7 +120,11 @@ public class DatafactoryImpl implements DataFactory{
 		// TODO Auto-generated method stub
 		return new NetworkerDataServiceImpl();
 	}
-	
-	
+
+	@Override
+	public LoginIn getLoginData() throws RemoteException {
+		// TODO Auto-generated method stub
+		return new LoginInImpl();
+	}
 	
 }
