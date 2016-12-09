@@ -1,8 +1,10 @@
 package po;
 
+import java.io.Serializable;
+
 import util.MemberType;
 
-public class CommonMemberPO {
+public class CommonMemberPO implements Serializable{
 
 	//普通会员等级
 	int CommonMember_level; 
@@ -30,7 +32,6 @@ public class CommonMemberPO {
 	public void setCommonMember_level(int coml){
 		this.CommonMember_level = coml;
 	}
-	
 	public void setCommonMember_Birthday(String combir){
 		this.CommonMember_Birthday = combir;
 	}

@@ -16,6 +16,26 @@ public class CorporateMemberVO {
 	//企业名称
 	String Corporate;
 	
+	public void setCorporateMember_level(int corporateMember_level) {
+		CorporateMember_level = corporateMember_level;
+	}
+
+	public void setCorporateMember_Birthday(String corporateMember_Birthday) {
+		CorporateMember_Birthday = corporateMember_Birthday;
+	}
+
+	public void setCorporateMember_number(String corporateMember_number) {
+		CorporateMember_number = corporateMember_number;
+	}
+
+	public void setCorporate(String corporate) {
+		Corporate = corporate;
+	}
+
+	public void setMember_type(MemberType member_type) {
+		Member_type = member_type;
+	}
+
 	//会员类型
 	MemberType Member_type;
 	

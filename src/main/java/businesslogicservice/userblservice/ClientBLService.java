@@ -1,5 +1,7 @@
 package businesslogicservice.userblservice;
 
+import java.rmi.RemoteException;
+
 import util.ResultMessage;
 import vo.ClientVO;
 import vo.CommonMemberVO;
@@ -12,40 +14,45 @@ public interface ClientBLService {
 	 * @param vo
 	 * @param password
 	 * @return
+	 * @throws RemoteException 
 	 */
-	public ResultMessage regist(ClientVO vo);
+	public ResultMessage regist(ClientVO vo) throws RemoteException;
 	
 	
 	/**
 	 * 获取用户信息
 	 * @param user_id
 	 * @return
+	 * @throws RemoteException 
 	 */
-	public ClientVO getClientInfo(String user_id);
+	public ClientVO getClientInfo(String user_id) throws RemoteException;
 	
 	
 	/**
 	 * 修改用户信息
 	 * @param vo
 	 * @return
+	 * @throws RemoteException 
 	 */
-	public ResultMessage modifyInfo(ClientVO vo);
+	public ResultMessage modifyInfo(ClientVO vo) throws RemoteException;
 	
 	
 	/**
 	 * 注册普通会员
 	 * @param vo
 	 * @return
+	 * @throws RemoteException 
 	 */
-	public ResultMessage registComMember(CommonMemberVO vo);
+	public ResultMessage registComMember(String id,CommonMemberVO vo) throws RemoteException;
 	
 	
 	/**
 	 * 注册企业会员
 	 * @param vo
 	 * @return
+	 * @throws RemoteException 
 	 */
-	public ResultMessage registCorMember(CorporateMemberVO vo);
+	public ResultMessage registCorMember(String id,CorporateMemberVO vo) throws RemoteException;
 	
 	
 }

@@ -31,7 +31,7 @@ public class Client {
 		}
 	}
 
-	public ResultMessage regist(ClientVO vo){
+	public ResultMessage regist(ClientVO vo)throws RemoteException{
 		ClientPO po = vo2po(vo);
 		
 		ResultMessage result = ResultMessage.FAIL;
@@ -44,7 +44,7 @@ public class Client {
 		return ResultMessage.SUCCESS;
 	}
 	
-	public ClientVO getClientInfo(String user_id){
+	public ClientVO getClientInfo(String user_id)throws RemoteException{
 		ClientVO vo = new ClientVO();
 		
 		ClientPO po = new ClientPO();
@@ -59,7 +59,7 @@ public class Client {
 		return vo;
 	}
 	
-	public ResultMessage modifyInfo(ClientVO vo){
+	public ResultMessage modifyInfo(ClientVO vo)throws RemoteException{
 		ClientPO po = new ClientPO();
 		
 		po = vo2po(vo);
@@ -75,7 +75,7 @@ public class Client {
 		return result;
 	}
 	
-	public ResultMessage registComMember(CommonMemberVO vo){
+	public ResultMessage registComMember(String id,CommonMemberVO vo)throws RemoteException{
 		CommonMemberPO po =  new CommonMemberPO();
 		
 		po.setCommonMember_number(vo.getCommonMember_number());
@@ -86,14 +86,14 @@ public class Client {
 		ResultMessage result = ResultMessage.FAIL;
 		
 		try {
-			result = clientDataService.registComMember(po);
+			result = clientDataService.registComMember(id,po);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 		return result;
 	}
 	
-	public ResultMessage registCorMember(CorporateMemberVO vo){
+	public ResultMessage registCorMember(String id,CorporateMemberVO vo)throws RemoteException{
 		CorporateMemberPO po = new CorporateMemberPO();
 		
 		po.setCorporate(vo.getCorporate());
@@ -105,14 +105,14 @@ public class Client {
 		ResultMessage result = ResultMessage.FAIL;
 		
 		try {
-			result = clientDataService.registCorMember(po);
+			result = clientDataService.registCorMember(id,po);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 		return result;
 	}
 
-	public ArrayList<ClientVO> getAllClientInfo() {
+	public ArrayList<ClientVO> getAllClientInfo() throws RemoteException{
 		ArrayList<ClientPO> list = new ArrayList<>();
 		
 		try {
@@ -128,7 +128,7 @@ public class Client {
 		return resultList;
 	}
 	
-	public ResultMessage login(String user_id, String password){
+	public ResultMessage login(String user_id, String password)throws RemoteException{
 		
 		ResultMessage result = ResultMessage.FAIL;
 		

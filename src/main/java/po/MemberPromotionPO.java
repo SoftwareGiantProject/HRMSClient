@@ -1,6 +1,8 @@
 package po;
 
-public class MemberPromotionPO {
+import java.io.Serializable;
+
+public class MemberPromotionPO implements Serializable{
 
 	//促销策略名称
 	private String promotionName;

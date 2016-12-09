@@ -41,13 +41,13 @@ public class ClientDataServiceImpl implements ClientDataService{
 	}
 
 	@Override
-	public ResultMessage registComMember(CommonMemberPO po) throws RemoteException {
+	public ResultMessage registComMember(String user_id,CommonMemberPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage registCorMember(CorporateMemberPO po) throws RemoteException {
+	public ResultMessage registCorMember(String user_id,CorporateMemberPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

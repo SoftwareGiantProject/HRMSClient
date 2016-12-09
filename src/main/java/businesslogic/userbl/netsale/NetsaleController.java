@@ -18,13 +18,13 @@ public class NetsaleController implements NetsaleBLService,NetsaleInfo,Login{
 	}
 
 	@Override
-	public NetsaleVO getInfo(String netsale_id) {
+	public NetsaleVO getInfo(String netsale_id) throws RemoteException  {
 		// TODO Auto-generated method stub
 		return netsale.getInfo(netsale_id);
 	}
 
 	@Override
-	public ResultMessage modifyInfo(NetsaleVO vo) {
+	public ResultMessage modifyInfo(NetsaleVO vo)throws RemoteException  {
 		// TODO Auto-generated method stub
 		return netsale.modifyInfo(vo);
 	}

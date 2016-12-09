@@ -13,6 +13,22 @@ public class CommonMemberVO {
 	//普通会员编号
 	String CommonMember_number;
 	
+	public void setCommonMember_level(int commonMember_level) {
+		CommonMember_level = commonMember_level;
+	}
+
+	public void setCommonMember_Birthday(String commonMember_Birthday) {
+		CommonMember_Birthday = commonMember_Birthday;
+	}
+
+	public void setCommonMember_number(String commonMember_number) {
+		CommonMember_number = commonMember_number;
+	}
+
+	public void setMember_type(MemberType member_type) {
+		Member_type = member_type;
+	}
+
 	//会员类型
 	MemberType Member_type;
 	
@@ -42,5 +58,4 @@ public class CommonMemberVO {
 	public MemberType getMember_type(){
 		return Member_type;
 	}
-	
 }

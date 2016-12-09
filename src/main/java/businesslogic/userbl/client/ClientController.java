@@ -20,33 +20,33 @@ public class ClientController implements ClientBLService,ClientInfo,Login{
 	}
 
 	@Override
-	public ResultMessage regist(ClientVO vo) {
+	public ResultMessage regist(ClientVO vo)throws RemoteException {
 		// TODO Auto-generated method stub
 		return client.regist(vo);
 	}
 
 	@Override
-	public ClientVO getClientInfo(String user_id) {
+	public ClientVO getClientInfo(String user_id)throws RemoteException {
 		// TODO Auto-generated method stub
 		return client.getClientInfo(user_id);
 	}
 
 	@Override
-	public ResultMessage modifyInfo(ClientVO vo) {
+	public ResultMessage modifyInfo(ClientVO vo)throws RemoteException {
 		// TODO Auto-generated method stub
 		return client.modifyInfo(vo);
 	}
 
 	@Override
-	public ResultMessage registComMember(CommonMemberVO vo) {
+	public ResultMessage registComMember(String id,CommonMemberVO vo)throws RemoteException {
 		// TODO Auto-generated method stub
-		return client.registComMember(vo);
+		return client.registComMember(id,vo);
 	}
 
 	@Override
-	public ResultMessage registCorMember(CorporateMemberVO vo) {
+	public ResultMessage registCorMember(String id,CorporateMemberVO vo) throws RemoteException{
 		// TODO Auto-generated method stub
-		return client.registCorMember(vo);
+		return client.registCorMember(id,vo);
 	}
 
 	@Override

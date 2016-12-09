@@ -1,22 +1,23 @@
 package po;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class HotelEvaluationPO {
+public class HotelEvaluationPO implements Serializable{
 
-	//订单编号
+	//璁㈠崟缂栧彿
 	String order_id;
 	
-	//客户编号
+	//鐢ㄦ埛id
 	String user_id;
 	
-	//评价时间
+	//璇勪环鏃ユ湡
 	Date date;
 	
-	//评价内容
+	//璇勪环鍐呭
 	String data;
 	
-	//评价星级
+	//璇勭骇
 	int level;
 	
 	public HotelEvaluationPO(String order_id, String user_id, Date date, String data, int level){
