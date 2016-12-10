@@ -48,4 +48,5 @@ public interface DataFactory extends Remote {
 	public NetworkerDataService getNetworkerData()throws RemoteException;
 
 	public LoginIn getLoginData()throws RemoteException;
+
 }

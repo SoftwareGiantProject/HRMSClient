@@ -122,6 +122,7 @@ public class Worker {
 		WorkerPO po = new WorkerPO();
 		
 		po.setContact(vo.getContact());
+		po.setHotel_id(vo.getHotel_id());
 		po.setPassword(vo.getPassword());
 		po.setUserId(vo.getUserId());
 		po.setUserName(vo.getUserName());
@@ -133,6 +134,7 @@ public class Worker {
 		WorkerVO vo = new WorkerVO();
 	
 		vo.setContact(po.getContact());
+		vo.setHotel_id(po.getHotel_id());
 		vo.setPassword(po.getPassword());
 		vo.setUserId(po.getUserId());
 		vo.setUserName(po.getUserName());

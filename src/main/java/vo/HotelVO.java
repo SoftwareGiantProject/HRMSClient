@@ -46,6 +46,51 @@ public class HotelVO {
 		return hotel_id;
 	}
 	
+	public void setHotel_id(String hotel_id) {
+		this.hotel_id = hotel_id;
+	}
+
+
+	public void setHotel_name(String hotel_name) {
+		this.hotel_name = hotel_name;
+	}
+
+
+	public void setHotel_address(String hotel_address) {
+		this.hotel_address = hotel_address;
+	}
+
+
+	public void setHotel_area(String hotel_area) {
+		this.hotel_area = hotel_area;
+	}
+
+
+	public void setHotel_level(int hotel_level) {
+		this.hotel_level = hotel_level;
+	}
+
+
+	public void setHotel_score(double hotel_score) {
+		this.hotel_score = hotel_score;
+	}
+
+
+	public void setHotel_intro(String hotel_intro) {
+		this.hotel_intro = hotel_intro;
+	}
+
+
+	public void setHotel_serve(String hotel_serve) {
+		this.hotel_serve = hotel_serve;
+	}
+
+
+	public void setHotel_room(String hotel_room) {
+		this.hotel_room = hotel_room;
+	}
+
+
 	public String getHotelName(){
 		return hotel_name;
 	}
