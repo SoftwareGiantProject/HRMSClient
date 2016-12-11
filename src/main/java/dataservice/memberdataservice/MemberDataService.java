@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import po.*;
 import util.*;
 
-public interface MemberDataService extends Remote {
+public interface MemberDataService extends Remote{
 
 	public ArrayList<CommonMemberPO> getComMember() throws RemoteException;
 	public ArrayList<CorporateMemberPO> getCorMember() throws RemoteException;

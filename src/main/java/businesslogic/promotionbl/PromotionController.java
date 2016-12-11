@@ -2,14 +2,14 @@ package businesslogic.promotionbl;
 
 import java.util.ArrayList;
 
-import businesslogicservice.promotionblservice.*;
+import businesslogicservice.promotionblservice.PromotionBLService;
 import util.ResultMessage;
 import vo.PromotionVO;
 
 
 public class PromotionController implements PromotionBLService{
 
-	MockPromotion promotion = new MockPromotion();
+	Promotion promotion = new Promotion();
 	
 	@Override
 	public PromotionVO getPromotion(String name) {
@@ -34,11 +34,6 @@ public class PromotionController implements PromotionBLService{
 	@Override
 	public ResultMessage delPromotion(PromotionVO vo) {
 		return promotion.delPromotion(vo);
-	}
-
-	@Override
-	public ResultMessage addMemberPromotion(PromotionVO vo) {
-		return promotion.addMemberPromotion(vo);
 	}
 
 	

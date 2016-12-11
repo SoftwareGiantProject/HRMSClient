@@ -13,13 +13,17 @@ import vo.CreditVO;
 
 public class Credit {
 	
-	
+	/**
+	 * 
+	 * @param user_id 客户编号 
+	 * @return 该客户的Credit
+	 */
 	public CreditVO getCredit(String user_id){
 		CreditPO po = new CreditPO();
 		String id = user_id;
 		
 		try{
-			po = DatafactoryImpl.getInstance().getCreditData().find(user_id);
+			po = DatafactoryImpl.getInstance().getCreditData().find(id);
 		}catch(RemoteException e){
 			e.printStackTrace();
 		}
@@ -30,6 +34,12 @@ public class Credit {
 		return vo;
 	}
 
+	/**
+	 * 
+	 * @param user_id 客户编号
+	 * @param change  订单价值
+	 * @return 客户撤销订单，扣除信用值的结果
+	 */
 	public ResultMessage deduct(String user_id,int change){
 		ArrayList<CreditPO> historyPo = new ArrayList<CreditPO>();
 		ResultMessage result = ResultMessage.FAIL;
@@ -61,6 +71,12 @@ public class Credit {
 		return result;
 	}
 	
+	/**
+	 * 
+	 * @param user_id 客户编号
+	 * @param change 充值金额
+	 * @return 客户充值信用的结果
+	 */
 	public ResultMessage deposit(String user_id, int change){
 		ArrayList<CreditPO> historyPo = new ArrayList<CreditPO>();
 		ResultMessage result = ResultMessage.FAIL;

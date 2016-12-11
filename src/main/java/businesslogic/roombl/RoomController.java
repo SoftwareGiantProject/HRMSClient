@@ -1,33 +1,59 @@
 
 package businesslogic.roombl;
 
+import java.util.ArrayList;
+
 import businesslogicservice.roomblservice.RoomBLService;
-import util.RoomCondition;
+import util.ResultMessage;
 import vo.RoomConditionDateVO;
 import vo.RoomVO;
 
 public class RoomController implements RoomBLService{
 	
-	MockRoom Room = new MockRoom();
+	Room room;
+	public RoomController() {
+		room = new Room();
+		// TODO Auto-generated constructor stub
+	}
+
+	
 
 	@Override
-	public RoomVO addRoom(RoomVO room_info) {
-		return Room.addRoom(room_info);
+	public ResultMessage reserve(String Type, int num, String hotel_id, String inTime, String outTime) {
+		// TODO Auto-generated method stub
+		return room.reserve(Type, num, hotel_id, inTime, outTime);
 	}
 
 	@Override
-	public RoomVO checkOut(RoomVO room_info) {
-		return Room.checkOut(room_info);
+	public ArrayList<RoomVO> getAllRoomByHotel(String hotel_id) {
+		// TODO Auto-generated method stub
+		return room.getAllRoomByHotel(hotel_id);
 	}
 
 	@Override
-	public RoomVO reserve(RoomVO room_info) {
-		return Room.reserve(room_info);
+	public ResultMessage modifyCondition(RoomConditionDateVO vo) {
+		// TODO Auto-generated method stub
+		return room.modifyCondition(vo);
 	}
 
 	@Override
-	public RoomCondition getRoomCondition(RoomConditionDateVO room_condition) {
-		return Room.getRoomCondition(room_condition);
+	public void update() {
+		room.update();
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void UPDATE() {
+		room.UPDATE();
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public ResultMessage addRoom(RoomVO vo) {
+		// TODO Auto-generated method stub
+		return room.addRoom(vo);
 	}
 
 }

@@ -10,41 +10,26 @@ import vo.CorporateMemberVO;
 
 public class MemberController implements MemberBLService{
 	
-	MockMember Member = new MockMember();
-
-	@Override
-	public String commonMemberCreateNumber(CommonMemberVO member) {
-		return Member.commonMemberCreateNumber(member);
+	Member member;
+	
+	public MemberController() {
+		member = new Member();
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public String corporateMemberCreateNumber(CorporateMemberVO member) {
-		return Member.corporateMemberCreateNumber(member);
+	public ResultMessage regieterComMember(String birthday, String user_id) {
+		// TODO Auto-generated method stub
+		return member.regieterComMember(birthday, user_id);
 	}
 
 	@Override
-	public ResultMessage commonMemberRegister(String user_id, String birthday) {
-		return Member.commonMemberRegister(user_id, birthday);
+	public ResultMessage registerCorMember(String birthday, String user_id, String corporate) {
+		// TODO Auto-generated method stub
+		return member.registerCorMember(birthday, user_id, corporate);
 	}
 
-	@Override
-	public ResultMessage corporateMemberRegister(String user_id, String corporate, String birthday) {
-		return Member.corporateMemberRegister(user_id, corporate, birthday);
-	}
 
-	@Override
-	public int getCommonMemberLevel(ClientVO client) {
-		return Member.getCommonMemberLevel(client);
-	}
-
-	@Override
-	public int getCorporateMemberLevel(ClientVO client) {
-		return Member.getCorporateMemberLevel(client);
-	}
-
-	@Override
-	public MemberType getMemberType(ClientVO client) {
-		return Member.getMemberType(client);
-	}
+	
 
 }

@@ -11,12 +11,8 @@ import vo.RoomVO;
 import businesslogicservice.orderblservice.*;
 
 public class OrderController implements OrderBLService{
-	Order order;
-	String userid;
-	public OrderController(){
-		order=new MockOrder(userid);
-		
-	}
+
+	public Order order = new Order();
 	
 	@Override
 	public OrderVO getOrder(String order_id) {
@@ -25,83 +21,88 @@ public class OrderController implements OrderBLService{
 	}
 
 	@Override
-	public OrderVO modifyOrder(OrderVO ordervo, String type) {
-		// TODO Auto-generated method stub
-		return order.modifyOrder(ordervo,type);
-	}
-
-	@Override
-	public ResultMessage undoOrder(OrderVO ordervo) {
-		// TODO Auto-generated method stub
-		return order.undoOrder(ordervo);
-	}
-
-	@Override
-	public ResultMessage checkOrder(OrderVO order_info, RoomVO room_info,
-			CreditVO credit_info) {
-		// TODO Auto-generated method stub
-		return order.checkOrder(order_info, room_info, credit_info);
-	}
-
-	@Override
-	public ResultMessage saveOrder(OrderVO ordervo) {
-		// TODO Auto-generated method stub
-		return order.saveOrder(ordervo);
-	}
-
-
-
-
-
-
-	@Override
-	public ArrayList<OrderVO> getAllList() {
+	public ArrayList<OrderVO> getExecutedOrders(String hotel_id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-
-
-
-
-
 	@Override
-	public ArrayList<OrderVO> getHistoryList() {
+	public ArrayList<OrderVO> getUndoOrders(String hotel_id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-
-
-
-
-
 	@Override
-	public ArrayList<OrderVO> getCurrentList() {
+	public ArrayList<OrderVO> getReversedOrders(String hotel_id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-
-
-
-
-
 	@Override
-	public ArrayList<OrderVO> getUndoList() {
+	public ArrayList<OrderVO> getAbnormalOrders(String hotel_id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-
-
-
-
-
 	@Override
-	public ArrayList<OrderVO> getAbnormalList() {
+	public ArrayList<OrderVO> getAllOrders(String hotel_id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
+	public ArrayList<OrderVO> getAbnormalOrder() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage evecuteOrder(String order_id, String executeTime) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage undoOrder(String client_id, String order_id, String undoTime) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage addOrder(OrderVO vo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<OrderVO> viewAllOrderByClient(String client_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<OrderVO> viewExecutedOrderByClient(String client_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<OrderVO> viewUndoOrderByClient(String client_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<OrderVO> viewReversedOrderByClient(String client_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<OrderVO> viewAbnormalOrderByClient(String client_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 }

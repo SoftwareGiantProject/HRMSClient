@@ -4,19 +4,19 @@ import java.util.Date;
 
 public class HotelEvaluationVO {
 
-	//�������
+	   //订单id
 		String order_id;
 		
-		//�ͻ����
+		//用户id
 		String user_id;
 		
-		//����ʱ��
-		Date date;
+		//评价日期
+		String date;
 		
-		//��������
+		//评价内容
 		String data;
 		
-		//�����Ǽ�
+		//评级
 		int level;
 		
 		public HotelEvaluationVO(){
@@ -24,7 +24,7 @@ public class HotelEvaluationVO {
 		}
 		
 		
-		public HotelEvaluationVO(String order_id, String user_id, Date date, String data, int level){
+		public HotelEvaluationVO(String order_id, String user_id, String date, String data, int level){
 			this.order_id = order_id;
 			this.user_id = user_id;
 			this.date = date;
@@ -43,7 +43,7 @@ public class HotelEvaluationVO {
 		}
 
 
-		public Date getDate() {
+		public String getDate() {
 			return date;
 		}
 

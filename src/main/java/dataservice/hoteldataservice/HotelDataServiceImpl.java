@@ -77,4 +77,16 @@ private static final long serialVersionUID = 1L;
 		return null;
 	}
 
+	@Override
+	public ArrayList<String> getAllCity() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<String> getAllAreaByCity(String city) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

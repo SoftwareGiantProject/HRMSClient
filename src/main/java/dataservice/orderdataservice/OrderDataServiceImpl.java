@@ -50,5 +50,15 @@ public class OrderDataServiceImpl implements OrderDataService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public ArrayList<OrderPO> getOrderByHotel(String hotel_id, String ListType) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<OrderPO> getAllOrder() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

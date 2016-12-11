@@ -5,13 +5,7 @@ import util.*;
 
 public interface MemberBLService {
 
-	public String commonMemberCreateNumber(CommonMemberVO member);
-	public String corporateMemberCreateNumber(CorporateMemberVO member);
+	public ResultMessage regieterComMember(String birthday, String user_id);
+	public ResultMessage registerCorMember(String birthday, String user_id, String corporate);
 	
-	public ResultMessage commonMemberRegister(String user_id,String birthday);
-	public ResultMessage corporateMemberRegister(String user_id,String corporate,String birthday);
-	
-	public int getCommonMemberLevel(ClientVO client);
-	public int getCorporateMemberLevel(ClientVO client);
-	public MemberType getMemberType(ClientVO client);
 }
