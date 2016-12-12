@@ -2,9 +2,12 @@ package businesslogictest;
 
 	import static org.junit.Assert.assertEquals;
 
+import java.rmi.RemoteException;
+
 import org.junit.Before;
 import org.junit.Test;
 
+import businesslogic.controllerfactory.ControllerFactory;
 import businesslogic.creditbl.Credit;
 import businesslogic.creditbl.CreditController;
 
@@ -14,18 +17,17 @@ import businesslogic.creditbl.CreditController;
 		public String user_id;
 		
 		@Before
-		public void init(){
+		public void init() throws RemoteException{
 		
-			controller = new CreditController();
+			controller = (CreditController) ControllerFactory.getCreditBLServiceInstance();
 			user_id = "151250061";
 		}
 		
-		/*
+		
 		@Test
 		public void testgetCredit(){
-			assertEquals(600, controller.getCredit(user_id).getCredit());
+			assertEquals(1450, controller.getCredit(user_id).getCredit());
 		}
-		*/
 		
 		/*
 		@Test

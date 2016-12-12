@@ -5,7 +5,7 @@ import java.io.Serializable;
 import util.RoomCondition;
 
 public class RoomPO implements Serializable{
-
+	
 	//房间类型
 	String Room_type;
 		

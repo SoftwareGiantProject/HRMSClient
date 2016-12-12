@@ -3,16 +3,31 @@ package businesslogic.memberbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.controllerfactory.ControllerFactory;
+import businesslogic.userbl.client.ClientController;
 import dataservice.datafactory.DatafactoryImpl;
 import po.CommonMemberPO;
 import po.CorporateMemberPO;
 import util.MemberType;
 import util.ResultMessage;
+import vo.ClientVO;
 
 public class Member {
+	
+	private ClientController clientController;
+	
+	public Member() throws RemoteException {
+		clientController = (ClientController) ControllerFactory.getClientBLSerivceInstance();
+	}
 	//缺少判断是否注册过会员，更新客户信息
-	public ResultMessage regieterComMember(String birthday, String user_id){
+	public ResultMessage registerComMember(String birthday, String user_id) throws RemoteException{
 		ResultMessage result = ResultMessage.FAIL;
+		
+		ClientVO vo = new ClientVO();
+		vo = clientController.getClientInfo(user_id);
+		if(!vo.getType().equals(MemberType.NONE)){
+			return ResultMessage.FAIL;
+		}
 		String id = user_id;
 		String bir = birthday;
 		MemberType type = MemberType.COMMONMEMBER;
@@ -25,6 +40,9 @@ public class Member {
 			level = getLevel(credit);
 			po = new CommonMemberPO(level, bir, comMember_id, type);
 			result = DatafactoryImpl.getInstance().getMemberData().addComMember(po);
+			vo.setMemberId(comMember_id);
+			vo.setType(type);
+			clientController.modifyInfo(vo);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			// TODO: handle exception
@@ -35,8 +53,14 @@ public class Member {
 	}
 	
 	//缺少判断是否注册过会员，更新客户信息
-	public ResultMessage registerCorMember(String birthday, String user_id, String corporate){
+	public ResultMessage registerCorMember(String birthday, String user_id, String corporate) throws RemoteException{
 		ResultMessage result = ResultMessage.FAIL;
+		
+		ClientVO vo = new ClientVO();
+		vo = clientController.getClientInfo(user_id);
+		if(!vo.getType().equals(MemberType.NONE)){
+			return ResultMessage.FAIL;
+		}
 		String id = user_id;
 		String bir = birthday;
 		String cor = corporate;
@@ -50,6 +74,9 @@ public class Member {
 			level = getLevel(credit);
 			po = new CorporateMemberPO(level, bir, comMember_id, cor, type);
 			result = DatafactoryImpl.getInstance().getMemberData().addCorMember(po);
+			vo.setMemberId(comMember_id);
+			vo.setType(type);
+			clientController.modifyInfo(vo);	
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			// TODO: handle exception
@@ -64,7 +91,7 @@ public class Member {
 	 * 
 	 * @return 会员编号
 	 */
-	public String getMember_id(){
+	private String getMember_id(){
 		ArrayList<CommonMemberPO> list1 = new ArrayList<>();
 		ArrayList<CorporateMemberPO> list2 = new ArrayList<>();
 		
@@ -103,7 +130,7 @@ public class Member {
 	 * @param lis2
 	 * @return list1与list2最大值
 	 */
-	public String getMaxId(String lis1, String lis2){
+	private String getMaxId(String lis1, String lis2){
 		String temp1 = lis1.substring(1);
 		String temp2 = lis2.substring(1);
 		int a = Integer.parseInt(temp1);
@@ -120,7 +147,7 @@ public class Member {
 	 * @param a 数字
 	 * @return 根据数字返回相应的会员编号
 	 */
-	public String toString(int a){
+	private String toString(int a){
 		String temp = String.valueOf(a);
 		int length = temp.length();
 		String result = "C";
@@ -136,7 +163,7 @@ public class Member {
 	 * @param credit 信用值
 	 * @return 根据信用值得到会员等级
 	 */
-	public int getLevel(int credit){        
+	private int getLevel(int credit){        
 		int min = 0;
 		int max = 0;
 		if(credit < 0){

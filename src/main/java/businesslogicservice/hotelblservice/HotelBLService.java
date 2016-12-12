@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface HotelBLService {
 
+	public String getNmaeById (String hotel_id);
 	public ArrayList<HotelVO> getHotelByArea(String area);
 	public ArrayList<HotelVO> getHotelByPrice(String area);
 	public ArrayList<HotelVO> getHotelBylevel(String area);

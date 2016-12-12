@@ -125,6 +125,12 @@ public class HotelController implements HotelBLService {
 		return hotel.evaluateHotel(vo, hotel_name);
 	}
 
+	@Override
+	public String getNmaeById(String hotel_id) {
+		// TODO Auto-generated method stub
+		return hotel.getNameById(hotel_id);
+	}
+
 	
 	
 }

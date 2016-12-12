@@ -59,8 +59,9 @@ public class Room {
 		try {
 			Calendar now = Calendar.getInstance();
 			SimpleDateFormat matter1 = new SimpleDateFormat("yyyy-MM-dd");
-			for(int i = 0; i < Max_day; i++){
-				now.add(Calendar.DAY_OF_MONTH, i);
+			DatafactoryImpl.getInstance().getRoomData().addRoomCondition(new RoomConditionDatePO(hotelId, matter1.format(now.getTime()), room_number, room_condition));
+			for(int i = 1; i < Max_day; i++){
+				now.add(Calendar.DAY_OF_MONTH, 1);
 				String date = matter1.format(now.getTime());
 				RoomConditionDatePO temp = new RoomConditionDatePO(hotelId, date, room_number, room_condition);
 				result2 = DatafactoryImpl.getInstance().getRoomData().addRoomCondition(temp);
@@ -73,7 +74,7 @@ public class Room {
 			// TODO: handle exception
 		}
 
-		if(result1 == ResultMessage.SUCCESS && result2 == ResultMessage.SUCCESS){
+		if(result1.equals(ResultMessage.SUCCESS) && result2.equals(ResultMessage.SUCCESS) ){
 			return ResultMessage.SUCCESS;
 		}
 		return ResultMessage.FAIL;
@@ -157,6 +158,7 @@ public class Room {
 			}	
 			return resultMessage;
 		}
+		UPDATE();
 		
 		return resultMessage;		
 	}
@@ -167,7 +169,7 @@ public class Room {
 	 * @param b
 	 * @return a与b相加的和
 	 */
-	public ArrayList<RoomConditionDatePO> ADD(ArrayList<RoomConditionDatePO> a, ArrayList<RoomConditionDatePO> b){
+	private ArrayList<RoomConditionDatePO> ADD(ArrayList<RoomConditionDatePO> a, ArrayList<RoomConditionDatePO> b){
 		ArrayList<RoomConditionDatePO> result = new ArrayList<>();
 		result = a;
 		for(int i = 0; i < b.size(); i++){
@@ -212,6 +214,8 @@ public class Room {
 			// TODO: handle exception
 		}
 		
+		UPDATE();
+		
 		return result;
 		
 	}
@@ -223,7 +227,7 @@ public class Room {
 	 * @param outTime 离开时间
 	 * @return 未预定的在该时间段内的所有RoomConditionDatePO
 	 */
-	public ArrayList<RoomConditionDatePO> getUsefulRoom(ArrayList<RoomConditionDatePO> arr, String inTime, String outTime){
+	private ArrayList<RoomConditionDatePO> getUsefulRoom(ArrayList<RoomConditionDatePO> arr, String inTime, String outTime){
 		ArrayList<RoomConditionDatePO> temp = arr;
 		ArrayList<RoomConditionDatePO> result = new ArrayList<>();
 		ArrayList<String> allDate = getDate(inTime, outTime);
@@ -245,7 +249,7 @@ public class Room {
 	 * @param outTime 离开时间
 	 * @return 入住时间到离开时间之间每天日期
 	 */
-	public  ArrayList<String> getDate(String inTime, String outTime){
+	private  ArrayList<String> getDate(String inTime, String outTime){
 		int days = compare(inTime, outTime);
 		SimpleDateFormat sim = new SimpleDateFormat("yyyy-MM-dd");
 		Date date;
@@ -274,9 +278,9 @@ public class Room {
 	 * 
 	 * @return 返回现在的日期
 	 */
-	public String getNowTime(){
+	private String getNowTime(){
 		 Date dt=new Date();
-	     SimpleDateFormat matter1=new SimpleDateFormat("yyyy-MM-dds");
+	     SimpleDateFormat matter1=new SimpleDateFormat("yyyy-MM-dd");
 	     String temp = matter1.format(dt);
 	     return temp;
 	}
@@ -285,7 +289,7 @@ public class Room {
 	 * 
 	 * @return 返回今天未来第七天的日期
 	 */
-	public String getLastTime(){
+	private String getLastTime(){
 		Calendar now = Calendar.getInstance();
 		SimpleDateFormat matter1 = new SimpleDateFormat("yyyy-MM-dd");
 		now.add(Calendar.DAY_OF_MONTH, 6);
@@ -297,7 +301,7 @@ public class Room {
 	 * 
 	 * @return 返回昨天的日期
 	 */
-	public String getYesterday(){
+	private String getYesterday(){
 		Calendar now = Calendar.getInstance();
 		SimpleDateFormat matter1 = new SimpleDateFormat("yyyy-MM-dd");
 		now.add(Calendar.DAY_OF_MONTH, -1);
@@ -312,7 +316,7 @@ public class Room {
 	 * @param date2 日期2
 	 * @return 日期2与日期1的差值
 	 */
-	public int compare(String date1, String date2){
+	private int compare(String date1, String date2){
 		SimpleDateFormat sim = new SimpleDateFormat("yyyy-MM-dd");
 		int temp = -19;
 		try {
@@ -377,35 +381,32 @@ public class Room {
 				lis.setRoom_condition(getRoomCondition(list1, today));
 				DatafactoryImpl.getInstance().getRoomData().modify(lis);
 			}
-			return;
-			
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			// TODO: handle exception
 		}
 	}
 	
-	public RoomCondition getRoomCondition(ArrayList<RoomConditionDatePO> a, String date){
+	private RoomCondition getRoomCondition(ArrayList<RoomConditionDatePO> a, String date){
 		for(RoomConditionDatePO list : a){
-			if(list.getRoomDate() == date){
+			if(list.getRoomDate().equals(date)){
 				return list.getRoomCondition();
 			}
 		}
 		return null;
-		
 	}
 	
-	public RoomVO POTOVO(RoomPO po){
+	private RoomVO POTOVO(RoomPO po){
 		RoomVO result = new RoomVO(po.getRoom_type(), po.getRoom_price(), po.getRoom_number(), po.getHotel_id(), po.getRoom_condition());
 		return result;
 	} 
 	
-	public RoomConditionDatePO VOTOPO(RoomConditionDateVO vo){
+	private RoomConditionDatePO VOTOPO(RoomConditionDateVO vo){
 		RoomConditionDatePO result = new RoomConditionDatePO(vo.getHotelId(), vo.getRoomDate(), vo.getRoomNumber(), vo.getRoomCondition());
 		return result;
 	}
 	
-	public RoomConditionDateVO potovo(RoomConditionDatePO po){
+	private RoomConditionDateVO potovo(RoomConditionDatePO po){
 		RoomConditionDateVO result = new RoomConditionDateVO(po.getRoomDate(), po.getRoomNumber(), po.getRoomCondition(), po.getHotel_id());
 		return result;
 	}

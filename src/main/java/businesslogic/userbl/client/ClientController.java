@@ -60,4 +60,10 @@ public class ClientController implements ClientBLService,ClientInfo,Login{
 		// TODO Auto-generated method stub
 		return client.login(user_id, password);
 	}
+
+	@Override
+	public ResultMessage checkClientExist(String id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return client.check(id);
+	}
 }

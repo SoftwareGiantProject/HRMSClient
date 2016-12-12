@@ -52,4 +52,10 @@ public class ClientDataServiceImpl implements ClientDataService{
 		return null;
 	}
 
+	@Override
+	public ResultMessage checkExist(String id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

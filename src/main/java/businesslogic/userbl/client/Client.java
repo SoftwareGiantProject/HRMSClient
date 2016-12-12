@@ -128,6 +128,11 @@ public class Client {
 		return resultList;
 	}
 	
+	public ResultMessage check(String id){
+		ResultMessage result = ResultMessage.FAIL;
+		return result;
+	}
+	
 	public ResultMessage login(String user_id, String password)throws RemoteException{
 		
 		ResultMessage result = ResultMessage.FAIL;

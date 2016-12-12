@@ -53,5 +53,10 @@ public class PromotionDataServiceImpl implements PromotionDataService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public ArrayList<PromotionPO> findPromotionById(String id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

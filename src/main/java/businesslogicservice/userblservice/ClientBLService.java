@@ -54,5 +54,12 @@ public interface ClientBLService {
 	 */
 	public ResultMessage registCorMember(String id,CorporateMemberVO vo) throws RemoteException;
 	
+	/**
+	 * 确认客户是否存在
+	 * @param id
+	 * @return
+	 * @throws RemoteException
+	 */
+	public ResultMessage checkClientExist(String id)throws RemoteException;
 	
 }

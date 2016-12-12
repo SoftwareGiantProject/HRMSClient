@@ -16,6 +16,21 @@ import vo.HotelVO;
 public class Hotel {
 	
 	/**
+	 * 通过酒店id返回酒店名称
+	 * @param hotel_id
+	 * @return
+	 */
+	public String getNameById(String hotel_id){
+		ArrayList<HotelVO> list = viewAllHotel();
+		for(HotelVO lis : list){
+			if(lis.getHotelId().equals(hotel_id)){
+				return lis.getHotelName();
+			}
+		}
+		return "";
+	}
+	
+	/**
 	 * 
 	 * @param area 商圈
 	 * @return 该商圈的所有酒店
