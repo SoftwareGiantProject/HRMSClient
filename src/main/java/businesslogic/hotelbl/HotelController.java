@@ -90,9 +90,9 @@ public class HotelController implements HotelBLService {
 	}
 
 	@Override
-	public ArrayList<HotelVO> searchByPrice(String area, int lowprice, int highprice) {
+	public ArrayList<HotelVO> searchByPrice(String area, int lowprice, int highprice, String room) {
 		// TODO Auto-generated method stub
-		return hotel.searchByPrice(area, lowprice, highprice);
+		return hotel.searchByPrice(area, lowprice, highprice, room);
 	}
 
 	@Override

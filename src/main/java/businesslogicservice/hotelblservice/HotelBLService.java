@@ -21,7 +21,7 @@ public interface HotelBLService {
 	public ArrayList<HotelVO> searchByRoom(String area, String room);
 	public ArrayList<HotelVO> searchByStar(String area, int star);
 	public ArrayList<HotelVO> searchByScore(String area, int lowscore, int highscore);
-	public ArrayList<HotelVO> searchByPrice(String area, int lowprice, int highprice);
+	public ArrayList<HotelVO> searchByPrice(String area, int lowprice, int highprice, String room);
 	public HotelVO seekHotel(String name);
 	public ResultMessage addHotel(HotelVO vo);
 	public ArrayList<HotelVO> viewReservedHotel(String user_id);

@@ -9,21 +9,12 @@ public interface PromotionBLService {
 
 	public PromotionVO getPromotion(String name);
 	
+	public MemberPromotionVO getMemberPromotion(String name);
+	
 	public ArrayList<PromotionVO> getAllPromotion();
-	/*
-	public ResultMessage addMemberPromotion(PromotionVO vo){
-		ResultMessage result = ResultMessage.FAIL;
-		
-		try {
-			result = DatafactoryImpl.getInstance().getPromotionData().addMemberPromotion(VOTOPO(vo));
-		} catch (RemoteException e) {
-			e.printStackTrace();
-			// TODO: handle exception
-		}
-		
-		return result;
-	}
-	*/
+	
+	public ResultMessage addMemberPromotion(MemberPromotionVO vo);
+	
 	public ResultMessage addPromotion(PromotionVO vo);
 	
 	public ResultMessage modifyPromotion(PromotionVO vo);
