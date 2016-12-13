@@ -14,22 +14,25 @@ import vo.HotelEvaluationVO;
 import vo.HotelVO;
 
 public class Hotel {
-	
+
 	/**
 	 * 通过酒店id返回酒店名称
 	 * @param hotel_id
 	 * @return
 	 */
-	public String getNameById(String hotel_id){
+	public String getHotelNameById(String hotel_id){
+		String hotel_name = "";
 		ArrayList<HotelVO> list = viewAllHotel();
 		for(HotelVO lis : list){
 			if(lis.getHotelId().equals(hotel_id)){
 				return lis.getHotelName();
 			}
 		}
-		return "";
+		
+		return hotel_name;
+		
 	}
-	
+
 	/**
 	 * 
 	 * @param area 商圈
@@ -104,13 +107,13 @@ public class Hotel {
 	public ArrayList<HotelVO> getHotelBylevel(String area){
 		ArrayList<HotelVO> list = getHotelByArea(area);
 		ArrayList<HotelVO> result = new ArrayList<>();
-		int level[] = new int[list.size()];
+		double level[] = new double[list.size()];
 		
 		for(int i = 0; i < list.size(); i++){
 			level[i] = list.get(i).getHotel_score();
 		}
 		
-		int rank[] = getRank_int(level);
+		int rank[] = getRank_double(level);
 		for(int i = 0; i < list.size(); i++){
 			for(int j = 0; j < list.size(); j++){
 				if(rank[j] == list.size()-1-i){
@@ -147,6 +150,26 @@ public class Hotel {
 		
 	}
 	
+	public int[] getRank_double(double []a){
+		int n = a.length;
+		int result[] = new int[n];
+		for(int i = 0; i < n; i++){
+			result[i] = 0;
+		}
+		
+		for(int i = 0; i < n; i++){
+			for(int j = 0; j < n; j++){
+				if(i == j){
+					continue;
+				}
+				if(a[i] > a[j]){
+					++result[i];
+				}
+			}
+		}
+		return result;		
+	}
+	
 	public int[] getRank_int(int []a){
 		int n = a.length;
 		int result[] = new int[n];
@@ -179,7 +202,7 @@ public class Hotel {
 		int location = 0;
 		int judge = room.get(0).getRoom_price();
 		for(int i = 1; i < room.size(); i++){
-			if(room.get(i).getRoom_price() > judge){
+			if(room.get(i).getRoom_price() < judge){
 				location = i;
 				judge = room.get(i).getRoom_price();
 			}
@@ -344,7 +367,7 @@ public class Hotel {
 		ArrayList<HotelVO> result = new ArrayList<>();
 		for(int i = 0; i < a.size(); i++){
 			for(int j = 0; j < b.size(); j++){
-				if(a.get(i) == b.get(j)){
+				if(a.get(i).equals(b.get(j))){
 					result.add(a.get(i));
 				}
 			}
@@ -363,7 +386,7 @@ public class Hotel {
 		ArrayList<HotelVO> result = new ArrayList<>();
 		
 		for(int i = 0; i < total.size(); i++){
-			String temp[] = total.get(i).getHotelRoom().split(",");
+			String temp[] = total.get(i).getHotelRoom().split("，");
 			for(int j = 0; j < temp.length; j++){
 				if(room.equals(temp[j])){
 					result.add(total.get(i));
@@ -402,7 +425,7 @@ public class Hotel {
 	public ArrayList<HotelVO> searchByScore(String area, int lowscore, int highscore){
 		ArrayList<HotelVO> total = getHotelByArea(area);
 		ArrayList<HotelVO> result = new ArrayList<>();
-		int score = 0;
+		double score = 0;
 		for(int i = 0; i < total.size(); i++){
 			score = total.get(i).getHotel_score();
 			if(score >= lowscore && score <= highscore){

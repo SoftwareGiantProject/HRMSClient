@@ -1,8 +1,9 @@
 package po;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class HotelEvaluationPO {
+public class HotelEvaluationPO implements Serializable{
 
 	//订单编号	
 	String order_id;
@@ -19,6 +20,9 @@ public class HotelEvaluationPO {
 	//评级
 	int level;
 	
+	public HotelEvaluationPO() {
+		// TODO Auto-generated constructor stub
+	}
 	public HotelEvaluationPO(String order_id, String user_id, String date, String data, int level){
 
 		this.order_id = order_id;

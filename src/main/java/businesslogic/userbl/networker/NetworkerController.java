@@ -17,7 +17,6 @@ public class NetworkerController implements NetworkerBLService,Login{
 	private Networker networker;
 	
 	public NetworkerController() {
-		networker = new Networker();
 	}
 
 	@Override

@@ -12,7 +12,7 @@ public class HotelVO {
 
 	int hotel_level;
 	
-	int hotel_score;
+	double hotel_score;
 	
 	String hotel_intro;
 	
@@ -23,8 +23,9 @@ public class HotelVO {
 	String city;
 	
 	
-	public HotelVO(String hotel_id,String hotel_name,String hotel_address,String hotel_area,int hotel_level,int hotel_score,String hotel_intro,
+	public HotelVO(String hotel_id,String hotel_name,String hotel_address,String hotel_area,int hotel_level,double hotel_score,String hotel_intro,
 			String hotel_serve,String hotel_room,String city){
+		this.hotel_id = hotel_id;
 		this.hotel_address = hotel_address;
 		this.hotel_area = hotel_area;
 		this.hotel_intro = hotel_intro;
@@ -44,7 +45,7 @@ public class HotelVO {
 		return hotel_level;
 	}
 
-	public int getHotel_score() {
+	public double getHotel_score() {
 		return hotel_score;
 	}
 

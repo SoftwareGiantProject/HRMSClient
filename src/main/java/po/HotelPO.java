@@ -1,6 +1,8 @@
 package po;
 
-public class HotelPO {
+import java.io.Serializable;
+
+public class HotelPO implements Serializable{
 
 	//id
 	String hotel_id;
@@ -18,7 +20,7 @@ public class HotelPO {
 	int hotel_level;
 	
 	//评分
-	int hotel_score;
+	double hotel_score;
 	
 	//酒店简介
 	String hotel_intro;
@@ -33,7 +35,7 @@ public class HotelPO {
 	String city;
 	
 	
-	public HotelPO(String hotel_id,String hotel_name,String hotel_address,String hotel_area,int hotel_level,int hotel_score,String hotel_intro,
+	public HotelPO(String hotel_id,String hotel_name,String hotel_address,String hotel_area,int hotel_level,double hotel_score,String hotel_intro,
 			String hotel_serve,String hotel_room,String city){
 		this.hotel_id = hotel_id;
 		this.hotel_address = hotel_address;
@@ -67,11 +69,11 @@ public class HotelPO {
 		this.hotel_level = level;
 	}
 	
-	public int getHotelScore(){
+	public double getHotelScore(){
 		return hotel_score;
 	}
 	
-	public void setHotelScore(int score){
+	public void setHotelScore(double score){
 		this.hotel_score = score;
 	}
 	

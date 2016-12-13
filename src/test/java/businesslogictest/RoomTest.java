@@ -57,4 +57,10 @@ public class RoomTest {
 		assertEquals(ResultMessage.SUCCESS,controller.reserve("大床房", 1,"Hotel001", "2016-12-16", "2016-12-17"));
 	}
 	*/
+	@Test
+	public void testUpdate(){
+		controller.update();
+		controller.UPDATE();
+	}
+	
 }

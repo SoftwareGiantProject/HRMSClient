@@ -80,7 +80,7 @@ public class HotelController implements HotelBLService {
 	@Override
 	public ArrayList<HotelVO> searchByStar(String area, int star) {
 		// TODO Auto-generated method stub
-		return hotel.getHotelByStar(area);
+		return hotel.searchByStar(area, star);
 	}
 
 	@Override
@@ -128,7 +128,7 @@ public class HotelController implements HotelBLService {
 	@Override
 	public String getNmaeById(String hotel_id) {
 		// TODO Auto-generated method stub
-		return hotel.getNameById(hotel_id);
+		return hotel.getHotelNameById(hotel_id);
 	}
 
 	
