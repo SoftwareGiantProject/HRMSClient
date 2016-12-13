@@ -323,7 +323,7 @@ public class Hotel {
 			}
 		}
 		if(lowprice != -1){
-			temp4 = searchByPrice(area, lowprice, highprice);
+			temp4 = searchByPrice(area, lowprice, highprice, room);
 			if(temp4.isEmpty()){
 				return null;
 			}else {
@@ -443,7 +443,7 @@ public class Hotel {
 	 * @param highprice 最高价格
 	 * @return 该商圈在该价格区间的所有酒店
 	 */
-	public ArrayList<HotelVO> searchByPrice(String area, int lowprice, int highprice){
+	public ArrayList<HotelVO> searchByPrice(String area, int lowprice, int highprice, String room){
 		ArrayList<HotelVO> total = getHotelByPrice(area);
 		ArrayList<HotelVO> result = new ArrayList<>();
 		int price[] = new int [total.size()];
@@ -453,10 +453,16 @@ public class Hotel {
 		ArrayList<RoomPO> temp = new ArrayList<>();
 		try {
 			for(int i = 0; i < total.size(); i++){
-				temp = DatafactoryImpl.getInstance().getRoomData().getAllRoom(total.get(i).getHotelId());
-				price[i] = getCheapestPrice(temp).getRoom_price();
-				if(price[i] >= lowprice && price[i] <= highprice){
-					result.add(total.get(i));
+				if(room.isEmpty()){
+					temp = DatafactoryImpl.getInstance().getRoomData().getAllRoom(total.get(i).getHotelId());
+				}else{
+					temp = DatafactoryImpl.getInstance().getRoomData().findRoom(total.get(i).getHotelId(), room);
+				}
+				for(int j = 0; j < temp.size(); j++){
+					if(temp.get(j).getRoom_price() >= lowprice && temp.get(j).getRoom_price() <= highprice){
+						result.add(total.get(i));
+						continue;
+					}
 				}
 			}
 		} catch (RemoteException e) {
@@ -566,8 +572,15 @@ public class Hotel {
 		ResultMessage result = ResultMessage.FAIL;
 		String name = hotel_name;
 		ArrayList<HotelEvaluationPO> list = new ArrayList<>();
-		int lastLevel = 0;
-		int temp = 0;
+		double lastLevel = 0;
+		double temp = 0;
+
+		HotelEvaluationPO Epo = VoToPo1(vo);
+		try {
+			DatafactoryImpl.getInstance().getHotelData().evaluateHotel(Epo);
+		} catch (RemoteException e1) {
+			e1.printStackTrace();
+		}
 		
 		try {
 			list = DatafactoryImpl.getInstance().getHotelData().getAllHotelEvaluation(name);
