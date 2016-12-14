@@ -5,16 +5,22 @@ public class PromotionVO {
 	String promotionObject;
 	double count;
 	String time;
+	String seller;
 	
 	public PromotionVO(){
 		
 	}
 	
-	public PromotionVO(String promotionName,String promotionObject,double count,String time){
+	public PromotionVO(String promotionName,String promotionObject,double count,String time,String seller){
 		this.promotionName=promotionName;
 		this.promotionObject=promotionObject;
 		this.count=count;
 		this.time=time;
+		this.seller = seller;
+	}
+	
+	public String getSeller(){
+		return seller;
 	}
 	
 	public String getPromotionName(){

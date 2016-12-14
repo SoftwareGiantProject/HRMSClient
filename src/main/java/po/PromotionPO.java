@@ -21,11 +21,12 @@ public class PromotionPO implements Serializable{
 	public PromotionPO(){
 		
 	}
-	public PromotionPO(String promotionName,String promotionObject,double count,String time){
+	public PromotionPO(String promotionName,String promotionObject,double count,String time,String seller){
 		this.promotionName=promotionName;
 		this.promotionObject=promotionObject;
 		this.count=count;
 		this.time=time;
+		this.seller= seller;
 	}
 	
 	
