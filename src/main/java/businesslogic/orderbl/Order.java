@@ -1,9 +1,12 @@
 package businesslogic.orderbl;
 import util.ListType;
+import util.MemberType;
 import util.ResultMessage;
 import vo.CreditVO;
 import vo.ListVO;
+import vo.MemberPromotionVO;
 import vo.OrderVO;
+import vo.PromotionVO;
 import vo.RoomVO;
 
 import java.rmi.RemoteException;
@@ -13,8 +16,14 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import businesslogic.controllerfactory.ControllerFactory;
 import businesslogic.creditbl.Credit;
+import businesslogic.creditbl.CreditController;
+import businesslogic.hotelbl.HotelController;
+import businesslogic.promotionbl.PromotionController;
 import businesslogic.roombl.Room;
+import businesslogic.roombl.RoomController;
+import businesslogic.userbl.client.ClientController;
 import businesslogicservice.orderblservice.*;
 import dataservice.datafactory.DatafactoryImpl;
 import po.ClientPO;
@@ -24,6 +33,77 @@ import po.PromotionPO;
 import po.RoomPO;
 public class Order {
 	
+	
+	private HotelController hotelController;
+	private CreditController creditController;
+	private PromotionController promotionController;
+	private ClientController clientController;
+	private RoomController roomController;
+	
+	public Order() throws RemoteException{
+		hotelController = (HotelController) ControllerFactory.getHotelBLServiceInstance();
+		creditController = (CreditController) ControllerFactory.getCreditBLServiceInstance();
+		promotionController = (PromotionController) ControllerFactory.getPromotionBLServiceInstance();
+	    clientController = (ClientController) ControllerFactory.getClientBLSerivceInstance();
+	    roomController = (RoomController) ControllerFactory.getRoomBLServiceInstance();
+	}
+	
+	/**
+	 * 修改订单信息
+	 * @param vo
+	 * @return
+	 */
+	public ResultMessage modifyOrder(OrderVO vo){
+
+		ResultMessage result = ResultMessage.FAIL;
+		
+		try {
+			result = DatafactoryImpl.getInstance().getOrderData().modifyOrder(VOTOPO(vo));
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
+		return result;
+
+	}
+
+	
+	/**
+	 * 返回该客户在该酒店的所有已执行订单
+	 * @param hotel_id
+	 * @param client_id
+	 * @return
+	 */
+	public ArrayList<OrderVO> getExecutedOrderByHotelClient(String hotel_id, String client_id){
+		ArrayList<OrderVO> result = new ArrayList<>();
+		ArrayList<OrderVO> list1 = getExecutedOrders(hotel_id);
+		ArrayList<OrderVO> list2 = viewExecutedOrderByClient(client_id);
+		result = getSameOrder(list1, list2);
+		
+		return result;
+		
+		
+	}
+	
+	/**
+	 * 得到两个OrderVOlist里面相同的OrderVO
+	 * @param a
+	 * @param b
+	 * @return
+	 */
+	private ArrayList<OrderVO> getSameOrder(ArrayList<OrderVO> a, ArrayList<OrderVO> b){
+		ArrayList<OrderVO> result = new ArrayList<>();
+		
+ 		for(int i = 0; i < a.size(); i++){
+ 			for(int j = 0; j < b.size(); j++){
+ 				if(a.get(i).equals(b.get(j))){
+ 					result.add(a.get(i));
+ 				}
+ 			}
+ 		}
+ 		
+ 		return result;
+	}
 
 	/**
 	 * 
@@ -35,7 +115,7 @@ public class Order {
 		ArrayList<OrderVO> result = new ArrayList<>();
 		
 		try {
-			list = DatafactoryImpl.getInstance().getOrderData().getOrderByHotel(hotel_id, "已执行订单");
+			list = DatafactoryImpl.getInstance().getOrderData().getOrderByHotel(hotel_id, "HISTORYLIST");
 			for(OrderPO lis : list){
 				result.add(POTOVO(lis));
 			}
@@ -57,7 +137,7 @@ public class Order {
 		ArrayList<OrderVO> result = new ArrayList<>();
 		
 		try {
-			list = DatafactoryImpl.getInstance().getOrderData().getOrderByHotel(hotel_id, "未执行订单");
+			list = DatafactoryImpl.getInstance().getOrderData().getOrderByHotel(hotel_id, "CURRENTLIST");
 			for(OrderPO lis : list){
 				result.add(POTOVO(lis));
 			}
@@ -79,7 +159,7 @@ public class Order {
 		ArrayList<OrderVO> result = new ArrayList<>();
 		
 		try {
-			list = DatafactoryImpl.getInstance().getOrderData().getOrderByHotel(hotel_id, "已撤销订单");
+			list = DatafactoryImpl.getInstance().getOrderData().getOrderByHotel(hotel_id, "UNDOLIST");
 			for(OrderPO lis : list){
 				result.add(POTOVO(lis));
 			}
@@ -91,9 +171,6 @@ public class Order {
 		return result;
 	}
 	
-	
-	
-	
 	/**
 	 * 
 	 * @param hotel_id
@@ -104,7 +181,7 @@ public class Order {
 		ArrayList<OrderVO> result = new ArrayList<>();
 		
 		try {
-			list = DatafactoryImpl.getInstance().getOrderData().getOrderByHotel(hotel_id, "异常订单");
+			list = DatafactoryImpl.getInstance().getOrderData().getOrderByHotel(hotel_id, "ABNORAMLIST");
 			for(OrderPO lis : list){
 				result.add(POTOVO(lis));
 			}
@@ -126,7 +203,7 @@ public class Order {
 		ArrayList<OrderVO> result = new ArrayList<>();
 		
 		try {
-			list = DatafactoryImpl.getInstance().getOrderData().getOrderByHotel(hotel_id, "全部订单");
+			list = DatafactoryImpl.getInstance().getOrderData().getOrderByHotel(hotel_id, "ALLLIST");
 			for(OrderPO lis : list){
 				result.add(POTOVO(lis));
 			}
@@ -170,7 +247,7 @@ public class Order {
 		try {
 			list = DatafactoryImpl.getInstance().getOrderData().getAllOrder();
 			for(OrderPO lis : list){
-				if(lis.getListType() == ListType.ABNORAMLIST){
+				if(lis.getListType().equals(ListType.ABNORAMLIST)){
 					result.add(POTOVO(lis));
 				}
 			}
@@ -228,7 +305,6 @@ public class Order {
 		String deadLine = getDeadline(pridictInTime);
 		String time = getTime(pridictInTime);
 		String undo_time = undoTime;
-		Credit cr = new Credit();
 		ResultMessage resultMessage2 = ResultMessage.FAIL;
 		ResultMessage resultMessage3 = ResultMessage.FAIL;
 		try {
@@ -246,7 +322,7 @@ public class Order {
 				resultMessage2 = DatafactoryImpl.getInstance().getOrderData().modifyOrder(po);
 				OrderPO temp = DatafactoryImpl.getInstance().getOrderData().findOrder(po.getOrder_id());
 				resultMessage = DatafactoryImpl.getInstance().getOrderData().undoOrder(temp);
-				resultMessage3 = cr.deduct(client_id, po.getOrderPrice());
+				resultMessage3 = creditController.deduct(client_id, po.getOrderPrice());
 				if(resultMessage2 == ResultMessage.SUCCESS && resultMessage == ResultMessage.SUCCESS && resultMessage3 == ResultMessage.SUCCESS){
 					return ResultMessage.SUCCESS;
 				}
@@ -271,38 +347,27 @@ public class Order {
 	 * 
 	 * @param vo 订单信息
 	 * @return 生成订单结果
+	 * @throws RemoteException 
 	 */
-	public ResultMessage addOrder(OrderVO vo){
+	public ResultMessage addOrder(OrderVO vo) throws RemoteException{
 		ResultMessage result = ResultMessage.FAIL;
 		String predictCheckInTime = vo.getPredictCheckInTime();
-		String order_id = getOrder_id();
-		String deadLine = getDeadline(predictCheckInTime);
+		String order_id = getOrder_id();  //系统生成订单编号
+		String deadLine = getDeadline(predictCheckInTime); //最晚订单执行时间
 		String endTime = "";
 		String executeTime = "";
 		String hotel_id = vo.getHotel_id();
 		String room_type = vo.getRoomType();
+		
 		int order_price = 0;
 		int room_price = 0;
-		ArrayList<RoomPO> list = new ArrayList<>();
-		double count = 0;
-		String hotel_name = "";
-		ArrayList<HotelPO> list1 = new ArrayList<>();
+		double count = calculateCheapestCount(vo);  //折扣
+		
 		ResultMessage result2 = ResultMessage.FAIL;
-		Room room = new Room();
 		
-		try {
-			list1 = DatafactoryImpl.getInstance().getHotelData().getAllHotels();
-			hotel_name = getHotel_name(list1, hotel_id);
-			list = DatafactoryImpl.getInstance().getRoomData().findRoom(hotel_id, room_type);
-			count = DatafactoryImpl.getInstance().getPromotionData().findPromotion(hotel_name).getCount();
-			room_price = list.get(0).getRoom_price();
-			result2 = room.reserve(room_type, vo.getNumber(), hotel_id, predictCheckInTime, vo.getPredictCheckOutTime());
-		} catch (RemoteException e) {
-			e.printStackTrace();
-			// TODO: handle exception
-		}
-		
-		order_price = (int)(vo.getNumber() * room_price * count);
+		room_price = roomController.findRooms(hotel_id, room_type).get(0).getRoomPrice();
+		result2 = roomController.reserve(room_type, vo.getNumber(), hotel_id, predictCheckInTime, vo.getPredictCheckOutTime());
+		order_price = (int)(vo.getNumber() * room_price * count)/10;
 		OrderPO po = new OrderPO(vo.getUser_id(), order_id, vo.getHotel_id(), vo.getStartTime(), endTime, deadLine, executeTime, vo.getPredictCheckInTime(), vo.getPredictCheckOutTime(), vo.getRoomType(), vo.getNumber(), vo.getPeople(), vo.isHasChild(), vo.getListType(), order_price);
 		
 		try {
@@ -317,6 +382,129 @@ public class Order {
 		}
 		
 		return ResultMessage.FAIL;
+		
+	}
+	
+	//调用client、hotel
+	/**
+	 * 计算最小折扣
+	 * @param vo
+	 * @return
+	 * @throws RemoteException
+	 */
+	private double calculateCheapestCount(OrderVO vo) throws RemoteException{
+		String client_id = vo.getUser_id();
+		String hotel_id = vo.getHotel_id();
+		String predictCheckInTime = vo.getPredictCheckInTime();
+		String predictCheckOutTime = vo.getPredictCheckOutTime();
+		String hotel_name = hotelController.getNmaeById(hotel_id);
+		String area = hotelController.viewHotel(hotel_name).getHotelArea();
+		
+		ArrayList<PromotionVO> result = new ArrayList<>();
+		ArrayList<PromotionVO> list = promotionController.getAllPromotion();
+		MemberPromotionVO memberPromotionVO = promotionController.getMemberPromotion("会员特定商圈专属折扣");
+		
+		double count = 10;
+		for(PromotionVO lis : list){
+			if(JudgeIsRight(lis, hotel_id, predictCheckInTime, predictCheckOutTime, client_id)){
+				result.add(lis);
+			}
+		}
+		count = getCheapestCountByPromontion(result);
+		
+		double memberCount = 10;
+		if(JudgeIsMemberRight(memberPromotionVO, area, predictCheckInTime, predictCheckOutTime, client_id)){
+			memberCount = memberPromotionVO.getCount();
+		}
+		
+		if(count < memberCount){
+			return count;
+		}else{
+			return memberCount;
+		}
+		
+	}
+	
+	/**
+	 * 判断是否符合MemberPromotion的条件，符合返回true，否则返回false
+	 * @param vo
+	 * @param area
+	 * @param time1
+	 * @param time2
+	 * @param client_id
+	 * @return
+	 * @throws RemoteException
+	 */
+	private boolean JudgeIsMemberRight(MemberPromotionVO vo, String area, String time1, String time2, String client_id) throws RemoteException{
+		String areaList[] = vo.getArea().split("，");
+		String startTime = vo.getTime().split(" ")[0];
+		String endTime = vo.getTime().split(" ")[2];
+		
+		
+		if(!(clientController.getClientInfo(client_id).getType().equals(MemberType.NONE))){
+			if(compareTime(startTime, time1) && compareTime(time2, endTime)){
+				for(int i = 0; i < areaList.length; i++){
+					if(areaList[i].equals(area)){
+						return true;
+					}
+				}
+			}
+		}
+		
+		return false;
+		
+	}
+	
+	/**
+	 * 判断是否符合Promotion的条件，符合返回true，否则返回false
+	 * @param vo
+	 * @param hotel_id
+	 * @param time1
+	 * @param time2
+	 * @param client_id
+	 * @return
+	 * @throws RemoteException
+	 */
+	private boolean JudgeIsRight(PromotionVO vo, String hotel_id, String time1, String time2, String client_id) throws RemoteException{
+		String object = vo.getPromoitonObject();
+		String startTime = vo.getTime().split(" ")[0];
+		String endTime = vo.getTime().split(" ")[2];
+		String seller = vo.getSeller();
+		String client = "";
+		//判断该客户是否是会员
+		if(!(clientController.getClientInfo(client_id).getType().equals(MemberType.NONE))){
+			client = "MEMBER";
+		}
+		
+		if(seller.equals("web") || seller.equals(hotel_id)){
+			if(compareTime(startTime, time1) && compareTime(time2, endTime)){
+				if(object.equals("ALL") || object.equals(client)){
+					return true;
+				}
+			}
+		}
+		return false;
+		
+	}
+	
+	/**
+	 * 从PromotionList中得到最小的折扣
+	 * @param list
+	 * @return
+	 */
+	private double getCheapestCountByPromontion(ArrayList<PromotionVO> list){
+		if(list.isEmpty()){
+			return 10;
+		}
+		double temp = list.get(0).getCount();
+		
+		for(int i = 1; i < list.size(); i++){
+			if(temp > list.get(i).getCount()){
+				temp = list.get(i).getCount();
+			}
+		}
+		
+		return temp;
 		
 	}
 	
@@ -431,32 +619,12 @@ public class Order {
 	}
 	
 	
-	
-	
-	
-	
-	/**
-	 * 
-	 * @param a
-	 * @param hotel_id 酒店id
-	 * @return 得到对应的酒店名称
-	 */
-	public String getHotel_name(ArrayList<HotelPO> a, String hotel_id){
-		String result = "";
-		for(HotelPO list : a){
-			if(list.getHotelId().equals(hotel_id)){
-				result = list.getHotelName();
-			}
-		}
-		return result;
-	}
-	
 	/**
 	 * 
 	 * @param predictCheckInTime 预计入住时间
 	 * @return 最晚执行时间
 	 */
-	public String getDeadline(String predictCheckInTime){
+	private String getDeadline(String predictCheckInTime){
 		String result = "";
 		result = predictCheckInTime + "-23-59-59";
 		return result;
@@ -467,7 +635,7 @@ public class Order {
 	 * @param predictCheckInTime
 	 * @return 距离订单最晚执行时间六个小时
 	 */
-	public String getTime(String predictCheckInTime){
+	private String getTime(String predictCheckInTime){
 		String result = "";
 		result = predictCheckInTime + "-18-00-00";
 		return result;
@@ -479,7 +647,7 @@ public class Order {
 	 * @param time2
 	 * @return time1 <= time2返回true,否则返回false
 	 */
-	public boolean compareTime(String time1, String time2){
+	private boolean compareTime(String time1, String time2){
 		SimpleDateFormat sim = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
 		Date date1 = new Date();
 		Date date2 = new Date();
@@ -506,7 +674,7 @@ public class Order {
 	 * 
 	 * @return 订单编号
 	 */
-	public String getOrder_id(){
+	private String getOrder_id(){
 		ArrayList<OrderPO> list = new ArrayList<>();
 		
 		try {
@@ -524,7 +692,7 @@ public class Order {
 		int a = 0;
 		a = (int)(Math.random() * 10000000);
 		if(list.isEmpty()){
-			return result + a;
+			return String.valueOf(a);
 		}
 		while(contain(temp, a)){
 			a = (int)(Math.random() * 10000000);
@@ -540,9 +708,9 @@ public class Order {
 	 * @param b
 	 * @return a包含b返回true，否则返回false
 	 */
-	public boolean contain(ArrayList<String> a, int b){
+	private boolean contain(ArrayList<String> a, int b){
 		for(int i = 0; i < a.size(); i++){
-			if(Integer.parseInt(a.get(i)) == b){
+			if(a.get(i).equals(String.valueOf(b))){
 				return true;
 			}
 		}
@@ -550,10 +718,17 @@ public class Order {
 		return false;
 	}
 	
-	public OrderVO POTOVO(OrderPO po){
+	private OrderVO POTOVO(OrderPO po){
 		OrderVO result = new OrderVO(po.getUser_id(), po.getOrder_id(),po.getHotel_id(), po.getStartTime(), po.getEndTime(), po.getDeadline(), po.getExecuteTime(), po.getPredictCheckInTime(), po.getPredictCheckOutTime(), po.getRoomType(), po.getNumber(), po.getPeople(), po.isHasChild(), po.getListType(), po.getOrderPrice());
 		return result;
 	}
+	
+	
+	private OrderPO VOTOPO(OrderVO vo){
+		OrderPO result = new OrderPO(vo.getUser_id(), vo.getOrder_id(),vo.getHotel_id(), vo.getStartTime(), vo.getEndTime(), vo.getDeadline(), vo.getExecuteTime(), vo.getPredictCheckInTime(), vo.getPredictCheckOutTime(), vo.getRoomType(), vo.getNumber(), vo.getPeople(), vo.isHasChild(), vo.getListType(), vo.getOrderPrice());
+	    return result;
+	}
+
 	
 	
 }

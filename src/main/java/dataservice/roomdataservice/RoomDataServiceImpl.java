@@ -67,5 +67,10 @@ public class RoomDataServiceImpl implements RoomDataService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public ArrayList<RoomConditionDatePO> getAllRoomCondition() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

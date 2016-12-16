@@ -19,6 +19,51 @@ import vo.RoomVO;
 
 public class Room {
 	
+	/**
+	 * 返回所有的RoomConditionDateVO
+	 * @return
+	 */
+	public ArrayList<RoomConditionDateVO> getAllRoomCondition(){
+		ArrayList<RoomConditionDatePO> list = new ArrayList<>();
+		ArrayList<RoomConditionDateVO> result = new ArrayList<>();
+		
+		try {
+			list = DatafactoryImpl.getInstance().getRoomData().getAllRoomCondition();
+			for(RoomConditionDatePO lis : list){
+				result.add(potovo(lis));
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
+		
+		return result;
+	}
+	
+	/**
+	 * 返回该酒店该房间类型的所有房间
+	 * @param hotel_id
+	 * @param roomType
+	 * @return
+	 */
+	public ArrayList<RoomVO> findRooms(String hotel_id, String roomType){
+		ArrayList<RoomVO> result = new ArrayList<>();
+		ArrayList<RoomPO> list = new ArrayList<>();
+		try {
+			list = DatafactoryImpl.getInstance().getRoomData().findRoom(hotel_id, roomType);
+			for(RoomPO lis : list){
+				result.add(POTOVO(lis));
+			}
+			
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
+		
+		return result;
+		
+	}
+	
 	
 	/**
 	 * 

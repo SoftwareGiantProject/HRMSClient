@@ -1,5 +1,6 @@
 package businesslogic.hotelbl;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.hotelblservice.HotelBLService;
@@ -11,7 +12,7 @@ public class HotelController implements HotelBLService {
 
 	Hotel hotel;
 	
-	public HotelController() {
+	public HotelController() throws RemoteException {
 		hotel = new Hotel();
 		// TODO Auto-generated constructor stub
 	}

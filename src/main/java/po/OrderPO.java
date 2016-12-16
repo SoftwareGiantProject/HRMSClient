@@ -1,8 +1,10 @@
 package po;
 
+import java.io.Serializable;
+
 import util.ListType;
 
-public class OrderPO {
+public class OrderPO implements Serializable{
 	//客户编号
 	private String user_id;
     

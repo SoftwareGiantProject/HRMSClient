@@ -56,4 +56,20 @@ public class RoomController implements RoomBLService{
 		return room.addRoom(vo);
 	}
 
+
+
+	@Override
+	public ArrayList<RoomVO> findRooms(String hotel_id, String roomType) {
+		// TODO Auto-generated method stub
+		return room.findRooms(hotel_id, roomType);
+	}
+
+
+
+	@Override
+	public ArrayList<RoomConditionDateVO> getAllRoomCondition() {
+		// TODO Auto-generated method stub
+		return room.getAllRoomCondition();
+	}
+
 }

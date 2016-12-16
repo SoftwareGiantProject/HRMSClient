@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import com.mysql.fabric.xmlrpc.base.Array;
 
+import businesslogic.controllerfactory.ControllerFactory;
+import businesslogic.roombl.RoomController;
 import dataservice.datafactory.DatafactoryImpl;
 import po.HotelEvaluationPO;
 import po.HotelPO;
@@ -12,8 +14,16 @@ import po.RoomPO;
 import util.ResultMessage;
 import vo.HotelEvaluationVO;
 import vo.HotelVO;
+import vo.RoomVO;
 
 public class Hotel {
+	
+	
+	private RoomController roomController;
+	
+	public Hotel() throws RemoteException{
+		roomController = (RoomController) ControllerFactory.getRoomBLServiceInstance();
+	}
 
 	/**
 	 * 通过酒店id返回酒店名称
@@ -65,24 +75,17 @@ public class Hotel {
 	public ArrayList<HotelVO> getHotelByPrice(String area){
 		ArrayList<HotelVO> list = getHotelByArea(area);
 		ArrayList<HotelVO> result = new ArrayList<>();
-		ArrayList<RoomPO> temp = new ArrayList<>();
-		ArrayList<RoomPO> contain = new ArrayList<>(); 
+		ArrayList<RoomVO> temp = new ArrayList<>();
+		ArrayList<RoomVO> contain = new ArrayList<>(); 
 		
-		
-		
-			try {
-				for(HotelVO lis : list){
-					temp = DatafactoryImpl.getInstance().getRoomData().getAllRoom(lis.getHotelId());     //获得一个酒店的所有房间
-					contain.add(getCheapestPrice(temp));  //获得一个酒店房间价格最便宜的房间po
-					}
-			} catch (RemoteException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		for(HotelVO lis : list){
+			temp = roomController.getAllRoomByHotel(lis.getHotelId());
+			contain.add(getCheapestPrice(temp));  //获得一个酒店房间价格最便宜的房间po
 			}
 		
 		int price[] = new int [contain.size()];
 			for(int i = 0; i < contain.size(); i++){
-				price[i] = contain.get(i).getRoom_price();
+				price[i] = contain.get(i).getRoomPrice();
 			}
 			
 			int rank[] = getRank_int(price);
@@ -150,7 +153,7 @@ public class Hotel {
 		
 	}
 	
-	public int[] getRank_double(double []a){
+	private int[] getRank_double(double []a){
 		int n = a.length;
 		int result[] = new int[n];
 		for(int i = 0; i < n; i++){
@@ -170,7 +173,7 @@ public class Hotel {
 		return result;		
 	}
 	
-	public int[] getRank_int(int []a){
+	private int[] getRank_int(int []a){
 		int n = a.length;
 		int result[] = new int[n];
 		for(int i = 0; i < n; i++){
@@ -192,19 +195,19 @@ public class Hotel {
 	
 	/**
 	 * 
-	 * @param room ArrayList<RoomPO>
-	 * @return ArrayList<RoomPO>里面价格最低的RoomPO
+	 * @param room ArrayList<RoomVO>
+	 * @return ArrayList<RoomVO>里面价格最低的RoomVO
 	 */
-	public RoomPO getCheapestPrice(ArrayList<RoomPO> room){
+	private RoomVO getCheapestPrice(ArrayList<RoomVO> room){
 		if(room.isEmpty()){
 			return null;
 		}
 		int location = 0;
-		int judge = room.get(0).getRoom_price();
+		int judge = room.get(0).getRoomPrice();
 		for(int i = 1; i < room.size(); i++){
-			if(room.get(i).getRoom_price() < judge){
+			if(room.get(i).getRoomPrice() < judge){
 				location = i;
-				judge = room.get(i).getRoom_price();
+				judge = room.get(i).getRoomPrice();
 			}
 		}
 		return room.get(location);
@@ -363,7 +366,7 @@ public class Hotel {
 	 * @param b
 	 * @return a、b中相同的hotel
 	 */
-	public ArrayList<HotelVO> combine(ArrayList<HotelVO> a, ArrayList<HotelVO> b){
+	private ArrayList<HotelVO> combine(ArrayList<HotelVO> a, ArrayList<HotelVO> b){
 		ArrayList<HotelVO> result = new ArrayList<>();
 		for(int i = 0; i < a.size(); i++){
 			for(int j = 0; j < b.size(); j++){
@@ -444,36 +447,37 @@ public class Hotel {
 	 * @return 该商圈在该价格区间的所有酒店
 	 */
 	public ArrayList<HotelVO> searchByPrice(String area, int lowprice, int highprice, String room){
-		ArrayList<HotelVO> total = getHotelByPrice(area);
+		ArrayList<HotelVO> total = new ArrayList<>();
+		if(room.equals(null)){
+			total = getHotelByPrice(area);
+		}else {
+			total = searchByRoom(area, room);
+		}
 		ArrayList<HotelVO> result = new ArrayList<>();
 		int price[] = new int [total.size()];
 		for(int i = 0; i < total.size(); i++){
 			price[i] = 0;
 		}
-		ArrayList<RoomPO> temp = new ArrayList<>();
-		try {
-			for(int i = 0; i < total.size(); i++){
-				if(room.isEmpty()){
-					temp = DatafactoryImpl.getInstance().getRoomData().getAllRoom(total.get(i).getHotelId());
-				}else{
-					temp = DatafactoryImpl.getInstance().getRoomData().findRoom(total.get(i).getHotelId(), room);
-				}
-				for(int j = 0; j < temp.size(); j++){
-					if(temp.get(j).getRoom_price() >= lowprice && temp.get(j).getRoom_price() <= highprice){
-						result.add(total.get(i));
-						continue;
-					}
+
+		ArrayList<RoomVO> temp = new ArrayList<>();
+
+		for(int i = 0; i < total.size(); i++){
+			if(room.equals(null)){
+				temp = roomController.getAllRoomByHotel(total.get(i).getHotelId());
+			}else{
+				temp = roomController.findRooms(total.get(i).getHotelId(), room);
+			}
+			for(int j = 0; j < temp.size(); j++){
+				if(temp.get(j).getRoomPrice() >= lowprice && temp.get(j).getRoomPrice() <= highprice){
+					result.add(total.get(i));
+					continue;
 				}
 			}
-		} catch (RemoteException e) {
-			e.printStackTrace();
-			// TODO: handle exception
 		}
+
 		return result;
-		
-		
+
 	}
-		
 
 	
 	/**
@@ -572,15 +576,8 @@ public class Hotel {
 		ResultMessage result = ResultMessage.FAIL;
 		String name = hotel_name;
 		ArrayList<HotelEvaluationPO> list = new ArrayList<>();
-		double lastLevel = 0;
-		double temp = 0;
-
-		HotelEvaluationPO Epo = VoToPo1(vo);
-		try {
-			DatafactoryImpl.getInstance().getHotelData().evaluateHotel(Epo);
-		} catch (RemoteException e1) {
-			e1.printStackTrace();
-		}
+		int lastLevel = 0;
+		int temp = 0;
 		
 		try {
 			list = DatafactoryImpl.getInstance().getHotelData().getAllHotelEvaluation(name);
