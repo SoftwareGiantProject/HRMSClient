@@ -115,6 +115,13 @@ public class OrderController implements OrderBLService{
 		// TODO Auto-generated method stub
 		return order.getExecutedOrderByHotelClient(hotel_id, client_id);
 	}
+
+	@Override
+	public void update() {
+		order.update();
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }

@@ -20,6 +20,29 @@ import vo.RoomVO;
 public class Room {
 	
 	/**
+	 * 返回该订单的所有
+	 * @param order_idRoomConditionDateVO
+	 * @return
+	 */
+	public ArrayList<RoomConditionDateVO> getRoomConditionByOrder(String order_id){
+		ArrayList<RoomConditionDatePO> list = new ArrayList<>();
+		ArrayList<RoomConditionDateVO> result = new ArrayList<>();
+		
+		try {
+			list = DatafactoryImpl.getInstance().getRoomData().getRoomConditionByOrder(order_id);
+			for(RoomConditionDatePO lis : list){
+				result.add(potovo(lis));
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
+		
+		return result;
+	}
+	
+	
+	/**
 	 * 返回所有的RoomConditionDateVO
 	 * @return
 	 */
@@ -104,11 +127,11 @@ public class Room {
 		try {
 			Calendar now = Calendar.getInstance();
 			SimpleDateFormat matter1 = new SimpleDateFormat("yyyy-MM-dd");
-			DatafactoryImpl.getInstance().getRoomData().addRoomCondition(new RoomConditionDatePO(hotelId, matter1.format(now.getTime()), room_number, room_condition));
+			DatafactoryImpl.getInstance().getRoomData().addRoomCondition(new RoomConditionDatePO(hotelId, matter1.format(now.getTime()), room_number, room_condition, " "));
 			for(int i = 1; i < Max_day; i++){
 				now.add(Calendar.DAY_OF_MONTH, 1);
 				String date = matter1.format(now.getTime());
-				RoomConditionDatePO temp = new RoomConditionDatePO(hotelId, date, room_number, room_condition);
+				RoomConditionDatePO temp = new RoomConditionDatePO(hotelId, date, room_number, room_condition, " ");
 				result2 = DatafactoryImpl.getInstance().getRoomData().addRoomCondition(temp);
 				if(result2 == ResultMessage.FAIL){
 					return result2;
@@ -134,7 +157,7 @@ public class Room {
 	 * @param outTime 离开时间
 	 * @return 预定结果
 	 */
-	public ResultMessage reserve(String Type, int num, String hotel_id, String inTime, String outTime){
+	public ResultMessage reserve(String Type, int num, String hotel_id, String inTime, String outTime, String order_id){
 		/*
 		 * 先判断房间数量是否足够
 		 * 日期问题，天数，
@@ -199,6 +222,7 @@ public class Room {
 		if(room_num == 0){
 			for(int i = 0; i < resultPo.size(); i++){
 				resultPo.get(i).setRoomConditon(RoomCondition.RESERVED);
+				resultPo.get(i).setOrder_id(order_id);
 				resultMessage = modifyCondition(potovo(resultPo.get(i)));
 			}	
 			return resultMessage;
@@ -447,12 +471,12 @@ public class Room {
 	} 
 	
 	private RoomConditionDatePO VOTOPO(RoomConditionDateVO vo){
-		RoomConditionDatePO result = new RoomConditionDatePO(vo.getHotelId(), vo.getRoomDate(), vo.getRoomNumber(), vo.getRoomCondition());
+		RoomConditionDatePO result = new RoomConditionDatePO(vo.getHotelId(), vo.getRoomDate(), vo.getRoomNumber(), vo.getRoomCondition(), vo.getOrder_id());
 		return result;
 	}
 	
 	private RoomConditionDateVO potovo(RoomConditionDatePO po){
-		RoomConditionDateVO result = new RoomConditionDateVO(po.getRoomDate(), po.getRoomNumber(), po.getRoomCondition(), po.getHotel_id());
+		RoomConditionDateVO result = new RoomConditionDateVO(po.getRoomDate(), po.getRoomNumber(), po.getRoomCondition(), po.getHotel_id(), po.getOrder_id());
 		return result;
 	}
 	

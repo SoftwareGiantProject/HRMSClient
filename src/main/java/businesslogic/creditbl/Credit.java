@@ -14,6 +14,45 @@ import vo.CreditVO;
 public class Credit {
 	
 	/**
+	 * 订单执行时增加客户信用值
+	 * @param user_id
+	 * @param change
+	 * @return
+	 */
+	public ResultMessage addCredit(String user_id, int change){
+		ArrayList<CreditPO> historyPo = new ArrayList<CreditPO>();
+		ResultMessage result = ResultMessage.FAIL;
+		String id = user_id;
+		int recharge = change;
+		
+		try{
+			historyPo = DatafactoryImpl.getInstance().getCreditData().getHistoryCredit(id);
+		}catch(RemoteException e){
+			e.printStackTrace();
+		}
+		
+		CreditPO lastcreditpo = historyPo.get(historyPo.size() - 1);
+		int lastcredit = lastcreditpo.getCredit() + recharge;           
+		int lastchange = recharge;
+		Date now = new Date();
+		SimpleDateFormat matter1=new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+		String current = matter1.format(now);
+		
+		lastcreditpo.setCredit(lastcredit);
+		lastcreditpo.setChange(lastchange);
+		lastcreditpo.setTime(current);
+		
+		try{
+			result = DatafactoryImpl.getInstance().getCreditData().modify(lastcreditpo);
+		}catch(RemoteException E){
+			E.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	
+	/**
 	 * 
 	 * @param user_id 客户编号 
 	 * @return 该客户的Credit

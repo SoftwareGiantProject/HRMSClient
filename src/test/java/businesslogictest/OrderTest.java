@@ -102,20 +102,20 @@ public class OrderTest {
 	*/
 	
 	/**
-	@Test 执行订单 测试成功
+	@Test //执行订单 测试成功
 	public void testEvecuteOrder(){
-		String order_id = "201611270003";
+		String order_id = "5835696";
 		
-		String executeTime = "2016-11-28-22-02-59";
+		String executeTime = "2016-12-16-23-02-59";
 		
 		orderController.evecuteOrder(order_id, executeTime);
 	}
 	*/
 	
-	/**
-	@Test 下订单 测试成功
+	/**  生成订单成功
+	@Test 
 		public void testAddOrder(){
-		OrderVO vo = new OrderVO("151250090","h001","2016-12-16-21-18-00","2016-12-17","2016-12-18","大床房",1,2,false,ListType.CURRENTLIST);
+		OrderVO vo = new OrderVO("151250090","h001","2016-12-16-20-18-00","2016-12-16","2016-12-17","大床房",1,2,false,ListType.CURRENTLIST);
 	
 		try {
 			orderController.addOrder(vo);
@@ -125,8 +125,15 @@ public class OrderTest {
 	}
 	*/
 	
-	@Test
+	/**
+	//撤销订单成功
+	@Test 
 	public void testUndoOrder(){
-		String client_id = "";
+		String client_id = "151250090";
+		String order_id = "5835696";
+		String undoTime = "2016-12-16-22-20-03";
+		
+		orderController.undoOrder(client_id, order_id, undoTime);
 	}
+	*/
 }

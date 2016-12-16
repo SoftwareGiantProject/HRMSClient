@@ -29,4 +29,11 @@ public class CreditController implements CreditBLService{
 		return credit.deposit(user_id,change);
 	}
 
+
+	@Override
+	public ResultMessage addCredit(String user_id, int change) {
+		// TODO Auto-generated method stub
+		return credit.addCredit(user_id, change);
+	}
+
 }

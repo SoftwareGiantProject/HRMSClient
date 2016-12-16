@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import util.*;
 
 public interface OrderBLService {
-
+	
+	public void update();
 
 	public ArrayList<OrderVO> getExecutedOrderByHotelClient(String hotel_id, String client_id);
 	

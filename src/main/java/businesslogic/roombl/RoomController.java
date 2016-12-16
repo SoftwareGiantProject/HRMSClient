@@ -19,9 +19,9 @@ public class RoomController implements RoomBLService{
 	
 
 	@Override
-	public ResultMessage reserve(String Type, int num, String hotel_id, String inTime, String outTime) {
+	public ResultMessage reserve(String Type, int num, String hotel_id, String inTime, String outTime, String order_id) {
 		// TODO Auto-generated method stub
-		return room.reserve(Type, num, hotel_id, inTime, outTime);
+		return room.reserve(Type, num, hotel_id, inTime, outTime, order_id);
 	}
 
 	@Override
@@ -70,6 +70,14 @@ public class RoomController implements RoomBLService{
 	public ArrayList<RoomConditionDateVO> getAllRoomCondition() {
 		// TODO Auto-generated method stub
 		return room.getAllRoomCondition();
+	}
+
+
+
+	@Override
+	public ArrayList<RoomConditionDateVO> getRoomConditionByOrder(String order_id) {
+		// TODO Auto-generated method stub
+		return room.getRoomConditionByOrder(order_id);
 	}
 
 }

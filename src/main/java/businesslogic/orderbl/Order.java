@@ -2,11 +2,13 @@ package businesslogic.orderbl;
 import util.ListType;
 import util.MemberType;
 import util.ResultMessage;
+import util.RoomCondition;
 import vo.CreditVO;
 import vo.ListVO;
 import vo.MemberPromotionVO;
 import vo.OrderVO;
 import vo.PromotionVO;
+import vo.RoomConditionDateVO;
 import vo.RoomVO;
 
 import java.rmi.RemoteException;
@@ -272,6 +274,7 @@ public class Order {
 		OrderPO po = new OrderPO();
 		try {
 			po = DatafactoryImpl.getInstance().getOrderData().findOrder(order_id);
+			creditController.addCredit(po.getUser_id(), po.getOrderPrice());   //增加客户等同于订单金额的信用值
 			po.setExecuteTime(execute_time);
 			po.setListType(ListType.HISTORYLIST);
 			result = DatafactoryImpl.getInstance().getOrderData().modifyOrder(po);
@@ -307,12 +310,19 @@ public class Order {
 		String undo_time = undoTime;
 		ResultMessage resultMessage2 = ResultMessage.FAIL;
 		ResultMessage resultMessage3 = ResultMessage.FAIL;
+		ArrayList<RoomConditionDateVO> roomCon = roomController.getRoomConditionByOrder(order_id);
 		try {
 			if(compareTime(undo_time, time)){
 				po.setExecuteTime(undo_time);
 				resultMessage2 = DatafactoryImpl.getInstance().getOrderData().modifyOrder(po);
 				OrderPO temp = DatafactoryImpl.getInstance().getOrderData().findOrder(po.getOrder_id());
 				resultMessage = DatafactoryImpl.getInstance().getOrderData().undoOrder(temp);
+				//修改房间状态
+				for(RoomConditionDateVO lis : roomCon){
+					lis.setRoomcondition(RoomCondition.UNRESERVED);
+					lis.setOrder_id(" ");
+					roomController.modifyCondition(lis);
+				}
 				if(resultMessage2 == ResultMessage.SUCCESS && resultMessage == ResultMessage.SUCCESS){
 					return ResultMessage.SUCCESS;
 				}
@@ -323,6 +333,12 @@ public class Order {
 				OrderPO temp = DatafactoryImpl.getInstance().getOrderData().findOrder(po.getOrder_id());
 				resultMessage = DatafactoryImpl.getInstance().getOrderData().undoOrder(temp);
 				resultMessage3 = creditController.deduct(client_id, po.getOrderPrice());
+				//修改房间状态
+				for(RoomConditionDateVO lis : roomCon){
+					lis.setRoomcondition(RoomCondition.UNRESERVED);
+					lis.setOrder_id(" ");
+					roomController.modifyCondition(lis);
+				}
 				if(resultMessage2 == ResultMessage.SUCCESS && resultMessage == ResultMessage.SUCCESS && resultMessage3 == ResultMessage.SUCCESS){
 					return ResultMessage.SUCCESS;
 				}
@@ -366,7 +382,7 @@ public class Order {
 		ResultMessage result2 = ResultMessage.FAIL;
 		
 		room_price = roomController.findRooms(hotel_id, room_type).get(0).getRoomPrice();
-		result2 = roomController.reserve(room_type, vo.getNumber(), hotel_id, predictCheckInTime, vo.getPredictCheckOutTime());
+		result2 = roomController.reserve(room_type, vo.getNumber(), hotel_id, predictCheckInTime, vo.getPredictCheckOutTime(), order_id);
 		order_price = (int)(vo.getNumber() * room_price * count)/10;
 		OrderPO po = new OrderPO(vo.getUser_id(), order_id, vo.getHotel_id(), vo.getStartTime(), endTime, deadLine, executeTime, vo.getPredictCheckInTime(), vo.getPredictCheckOutTime(), vo.getRoomType(), vo.getNumber(), vo.getPeople(), vo.isHasChild(), vo.getListType(), order_price);
 		
@@ -727,6 +743,42 @@ public class Order {
 	private OrderPO VOTOPO(OrderVO vo){
 		OrderPO result = new OrderPO(vo.getUser_id(), vo.getOrder_id(),vo.getHotel_id(), vo.getStartTime(), vo.getEndTime(), vo.getDeadline(), vo.getExecuteTime(), vo.getPredictCheckInTime(), vo.getPredictCheckOutTime(), vo.getRoomType(), vo.getNumber(), vo.getPeople(), vo.isHasChild(), vo.getListType(), vo.getOrderPrice());
 	    return result;
+	}
+	
+	/**
+	 * 判断订单是否已过deadline，并更新订单信息
+	 */
+	public void update() {
+		Date dt=new Date();
+	    SimpleDateFormat matter1=new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+	    String now = matter1.format(dt);
+	    ArrayList<OrderPO> result = new ArrayList<>();
+		try {
+			ArrayList<OrderPO> list = DatafactoryImpl.getInstance().getOrderData().getAllOrder();
+			for(OrderPO lis : list){
+				if(lis.getListType().equals(ListType.CURRENTLIST)){
+					result.add(lis);
+				}
+			}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		String deadline = "";
+		try {
+			for(OrderPO order : result){
+				deadline = getDeadline(order.getPredictCheckInTime());
+				if(compareTime(deadline, now)){
+					order.setListType(ListType.ABNORAMLIST);
+					DatafactoryImpl.getInstance().getOrderData().modifyOrder(order);
+					creditController.deduct(order.getUser_id(), order.getOrderPrice());
+				}
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
+		
 	}
 
 	

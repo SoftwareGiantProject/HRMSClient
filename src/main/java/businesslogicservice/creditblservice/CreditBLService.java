@@ -12,5 +12,6 @@ public interface CreditBLService {
 
 	public ResultMessage deduct(String user_id,int change);
 	public ResultMessage deposit(String user_id,int change);
+	public ResultMessage addCredit(String user_id,int change);
 	
 }
