@@ -292,7 +292,7 @@ public class Hotel {
 	 * @return 符合所有条件的该商圈的所有酒店
 	 */
 	public ArrayList<HotelVO> search(String area, String room, int star, int lowscore, int highscore, int lowprice, int highprice){
-		ArrayList<HotelVO> result = new ArrayList<>();
+		ArrayList<HotelVO> result = getHotelByArea(area);
 		ArrayList<HotelVO> 	temp1 = new ArrayList<>();
 		ArrayList<HotelVO> 	temp2 = new ArrayList<>();
 		ArrayList<HotelVO> 	temp3 = new ArrayList<>();
@@ -304,7 +304,7 @@ public class Hotel {
 		if(room != null){
 			temp1 = searchByRoom(area, room);
 			if(temp1.isEmpty()){
-				return null;
+				return temp1;
 			}else {
 				judge[0] = 1;
 			}
@@ -312,7 +312,7 @@ public class Hotel {
 		if(star != -1){
 			temp2 = searchByStar(area, star);
 			if(temp2.isEmpty()){
-				return null;
+				return temp2;
 			}else {
 				judge[1] = 1;
 			}
@@ -320,7 +320,7 @@ public class Hotel {
 		if(lowscore != -1){
 			temp3 = searchByScore(area, lowscore, highscore);
 			if(temp3.isEmpty()){
-				return null;
+				return temp3;
 			}else {
 				judge[2] = 1;
 			}
@@ -328,7 +328,7 @@ public class Hotel {
 		if(lowprice != -1){
 			temp4 = searchByPrice(area, lowprice, highprice, room);
 			if(temp4.isEmpty()){
-				return null;
+				return temp4;
 			}else {
 				judge[3] = 1;
 			}
@@ -336,23 +336,12 @@ public class Hotel {
 		
 		for(int i = 0; i < 4; i++){
 			if(judge[i] == 1){
-				if(result.isEmpty()){
 					switch (i) {
-					case 0: result = temp1;
-					case 1: result = temp2;
-					case 2: result = temp3;
-					case 3: result = temp4;
-						break;
-					}
-				}else {
-					switch (i) {
-					case 0: result = combine(result, temp1);
-					case 1: result = combine(result, temp2);
-					case 2: result = combine(result, temp3);
-					case 3: result = combine(result, temp4);
-						break;
+					case 0: result = combine(result, temp1);break;
+					case 1: result = combine(result, temp2);break;
+					case 2: result = combine(result, temp3);break;
+					case 3: result = combine(result, temp4);break;
 				}
-			}
 		}
 	  }
 		
@@ -370,7 +359,7 @@ public class Hotel {
 		ArrayList<HotelVO> result = new ArrayList<>();
 		for(int i = 0; i < a.size(); i++){
 			for(int j = 0; j < b.size(); j++){
-				if(a.get(i).equals(b.get(j))){
+				if(a.get(i).getHotelId().equals(b.get(j).getHotelId())){
 					result.add(a.get(i));
 				}
 			}
