@@ -8,25 +8,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.ClientWindow.ClientAnchor1_7Controller">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8fafc" height="371.0" layoutX="412.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="278.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fefeff" height="371.0" layoutX="20.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="148.0" />
-      <Label layoutX="34.0" layoutY="72.0" text="未执行订单">
-         <font>
-            <Font size="24.0" />
-         </font></Label>
       <ImageView fitHeight="44.0" fitWidth="60.0" layoutX="309.0" layoutY="433.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="46.0" layoutY="203.0" text="异常订单">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <ScrollPane layoutX="181.0" layoutY="21.0" prefHeight="371.0" prefWidth="213.0">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="518.0" prefWidth="211.0" />
-        </content>
-      </ScrollPane>
       <GridPane layoutX="424.0" layoutY="21.0" prefHeight="371.0" prefWidth="278.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.0" minWidth="10.0" prefWidth="71.0" />
@@ -39,17 +25,26 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="酒店星级" />
+            <Label text="酒店名称" />
             <Label text="所属商圈" GridPane.rowIndex="1" />
             <Label text="入住时间" GridPane.rowIndex="2" />
             <Label text="房间类型" GridPane.rowIndex="3" />
-            <Label text="Label" GridPane.columnIndex="1" />
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="hotelName" text="Label" GridPane.columnIndex="1" />
+            <Label fx:id="businessCircle" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="checkinTime" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="roomType" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8fafc" height="62.0" layoutX="20.0" layoutY="415.0" stroke="BLACK" strokeType="INSIDE" width="668.0" />
-      <Button layoutX="307.0" layoutY="429.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="105.0" text="撤销/申诉" />
+      <Button fx:id="operate" layoutX="287.0" layoutY="430.0" mnemonicParsing="false" onAction="#operateClicked" prefHeight="32.0" prefWidth="105.0" text="取消/申诉" />
+      <Button fx:id="currentOrderBt" layoutX="20.0" layoutY="21.0" mnemonicParsing="false" onAction="#CurrrentOrderClicked" prefHeight="32.0" prefWidth="148.0" text="未执行订单" />
+      <Button fx:id="abnormalOrderBt" layoutX="20.0" layoutY="53.0" mnemonicParsing="false" onAction="#AbnormalOrderClicked" prefHeight="32.0" prefWidth="148.0" text="异常订单" />
+      <TableView fx:id="orderList" editable="true" layoutX="187.0" layoutY="21.0" prefHeight="371.0" prefWidth="204.0">
+        <columns>
+          <TableColumn fx:id="orderColumn" prefWidth="143.0" text="C1" />
+            <TableColumn fx:id="viewColumn" prefWidth="57.0" />
+        </columns>
+      </TableView>
+      <Label fx:id="operateOrder_id" layoutX="469.0" layoutY="433.0" opacity="0.0" text="订单号" />
    </children>
 </AnchorPane>

@@ -36,24 +36,6 @@ public interface ClientBLService {
 	 */
 	public ResultMessage modifyInfo(ClientVO vo) throws RemoteException;
 	
-	
-	/**
-	 * 注册普通会员
-	 * @param vo
-	 * @return
-	 * @throws RemoteException 
-	 */
-	public ResultMessage registComMember(String id,CommonMemberVO vo) throws RemoteException;
-	
-	
-	/**
-	 * 注册企业会员
-	 * @param vo
-	 * @return
-	 * @throws RemoteException 
-	 */
-	public ResultMessage registCorMember(String id,CorporateMemberVO vo) throws RemoteException;
-	
 	/**
 	 * 确认客户是否存在
 	 * @param id

@@ -136,4 +136,30 @@ public class OrderTest {
 		orderController.undoOrder(client_id, order_id, undoTime);
 	}
 	*/
+	
+	@Test
+	public void testViewAllOrderByClient(){
+		String client_id = "151250061";
+		ArrayList<OrderVO> list = new ArrayList<>();
+		
+		list =orderController.viewAllOrderByClient(client_id);
+		
+		for(OrderVO vo : list){
+			System.out.println(vo.getOrder_id());
+			System.out.println(vo.getUser_id());
+			System.out.println(vo.getHotel_id());
+			System.out.println(vo.getOrderPrice());
+			System.out.println(vo.getStartTime());
+			System.out.println(vo.getEndTime());
+			System.out.println(vo.getDeadline());
+			System.out.println(vo.getExecuteTime());
+			System.out.println(vo.getPredictCheckInTime());
+			System.out.println(vo.getPredictCheckOutTime());
+			System.out.println(vo.getRoomType());
+			System.out.println(vo.getNumber());
+			System.out.println(vo.getPeople());
+			System.out.println(vo.isHasChild());
+			System.out.println(vo.getListType());
+		}
+	}
 }

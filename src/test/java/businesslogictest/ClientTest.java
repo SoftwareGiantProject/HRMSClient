@@ -61,7 +61,7 @@ public class ClientTest {
 			e.printStackTrace();
 		}
 		
-		assertEquals(vo.getBirthday()+vo.getContact(),"1997-5-29"+"loohaze529@gmail.com");
+		assertEquals(vo.getBirthday().get()+vo.getContact().get(),"1997-5-29"+"loohaze529@gmail.com");
 	}
 	
 	/**

@@ -3,8 +3,10 @@ package presentation.NetWorkerWindow;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import vo.NetworkerVO;
 
 public class NetworkerAnchor2Controller {
 	@FXML
@@ -35,6 +37,8 @@ public class NetworkerAnchor2Controller {
 	
 	@FXML
 	RunNetworker runNetworker;
+	
+	NetworkerVO networkerVO;
 	
 	
 	public void UserManageClicked(){
@@ -96,6 +100,11 @@ public class NetworkerAnchor2Controller {
 	
 	
 	public void initialize(){
+		clientView.setImage(new Image("file:src/lib/Client.png"));
+		this.networkerVO=runNetworker.GetNetWorkerVO();
+		type.setText("网站管理人员");
+		name.setText(networkerVO.getUserName());
+		id.setText(this.networkerVO.getUserId());
 		
 	}
 	

@@ -24,17 +24,18 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <ScrollPane layoutX="94.0" layoutY="66.0" prefHeight="288.0" prefWidth="530.0">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="540.0" prefWidth="516.0" />
-        </content>
-      </ScrollPane>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcfcfc" height="102.0" layoutX="90.0" layoutY="376.0" stroke="BLACK" strokeType="INSIDE" width="530.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcfcfc" height="75.0" layoutX="90.0" layoutY="403.0" stroke="BLACK" strokeType="INSIDE" width="530.0" />
       <Label layoutX="262.0" layoutY="10.0" prefHeight="39.0" prefWidth="158.0" text="网站营销人员">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Button layoutX="324.0" layoutY="415.0" mnemonicParsing="false" text="查看" />
+      <Button layoutX="321.0" layoutY="429.0" mnemonicParsing="false" text="添加" />
+      <TableView layoutX="90.0" layoutY="49.0" prefHeight="333.0" prefWidth="530.0">
+        <columns>
+          <TableColumn prefWidth="468.0" text="C1" />
+          <TableColumn prefWidth="61.0" text="C2" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

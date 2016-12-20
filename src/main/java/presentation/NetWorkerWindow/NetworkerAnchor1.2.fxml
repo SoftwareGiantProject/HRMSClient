@@ -24,17 +24,16 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <ScrollPane layoutX="94.0" layoutY="66.0" prefHeight="288.0" prefWidth="530.0">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="540.0" prefWidth="516.0" />
-        </content>
-      </ScrollPane>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcfcfc" height="102.0" layoutX="90.0" layoutY="376.0" stroke="BLACK" strokeType="INSIDE" width="530.0" />
       <Label layoutX="324.0" layoutY="13.0" prefHeight="31.0" prefWidth="70.0" text="客户">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Button layoutX="324.0" layoutY="415.0" mnemonicParsing="false" text="查看" />
+      <TableView layoutX="29.0" layoutY="45.0" prefHeight="428.0" prefWidth="597.0">
+        <columns>
+          <TableColumn prefWidth="523.0" text="客户 " />
+          <TableColumn prefWidth="72.0" text="修改" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

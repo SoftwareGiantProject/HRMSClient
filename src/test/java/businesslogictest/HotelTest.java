@@ -171,6 +171,7 @@ public class HotelTest {
 	}
 	*/
 
+	/**
 	@Test 
 	public void testSearch(){
 		ArrayList<HotelVO> list = new ArrayList<>();
@@ -199,7 +200,7 @@ public class HotelTest {
 			System.out.println(vo.getCity());
 		}
 	}
-	
+	*/
 	/**
 	@Test 根据星级 获得酒店列表 测试成功
 	public void testSearchByStar(){
@@ -375,6 +376,13 @@ public class HotelTest {
 		String hotel_name = "莫泰168";
 		
 		hotelController.evaluateHotel(vo, hotel_name);
+	}
+	*/
+	/**
+	@Test
+	public void testgetHotelNameById(){
+		String temp = hotelController.getNmaeById("h001");
+		System.out.println(temp);
 	}
 	*/
 }

@@ -38,18 +38,6 @@ public class ClientController implements ClientBLService,ClientInfo,Login{
 	}
 
 	@Override
-	public ResultMessage registComMember(String id,CommonMemberVO vo)throws RemoteException {
-		// TODO Auto-generated method stub
-		return client.registComMember(id,vo);
-	}
-
-	@Override
-	public ResultMessage registCorMember(String id,CorporateMemberVO vo) throws RemoteException{
-		// TODO Auto-generated method stub
-		return client.registCorMember(id,vo);
-	}
-
-	@Override
 	public ArrayList<ClientVO> getAllClientInfo() throws RemoteException {
 		// TODO Auto-generated method stub
 		return client.getAllClientInfo();

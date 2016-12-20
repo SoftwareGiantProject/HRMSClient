@@ -122,6 +122,12 @@ public class OrderController implements OrderBLService{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public ResultMessage recordCheckoutTime(String order_id, String endtime) {
+		// TODO Auto-generated method stub
+		return order.recordCheckoutTime(order_id, endtime);
+	}
 	
 	
 }

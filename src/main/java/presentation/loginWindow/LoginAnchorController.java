@@ -4,6 +4,7 @@ package presentation.loginWindow;
 import businesslogic.userbl.client.ClientController;
 import businesslogic.userbl.netsale.NetsaleController;
 import businesslogic.userbl.networker.NetworkerController;
+import businesslogic.userbl.worker.WorkerController;
 import businesslogicservice.userblservice.Login;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -20,8 +21,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+
 import presentation.ClientWindow.RunClient1;
 import presentation.NetWorkerWindow.RunNetworker;
+import presentation.WarningWindow.RunWarning;
+import presentation.WorkerWindow.RunWorker;
 import util.ResultMessage;
 public class LoginAnchorController {
 	@FXML
@@ -56,23 +60,58 @@ public class LoginAnchorController {
 	@FXML
 	public void LoginClicked(){
 		//判断账号和密码
+		if(accountField.getText().length()==0||passwordField.getText().length()==0){
+			RunWarning rw=new RunWarning();
+			rw.SetWarning("请输入账号和密码！");
+		}else{
+		
 		try{
-		if(accountField.getText().charAt(0)=='s'){
+		if(accountField.getText().charAt(0)=='w'){
+			WorkerController workerController=new WorkerController();
+			ResultMessage rm=workerController.login(accountField.getText(), passwordField.getText());
+			if(rm==ResultMessage.SUCCESS){
+				RunWorker rw=new RunWorker();
+				rw.SetAnchor1(1);;
+				rw.setWorkerVO(workerController.getWorkerInfo(accountField.getText()));
+				rw.start(new Stage());
+				runLogin.getPrimaryStage().close();
+			}else{
+				//添加 登录失败弹窗
+				RunWarning rw=new RunWarning();
+				rw.SetWarning("登录失败！");
+				rw.start(new Stage());
+			}
 			
 			
-		}else if(accountField.getText().charAt(0)=='h'){
-			
-		}else if(accountField.getText().charAt(0)=='m'){
+		}else if(accountField.getText().charAt(0)=='s'){
+			NetsaleController netsaleController=new NetsaleController();
+			ResultMessage rm=netsaleController.login(accountField.getText(), passwordField.getText());
+			if(rm==ResultMessage.SUCCESS){
+//				RunNetSale rw=new RunNetSale();
+//				rw.SetAnchor1(1);;
+//				rw.setWorkerVO(workerController.getWorkerInfo(accountField.getText()));
+//				rw.start(new Stage());
+//				runLogin.getPrimaryStage().close();
+			}else{
+				//添加 登录失败弹窗
+				RunWarning rw=new RunWarning();
+				rw.SetWarning("登录失败！");
+				rw.start(new Stage());
+			}
+		}else if(accountField.getText().charAt(0)=='n'){
 			NetworkerController lg=new NetworkerController();
 			ResultMessage rm=lg.login(accountField.getText(), passwordField.getText());
 			if(rm==ResultMessage.SUCCESS){
 				RunNetworker rc=new RunNetworker();
 				rc.setanchor1(1);
-				
+				rc.SetNetworkerVO(lg.getNetworkerInfo(accountField.getText()));
 				rc.start(new Stage());
 				runLogin.getPrimaryStage().close();
 			}else{
 				//添加 登录失败弹窗
+				RunWarning rw=new RunWarning();
+				rw.SetWarning("登录失败！");
+				rw.start(new Stage());
 			}
 		}else{
 			ClientController lg=new ClientController();
@@ -85,6 +124,10 @@ public class LoginAnchorController {
 				runLogin.getPrimaryStage().close();
 			}else{
 				//添加 登录失败弹窗
+				RunWarning rw=new RunWarning();
+				rw.SetWarning("登录失败！");
+				rw.start(new Stage());
+				
 			}
 		}
 		
@@ -93,7 +136,7 @@ public class LoginAnchorController {
 			e.printStackTrace();
 		}
 		
-		
+		}
 	}
 	
 	

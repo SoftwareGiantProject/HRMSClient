@@ -75,42 +75,7 @@ public class Client {
 		return result;
 	}
 	
-	public ResultMessage registComMember(String id,CommonMemberVO vo)throws RemoteException{
-		CommonMemberPO po =  new CommonMemberPO();
-		
-		po.setCommonMember_number(vo.getCommonMember_number());
-		po.setCommonMember_Birthday(vo.getCommonMember_Birthday());
-		po.setCommonMember_level(vo.getCommonMember_level());
-		po.setMember_type(vo.getMember_type());
-		
-		ResultMessage result = ResultMessage.FAIL;
-		
-		try {
-			result = clientDataService.registComMember(id,po);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return result;
-	}
 	
-	public ResultMessage registCorMember(String id,CorporateMemberVO vo)throws RemoteException{
-		CorporateMemberPO po = new CorporateMemberPO();
-		
-		po.setCorporate(vo.getCorporate());
-		po.setCorporateMember_Birthday(vo.getCorporateMember_Birthday());
-		po.setCorporateMember_level(vo.getCorporateMember_level());
-		po.setCorporateMember_number(vo.getCorporateMember_number());
-		po.setMemberType(vo.getMember_Type());
-		
-		ResultMessage result = ResultMessage.FAIL;
-		
-		try {
-			result = clientDataService.registCorMember(id,po);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return result;
-	}
 
 	public ArrayList<ClientVO> getAllClientInfo() throws RemoteException{
 		ArrayList<ClientPO> list = new ArrayList<>();
@@ -148,13 +113,13 @@ public class Client {
 	private ClientPO vo2po(ClientVO vo){
 		ClientPO po = new ClientPO();
 		
-		po.setUserId(vo.getUserId());
-		po.setUserName(vo.getUserName());
-		po.setBirthday(vo.getBirthday());
-		po.setContact(vo.getContact());
-		po.setCredit(vo.getCredit());
-		po.setMemberId(vo.getMemberId());
-		po.setPassword(vo.getPassword());
+		po.setUserId(vo.getUserId().get());
+		po.setUserName(vo.getUserName().get());
+		po.setBirthday(vo.getBirthday().get());
+		po.setContact(vo.getContact().get());
+		po.setCredit(vo.getCredit().get());
+		po.setMemberId(vo.getMemberId().get());
+		po.setPassword(vo.getPassword().get());
 		po.setType(vo.getType());
 		return po;
 	}

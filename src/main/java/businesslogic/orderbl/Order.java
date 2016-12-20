@@ -28,6 +28,7 @@ import businesslogic.roombl.RoomController;
 import businesslogic.userbl.client.ClientController;
 import businesslogicservice.orderblservice.*;
 import dataservice.datafactory.DatafactoryImpl;
+import javafx.beans.property.SimpleStringProperty;
 import po.ClientPO;
 import po.HotelPO;
 import po.OrderPO;
@@ -152,6 +153,20 @@ public class Order {
 	}
 	
 	/**
+	 * 记录退房时间
+	 * @param order_id
+	 * @param endtime
+	 * @return
+	 */
+	public ResultMessage recordCheckoutTime(String order_id, String endtime){
+		OrderVO vo = getOrder(order_id);
+		vo.setEndTime(new SimpleStringProperty(endtime));
+		ResultMessage resultMessage = modifyOrder(vo);
+		
+		return resultMessage;
+	}
+
+	/**
 	 * 
 	 * @param hotel_id
 	 * @return 返回该酒店的所有已撤销订单
@@ -249,7 +264,7 @@ public class Order {
 		try {
 			list = DatafactoryImpl.getInstance().getOrderData().getAllOrder();
 			for(OrderPO lis : list){
-				if(lis.getListType().equals(ListType.ABNORAMLIST)){
+				if(lis.getListType().equals(ListType.ABNORMALLIST)){
 					result.add(POTOVO(lis));
 				}
 			}
@@ -367,13 +382,13 @@ public class Order {
 	 */
 	public ResultMessage addOrder(OrderVO vo) throws RemoteException{
 		ResultMessage result = ResultMessage.FAIL;
-		String predictCheckInTime = vo.getPredictCheckInTime();
+		String predictCheckInTime = vo.getPredictCheckInTime().get();
 		String order_id = getOrder_id();  //系统生成订单编号
 		String deadLine = getDeadline(predictCheckInTime); //最晚订单执行时间
 		String endTime = "";
 		String executeTime = "";
-		String hotel_id = vo.getHotel_id();
-		String room_type = vo.getRoomType();
+		String hotel_id = vo.getHotel_id().get();
+		String room_type = vo.getRoomType().get();
 		
 		int order_price = 0;
 		int room_price = 0;
@@ -381,10 +396,10 @@ public class Order {
 		
 		ResultMessage result2 = ResultMessage.FAIL;
 		
-		room_price = roomController.findRooms(hotel_id, room_type).get(0).getRoomPrice();
-		result2 = roomController.reserve(room_type, vo.getNumber(), hotel_id, predictCheckInTime, vo.getPredictCheckOutTime(), order_id);
-		order_price = (int)(vo.getNumber() * room_price * count)/10;
-		OrderPO po = new OrderPO(vo.getUser_id(), order_id, vo.getHotel_id(), vo.getStartTime(), endTime, deadLine, executeTime, vo.getPredictCheckInTime(), vo.getPredictCheckOutTime(), vo.getRoomType(), vo.getNumber(), vo.getPeople(), vo.isHasChild(), vo.getListType(), order_price);
+		room_price = roomController.findRooms(hotel_id, room_type).get(0).getRoomPrice().get();
+		result2 = roomController.reserve(room_type, vo.getNumber().get(), hotel_id, predictCheckInTime, vo.getPredictCheckOutTime().get(), order_id);
+		order_price = (int)(vo.getNumber().get() * room_price * count)/10;
+		OrderPO po = new OrderPO(vo.getUser_id().get(), order_id, vo.getHotel_id().get(), vo.getStartTime().get(), endTime, deadLine, executeTime, vo.getPredictCheckInTime().get(), vo.getPredictCheckOutTime().get(), vo.getRoomType().get(), vo.getNumber().get(), vo.getPeople().get(), vo.isHasChild().get(), vo.getListType(), order_price);
 		
 		try {
 			result = DatafactoryImpl.getInstance().getOrderData().addOrder(po);
@@ -409,12 +424,12 @@ public class Order {
 	 * @throws RemoteException
 	 */
 	private double calculateCheapestCount(OrderVO vo) throws RemoteException{
-		String client_id = vo.getUser_id();
-		String hotel_id = vo.getHotel_id();
-		String predictCheckInTime = vo.getPredictCheckInTime();
-		String predictCheckOutTime = vo.getPredictCheckOutTime();
+		String client_id = vo.getUser_id().get();
+		String hotel_id = vo.getHotel_id().get();
+		String predictCheckInTime = vo.getPredictCheckInTime().get();
+		String predictCheckOutTime = vo.getPredictCheckOutTime().get();
 		String hotel_name = hotelController.getNmaeById(hotel_id);
-		String area = hotelController.viewHotel(hotel_name).getHotelArea();
+		String area = hotelController.viewHotel(hotel_name).getHotelArea().get();
 		
 		ArrayList<PromotionVO> result = new ArrayList<>();
 		ArrayList<PromotionVO> list = promotionController.getAllPromotion();
@@ -482,10 +497,10 @@ public class Order {
 	 * @throws RemoteException
 	 */
 	private boolean JudgeIsRight(PromotionVO vo, String hotel_id, String time1, String time2, String client_id) throws RemoteException{
-		String object = vo.getPromoitonObject();
-		String startTime = vo.getTime().split(" ")[0];
-		String endTime = vo.getTime().split(" ")[2];
-		String seller = vo.getSeller();
+		String object = vo.getPromoitonObject().get();
+		String startTime = vo.getTime().get().split(" ")[0];
+		String endTime = vo.getTime().get().split(" ")[2];
+		String seller = vo.getSeller().get();
 		String client = "";
 		//判断该客户是否是会员
 		if(!(clientController.getClientInfo(client_id).getType().equals(MemberType.NONE))){
@@ -512,11 +527,11 @@ public class Order {
 		if(list.isEmpty()){
 			return 10;
 		}
-		double temp = list.get(0).getCount();
+		double temp = list.get(0).getCount().get();
 		
 		for(int i = 1; i < list.size(); i++){
-			if(temp > list.get(i).getCount()){
-				temp = list.get(i).getCount();
+			if(temp > list.get(i).getCount().get()){
+				temp = list.get(i).getCount().get();
 			}
 		}
 		
@@ -534,12 +549,12 @@ public class Order {
 		ArrayList<OrderPO> list = new ArrayList<>();
 		
 		try {
-			list = DatafactoryImpl.getInstance().getOrderData().findList(client_id, "全部订单");
+			list = DatafactoryImpl.getInstance().getOrderData().findList(client_id, "ALLLIST");
 			for(OrderPO lis : list){
 				result.add(POTOVO(lis));
 			}
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			e.printStackTrace(); 
 			// TODO: handle exception
 		}
 		
@@ -556,7 +571,7 @@ public class Order {
 		ArrayList<OrderPO> list = new ArrayList<>();
 		
 		try {
-			list = DatafactoryImpl.getInstance().getOrderData().findList(client_id, "已执行订单");
+			list = DatafactoryImpl.getInstance().getOrderData().findList(client_id, "HISTORYLIST");
 			for(OrderPO lis : list){
 				result.add(POTOVO(lis));
 			}
@@ -578,7 +593,7 @@ public class Order {
 		ArrayList<OrderPO> list = new ArrayList<>();
 		
 		try {
-			list = DatafactoryImpl.getInstance().getOrderData().findList(client_id, "未执行订单");
+			list = DatafactoryImpl.getInstance().getOrderData().findList(client_id, "CURRENTLIST");
 			for(OrderPO lis : list){
 				result.add(POTOVO(lis));
 			}
@@ -600,7 +615,7 @@ public class Order {
 		ArrayList<OrderPO> list = new ArrayList<>();
 		
 		try {
-			list = DatafactoryImpl.getInstance().getOrderData().findList(client_id, "已撤销订单");
+			list = DatafactoryImpl.getInstance().getOrderData().findList(client_id, "UNDOLIST");
 			for(OrderPO lis : list){
 				result.add(POTOVO(lis));
 			}
@@ -622,7 +637,7 @@ public class Order {
 		ArrayList<OrderPO> list = new ArrayList<>();
 		
 		try {
-			list = DatafactoryImpl.getInstance().getOrderData().findList(client_id, "异常订单");
+			list = DatafactoryImpl.getInstance().getOrderData().findList(client_id, "ABNORMALLIST");
 			for(OrderPO lis : list){
 				result.add(POTOVO(lis));
 			}
@@ -741,7 +756,7 @@ public class Order {
 	
 	
 	private OrderPO VOTOPO(OrderVO vo){
-		OrderPO result = new OrderPO(vo.getUser_id(), vo.getOrder_id(),vo.getHotel_id(), vo.getStartTime(), vo.getEndTime(), vo.getDeadline(), vo.getExecuteTime(), vo.getPredictCheckInTime(), vo.getPredictCheckOutTime(), vo.getRoomType(), vo.getNumber(), vo.getPeople(), vo.isHasChild(), vo.getListType(), vo.getOrderPrice());
+		OrderPO result = new OrderPO(vo.getUser_id().get(), vo.getOrder_id().get(),vo.getHotel_id().get(), vo.getStartTime().get(), vo.getEndTime().get(), vo.getDeadline().get(), vo.getExecuteTime().get(), vo.getPredictCheckInTime().get(), vo.getPredictCheckOutTime().get(), vo.getRoomType().get(), vo.getNumber().get(), vo.getPeople().get(), vo.isHasChild().get(), vo.getListType(), vo.getOrderPrice().get());
 	    return result;
 	}
 	
@@ -769,7 +784,7 @@ public class Order {
 			for(OrderPO order : result){
 				deadline = getDeadline(order.getPredictCheckInTime());
 				if(compareTime(deadline, now)){
-					order.setListType(ListType.ABNORAMLIST);
+					order.setListType(ListType.ABNORMALLIST);
 					DatafactoryImpl.getInstance().getOrderData().modifyOrder(order);
 					creditController.deduct(order.getUser_id(), order.getOrderPrice());
 				}

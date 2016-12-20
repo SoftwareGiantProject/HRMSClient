@@ -1,6 +1,7 @@
 package presentation.NetWorkerWindow;
 
 import java.io.IOException;
+import java.nio.channels.NetworkChannel;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import vo.NetworkerVO;
 
 
 
@@ -16,6 +18,8 @@ public class RunNetworker extends Application {
 	private BorderPane border;
 	private Stage primaryStage;
 	public static int anchor1=0;
+	public static NetworkerVO networkervo=new NetworkerVO("UserId","UserName",
+				"Password","Contact");
 
 	@Override
 	public void start(Stage primaryStage)throws Exception {
@@ -38,6 +42,13 @@ public class RunNetworker extends Application {
     }
 	
 	
+    public static void SetNetworkerVO(NetworkerVO networkervo){
+    	RunNetworker.networkervo=networkervo;
+    }
+    public static NetworkerVO GetNetWorkerVO(){
+    	return RunNetworker.networkervo;
+    }
+    
 	//底层容器
 	public void setBorder(){
 		try {

@@ -12,14 +12,6 @@
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fefeff" height="385.0" layoutX="20.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="659.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f7f9fc" height="44.0" layoutX="19.0" layoutY="433.0" stroke="BLACK" strokeType="INSIDE" width="659.0" />
-      <Label layoutX="107.0" layoutY="54.0" text="账号">
-         <font>
-            <Font size="24.0" />
-         </font></Label>
-      <Label layoutX="107.0" layoutY="142.0" text="姓名">
-         <font>
-            <Font size="24.0" />
-         </font></Label>
       <Label layoutX="79.0" layoutY="234.0" text="联系方式">
          <font>
             <Font size="24.0" />
@@ -28,11 +20,20 @@
          <font>
             <Font size="24.0" />
          </font></Label>
-      <Label fx:id="account" layoutX="369.0" layoutY="60.0" prefHeight="20.0" prefWidth="236.0" text="Label" />
+      <Label fx:id="account" layoutX="369.0" layoutY="60.0" prefHeight="20.0" prefWidth="236.0" text="label" />
       <Label fx:id="name" layoutX="369.0" layoutY="148.0" prefHeight="20.0" prefWidth="236.0" text="Label" />
       <Label fx:id="phone" layoutX="369.0" layoutY="240.0" text="Label" />
       <Label fx:id="credit" layoutX="369.0" layoutY="323.0" text="Label" />
-      <ImageView fitHeight="44.0" fitWidth="60.0" layoutX="309.0" layoutY="433.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="303.0" layoutY="433.0" mnemonicParsing="false" opacity="0.0" prefHeight="44.0" prefWidth="80.0" text="修改" />
+      <Button layoutX="303.0" layoutY="433.0" mnemonicParsing="false" onAction="#modifyClicked" opacity="0.62" prefHeight="44.0" prefWidth="80.0" text="修改" />
+      <Label layoutX="107.0" layoutY="54.0" text="姓名">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="103.0" layoutY="132.0" text="账号">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

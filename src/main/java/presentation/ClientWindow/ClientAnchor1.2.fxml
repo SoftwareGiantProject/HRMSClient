@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.ClientWindow.ClientAnchor1_1Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.ClientWindow.ClientAnchor1_2Controller">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fefeff" height="385.0" layoutX="20.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="659.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f7f9fc" height="44.0" layoutX="19.0" layoutY="433.0" stroke="BLACK" strokeType="INSIDE" width="659.0" />
@@ -31,8 +31,8 @@
       <Label fx:id="account" layoutX="369.0" layoutY="60.0" prefHeight="20.0" prefWidth="236.0" text="Label" />
       <Label fx:id="credit" layoutX="369.0" layoutY="323.0" text="Label" />
       <ImageView fitHeight="44.0" fitWidth="60.0" layoutX="309.0" layoutY="433.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="303.0" layoutY="433.0" mnemonicParsing="false" opacity="0.67" prefHeight="44.0" prefWidth="80.0" text="修改" />
-      <TextField layoutX="296.0" layoutY="143.0" />
-      <TextField layoutX="296.0" layoutY="236.0" />
+      <Button layoutX="303.0" layoutY="433.0" mnemonicParsing="false" onAction="#modifyClicked" opacity="0.67" prefHeight="44.0" prefWidth="80.0" text="修改" />
+      <TextField fx:id="name" layoutX="296.0" layoutY="143.0" />
+      <TextField fx:id="phone" layoutX="296.0" layoutY="236.0" />
    </children>
 </AnchorPane>

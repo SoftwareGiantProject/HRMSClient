@@ -52,7 +52,7 @@ public interface OrderBLService {
 
 	public ResultMessage modifyOrder(OrderVO vo);
 	
-	
+	public ResultMessage recordCheckoutTime(String order_id, String endtime);
 
 	
 }

@@ -2,24 +2,25 @@ package vo;
 
 import java.util.Date;
 
+import javafx.beans.property.SimpleStringProperty;
 import util.RoomCondition;
 
 public class RoomConditionDateVO {
 	
 	//日期
-	private String RoomDate;
+	private SimpleStringProperty RoomDate;
 	
 	//酒店id
-	private String hotel_id;
+	private SimpleStringProperty hotel_id;
 		
 	//房间号
-	private String RoomNumber;
+	private SimpleStringProperty RoomNumber;
 		
 	//房间状态״̬
 	private RoomCondition roomcondition;
 	
 	//订单编号
-	private String order_id;
+	private SimpleStringProperty order_id;
 		
 	public RoomConditionDateVO(){
 			
@@ -27,25 +28,25 @@ public class RoomConditionDateVO {
 		
 	public RoomConditionDateVO(String rd, String rn, RoomCondition rc, String hi, String or){
 	    	
-	    RoomDate = rd;
-	    RoomNumber = rn;
+	    RoomDate = new SimpleStringProperty(rd);
+	    RoomNumber = new SimpleStringProperty(rn);
 	    roomcondition = rc;
-	    hotel_id = hi;
-	    order_id = or;
+	    hotel_id = new SimpleStringProperty(hi);
+	    order_id = new SimpleStringProperty(or);
 			
 	}
 	
 	
 	    
-	public String getOrder_id() {
+	public SimpleStringProperty getOrder_id() {
 		return order_id;
 	}
 
-	public String getRoomDate(){
+	public SimpleStringProperty getRoomDate(){
 	    return RoomDate;
 	}
 	    
-	public String getRoomNumber(){
+	public SimpleStringProperty getRoomNumber(){
 	    return RoomNumber;
 	}
 	    
@@ -54,15 +55,15 @@ public class RoomConditionDateVO {
 	}
 	
 	public void setRoomDate(String roomDate) {
-		RoomDate = roomDate;
+		RoomDate = new SimpleStringProperty(roomDate);
 	}
 
 	public void setHotel_id(String hotel_id) {
-		this.hotel_id = hotel_id;
+		this.hotel_id = new SimpleStringProperty(hotel_id);
 	}
 
 	public void setRoomNumber(String roomNumber) {
-		RoomNumber = roomNumber;
+		RoomNumber = new SimpleStringProperty(roomNumber);
 	}
 
 	public void setRoomcondition(RoomCondition roomcondition) {
@@ -70,10 +71,10 @@ public class RoomConditionDateVO {
 	}
 
 	public void setOrder_id(String order_id) {
-		this.order_id = order_id;
+		this.order_id = new SimpleStringProperty(order_id);
 	}
 
-	public String getHotelId(){
+	public SimpleStringProperty getHotelId(){
 		return hotel_id;
 	}
 

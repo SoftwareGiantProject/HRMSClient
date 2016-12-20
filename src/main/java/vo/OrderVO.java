@@ -1,52 +1,55 @@
 package vo;
 
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import util.ListType;
 
 public class OrderVO {
 	//客户编号
-	private String user_id;//
+	private SimpleStringProperty user_id;//
 
 	//订单编号
-	private String order_id;
+	private SimpleStringProperty order_id;
 
 	//酒店编号
-	private String hotel_id;//
+	private SimpleStringProperty hotel_id;//
 
 	//下订单的时间
-	private String startTime;//
+	private SimpleStringProperty startTime;//
 
 	//退房时间
-	private String endTime;
+	private SimpleStringProperty endTime;
 
 	//最晚执行时间
-	private String deadline;
+	private SimpleStringProperty deadline;
 
 	//订单执行时间(当撤销订单时，成为撤销订单时间)
-	private String executeTime;
+	private SimpleStringProperty executeTime;
 
 	//预计入住时间
-	private String predictCheckInTime;//
+	private SimpleStringProperty predictCheckInTime;//
 
 	//预计离开时间
-	private String predictCheckOutTime;//
+	private SimpleStringProperty predictCheckOutTime;//
 
 	//房间类型
-	private String roomType;//
+	private SimpleStringProperty roomType;//
 
 	//房间数量
-	private int number;//
+	private SimpleIntegerProperty number;//
 
 	//人员数量
-	private int people;//
+	private SimpleIntegerProperty people;//
 
 	//是否有儿童
-	private boolean hasChild;//
+	private SimpleBooleanProperty hasChild;//
 
 	//订单类型
 	private ListType listType;//
 
     //订单金额
-	private int orderPrice;//
+	private SimpleIntegerProperty orderPrice;//
 
 	//各种可能用到的构造函数
 
@@ -54,16 +57,20 @@ public class OrderVO {
 		
 	}
 	
+	public void setEndTime(SimpleStringProperty endTime) {
+		this.endTime = endTime;
+	}
+
 	public OrderVO(String user_id, String hotel_id, String startTime, String predictCheckInTime, String predictCheckOutTime, String roomType, int number, int people, boolean hasChild, ListType listType){
-		this.user_id=user_id;
-		this.hotel_id=hotel_id;
-		this.startTime=startTime;
-		this.predictCheckInTime = predictCheckInTime;
-		this.predictCheckOutTime = predictCheckOutTime;
-		this.roomType = roomType;
-		this.number = number;
-		this.hasChild=hasChild;
-		this.people=people;
+		this.user_id=new SimpleStringProperty(user_id);
+		this.hotel_id=new SimpleStringProperty(hotel_id);
+		this.startTime=new SimpleStringProperty(startTime);
+		this.predictCheckInTime = new SimpleStringProperty(predictCheckInTime);
+		this.predictCheckOutTime = new SimpleStringProperty(predictCheckOutTime);
+		this.roomType = new SimpleStringProperty(roomType);
+		this.number = new SimpleIntegerProperty(number);
+		this.hasChild=new SimpleBooleanProperty(hasChild);
+		this.people=new SimpleIntegerProperty(people);
 		this.listType = listType;
 	
 		
@@ -71,101 +78,114 @@ public class OrderVO {
 
 	public OrderVO(String user_id,String order_id,String hotel_id,String startTime,String endTime,String deadline,String executeTime,String predictCheckInTime,String predictCheckOutTime,String roomType, int number, int people,boolean hasChild,ListType listType, int orderPrice){
 
-		this.user_id=user_id;
-		this.order_id=order_id;
-		this.hotel_id=hotel_id;
-		this.startTime=startTime;
-		this.endTime=endTime;
-		this.deadline=deadline;
-		this.executeTime=executeTime;
-		this.predictCheckInTime = predictCheckInTime;
-		this.predictCheckOutTime = predictCheckOutTime;
-		this.roomType = roomType;
-		this.number = number;
-		this.hasChild=hasChild;
-		this.people=people;
+		this.user_id=new SimpleStringProperty(user_id);
+		this.hotel_id=new SimpleStringProperty(hotel_id);
+		this.startTime=new SimpleStringProperty(startTime);
+		this.predictCheckInTime = new SimpleStringProperty(predictCheckInTime);
+		this.predictCheckOutTime = new SimpleStringProperty(predictCheckOutTime);
+		this.roomType = new SimpleStringProperty(roomType);
+		this.number = new SimpleIntegerProperty(number);
+		this.hasChild=new SimpleBooleanProperty(hasChild);
+		this.people=new SimpleIntegerProperty(people);
 		this.listType = listType;
-		this.orderPrice = orderPrice;
+		
+		
+		
+		
+		this.order_id=new SimpleStringProperty(order_id);
+		
+		
+		this.endTime=new SimpleStringProperty(endTime);
+		this.deadline=new SimpleStringProperty(deadline);
+		this.executeTime=new SimpleStringProperty(executeTime);
+		
+		
+		
+		
+		
+		
+		
+		this.orderPrice = new SimpleIntegerProperty(orderPrice);
 
 	}
 
-	public int getOrderPrice(){
+	public SimpleIntegerProperty getOrderPrice(){
 		return orderPrice;
 	}
 	
-	public String getRoomType() {
+	public SimpleStringProperty getRoomType() {
 
 		return roomType;
 
 	}
 
-	public int getNumber() {
+	public SimpleIntegerProperty getNumber() {
 
 		return number;
 
 	}
 
-	public String getPredictCheckInTime() {
+	public SimpleStringProperty getPredictCheckInTime() {
 
 		return predictCheckInTime;
 
 	}
 
-	public String getPredictCheckOutTime() {
+	public SimpleStringProperty getPredictCheckOutTime() {
 
 		return predictCheckOutTime;
 
 	}
 
-	public String getUser_id() {
+	public SimpleStringProperty getUser_id() {
 
 		return user_id;
 
 	}
 
-	public String getHotel_id() {
+	public SimpleStringProperty getHotel_id() {
 
 		return hotel_id;
 
 	}
 
-	public String getOrder_id() {
+	public SimpleStringProperty getOrder_id() {
 
 		return order_id;
 
 	}
 	
-	public String getStartTime() {
+	public SimpleStringProperty getStartTime() {
 
 		return startTime;
 
 	}
 
-	public String getEndTime() {
+	public SimpleStringProperty getEndTime() {
 
 		return endTime;
 
 	}
 
-	public String getDeadline() {
+	public SimpleStringProperty getDeadline() {
 
 		return deadline;
 
 	}
 
-	public String getExecuteTime() {
+	public SimpleStringProperty getExecuteTime() {
 
 		return executeTime;
 
 	}
 
-	public int getPeople() {
+	public SimpleIntegerProperty getPeople() {
 
 		return people;
 
 	}
 
-	public boolean isHasChild() {
+	public SimpleBooleanProperty isHasChild() {
 
 		return hasChild;
 

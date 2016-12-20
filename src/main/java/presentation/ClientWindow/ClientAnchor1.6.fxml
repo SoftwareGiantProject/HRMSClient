@@ -8,25 +8,28 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.ClientWindow.ClientAnchor1_6Controller">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8fafc" height="339.0" layoutX="7.0" layoutY="149.0" stroke="BLACK" strokeType="INSIDE" width="683.0" />
-      <ScrollPane layoutX="19.0" layoutY="156.0" prefHeight="316.0" prefWidth="666.0">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="467.0" prefWidth="628.0" />
-        </content>
-      </ScrollPane>
-      <TextField layoutX="14.0" layoutY="10.0" prefHeight="34.0" prefWidth="683.0" />
-      <Button layoutX="637.0" layoutY="10.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="53.0" text="搜索" />
-      <Label layoutX="26.0" layoutY="54.0" text="星级" />
-      <Label layoutX="166.0" layoutY="54.0" text="城市" />
-      <Label layoutX="322.0" layoutY="54.0" text="商圈" />
-      <Label layoutX="457.0" layoutY="54.0" text="价格" />
-      <Label layoutX="571.0" layoutY="54.0" text="房间类型" />
-      <ComboBox layoutX="19.0" layoutY="94.0" prefHeight="20.0" prefWidth="53.0" />
-      <ComboBox layoutX="155.0" layoutY="94.0" prefHeight="20.0" prefWidth="53.0" />
-      <ComboBox layoutX="311.0" layoutY="94.0" prefHeight="20.0" prefWidth="53.0" />
-      <ComboBox layoutX="446.0" layoutY="94.0" prefHeight="20.0" prefWidth="53.0" />
-      <ComboBox layoutX="575.0" layoutY="94.0" prefHeight="20.0" prefWidth="53.0" />
+      <TextField fx:id="searchField" layoutX="14.0" layoutY="10.0" prefHeight="34.0" prefWidth="683.0" />
+      <Button fx:id="searchUp" layoutX="647.0" layoutY="10.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="53.0" text="搜索" />
+      <Label layoutX="31.0" layoutY="54.0" text="星级" />
+      <Label layoutX="140.0" layoutY="54.0" text="城市" />
+      <Label layoutX="260.0" layoutY="54.0" text="商圈" />
+      <Label layoutX="356.0" layoutY="54.0" text="价格" />
+      <Label layoutX="458.0" layoutY="54.0" text="房间类型" />
+      <ComboBox fx:id="star" layoutX="19.0" layoutY="94.0" prefHeight="20.0" prefWidth="53.0" />
+      <ComboBox fx:id="city" layoutX="129.0" layoutY="94.0" prefHeight="20.0" prefWidth="53.0" />
+      <ComboBox fx:id="businessCircle" layoutX="249.0" layoutY="94.0" prefHeight="20.0" prefWidth="53.0" />
+      <ComboBox fx:id="price" layoutX="350.0" layoutY="94.0" prefHeight="20.0" prefWidth="53.0" />
+      <ComboBox fx:id="roomType" layoutX="462.0" layoutY="94.0" prefHeight="20.0" prefWidth="53.0" />
+      <ComboBox fx:id="sequece" layoutX="622.0" layoutY="129.0" prefHeight="20.0" prefWidth="30.0" />
+      <TableView fx:id="List" editable="true" layoutX="5.0" layoutY="150.0" prefHeight="339.0" prefWidth="683.0">
+        <columns>
+          <TableColumn prefWidth="682.0" text="C1" visible="false" />
+        </columns>
+      </TableView>
+      <Button fx:id="searchDown" layoutX="562.0" layoutY="74.0" mnemonicParsing="false" text="搜索" />
+      <Label fx:id="test" layoutX="290.0" layoutY="17.0" text="未连接" />
    </children>
 </AnchorPane>

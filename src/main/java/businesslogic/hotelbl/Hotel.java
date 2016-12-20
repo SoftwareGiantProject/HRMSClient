@@ -31,11 +31,11 @@ public class Hotel {
 	 * @return
 	 */
 	public String getHotelNameById(String hotel_id){
-		String hotel_name = "";
+		String hotel_name = " ";
 		ArrayList<HotelVO> list = viewAllHotel();
 		for(HotelVO lis : list){
-			if(lis.getHotelId().equals(hotel_id)){
-				return lis.getHotelName();
+			if(lis.getHotelId().get().equals(hotel_id)){
+				hotel_name = lis.getHotelName().get();
 			}
 		}
 		
@@ -79,13 +79,13 @@ public class Hotel {
 		ArrayList<RoomVO> contain = new ArrayList<>(); 
 		
 		for(HotelVO lis : list){
-			temp = roomController.getAllRoomByHotel(lis.getHotelId());
+			temp = roomController.getAllRoomByHotel(lis.getHotelId().get());
 			contain.add(getCheapestPrice(temp));  //获得一个酒店房间价格最便宜的房间po
 			}
 		
 		int price[] = new int [contain.size()];
 			for(int i = 0; i < contain.size(); i++){
-				price[i] = contain.get(i).getRoomPrice();
+				price[i] = contain.get(i).getRoomPrice().get();
 			}
 			
 			int rank[] = getRank_int(price);
@@ -113,7 +113,7 @@ public class Hotel {
 		double level[] = new double[list.size()];
 		
 		for(int i = 0; i < list.size(); i++){
-			level[i] = list.get(i).getHotel_score();
+			level[i] = list.get(i).getHotel_score().get();
 		}
 		
 		int rank[] = getRank_double(level);
@@ -139,7 +139,7 @@ public class Hotel {
 		int star[] = new int[list.size()];
 		
 		for(int i = 0; i < list.size(); i++){
-			star[i] = list.get(i).getHotel_level();
+			star[i] = list.get(i).getHotel_level().get();
 		}
 		int rank[] = getRank_int(star);
 		for(int i = 0; i < list.size(); i++){
@@ -203,11 +203,11 @@ public class Hotel {
 			return null;
 		}
 		int location = 0;
-		int judge = room.get(0).getRoomPrice();
+		int judge = room.get(0).getRoomPrice().get();
 		for(int i = 1; i < room.size(); i++){
-			if(room.get(i).getRoomPrice() < judge){
+			if(room.get(i).getRoomPrice().get() < judge){
 				location = i;
-				judge = room.get(i).getRoomPrice();
+				judge = room.get(i).getRoomPrice().get();
 			}
 		}
 		return room.get(location);
@@ -359,7 +359,7 @@ public class Hotel {
 		ArrayList<HotelVO> result = new ArrayList<>();
 		for(int i = 0; i < a.size(); i++){
 			for(int j = 0; j < b.size(); j++){
-				if(a.get(i).getHotelId().equals(b.get(j).getHotelId())){
+				if(a.get(i).getHotelId().get().equals(b.get(j).getHotelId().get())){
 					result.add(a.get(i));
 				}
 			}
@@ -378,7 +378,7 @@ public class Hotel {
 		ArrayList<HotelVO> result = new ArrayList<>();
 		
 		for(int i = 0; i < total.size(); i++){
-			String temp[] = total.get(i).getHotelRoom().split("，");
+			String temp[] = total.get(i).getHotelRoom().get().split("，");
 			for(int j = 0; j < temp.length; j++){
 				if(room.equals(temp[j])){
 					result.add(total.get(i));
@@ -400,7 +400,7 @@ public class Hotel {
 		ArrayList<HotelVO> result = new ArrayList<>();
 		
 		for(int i = 0; i < total.size(); i++){
-			if(star == total.get(i).getHotel_level()){
+			if(star == total.get(i).getHotel_level().get()){
 				result.add(total.get(i));
 			}
 		}
@@ -419,7 +419,7 @@ public class Hotel {
 		ArrayList<HotelVO> result = new ArrayList<>();
 		double score = 0;
 		for(int i = 0; i < total.size(); i++){
-			score = total.get(i).getHotel_score();
+			score = total.get(i).getHotel_score().get();
 			if(score >= lowscore && score <= highscore){
 				result.add(total.get(i));
 			}
@@ -452,12 +452,12 @@ public class Hotel {
 
 		for(int i = 0; i < total.size(); i++){
 			if(room.equals(null)){
-				temp = roomController.getAllRoomByHotel(total.get(i).getHotelId());
+				temp = roomController.getAllRoomByHotel(total.get(i).getHotelId().get());
 			}else{
-				temp = roomController.findRooms(total.get(i).getHotelId(), room);
+				temp = roomController.findRooms(total.get(i).getHotelId().get(), room);
 			}
 			for(int j = 0; j < temp.size(); j++){
-				if(temp.get(j).getRoomPrice() >= lowprice && temp.get(j).getRoomPrice() <= highprice){
+				if(temp.get(j).getRoomPrice().get() >= lowprice && temp.get(j).getRoomPrice().get() <= highprice){
 					result.add(total.get(i));
 					continue;
 				}
@@ -590,7 +590,7 @@ public class Hotel {
 	}
 	
 	public HotelPO VoToPo(HotelVO vo){
-		HotelPO result = new HotelPO(vo.getHotelId(), vo.getHotelName(), vo.getHotelAddress(), vo.getHotelArea(), vo.getHotel_level(), vo.getHotel_score(), vo.getHotelIntro(), vo.getHotelServe(), vo.getHotelRoom(), vo.getCity());
+		HotelPO result = new HotelPO(vo.getHotelId().get(), vo.getHotelName().get(), vo.getHotelAddress().get(), vo.getHotelArea().get(), vo.getHotel_level().get(), vo.getHotel_score().get(), vo.getHotelIntro().get(), vo.getHotelServe().get(), vo.getHotelRoom().get(), vo.getCity().get());
 		return result;
 	}
 	

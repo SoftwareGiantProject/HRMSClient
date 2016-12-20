@@ -109,7 +109,7 @@ public class Credit {
 		}
 		
 		CreditPO lastcreditpo = historyPo.get(historyPo.size() - 1);
-		int lastcredit = lastcreditpo.getCredit() + recharge*100;           //澧炲姞鍏呭�奸搴�*100鐨勪俊鐢ㄥ��
+		int lastcredit = lastcreditpo.getCredit() + recharge*100;           //
 		int lastchange = recharge*100;
 		Date now = new Date();
 		SimpleDateFormat matter1=new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");

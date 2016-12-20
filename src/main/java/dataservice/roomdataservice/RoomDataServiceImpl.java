@@ -77,5 +77,10 @@ public class RoomDataServiceImpl implements RoomDataService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public ArrayList<RoomConditionDatePO> getRoomConditionPOByHotelId(String hotel_id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

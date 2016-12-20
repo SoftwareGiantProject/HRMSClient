@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0"
+	prefWidth="200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="presentation.WorkerWindow.HotelInfoMenuController">
+	<children>
+		<Button fx:id="addavailableroom" layoutX="63.0" layoutY="160.0"
+			mnemonicParsing="false" text="1" />
+		<Button fx:id="executeorders" layoutX="63.0" layoutY="207.0"
+			mnemonicParsing="false" text="2" />
+		<Button fx:id="draftstrategies" layoutX="63.0" layoutY="259.0"
+			mnemonicParsing="false" text="3" />
+	</children>
+</AnchorPane>

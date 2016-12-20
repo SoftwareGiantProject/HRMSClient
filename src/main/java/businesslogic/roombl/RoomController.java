@@ -80,4 +80,12 @@ public class RoomController implements RoomBLService{
 		return room.getRoomConditionByOrder(order_id);
 	}
 
+
+
+	@Override
+	public ArrayList<RoomConditionDateVO> getRoomConditionByHotel(String hotel_id) {
+		// TODO Auto-generated method stub
+		return room.getRoomConditionByHotel(hotel_id);
+	}
+
 }

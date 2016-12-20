@@ -161,7 +161,7 @@ public class Promotion {
 	}
 	
 	public PromotionPO VOTOPO(PromotionVO VO){
-		PromotionPO result = new PromotionPO(VO.getPromotionName(), VO.getPromoitonObject(), VO.getCount(), VO.getTime(),VO.getSeller());
+		PromotionPO result = new PromotionPO(VO.getPromotionName().get(), VO.getPromoitonObject().get(), VO.getCount().get(), VO.getTime().get(),VO.getSeller().get());
 		return result;
 	}
 	

@@ -20,6 +20,28 @@ import vo.RoomVO;
 public class Room {
 	
 	/**
+	 * 返回该酒店的所有房间状态
+	 * @param hotel_id
+	 * @return
+	 */
+	public ArrayList<RoomConditionDateVO> getRoomConditionByHotel(String hotel_id){
+		ArrayList<RoomConditionDatePO> list = new ArrayList<>();
+		ArrayList<RoomConditionDateVO> result = new ArrayList<>();
+		
+		try {
+			list = DatafactoryImpl.getInstance().getRoomData().getRoomConditionPOByHotelId(hotel_id);
+			for(RoomConditionDatePO lis : list){
+				result.add(potovo(lis));
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
+		
+		return result;
+	}
+	
+	/**
 	 * 返回该订单的所有
 	 * @param order_idRoomConditionDateVO
 	 * @return
@@ -97,8 +119,8 @@ public class Room {
 		
 		int Max_day = 7;
 		ArrayList<RoomPO> list1 = new ArrayList<>();
-		String room_number = vo.getRoomNumber();
-		String hotelId = vo.getHotel_id();
+		String room_number = vo.getRoomNumber().get();
+		String hotelId = vo.getHotel_id().get();
 		//房间编号已存在
 		try {
 			list1  = DatafactoryImpl.getInstance().getRoomData().getAllRoom(hotelId);
@@ -111,8 +133,8 @@ public class Room {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String room_type = vo.getRoomType();
-		int room_price = vo.getRoomPrice();
+		String room_type = vo.getRoomType().get();
+		int room_price = vo.getRoomPrice().get();
 		RoomCondition room_condition = RoomCondition.UNRESERVED;
 		ResultMessage result1 = ResultMessage.FAIL;
  		RoomPO po = new RoomPO(room_type, room_price, room_number, hotelId, room_condition);
@@ -471,7 +493,7 @@ public class Room {
 	} 
 	
 	private RoomConditionDatePO VOTOPO(RoomConditionDateVO vo){
-		RoomConditionDatePO result = new RoomConditionDatePO(vo.getHotelId(), vo.getRoomDate(), vo.getRoomNumber(), vo.getRoomCondition(), vo.getOrder_id());
+		RoomConditionDatePO result = new RoomConditionDatePO(vo.getHotelId().get(), vo.getRoomDate().get(), vo.getRoomNumber().get(), vo.getRoomCondition(), vo.getOrder_id().get());
 		return result;
 	}
 	

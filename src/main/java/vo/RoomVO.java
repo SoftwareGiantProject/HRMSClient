@@ -1,30 +1,32 @@
 package vo;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import util.RoomCondition;
 
 public class RoomVO {
 
 	// 房间类型
-	String Room_type;
+	private SimpleStringProperty Room_type=new SimpleStringProperty();
 
 	// 房间价格
-	int Room_price;
+	private SimpleIntegerProperty Room_price=new SimpleIntegerProperty();
 
 	// 房间编号
-	String Room_number;
+	private SimpleStringProperty Room_number=new SimpleStringProperty();
 
 	// 房间状态
 	RoomCondition Room_condition;
 
 	// 酒店编号
-	String Hotel_id;
+	private SimpleStringProperty Hotel_id=new SimpleStringProperty();
 
 	public RoomVO(String rt, int rp, String rnb, String ho, RoomCondition rc) {
 
-		Room_type = rt;
-		Room_price = rp;
-		Room_number = rnb;
-		Hotel_id = ho;
+		Room_type = new SimpleStringProperty(rt);
+		Room_price = new SimpleIntegerProperty(rp);
+		Room_number = new SimpleStringProperty(rnb);
+		Hotel_id =new SimpleStringProperty( ho);
 		Room_condition = rc;
 	}
 
@@ -32,15 +34,15 @@ public class RoomVO {
 
 	}
 
-	public String getRoomType() {
+	public SimpleStringProperty getRoomType() {
 		return Room_type;
 	}
 
-	public int getRoomPrice() {
+	public SimpleIntegerProperty getRoomPrice() {
 		return Room_price;
 	}
 
-	public String getRoomNumber() {
+	public SimpleStringProperty getRoomNumber() {
 		return Room_number;
 	}
 
@@ -48,7 +50,7 @@ public class RoomVO {
 		return Room_condition;
 	}
 
-	public String getHotel_id() {
+	public SimpleStringProperty getHotel_id() {
 		return Hotel_id;
 	}
 

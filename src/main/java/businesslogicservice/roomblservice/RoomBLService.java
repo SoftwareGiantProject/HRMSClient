@@ -24,4 +24,6 @@ public interface RoomBLService {
 	public void update();
 	
 	public void UPDATE();
+
+	public ArrayList<RoomConditionDateVO> getRoomConditionByHotel(String hotel_id);
 }
