@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import businesslogicservice.userblservice.Login;
 import businesslogicservice.userblservice.NetworkerBLService;
+import dataservice.datafactory.DatafactoryImpl;
 import util.ResultMessage;
 import vo.ClientVO;
 import vo.HotelVO;
@@ -16,7 +17,8 @@ public class NetworkerController implements NetworkerBLService,Login{
 
 	private Networker networker;
 	
-	public NetworkerController() {
+	public NetworkerController() throws RemoteException {
+		networker = new Networker();
 	}
 
 	@Override

@@ -3,12 +3,13 @@ package businesslogic.hotelbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.userbl.networker.Hoteladd;
 import businesslogicservice.hotelblservice.HotelBLService;
 import util.ResultMessage;
 import vo.HotelEvaluationVO;
 import vo.HotelVO;
 
-public class HotelController implements HotelBLService {
+public class HotelController implements HotelBLService,Hoteladd {
 
 	Hotel hotel;
 	

@@ -99,12 +99,13 @@ public class Order {
 		
  		for(int i = 0; i < a.size(); i++){
  			for(int j = 0; j < b.size(); j++){
- 				if(a.get(i).equals(b.get(j))){
+// 				System.out.println(a.size());
+// 				System.out.println(b.size());
+ 				if(a.get(i).getOrder_id().get().equals(b.get(j).getOrder_id().get())){
  					result.add(a.get(i));
  				}
  			}
  		}
- 		
  		return result;
 	}
 

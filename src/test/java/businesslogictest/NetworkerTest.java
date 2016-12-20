@@ -53,6 +53,7 @@ public class NetworkerTest {
 	}
 	*/
 
+	/**
 	@Test
 	public void testModifyNetworker(){
 		NetworkerVO vo = new NetworkerVO();
@@ -68,6 +69,7 @@ public class NetworkerTest {
 			e.printStackTrace();
 		}
 	}
+	*/
 	
 	/**
 	@Test 登录测试成功
