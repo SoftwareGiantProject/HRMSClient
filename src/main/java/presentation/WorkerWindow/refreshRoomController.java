@@ -44,33 +44,21 @@ public class refreshRoomController {
 		return this;
 	}
 	
+	@SuppressWarnings("static-access")
 	public void initialize(){
 		RoomController roomController=new RoomController();
 		try{
-			allroom=roomController.getAllRoomCondition();
+			allroom=roomController.getRoomConditionByHotel(runWorker.getWorkerVO().getHotel_id());
+			ObservableList<RoomConditionDateVO> roomListData
+            = FXCollections.observableArrayList();
+		    roomListData.addAll(allroom);
+		    room.setItems(roomListData);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 		
-	}
-	
-	public SimpleStringProperty toSimpleStringProperty(RoomCondition condition){
-		if(condition==RoomCondition.CHECKIN){
-			return new SimpleStringProperty("已入住");
-		}
-		else if(condition==RoomCondition.RESERVED){
-			return new SimpleStringProperty("已预定");
-		}
-		else{
-			return new SimpleStringProperty("未预订");
-		}
-	}
-	
-	public void setrooms(){
-		ObservableList<RoomConditionDateVO> roomListData
-        = FXCollections.observableArrayList();
-		roomListData.addAll(allroom);
-		room.setItems(roomListData);
+		
+		
 		roomid.setCellValueFactory(cellData->cellData.getValue().getRoomNumber());
 		daTableColumn.setCellValueFactory(cellData->cellData.getValue().getRoomDate());
 		roomstate.setCellValueFactory(cellData->toSimpleStringProperty(cellData.getValue().getRoomCondition()));
@@ -91,6 +79,28 @@ public class refreshRoomController {
                 return bc;
             }
         });
+		
+	}
+	
+	public SimpleStringProperty toSimpleStringProperty(RoomCondition condition){
+		if(condition==RoomCondition.CHECKIN){
+			return new SimpleStringProperty("已入住");
+		}
+		else if(condition==RoomCondition.RESERVED){
+			return new SimpleStringProperty("已预定");
+		}
+		else{
+			return new SimpleStringProperty("未预订");
+		}
+	}
+	
+	
+	
+	public void setRunworker(RunWorker runWorker){
+		this.runWorker=runWorker;
+		initialize();
+		System.out.println("hhhhh");
+//		setrooms();
 	}
 	
 }

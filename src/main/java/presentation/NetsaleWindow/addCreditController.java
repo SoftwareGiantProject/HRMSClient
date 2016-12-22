@@ -8,6 +8,7 @@ package presentation.NetsaleWindow;
 import java.rmi.RemoteException;
 
 import businesslogic.creditbl.CreditController;
+import businesslogic.userbl.client.ClientController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -55,10 +56,20 @@ public class addCreditController {
 	public void searchClicked() throws RemoteException{
 		if(tf.getText()!=null){
 			//需要一个判断该账号是否存在的方法
-			CreditController creditController=new CreditController();
-			creditVO=creditController.getCredit(tf.getText());
-			id.setText(creditVO.getUserId());
-			credit.setText(String.valueOf(creditVO.getCredit()));
+			ClientController clientController=new ClientController();
+			ResultMessage res=clientController.checkClientExist(tf.getText());
+			if(res==ResultMessage.EXIST){
+				CreditController creditController=new CreditController();
+			    creditVO=creditController.getCredit(tf.getText());
+			    id.setText(creditVO.getUserId());
+			    credit.setText(String.valueOf(creditVO.getCredit()));
+			}
+			else{
+				RunWarning rWarning=new RunWarning();
+				rWarning.SetWarning("该用户不存在！");
+				rWarning.start(new Stage());
+			}
+			
 		}
 		else{
 			RunWarning rWarning=new RunWarning();

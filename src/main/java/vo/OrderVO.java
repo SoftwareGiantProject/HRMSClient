@@ -113,6 +113,62 @@ public class OrderVO {
 		return orderPrice;
 	}
 	
+	public void setUser_id(SimpleStringProperty user_id) {
+		this.user_id = user_id;
+	}
+
+	public void setOrder_id(SimpleStringProperty order_id) {
+		this.order_id = order_id;
+	}
+
+	public void setHotel_id(SimpleStringProperty hotel_id) {
+		this.hotel_id = hotel_id;
+	}
+
+	public void setStartTime(SimpleStringProperty startTime) {
+		this.startTime = startTime;
+	}
+
+	public void setDeadline(SimpleStringProperty deadline) {
+		this.deadline = deadline;
+	}
+
+	public void setExecuteTime(SimpleStringProperty executeTime) {
+		this.executeTime = executeTime;
+	}
+
+	public void setPredictCheckInTime(SimpleStringProperty predictCheckInTime) {
+		this.predictCheckInTime = predictCheckInTime;
+	}
+
+	public void setPredictCheckOutTime(SimpleStringProperty predictCheckOutTime) {
+		this.predictCheckOutTime = predictCheckOutTime;
+	}
+
+	public void setRoomType(SimpleStringProperty roomType) {
+		this.roomType = roomType;
+	}
+
+	public void setNumber(SimpleIntegerProperty number) {
+		this.number = number;
+	}
+
+	public void setPeople(SimpleIntegerProperty people) {
+		this.people = people;
+	}
+
+	public void setHasChild(SimpleBooleanProperty hasChild) {
+		this.hasChild = hasChild;
+	}
+
+	public void setListType(ListType listType) {
+		this.listType = listType;
+	}
+
+	public void setOrderPrice(SimpleIntegerProperty orderPrice) {
+		this.orderPrice = orderPrice;
+	}
+
 	public SimpleStringProperty getRoomType() {
 
 		return roomType;

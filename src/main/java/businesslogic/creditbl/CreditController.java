@@ -37,4 +37,11 @@ public class CreditController implements CreditBLService{
 		return credit.addCredit(user_id,change);
 	}
 
+
+	@Override
+	public ArrayList<CreditVO> getAllCredit(String user_id) {
+		// TODO Auto-generated method stub
+		return credit.getAllCredit(user_id);
+	}
+
 }

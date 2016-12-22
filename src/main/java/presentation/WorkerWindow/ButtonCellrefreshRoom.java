@@ -9,14 +9,17 @@ import vo.RoomConditionDateVO;
 
 public class ButtonCellrefreshRoom extends TableCell<RoomConditionDateVO, Boolean>{
 	refreshRoomController viewcontrol;
+	static RoomConditionDateVO roomConditionDateVO;
 	public void SetViewcontrol(refreshRoomController controller){
 		this.viewcontrol=controller;
 		
 	}
 	
+	@SuppressWarnings("static-access")
 	public RoomConditionDateVO getvo(){
-		RoomConditionDateVO vo1 = getTableView().getItems().get( getIndex() );
-		return vo1;
+//		RoomConditionDateVO vo1 = getTableView().getItems().get( getIndex() );
+		return this.roomConditionDateVO;
+//		return vo1;
 	}
 	
 	final Button cellButton = new Button("修改");
@@ -26,6 +29,8 @@ public class ButtonCellrefreshRoom extends TableCell<RoomConditionDateVO, Boolea
 		cellButton.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
             public void handle(ActionEvent t) {
+				roomConditionDateVO= getTableView().getItems().get( getIndex() );
+//				System.out.println(roomConditionDateVO.getHotelId().get()+"**************bbbbbbbbbb");
 				runModifyRoomCondition run=new runModifyRoomCondition();
 				try {
 					run.start(new Stage());

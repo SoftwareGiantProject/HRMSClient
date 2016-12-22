@@ -1,7 +1,10 @@
 package presentation.NetsaleWindow;
 
 import java.rmi.RemoteException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import businesslogic.orderbl.OrderController;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -17,7 +20,6 @@ import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.WarningWindow.RunWarning;
-import util.ListType;
 import util.ResultMessage;
 import vo.OrderVO;
 
@@ -104,9 +106,12 @@ public class unCommonOrderController {
 		ButtonCellScanOrder3 bcs=new ButtonCellScanOrder3();
 		OrderVO vo2=bcs.getOrderVO();
 		try {
+			Date date=new Date();
+			DateFormat format=new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+			String time=format.format(date);
 			OrderController oController2=new OrderController();
-			vo2=new OrderVO(vo2.getUser_id().get(), vo2.getHotel_id().get(), vo2.getStartTime().get(), vo2.getPredictCheckInTime().get(), vo2.getPredictCheckOutTime().get(), vo2.getRoomType().get(), vo2.getNumber().get(), vo2.getPeople().get(), vo2.isHasChild().get(), ListType.UNDOLIST);
-			ResultMessage resultMessage=oController2.modifyOrder(vo2);
+//			vo2=new OrderVO(vo2.getUser_id().get(), vo2.getHotel_id().get(), vo2.getStartTime().get(), vo2.getPredictCheckInTime().get(), vo2.getPredictCheckOutTime().get(), vo2.getRoomType().get(), vo2.getNumber().get(), vo2.getPeople().get(), vo2.isHasChild().get(), ListType.UNDOLIST);
+			ResultMessage resultMessage=oController2.undoOrder(vo2.getUser_id().get(), vo2.getOrder_id().get(),time );
 			if(resultMessage==ResultMessage.SUCCESS){
 				RunWarning runWarning=new RunWarning();
 				runWarning.SetWarning("撤销成功！");

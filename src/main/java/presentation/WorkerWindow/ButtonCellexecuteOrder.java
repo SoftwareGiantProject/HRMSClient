@@ -25,11 +25,11 @@ public class ButtonCellexecuteOrder extends TableCell<OrderVO,Boolean>{
 	public ButtonCellexecuteOrder() {
 		// TODO Auto-generated constructor stub(){
 		cellButton.setOnAction(new EventHandler<ActionEvent>(){
-			@SuppressWarnings("unchecked")
 			@Override
             public void handle(ActionEvent t) {
 				
 				OrderVO ordervo = getTableView().getItems().get( getIndex() );
+				viewcontrol.clientid.setText(ordervo.getUser_id().get());
 				viewcontrol.orderid.setText(ordervo.getOrder_id().get());
 				viewcontrol.begintime.setText(ordervo.getStartTime().get());
 				viewcontrol.latesettime.setText(ordervo.getDeadline().get());
@@ -43,16 +43,16 @@ public class ButtonCellexecuteOrder extends TableCell<OrderVO,Boolean>{
 					viewcontrol.hasChild.setText("有");
 				}
 				if(ordervo.getListType()==ListType.CURRENTLIST){
-					viewcontrol.state.setValue("未执行");
+					viewcontrol.state.setText("未执行");
 				}
 				else if(ordervo.getListType()==ListType.HISTORYLIST){
-					viewcontrol.state.setValue("已执行");
+					viewcontrol.state.setText("已执行");
 				}
 				else if(ordervo.getListType()==ListType.ABNORMALLIST){
-					viewcontrol.state.setValue("异常");
+					viewcontrol.state.setText("异常");
 				}
 				else{
-					viewcontrol.state.setValue("撤销订单");
+					viewcontrol.state.setText("撤销订单");
 				}
 				}
             });

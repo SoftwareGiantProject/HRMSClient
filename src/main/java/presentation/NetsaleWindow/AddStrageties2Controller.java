@@ -1,4 +1,4 @@
-package presentation.WorkerWindow;
+package presentation.NetsaleWindow;
 
 import businesslogic.promotionbl.PromotionController;
 import javafx.fxml.FXML;
@@ -10,10 +10,10 @@ import presentation.WarningWindow.RunWarning;
 import util.ResultMessage;
 import vo.PromotionVO;
 
-public class AddStragetiesController {
-	RunAddStrategies runAddStrategies;
+public class AddStrageties2Controller {
+	RunAddStrategies2 runAddStrategies;
 	PromotionVO promotionVO;
-	RunWorker runworker;
+	RunNetSale runNetSale;
 	
 	@FXML
 	TextField straname;
@@ -31,7 +31,7 @@ public class AddStragetiesController {
 	
 	
 	
-	public AddStragetiesController(){
+	public AddStrageties2Controller(){
 		
 	}
 	
@@ -48,11 +48,11 @@ public class AddStragetiesController {
 		if(straname.getText()!=null&&time.getText()!=null){
 			PromotionVO promotion=new PromotionVO();
 			if(object.getValue()=="所有人"){
-				promotion=new PromotionVO(straname.getText(),"ALL",Double.parseDouble( (String) discount.getValue()), time.getText(),runworker.getWorkerVO().getHotel_id() );
+				promotion=new PromotionVO(straname.getText(),"ALL",Double.parseDouble( (String) discount.getValue()), time.getText(),"web" );
 
 			}
 			else{
-				promotion=new PromotionVO(straname.getText(), "MEMBER",Double.parseDouble( (String) discount.getValue()), time.getText(),runworker.getWorkerVO().getHotel_id() );
+				promotion=new PromotionVO(straname.getText(), "MEMBER",Double.parseDouble( (String) discount.getValue()), time.getText(),"web");
 
 			}
 //			promotion=new PromotionVO(straname.getText(), String.valueOf(object.getValue()),Double.parseDouble( (String) discount.getValue()), time.getText(),runworker.getWorkerVO().getHotel_id() );
@@ -111,13 +111,13 @@ public class AddStragetiesController {
 //		}
 //	}
 	
-	public void setRunAddStrategies(RunAddStrategies run1){
+	public void setRunAddStrategies2(RunAddStrategies2 run1){
 		this.runAddStrategies=run1;
 		initialize();
 	}
 	
-	public void setRunworker(RunWorker worker){
-		this.runworker=worker;
+	public void setRunworker(RunNetSale sale){
+		this.runNetSale=sale;
 	}
 
 }

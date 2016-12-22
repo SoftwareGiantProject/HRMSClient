@@ -115,6 +115,13 @@ public class ScanOrdersController {
 	}
 	
 	public  void executedClicked(){
+		try{
+			OrderController controller=new OrderController();
+			historyList=controller.getExecutedOrders(runWorker.getWorkerVO().getHotel_id());
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
 		ObservableList<OrderVO> currentListData
         = FXCollections.observableArrayList();
 		currentListData.addAll(historyList);

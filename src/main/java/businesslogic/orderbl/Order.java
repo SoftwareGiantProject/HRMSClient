@@ -51,6 +51,31 @@ public class Order {
 	    roomController = (RoomController) ControllerFactory.getRoomBLServiceInstance();
 	}
 	
+	
+
+	/**
+	 * 撤销异常订单
+	 * @param order_id
+	 * @param All  若恢复全部信用值则为True，一半信用值则为false
+	 * @param time
+	 * @return
+	 * @throws RemoteException
+	 */
+	public ResultMessage cancelAbnormalOrder(String order_id, Boolean All, String time) throws RemoteException{
+		OrderVO vo = getOrder(order_id);
+		ResultMessage resultMessage = ResultMessage.FAIL;
+		vo.setExecuteTime(new SimpleStringProperty(time));
+		vo.setListType(ListType.UNDOLIST);
+		resultMessage = modifyOrder(vo);
+
+		if(All){
+			creditController.addCredit(vo.getUser_id().get(), vo.getOrderPrice().get());
+		}else {
+			creditController.addCredit(vo.getUser_id().get(), vo.getOrderPrice().get()/2);
+		}
+		return resultMessage;
+	}
+
 	/**
 	 * 修改订单信息
 	 * @param vo
@@ -390,6 +415,14 @@ public class Order {
 		String executeTime = "";
 		String hotel_id = vo.getHotel_id().get();
 		String room_type = vo.getRoomType().get();
+		String user_id = vo.getUser_id().get();
+		
+		//根据信用值判断能否下订单
+		ClientPO client = DatafactoryImpl.getInstance().getClientData().findClient(user_id);
+		int credit = client.getCredit();
+		if(credit < 0){
+			return ResultMessage.LOWCREDIT;
+		}
 		
 		int order_price = 0;
 		int room_price = 0;
@@ -787,7 +820,7 @@ public class Order {
 				if(compareTime(deadline, now)){
 					order.setListType(ListType.ABNORMALLIST);
 					DatafactoryImpl.getInstance().getOrderData().modifyOrder(order);
-					creditController.deduct(order.getUser_id(), order.getOrderPrice());
+					creditController.deduct(order.getUser_id(), order.getOrderPrice()*2);
 				}
 			}
 		} catch (RemoteException e) {

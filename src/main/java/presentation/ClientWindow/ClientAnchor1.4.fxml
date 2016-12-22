@@ -28,7 +28,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="酒店星级" />
+            <Label text="酒店名称" />
             <Label text="所属商圈" GridPane.rowIndex="1" />
             <Label text="入住时间" GridPane.rowIndex="2" />
             <Label text="房间类型" GridPane.rowIndex="3" />

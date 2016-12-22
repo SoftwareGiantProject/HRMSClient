@@ -32,7 +32,7 @@ public class ClientAnchor1_5Controller {
 	@FXML
 	TableColumn<OrderVO,Boolean>viewOrderColumn;
 	@FXML
-	TableColumn<HotelVO,Boolean>evaluateColumn;
+	TableColumn<OrderVO,Boolean>evaluateColumn;
 	@FXML
 	Label hotelName;
 	@FXML

@@ -17,7 +17,7 @@ public interface HotelBLService {
 	public ArrayList<String> getAllCity();
 	public ArrayList<String> getAllAreaByCity(String city);
 	public ArrayList<HotelVO> viewAllHotel();
-	public ArrayList<HotelVO> search(String area, String room, int star, int lowscore, int highscore, int lowprice, int highprice);
+	public ArrayList<HotelVO> search(String area, String room, int star, int lowscore, int highscore, int lowprice, int highprice, Boolean reserved, String client_id);
 	public ArrayList<HotelVO> searchByRoom(String area, String room);
 	public ArrayList<HotelVO> searchByStar(String area, int star);
 	public ArrayList<HotelVO> searchByScore(String area, int lowscore, int highscore);
@@ -27,4 +27,6 @@ public interface HotelBLService {
 	public ArrayList<HotelVO> viewReservedHotel(String user_id);
 	public ResultMessage modifyHotel(HotelVO vo);
 	public ResultMessage evaluateHotel(HotelEvaluationVO vo, String hotel_name);
+	public ResultMessage judgeReserved(String hotel_id,String client_id);
+	public ResultMessage judgeHasRoom(String hotel_id);
 }

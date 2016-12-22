@@ -79,7 +79,9 @@ public class NetSaleMenuController {
 	}
 	
 	public void initialize(){
-		
+		NetsaleVO vo=runNetSale.getNetsaleVO();
+		id.setText(vo.getUserId());
+		name.setText(vo.getUserName());
 	}
 	
 	public void setRunNetsale(RunNetSale rn){

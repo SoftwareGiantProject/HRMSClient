@@ -4,6 +4,9 @@ import vo.*;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
+import javax.naming.spi.DirStateFactory.Result;
+
 import util.*;
 
 public interface OrderBLService {
@@ -36,6 +39,7 @@ public interface OrderBLService {
 
 	public ResultMessage undoOrder(String client_id, String order_id, String undoTime);
 	
+	public ResultMessage cancelAbnormalOrder(String order_id, Boolean All,String time) throws RemoteException;
 	
 	public ResultMessage addOrder(OrderVO vo) throws RemoteException;
 	

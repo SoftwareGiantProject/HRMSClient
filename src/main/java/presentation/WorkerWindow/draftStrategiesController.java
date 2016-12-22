@@ -107,27 +107,31 @@ public class draftStrategiesController {
 		
 		
 		
-		discount.getItems().addAll("0.9","0.8","0.7","0.6","0.5","0.4","0.3","0.2","0.1");
-		discount.setValue("9");
+		discount.getItems().addAll("9","8","7","6","5","4","3","2","1");
+//		discount.setValue("0.9");
 		
-		people.getItems().addAll("所有人","普通会员","企业会员");
-		people.setValue("所有人");
+		people.getItems().addAll("所有人","会员");
+//		people.setValue("所有人");
 		
 	}
 	
 	@SuppressWarnings("static-access")
 	public void modifyClicked(){
-		PromotionVO vo=promotionVO;
 		try {
 			if(time.getText()!=null){
-//				vo.setPromotionObject(String.valueOf(people.getValue()));
-//				vo.setCount((double)discount.getValue());
-//				vo.setTime(time.getText());
-				vo=new PromotionVO(vo.getPromotionName().get(), String.valueOf(people.getValue()), (double)discount.getValue(), time.getText(), vo.getSeller().get());
-				PromotionController promotionController=new PromotionController();
+				PromotionVO vo2=new PromotionVO();
+				if(people.getValue()=="所有人"){
+					vo2=new PromotionVO(straName.getText(), "ALL", Double.parseDouble((String) discount.getValue()), time.getText(), runWorker.getWorkerVO().getHotel_id());
+				}
+				else{
+					vo2=new PromotionVO(straName.getText(), "MEMBER", Double.parseDouble((String) discount.getValue()), time.getText(), runWorker.getWorkerVO().getHotel_id());
+
+				}
+				
 				ResultMessage resultMessage=ResultMessage.FAIL;
 				try {
-					resultMessage=promotionController.modifyPromotion(promotionVO);
+					PromotionController promotionController=new PromotionController();
+					resultMessage=promotionController.modifyPromotion(vo2);
 					if(resultMessage==ResultMessage.SUCCESS){
 						RunWarning rw=new RunWarning();
 				        rw.SetWarning("成功修改！");
@@ -155,19 +159,20 @@ public class draftStrategiesController {
 			
 		} catch (Exception e) {
 			// TODO: handle exception
-			RunWarning rw=new RunWarning();
-			rw.SetWarning("修改失败！");
-			rw.start(new Stage());
+			e.printStackTrace();
 
 		}
 	}
 	
 	@SuppressWarnings("static-access")
 	public void deleteClicked(){
-		PromotionController pController=new PromotionController();
 		ResultMessage resultMessage=ResultMessage.FAIL;
+		
 		try {
-			resultMessage=pController.delPromotion(promotionVO);
+			PromotionVO vo3=new PromotionVO();
+			vo3=new PromotionVO(straName.getText(), "ALL", Double.parseDouble((String) discount.getValue()), time.getText(), runWorker.getWorkerVO().getHotel_id());
+		    PromotionController pController=new PromotionController();	
+			resultMessage=pController.delPromotion(vo3);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

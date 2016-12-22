@@ -67,6 +67,11 @@ public class ClientAnchor1_7Controller {
 		OrderController controller=new OrderController();
 		currentList=controller.viewReversedOrderByClient(clientvo.getUserId().get());
 		abnormalList=controller.viewAbnormalOrderByClient(clientvo.getUserId().get());
+		}catch(NullPointerException e){
+			e.printStackTrace();
+			RunWarning runWarning=new RunWarning();
+			runWarning.SetWarning("空指针");
+			runWarning.start(new Stage());
 		}catch(Exception e){
 			e.printStackTrace();
 		}

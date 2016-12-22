@@ -18,8 +18,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.WarningWindow.RunWarning;
-import presentation.WorkerWindow.RunAddStrategies;
-import presentation.WorkerWindow.RunWorker;
 import util.ResultMessage;
 import vo.PromotionVO;
 
@@ -57,7 +55,7 @@ public class strategiesManagementController {
 	Button modify;
 	
 	PromotionVO promotionVO;
-	RunWorker runWorker;
+	RunNetSale runNetSale;
 	
 	ArrayList<PromotionVO> promotionVOs;
 //	draftStrategies draftStrategies;
@@ -107,48 +105,47 @@ public class strategiesManagementController {
 		
 		
 		
-		discount.getItems().addAll("0.9","0.8","0.7","0.6","0.5","0.4","0.3","0.2","0.1");
-		discount.setValue("0.9");
+		discount.getItems().addAll("9","8","7","6","5","4","3","2","1");
+//		discount.setValue("0.9");
 		
-		people.getItems().addAll("所有人","普通会员","企业会员");
-		people.setValue("所有人");
+		people.getItems().addAll("所有人","会员");
+//		people.setValue("所有人");
 		
 	}
 	
 	@SuppressWarnings("static-access")
 	public void modifyClicked(){
-		PromotionVO vo=promotionVO;
 		try {
 			if(time.getText()!=null){
-//				vo.setPromotionObject(String.valueOf(people.getValue()));
-//				vo.setCount((double)discount.getValue());
-//				vo.setTime(time.getText());
-				ResultMessage resultMessage=ResultMessage.FAIL;
-				vo=new PromotionVO(vo.getPromotionName().get(), String.valueOf(people.getValue()), (Double)(discount.getValue()), time.getText(), vo.getSeller().get());
+				PromotionVO vo2=new PromotionVO();
+				if(people.getValue()=="所有人"){
+					vo2=new PromotionVO(straName.getText(), "ALL", Double.parseDouble((String) discount.getValue()), time.getText(), "web");
+				}
+				else{
+					vo2=new PromotionVO(straName.getText(), "MEMBER", Double.parseDouble((String) discount.getValue()), time.getText(), "web");
+
+				}
 				
+				ResultMessage resultMessage=ResultMessage.FAIL;
 				try {
 					PromotionController promotionController=new PromotionController();
-					resultMessage=promotionController.modifyPromotion(vo);
+					resultMessage=promotionController.modifyPromotion(vo2);
 					if(resultMessage==ResultMessage.SUCCESS){
 						RunWarning rw=new RunWarning();
-						rw.SetWarning("成功修改！");
-						rw.start(new Stage());
-
+				        rw.SetWarning("成功修改！");
+				        rw.start(new Stage());
 					}
 					else{
 						RunWarning rw=new RunWarning();
-						rw.SetWarning("成功失败！");
-						rw.start(new Stage());
-
+				        rw.SetWarning("修改失败！");
+				        rw.start(new Stage());
 					}
 				} catch (Exception e) {
 					// TODO: handle exception
+					e.printStackTrace();
 				}
 				
-//				promotionController.modifyPromotion(promotionVO);
-//				RunWarning rw=new RunWarning();
-//				rw.SetWarning("成功修改！");
-//				rw.start(new Stage());
+				
 
 			}
 			else{
@@ -160,9 +157,6 @@ public class strategiesManagementController {
 			
 		} catch (Exception e) {
 			// TODO: handle exception
-//			RunWarning rw=new RunWarning();
-//			rw.SetWarning("修改失败！");
-//			rw.start(new Stage());
 			e.printStackTrace();
 
 		}
@@ -170,10 +164,13 @@ public class strategiesManagementController {
 	
 	@SuppressWarnings("static-access")
 	public void deleteClicked(){
-		PromotionController pController=new PromotionController();
-		ResultMessage resultMessage=ResultMessage.FAIL;
+ResultMessage resultMessage=ResultMessage.FAIL;
+		
 		try {
-			resultMessage=pController.delPromotion(promotionVO);
+			PromotionVO vo3=new PromotionVO();
+			vo3=new PromotionVO(straName.getText(), "ALL", Double.parseDouble((String) discount.getValue()), time.getText(), "web");
+		    PromotionController pController=new PromotionController();	
+			resultMessage=pController.delPromotion(vo3);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -192,9 +189,9 @@ public class strategiesManagementController {
 	}
 	
 	public void addClicked(){
-		RunAddStrategies runAddStrategies=new RunAddStrategies();
+		RunAddStrategies2 runAddStrategies2=new RunAddStrategies2();
 		try {
-			runAddStrategies.start(new Stage());
+			runAddStrategies2.start(new Stage());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -202,8 +199,8 @@ public class strategiesManagementController {
 		
 	}
 	
-	public void setRunWorker(RunWorker worker){
-		this.runWorker=worker;
+	public void setNetsale(RunNetSale netSale){
+		this.runNetSale=netSale;
 		initialize();
 		ButtonCellDraft2 bcd=new ButtonCellDraft2();
 		this.promotionVO=bcd.getPromotionVO();

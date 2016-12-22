@@ -12,6 +12,7 @@ import po.HotelEvaluationPO;
 import po.HotelPO;
 import po.RoomPO;
 import util.ResultMessage;
+import util.RoomCondition;
 import vo.HotelEvaluationVO;
 import vo.HotelVO;
 import vo.RoomVO;
@@ -291,12 +292,16 @@ public class Hotel {
 	 * @param highprice 最高价格
 	 * @return 符合所有条件的该商圈的所有酒店
 	 */
-	public ArrayList<HotelVO> search(String area, String room, int star, int lowscore, int highscore, int lowprice, int highprice){
+	public ArrayList<HotelVO> search(String area, String room, int star, int lowscore, int highscore, int lowprice, int highprice, Boolean reserved, String client_id){
 		ArrayList<HotelVO> result = getHotelByArea(area);
 		ArrayList<HotelVO> 	temp1 = new ArrayList<>();
 		ArrayList<HotelVO> 	temp2 = new ArrayList<>();
 		ArrayList<HotelVO> 	temp3 = new ArrayList<>();
 		ArrayList<HotelVO> 	temp4 = new ArrayList<>();
+		if(reserved){
+			result = viewReservedHotel(client_id);
+		}
+
 		int judge[] = new int[4];
 		for(int i = 0; i < 4; i++){
 			judge[i] = 0;
@@ -569,6 +574,12 @@ public class Hotel {
 		int temp = 0;
 		
 		try {
+			DatafactoryImpl.getInstance().getHotelData().evaluateHotel(VoToPo1(vo));
+		} catch (RemoteException e1) {
+			e1.printStackTrace();
+		}
+		
+		try {
 			list = DatafactoryImpl.getInstance().getHotelData().getAllHotelEvaluation(name);
 			for(int i = 0; i < list.size(); i++){
 				temp += list.get(i).getLevel();
@@ -582,6 +593,46 @@ public class Hotel {
 		}
 		
 		return result;
+	}
+	
+	
+	/**
+	 * 判断一个酒店是否曾经预定过
+	 * @param vo
+	 * @param client_id
+	 * @return
+	 */
+	public ResultMessage judgeReserved(String hotel_id, String client_id) {
+		ArrayList<HotelVO> list = new ArrayList<>();
+		list = viewReservedHotel(client_id);
+		for(HotelVO temp : list){
+			if(temp.getHotelId().get() .equals(hotel_id)){
+				return ResultMessage.RESERVED;
+			}
+		}
+		return ResultMessage.UNRESERVED;
+	}
+	
+	/**
+	 * 判断一个酒店是否有空房
+	 * @param vo
+	 * @return
+	 */
+	public ResultMessage judgeHasRoom(String hotel_id) {
+		ArrayList<RoomVO> list = new ArrayList<>();
+		
+		try {
+			list = ControllerFactory.getRoomBLServiceInstance().getAllRoomByHotel(hotel_id);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		for(RoomVO vo : list){
+			if(vo.getRoomCondition().equals(RoomCondition.UNRESERVED)){
+				return ResultMessage.HASROOM;
+			}
+		}
+		return ResultMessage.NOROOM;
 	}
 	
 	public HotelVO PoToVo(HotelPO po) {
@@ -598,6 +649,7 @@ public class Hotel {
 		HotelEvaluationPO result = new HotelEvaluationPO(vo.getOrder_id(), vo.getUser_id(), vo.getDate(), vo.getData(), vo.getLevel());
 		return result;
 	}
-	
+
+
 	
 }

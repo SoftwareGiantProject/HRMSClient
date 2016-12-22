@@ -40,6 +40,13 @@ public class ClientAnchor1_2Controller {
 		ResultMessage result=cl.modifyInfo(clientvo);
 		if(result==ResultMessage.SUCCESS){
 			//弹窗 修改成功
+			
+			
+			//回到查看信息栏
+			RunClient1 rc=new RunClient1();
+			rc.SetAnchor1(1);
+			rc.start(new Stage());
+			runClient1.getPrimaryStage().close();
 			RunWarning rw=new RunWarning();
 			rw.SetWarning("信息修改成功");
 			rw.start(new Stage());

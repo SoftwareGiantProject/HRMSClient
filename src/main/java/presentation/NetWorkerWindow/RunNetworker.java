@@ -110,6 +110,7 @@ public class RunNetworker extends Application {
 	            loader1.setLocation(RunNetworker.class.getResource("NetworkerAnchor1.1.fxml"));
 	            AnchorPane NetworkerAnchor1=(AnchorPane)loader1.load();
 	            border.setCenter(NetworkerAnchor1);
+	            
 	            break;
 			case 2:
 				FXMLLoader loader2=new FXMLLoader();

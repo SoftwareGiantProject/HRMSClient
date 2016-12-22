@@ -3,7 +3,10 @@ package presentation.WorkerWindow;
 
 
 import java.rmi.RemoteException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import businesslogic.orderbl.OrderController;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -12,16 +15,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.WarningWindow.RunWarning;
-import util.ListType;
 import util.ResultMessage;
 import vo.OrderVO;
 
@@ -33,6 +33,8 @@ public class executeOrderController {
 	@FXML
 	TableColumn<OrderVO, Boolean> viewcolumn;
 	
+	@FXML
+	Label clientid;
 	//订单号
 	@FXML
 	Label num;
@@ -44,10 +46,10 @@ public class executeOrderController {
 	Label latesettime;
 	//退房时间
 	@FXML
-	TextField backtime;
+	Label backtime;
 	//实际执行时间
 	@FXML
-	TextField realexecutetime;
+	Label realexecutetime;
 	//预计人数
 	@FXML
 	Label numofPeople;
@@ -55,12 +57,17 @@ public class executeOrderController {
 	@FXML
 	Label hasChild;
 	//订单状态
-	@SuppressWarnings("rawtypes")
 	@FXML
-	ChoiceBox state;
+	Label state;
 	//修改按钮
 	@FXML
-	Button modify;
+	Button execute;
+	
+	@FXML
+	Button end;
+	
+	@FXML
+	Button undo;
 	
 	RunWorker runWorker;
 	
@@ -77,12 +84,12 @@ public class executeOrderController {
 		return this;
 	}
 	
-	@SuppressWarnings({ "unchecked", "static-access" })
+	@SuppressWarnings({ "static-access" })
 	public void initialize() throws RemoteException{
 		this.orderVO=RunWorker.getOrderVO();
 //		System.out.println("hhhhhhhhhhh");
-		state.getItems().addAll("已执行","未执行","异常","已撤销");
-		state.setValue("未执行");
+//		state.getItems().addAll("已执行","未执行","异常","已撤销");
+//		state.setValue("未执行");
 //		System.out.println("hhhhhhhhhhh");
 		
 		try{
@@ -96,7 +103,7 @@ public class executeOrderController {
 		
 		ObservableList<OrderVO> currentListData
         = FXCollections.observableArrayList();
-		currentListData.addAll(currentListData);
+		currentListData.addAll(currentList);
 		orderlist.setItems(currentListData);
 		orderid.setCellValueFactory(cellData->cellData.getValue().getOrder_id());
 		
@@ -132,46 +139,16 @@ public class executeOrderController {
 		
 	}
 	
-	@SuppressWarnings("static-access")
-	public void modifyClicked() throws RemoteException{
-		OrderVO vo=orderVO;
-		try {
-			if(backtime.getText()!=null){
-				vo=new OrderVO(vo.getUser_id().get(), vo.getOrder_id().get(), vo.getHotel_id().get(), vo.getStartTime().get(), backtime.getText(), vo.getDeadline().get(), vo.getExecuteTime().get(), vo.getPredictCheckInTime().get(), vo.getPredictCheckOutTime().get(), vo.getRoomType().get(),vo.getNumber().get(), vo.getPeople().get(), vo.isHasChild().get(), vo.getListType(), vo.getOrderPrice().get());
-			}
-			
-			if(realexecutetime.getText()!=null){
-				vo=new OrderVO(vo.getUser_id().get(), vo.getOrder_id().get(), vo.getHotel_id().get(), vo.getStartTime().get(), vo.getEndTime().get(), vo.getDeadline().get(), realexecutetime.getText(), vo.getPredictCheckInTime().get(), vo.getPredictCheckOutTime().get(), vo.getRoomType().get(),vo.getNumber().get(), vo.getPeople().get(), vo.isHasChild().get(), vo.getListType(), vo.getOrderPrice().get());
-			}
-			
-			if(state.getValue().equals("未执行")){
-				vo=new OrderVO(vo.getUser_id().get(), vo.getOrder_id().get(), vo.getHotel_id().get(), vo.getStartTime().get(), vo.getEndTime().get(), vo.getDeadline().get(), vo.getExecuteTime().get(), vo.getPredictCheckInTime().get(), vo.getPredictCheckOutTime().get(), vo.getRoomType().get(),vo.getNumber().get(), vo.getPeople().get(), vo.isHasChild().get(), ListType.CURRENTLIST, vo.getOrderPrice().get());
-			}
-			else if(state.getValue().equals("已执行")){
-				vo=new OrderVO(vo.getUser_id().get(), vo.getOrder_id().get(), vo.getHotel_id().get(), vo.getStartTime().get(), vo.getEndTime().get(), vo.getDeadline().get(), vo.getExecuteTime().get(), vo.getPredictCheckInTime().get(), vo.getPredictCheckOutTime().get(), vo.getRoomType().get(),vo.getNumber().get(), vo.getPeople().get(), vo.isHasChild().get(), ListType.HISTORYLIST, vo.getOrderPrice().get());
-			}
-			else if(state.getValue().equals("异常")){
-				vo=new OrderVO(vo.getUser_id().get(), vo.getOrder_id().get(), vo.getHotel_id().get(), vo.getStartTime().get(), vo.getEndTime().get(), vo.getDeadline().get(), vo.getExecuteTime().get(), vo.getPredictCheckInTime().get(), vo.getPredictCheckOutTime().get(), vo.getRoomType().get(),vo.getNumber().get(), vo.getPeople().get(), vo.isHasChild().get(), ListType.ABNORMALLIST, vo.getOrderPrice().get());
-			}
-			else{
-				vo=new OrderVO(vo.getUser_id().get(), vo.getOrder_id().get(), vo.getHotel_id().get(), vo.getStartTime().get(), vo.getEndTime().get(), vo.getDeadline().get(), vo.getExecuteTime().get(), vo.getPredictCheckInTime().get(), vo.getPredictCheckOutTime().get(), vo.getRoomType().get(),vo.getNumber().get(), vo.getPeople().get(), vo.isHasChild().get(), ListType.UNDOLIST, vo.getOrderPrice().get());
-			}
-//			vo=new OrderVO(vo.getUser_id().get(), vo.getOrder_id().get(), vo.getHotel_id().get(), vo.getStartTime().get(), backtime.getText(), vo.getDeadline().get(), realexecutetime.getText(), vo.getPredictCheckInTime().get(), vo.getPredictCheckOutTime().get(), vo.getRoomType().get(),vo.getNumber().get(), vo.getPeople().get(), vo.isHasChild().get(), vo.getListType(), vo.getOrderPrice().get());
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+	@SuppressWarnings({ "static-access", "unused" })
+	public void backClicked() throws RemoteException{
+		Date date=new Date();
+		DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String time=format.format(date);
 		
-//		orderVO=vo;
-//		RunWorker.setOrderVO(orderVO);
-		//System.out.println("hhhhhh");
+		
 		OrderController oController=new OrderController();
 		ResultMessage resultMessage=ResultMessage.FAIL;
-		try{
-			 resultMessage=oController.modifyOrder(orderVO);
-			
-		}catch(Exception e){
-			e.printStackTrace();
-		}
+		
 		if(resultMessage==ResultMessage.SUCCESS){
 			RunWarning rWarning=new RunWarning();
 			rWarning.SetWarning("修改成功！");
@@ -185,14 +162,67 @@ public class executeOrderController {
 		
 	}
 	
+	@SuppressWarnings("static-access")
+	public void executeClicked(){
+		  Date date=new Date();
+		  DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		  String time=format.format(date);
+		  String orderid=num.getText();
+		  try {
+			OrderController orderController=new OrderController();
+			ResultMessage resultMessage=ResultMessage.FAIL;
+			resultMessage=orderController.evecuteOrder(orderid, time);
+			if(resultMessage==ResultMessage.SUCCESS){
+				RunWarning rWarning=new RunWarning();
+				rWarning.SetWarning("修改成功！");
+				rWarning.start(new Stage());
+			}
+			else{
+				RunWarning rWarning2=new RunWarning();
+				rWarning2.SetWarning("修改失败！");
+				rWarning2.start(new Stage());
+			}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		  
+	}
+	
+	@SuppressWarnings("static-access")
+	public void undoClicked(){
+		Date date=new Date();
+		  DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		  String time=format.format(date);
+		  String orderid=num.getText();
+		  String client=clientid.getText();
+		  OrderController orderController;
+		try {
+			orderController = new OrderController();
+			ResultMessage resultMessage=ResultMessage.FAIL;
+			resultMessage=orderController.undoOrder(client, orderid, time);
+			if(resultMessage==ResultMessage.SUCCESS){
+				RunWarning rWarning=new RunWarning();
+				rWarning.SetWarning("修改成功！");
+				rWarning.start(new Stage());
+			}
+			else{
+				RunWarning rWarning2=new RunWarning();
+				rWarning2.SetWarning("修改失败！");
+				rWarning2.start(new Stage());
+			}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
+		  
+	}
+	
 	public void setRunWorker(RunWorker rWorker) throws RemoteException{
 //		System.out.println("hhhhhhhhhhh");
 		this.runWorker=rWorker;
 		initialize();
-//		this.orderVO=RunWorker.getOrderVO();
-		ButtonCellexecuteOrder buttonCellexecuteOrder=new ButtonCellexecuteOrder();
-		OrderVO vo=buttonCellexecuteOrder.getOrderVO();
-		this.orderVO=vo;
 
 		
 	}

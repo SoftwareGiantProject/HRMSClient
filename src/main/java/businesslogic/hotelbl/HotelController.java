@@ -68,9 +68,9 @@ public class HotelController implements HotelBLService,Hoteladd {
 
 	@Override
 	public ArrayList<HotelVO> search(String area, String room, int star, int lowscore, int highscore, int lowprice,
-			int highprice) {
+			int highprice, Boolean reserved, String client_id) {
 		// TODO Auto-generated method stub
-		return hotel.search(area, room, star, lowscore, highscore, lowprice, highprice);
+		return hotel.search(area, room, star, lowscore, highscore, lowprice, highprice, reserved,client_id);
 	}
 
 	@Override
@@ -131,6 +131,18 @@ public class HotelController implements HotelBLService,Hoteladd {
 	public String getNmaeById(String hotel_id) {
 		// TODO Auto-generated method stub
 		return hotel.getHotelNameById(hotel_id);
+	}
+
+	@Override
+	public ResultMessage judgeReserved(String hotel_id, String client_id) {
+		// TODO Auto-generated method stub
+		return hotel.judgeReserved(hotel_id,client_id);
+	}
+
+	@Override
+	public ResultMessage judgeHasRoom(String hotel_id) {
+		// TODO Auto-generated method stub
+		return hotel.judgeHasRoom(hotel_id);
 	}
 
 	

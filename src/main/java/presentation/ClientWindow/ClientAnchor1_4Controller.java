@@ -127,7 +127,23 @@ public class ClientAnchor1_4Controller {
                 return bc;
             }
         });
-        evaluateColumn.setVisible(false);
+        evaluateColumn.setVisible(true);
+        evaluateColumn.setText("取消");
+        evaluateColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<OrderVO, Boolean>, ObservableValue<Boolean>>() {
+            @Override
+            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<OrderVO, Boolean> p) {
+                return new SimpleBooleanProperty(p.getValue()!=null);
+            }
+        });
+
+        evaluateColumn.setCellFactory(new Callback<TableColumn<OrderVO, Boolean>, TableCell<OrderVO, Boolean>>() {
+            @Override
+            public TableCell<OrderVO, Boolean> call(TableColumn<OrderVO, Boolean> p) {
+            	ButtonCell1_4Undo bc=new ButtonCell1_4Undo();
+            	bc.SetViewcontrol(GetClientAnchor1_4Controller());
+                return bc;
+            }
+        });
 	}
 	
 	
@@ -156,6 +172,7 @@ public class ClientAnchor1_4Controller {
             }
         });
         evaluateColumn.setVisible(true);
+        evaluateColumn.setText("评价");
         //评价的按钮列的添加
         evaluateColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<OrderVO, Boolean>, ObservableValue<Boolean>>() {
             @Override
@@ -205,7 +222,23 @@ public class ClientAnchor1_4Controller {
             }
         });
         
-        evaluateColumn.setVisible(false);
+        evaluateColumn.setVisible(true);
+        evaluateColumn.setText("申诉");
+        evaluateColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<OrderVO, Boolean>, ObservableValue<Boolean>>() {
+            @Override
+            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<OrderVO, Boolean> p) {
+                return new SimpleBooleanProperty(p.getValue()!=null);
+            }
+        });
+
+        evaluateColumn.setCellFactory(new Callback<TableColumn<OrderVO, Boolean>, TableCell<OrderVO, Boolean>>() {
+            @Override
+            public TableCell<OrderVO, Boolean> call(TableColumn<OrderVO, Boolean> p) {
+            	ButtonCell1_4Call bc=new ButtonCell1_4Call();
+            	bc.SetViewcontrol(GetClientAnchor1_4Controller());
+                return bc;
+            }
+        });
 	}
 	
 	
@@ -234,6 +267,7 @@ public class ClientAnchor1_4Controller {
                 return bc;
             }
         });
+        evaluateColumn.setVisible(false);
 	}
 	
 	public void initialize(){

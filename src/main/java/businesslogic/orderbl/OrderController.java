@@ -128,6 +128,12 @@ public class OrderController implements OrderBLService{
 		// TODO Auto-generated method stub
 		return order.recordCheckoutTime(order_id, endtime);
 	}
+
+	@Override
+	public ResultMessage cancelAbnormalOrder(String order_id, Boolean All, String time) throws RemoteException {
+		// TODO Auto-generated method stub
+		return order.cancelAbnormalOrder(order_id, All, time);
+	}
 	
 	
 }

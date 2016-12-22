@@ -48,9 +48,15 @@ public class ClientAnchor1_8Controller {
 	public void SubmitClicked(){
 		try{
 		String content=evaluate.getText();
-		int starlevel=Integer.parseInt(star.getValue());
+		
+		if(content.length()==0||star.getSelectionModel().getSelectedItem()==null){
+			RunWarning warning=new RunWarning();
+			warning.SetWarning("请输入评价内容和评星！");
+			warning.start(new Stage());
+		}else{
+		int starlevel=Integer.parseInt(star.getSelectionModel().getSelectedItem());
 		Date date=new Date();
-		DateFormat format=new SimpleDateFormat("yyyy-mm-dd-hh-mm-ss");
+		DateFormat format=new SimpleDateFormat("yyyy-MM-dd-hh-mm-ss");
 		String timeformat=format.format(date);
 		HotelEvaluationVO evaluatevo=new HotelEvaluationVO(ordervo.getOrder_id().get(), clientvo.getUserId().get(), timeformat, content, starlevel);
 		HotelController controller=new HotelController();
@@ -64,29 +70,43 @@ public class ClientAnchor1_8Controller {
 			warning.SetWarning("评价提交失败！");
 			warning.start(new Stage());
 		}
+		}
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		
 	}
 	public void initialize(){
 		//要得到具体的hotelvo 对象
 		try{
 		HotelController controller=new HotelController();
-		hotelvo=controller.seekHotel(ordervo.getHotel_id().get());
+		hotelvo=controller.seekHotel(controller.getNmaeById(ordervo.getHotel_id().get()));
 		
 		hotel.setText(hotelvo.getHotelName().get());
+		}catch(NullPointerException e){
+			e.printStackTrace();
+//			RunWarning rw=new RunWarning();
+//			rw.SetWarning("空指针");
+//			rw.start(new Stage());
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 		
 		//combox 初始化
+		star.getItems().addAll("1","2","3","4","5");
+		
 		
 	}
 	
 	public void SetRunClient(RunClient1 runClient){
 		this.runClient=runClient;
 		clientvo=runClient.GetClientVO();
+		try{
 		ordervo=runClient.GetOrderVO();
+		}catch(NullPointerException e){
+			e.printStackTrace();
+		}
+		
 		initialize();
 		
 	}

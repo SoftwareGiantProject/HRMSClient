@@ -72,8 +72,8 @@ public class addAvailableRoomController {
 	@SuppressWarnings("unchecked")
 	public void initialize(){
 //		System.out.println("hhhhhhhhhhh");
-		cb.getItems().addAll("标间","大床房","豪华双人房");
-		cb.setValue("标间");
+		cb.getItems().addAll("标准间","大床房","商务间");
+		cb.setValue("标准间");
 	}
 	
 	public void setRunWorker(RunWorker rw){

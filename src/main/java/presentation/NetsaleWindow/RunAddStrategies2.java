@@ -1,4 +1,4 @@
-package presentation.WorkerWindow;
+package presentation.NetsaleWindow;
 
 import java.io.IOException;
 
@@ -9,11 +9,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-public class RunAddStrategies extends Application{
+public class RunAddStrategies2 extends Application{
 	private BorderPane borderPane;
 	private Stage primarystage;
 	
-	public RunAddStrategies(){
+	public RunAddStrategies2(){
 		
 	}
 	
@@ -21,7 +21,7 @@ public class RunAddStrategies extends Application{
 			try {
 	            // Load root layout from fxml file.
 	            FXMLLoader loader = new FXMLLoader();
-	            loader.setLocation(RunAddStrategies.class.getResource("modifyroomconditionBorder.fxml"));
+	            loader.setLocation(RunAddStrategies2.class.getResource("subBorder.fxml"));
 	            borderPane = (BorderPane) loader.load();
 
 	            // Show the scene containing the root layout.
@@ -36,13 +36,13 @@ public class RunAddStrategies extends Application{
 	 public void setlayout(){
 			try{
 				FXMLLoader loader=new FXMLLoader();
-				loader.setLocation(RunAddStrategies.class.getResource("addStrategies.fxml"));
+				loader.setLocation(RunAddStrategies2.class.getResource("addStrategies2.fxml"));
 				AnchorPane modifyroomstate=(AnchorPane)loader.load();
 				borderPane.setCenter(modifyroomstate);
 				
 				//set controller
-				AddStragetiesController controller=loader.getController();
-				controller.setRunAddStrategies(this);
+				AddStrageties2Controller controller=loader.getController();
+				controller.setRunAddStrategies2(this);
 			}catch(IOException e){
 				e.printStackTrace();
 			}
@@ -61,3 +61,4 @@ public class RunAddStrategies extends Application{
 
 
 }
+

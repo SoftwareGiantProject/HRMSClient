@@ -41,8 +41,8 @@
       <Button fx:id="abnormalOrderBt" layoutX="20.0" layoutY="53.0" mnemonicParsing="false" onAction="#AbnormalOrderClicked" prefHeight="32.0" prefWidth="148.0" text="异常订单" />
       <TableView fx:id="orderList" editable="true" layoutX="187.0" layoutY="21.0" prefHeight="371.0" prefWidth="204.0">
         <columns>
-          <TableColumn fx:id="orderColumn" prefWidth="143.0" text="C1" />
-            <TableColumn fx:id="viewColumn" prefWidth="57.0" />
+          <TableColumn fx:id="orderColumn" prefWidth="143.0" text="订单" />
+            <TableColumn fx:id="viewColumn" prefWidth="57.0" text="查看" />
         </columns>
       </TableView>
       <Label fx:id="operateOrder_id" layoutX="469.0" layoutY="433.0" opacity="0.0" text="订单号" />

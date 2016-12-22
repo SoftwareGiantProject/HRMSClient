@@ -33,7 +33,9 @@ public class ClientAnchor1_6Controller {
 	@FXML
 	ComboBox<String> businessCircle;
 	@FXML
-	ComboBox<String> price;
+	TextField leftPrice;
+	@FXML
+	TextField rightPrice;
 	@FXML
 	ComboBox<String> roomType;
 	@FXML
@@ -56,28 +58,28 @@ public class ClientAnchor1_6Controller {
 	}
 	
 
-/** CallBack */
-    public static Callback<ListView<String>, ListCell<String>> String_CALLBACK = new Callback<ListView<String>, ListCell<String>>() {
-        @Override
-        public ListCell<String> call(ListView<String> list) { 
-        	return new ListCell<String>(){
-                @Override
-                protected void updateItem(String dep, boolean empty) { 
-                    super.updateItem(dep, empty);
-                    Label rect = new Label();
-                    if (dep != null) {
-                        rect.setText(dep);
-                        setGraphic(rect);
-                    }
-                    
-                }
-            };
-        }
-    };
+///** CallBack */
+//    public static Callback<ListView<String>, ListCell<String>> String_CALLBACK = new Callback<ListView<String>, ListCell<String>>() {
+//        @Override
+//        public ListCell<String> call(ListView<String> list) { 
+//        	return new ListCell<String>(){
+//                @Override
+//                protected void updateItem(String dep, boolean empty) { 
+//                    super.updateItem(dep, empty);
+//                    Label rect = new Label();
+//                    if (dep != null) {
+//                        rect.setText(dep);
+//                        setGraphic(rect);
+//                    }
+//                    
+//                }
+//            };
+//        }
+//    };
 
 	public void initialize(){
 		
-		city.setAccessibleText("南京");
+		
 		test.setText("已连接");
 		
 		

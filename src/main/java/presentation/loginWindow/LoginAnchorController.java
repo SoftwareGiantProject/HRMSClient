@@ -63,6 +63,7 @@ public class LoginAnchorController {
 		if(accountField.getText().length()==0||passwordField.getText().length()==0){
 			RunWarning rw=new RunWarning();
 			rw.SetWarning("请输入账号和密码！");
+			rw.start(new Stage());
 		}else{
 		
 		try{
@@ -100,6 +101,7 @@ public class LoginAnchorController {
 			}
 		}else if(accountField.getText().charAt(0)=='n'){
 			NetworkerController lg=new NetworkerController();
+			System.out.println(accountField.getText()+passwordField.getText());
 			ResultMessage rm=lg.login(accountField.getText(), passwordField.getText());
 			if(rm==ResultMessage.SUCCESS){
 				RunNetworker rc=new RunNetworker();

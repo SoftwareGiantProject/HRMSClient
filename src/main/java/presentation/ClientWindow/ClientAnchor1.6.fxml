@@ -21,7 +21,6 @@
       <ComboBox fx:id="star" layoutX="19.0" layoutY="94.0" prefHeight="20.0" prefWidth="53.0" />
       <ComboBox fx:id="city" layoutX="129.0" layoutY="94.0" prefHeight="20.0" prefWidth="53.0" />
       <ComboBox fx:id="businessCircle" layoutX="249.0" layoutY="94.0" prefHeight="20.0" prefWidth="53.0" />
-      <ComboBox fx:id="price" layoutX="350.0" layoutY="94.0" prefHeight="20.0" prefWidth="53.0" />
       <ComboBox fx:id="roomType" layoutX="462.0" layoutY="94.0" prefHeight="20.0" prefWidth="53.0" />
       <ComboBox fx:id="sequece" layoutX="622.0" layoutY="129.0" prefHeight="20.0" prefWidth="30.0" />
       <TableView fx:id="List" editable="true" layoutX="5.0" layoutY="150.0" prefHeight="339.0" prefWidth="683.0">
@@ -31,5 +30,12 @@
       </TableView>
       <Button fx:id="searchDown" layoutX="562.0" layoutY="74.0" mnemonicParsing="false" text="搜索" />
       <Label fx:id="test" layoutX="290.0" layoutY="17.0" text="未连接" />
+      <TextField layoutX="309.0" layoutY="89.0" prefHeight="20.0" prefWidth="53.0" />
+      <TextField layoutX="380.0" layoutY="89.0" prefHeight="20.0" prefWidth="53.0" />
+      <Label layoutX="362.0" layoutY="88.0" text="~">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

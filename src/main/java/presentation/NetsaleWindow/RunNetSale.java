@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import vo.NetsaleVO;
 import vo.OrderVO;
 
 
@@ -17,6 +18,7 @@ public class RunNetSale extends Application{
 	private int anchor1=0;
 	
 	OrderVO ordervo;
+	NetsaleVO netsalevo;
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -31,6 +33,14 @@ public class RunNetSale extends Application{
 		}
 		
 		
+	}
+	
+	public void setNetSaleVO(NetsaleVO vo){
+		netsalevo=vo;
+	}
+	
+	public NetsaleVO getNetsaleVO(){
+		return netsalevo;
 	}
 	
 	public void setOrderVO(OrderVO vo){

@@ -8,7 +8,6 @@ import java.util.Date;
 import businesslogic.controllerfactory.ControllerFactory;
 import businesslogic.userbl.client.ClientController;
 import dataservice.datafactory.DatafactoryImpl;
-import po.ClientPO;
 import po.CreditPO;
 import util.ResultMessage;
 import vo.ClientVO;
@@ -136,8 +135,35 @@ public class Credit {
 	}
 
 	public ResultMessage addCredit(String user_id, int change) throws RemoteException {
-		deposit(user_id,change/100);
-		return null;
+		ResultMessage result = deposit(user_id,change/100);
+		return result;
+	}
+
+	public ArrayList<CreditVO> getAllCredit(String user_id) {
+		ArrayList<CreditPO> list = new ArrayList<>();
+		ArrayList<CreditVO> result = new ArrayList<>();
+		
+		try {
+			list = DatafactoryImpl.getInstance().getCreditData().getHistoryCredit(user_id);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		for(CreditPO po : list){
+			result.add(PO2VO(po));
+		}
+		return result;
 	}
 	
+	
+	private CreditVO PO2VO(CreditPO po){
+		CreditVO vo = new CreditVO();
+		
+		vo.setUserId(po.getUserId());
+		vo.setCredit(po.getCredit());
+		vo.setTime(po.getTime());
+		vo.setChange(po.getChange());
+		
+		return vo;
+	}
 }

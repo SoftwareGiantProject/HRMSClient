@@ -9,6 +9,7 @@ import vo.PromotionVO;
 
 public class ButtonCellDraft2 extends TableCell<PromotionVO, Boolean>{
 	strategiesManagementController sController;
+	PromotionVO promotionVO;
 	
 	public void SetViewcontrol(strategiesManagementController strategiesManagementController){
 		this.sController=strategiesManagementController;
@@ -16,8 +17,7 @@ public class ButtonCellDraft2 extends TableCell<PromotionVO, Boolean>{
 	}
 
 	public PromotionVO getPromotionVO(){
-		PromotionVO promotion = getTableView().getItems().get( getIndex() );
-		return promotion;
+		return this.promotionVO;
 	}
 	
 	final Button cellButton = new Button("查看");
@@ -30,9 +30,22 @@ public class ButtonCellDraft2 extends TableCell<PromotionVO, Boolean>{
             public void handle(ActionEvent t) {
 				
 				PromotionVO promotion = getTableView().getItems().get( getIndex() );
+				promotionVO=promotion;
 				sController.straName.setText(promotion.getPromotionName().get());
-				sController.people.setValue(promotion.getPromoitonObject().get());
-				sController.discount.setValue(promotion.getCount().get());
+				if(promotion.getPromoitonObject().get().equals("ALL")){
+					sController.people.setValue("所有人");
+				}
+				else if(promotion.getPromoitonObject().get().equals("MEMBER")){
+					sController.people.setValue("会员");
+				}
+//				viewcontrol.people.setValue(promotion.getPromoitonObject().get());
+				for(int i=1;i<=9;i++){
+					if(promotion.getCount().get()==i){
+						sController.discount.setValue(String.valueOf(i));
+				    }
+				}
+				
+//				viewcontrol.discount.setValue((promotion.getCount()));
 				sController.time.setText(promotion.getTime().get());
 				}
             });

@@ -18,7 +18,7 @@ import vo.RoomConditionDateVO;
 public class modifyroomconditionController {
 	
 	runModifyRoomCondition runModifyRoomCondition;
-	RoomConditionDateVO roomconditionvo;
+	static RoomConditionDateVO roomconditionvo;
 	
 	@FXML
 	Label roomid;
@@ -50,8 +50,8 @@ public class modifyroomconditionController {
 	@SuppressWarnings("unchecked")
 	public void initialize(){
 		ButtonCellrefreshRoom bcf=new ButtonCellrefreshRoom();
-		this.roomconditionvo=bcf.getvo();
-		roomid.setText(roomconditionvo.getRoomNumber().get());
+		RoomConditionDateVO room1=bcf.getvo();
+		roomid.setText(room1.getRoomNumber().get());
 		ArrayList<String> date1=new ArrayList<>();
 		for(int i=0;i<7;i++){
 			date1.add(getFutureDate(i));
@@ -65,23 +65,31 @@ public class modifyroomconditionController {
 	
 	@SuppressWarnings("static-access")
 	public void saveClicked(){
-		RoomController roomController=new RoomController();
+		ButtonCellrefreshRoom buttonCellrefreshRoom=new ButtonCellrefreshRoom();
+		roomconditionvo=buttonCellrefreshRoom.getvo();
 		RoomConditionDateVO roomConditionDateVO1=roomconditionvo;
 		if(String.valueOf(state.getValue()).equals("已预定")){
-			roomConditionDateVO1=new RoomConditionDateVO(String.valueOf(date.getValue()), roomid.getText(), RoomCondition.RESERVED, String.valueOf(roomconditionvo.getHotelId()));
+//			roomConditionDateVO1=new RoomConditionDateVO(String.valueOf(date.getValue()), roomid.getText(), RoomCondition.RESERVED, String.valueOf(roomconditionvo.getHotelId()));
+			System.out.println(String.valueOf(date.getValue()));
+			System.out.println(roomid.getText());
+			System.out.println(roomconditionvo.getHotelId().get());
+			System.out.println(roomconditionvo.getOrder_id().get());
+			roomConditionDateVO1=new RoomConditionDateVO(String.valueOf(date.getValue()), roomid.getText(), RoomCondition.RESERVED,roomconditionvo.getHotelId().get(), roomconditionvo.getOrder_id().get());
 		}
 		else if(String.valueOf(state.getValue()).equals("未预订")){
-			roomConditionDateVO1=new RoomConditionDateVO(String.valueOf(date.getValue()), roomid.getText(), RoomCondition.UNRESERVED, String.valueOf(roomconditionvo.getHotelId()));
+			roomConditionDateVO1=new RoomConditionDateVO(String.valueOf(date.getValue()), roomid.getText(), RoomCondition.UNRESERVED,String.valueOf(roomconditionvo.getHotelId()), roomconditionvo.getOrder_id().get());
 		}
 		else{
-			roomConditionDateVO1=new RoomConditionDateVO(String.valueOf(date.getValue()), roomid.getText(), RoomCondition.CHECKIN, String.valueOf(roomconditionvo.getHotelId()));
+			roomConditionDateVO1=new RoomConditionDateVO(String.valueOf(date.getValue()), roomid.getText(), RoomCondition.CHECKIN,String.valueOf(roomconditionvo.getHotelId()), roomconditionvo.getOrder_id().get());
 		}
+		
 		try{
+			RoomController roomController=new RoomController();
 			ResultMessage resultMessage=roomController.modifyCondition(roomConditionDateVO1);		
 		    if(resultMessage==ResultMessage.SUCCESS){
-			    RunWarning runWarning=new RunWarning();
-			    runWarning.SetWarning("修改成功!");
-			    runWarning.start(new Stage());
+		    	RunWarning rw=new RunWarning();
+				rw.SetWarning("修改成功！");
+				rw.start(new Stage());
 		    }
 		    else{
 		    	RunWarning runWarning=new RunWarning();
