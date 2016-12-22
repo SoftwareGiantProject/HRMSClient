@@ -25,6 +25,8 @@ public enum ResultMessage {
 	
 	HASROOM,//有空房
 	NOROOM,//无空房
+	
+	HASEVALUATED,//已被评价
 }
 	
 	

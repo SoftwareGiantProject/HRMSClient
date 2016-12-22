@@ -573,6 +573,20 @@ public class Hotel {
 		int lastLevel = 0;
 		int temp = 0;
 		
+		//检查订单是否已被评价
+		ArrayList<HotelEvaluationPO> evalist = new ArrayList<>();
+		try {
+			evalist = DatafactoryImpl.getInstance().getHotelData().getAllHotelEvaluation(hotel_name);
+		} catch (RemoteException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		for(HotelEvaluationPO po : evalist){
+			if(po.getOrder_id().equals(vo.getOrder_id())){
+				return ResultMessage.HASEVALUATED;
+			}
+		}
+		
 		try {
 			DatafactoryImpl.getInstance().getHotelData().evaluateHotel(VoToPo1(vo));
 		} catch (RemoteException e1) {
