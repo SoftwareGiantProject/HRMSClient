@@ -10,12 +10,17 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.NetSaleWindow.unCommonOrderController">
 	<children>
 		<Line endX="600.0" layoutX="101.0" layoutY="409.0" startX="-100.0" AnchorPane.leftAnchor="0.0" />
-		<Button layoutX="188.0" layoutY="430.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" text="查看申诉" AnchorPane.bottomAnchor="30.0">
+		<Button layoutX="46.0" layoutY="430.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" text="查看申诉" AnchorPane.bottomAnchor="30.0">
 			<font>
 				<Font size="15.0" />
 			</font>
 		</Button>
-		<Button fx:id="undo" layoutX="403.0" layoutY="430.0" mnemonicParsing="false" onAction="#undoClicked" prefHeight="40.0" prefWidth="140.0" text="撤销该异常订单" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="157.0">
+      <Label layoutX="227.0" layoutY="438.0" text="撤销并恢复一半信用">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+		<Button fx:id="undohalf" layoutX="213.0" layoutY="430.0" mnemonicParsing="false" onAction="#undohalfClicked" opacity="0.08" prefHeight="40.0" prefWidth="176.0" text="撤销该异常订单" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="311.0">
 			<font>
 				<Font size="15.0" />
 			</font>
@@ -80,42 +85,42 @@
 		</GridPane>
 		<GridPane layoutX="336.0" layoutY="22.0" prefHeight="356.0" prefWidth="329.0">
 			<children>
-				<Label fx:id="orderid" text="201612150005">
+				<Label fx:id="orderid">
 					<font>
 						<Font size="16.0" />
 					</font>
 				</Label>
-				<Label fx:id="begintime" text="订单开始时间" GridPane.rowIndex="1">
+				<Label fx:id="begintime" GridPane.rowIndex="1">
 					<font>
 						<Font size="16.0" />
 					</font>
 				</Label>
-				<Label fx:id="latestime" text="最晚执行时间" GridPane.rowIndex="2">
+				<Label fx:id="latestime" GridPane.rowIndex="2">
 					<font>
 						<Font size="16.0" />
 					</font>
 				</Label>
-				<Label fx:id="realexecutetime" text="实际执行时间" GridPane.rowIndex="3">
+				<Label fx:id="realexecutetime" GridPane.rowIndex="3">
 					<font>
 						<Font size="16.0" />
 					</font>
 				</Label>
-				<Label fx:id="endtime" text="退房时间" GridPane.rowIndex="4">
+				<Label fx:id="endtime" GridPane.rowIndex="4">
 					<font>
 						<Font size="16.0" />
 					</font>
 				</Label>
-				<Label fx:id="numofpeople" text="1" GridPane.rowIndex="5">
+				<Label fx:id="numofpeople" GridPane.rowIndex="5">
 					<font>
 						<Font size="16.0" />
 					</font>
 				</Label>
-				<Label fx:id="haschild" text="无" GridPane.rowIndex="6">
+				<Label fx:id="haschild" GridPane.rowIndex="6">
 					<font>
 						<Font size="16.0" />
 					</font>
 				</Label>
-				<Label fx:id="state" text="异常订单" GridPane.rowIndex="7">
+				<Label fx:id="state" GridPane.rowIndex="7">
 					<font>
 						<Font size="16.0" />
 					</font>
@@ -144,5 +149,14 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
+      <Label layoutX="461.0" layoutY="438.0" text="撤销并恢复全部信用">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="undoall" layoutX="445.0" layoutY="430.0" mnemonicParsing="false" onAction="#undoallClicked" opacity="0.1" prefHeight="40.0" prefWidth="194.0" text="撤销并恢复全部信用">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
 	</children>
 </AnchorPane>

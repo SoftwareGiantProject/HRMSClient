@@ -123,24 +123,22 @@ public class HotelInfoMenuController {
 			}
 	}
 	
-	
+	/**
+	 * 获取酒店工作人员信息
+	 * 初始化信息列表
+	 */
 	@SuppressWarnings("static-access")
 	public void initialize(){
-//		@SuppressWarnings("unused")
-//		WorkerVO workervo=new WorkerVO();
 		this.workerVO=runWorker.getWorkerVO();
-		workerid.setText(workerVO.getUserId());
-		workername.setText(workerVO.getUserName());
-		hotelid.setText(workerVO.getHotel_id());
+		workerid.setText(workerVO.getUserId().get());
+		workername.setText(workerVO.getUserName().get());
+		hotelid.setText(workerVO.getHotel_id().get());
 		
 	}
 	
 	
 	public void setRunWorker(RunWorker runworker){
 		this.runWorker=(RunWorker)runworker;
-//		this.runClient2=(RunClient2)runClient;
-//		this.runClient3=(RunClient3)runClient;
-		//添加监听
 		initialize();
 	}
 

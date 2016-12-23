@@ -31,6 +31,8 @@ public class modifyroomconditionController {
 	
 	@FXML
 	Button save;
+	static RunWorker runWorker;
+//	runModifyRoomCondition runModifyRoomCondition2
 	
 	public modifyroomconditionController(){
 		
@@ -70,16 +72,12 @@ public class modifyroomconditionController {
 		RoomConditionDateVO roomConditionDateVO1=roomconditionvo;
 		if(String.valueOf(state.getValue()).equals("已预定")){
 //			roomConditionDateVO1=new RoomConditionDateVO(String.valueOf(date.getValue()), roomid.getText(), RoomCondition.RESERVED, String.valueOf(roomconditionvo.getHotelId()));
-			System.out.println(String.valueOf(date.getValue()));
-			System.out.println(roomid.getText());
-			System.out.println(roomconditionvo.getHotelId().get());
-			System.out.println(roomconditionvo.getOrder_id().get());
 			roomConditionDateVO1=new RoomConditionDateVO(String.valueOf(date.getValue()), roomid.getText(), RoomCondition.RESERVED,roomconditionvo.getHotelId().get(), roomconditionvo.getOrder_id().get());
 		}
 		else if(String.valueOf(state.getValue()).equals("未预订")){
 			roomConditionDateVO1=new RoomConditionDateVO(String.valueOf(date.getValue()), roomid.getText(), RoomCondition.UNRESERVED,String.valueOf(roomconditionvo.getHotelId()), roomconditionvo.getOrder_id().get());
 		}
-		else{
+		else if(String.valueOf(state.getValue()).equals("已入住")){
 			roomConditionDateVO1=new RoomConditionDateVO(String.valueOf(date.getValue()), roomid.getText(), RoomCondition.CHECKIN,String.valueOf(roomconditionvo.getHotelId()), roomconditionvo.getOrder_id().get());
 		}
 		
@@ -87,9 +85,17 @@ public class modifyroomconditionController {
 			RoomController roomController=new RoomController();
 			ResultMessage resultMessage=roomController.modifyCondition(roomConditionDateVO1);		
 		    if(resultMessage==ResultMessage.SUCCESS){
+//		    	this.runWorker.getPrimaryStage().close();
+//		    	RunWorker run1=new RunWorker();
+//				run1.SetAnchor1(4);
+//				run1.start(new Stage());
+				this.runModifyRoomCondition.getPrimaryStage().close();
+				
+				
 		    	RunWarning rw=new RunWarning();
 				rw.SetWarning("修改成功！");
 				rw.start(new Stage());
+//				this.runWorker.getPrimaryStage().close();
 		    }
 		    else{
 		    	RunWarning runWarning=new RunWarning();
@@ -106,5 +112,11 @@ public class modifyroomconditionController {
 		this.runModifyRoomCondition=runModifyRoomCondition;
 		initialize();
 	}
+	
+	public void setRunWorker(){
+		refreshRoomController refreshRoomController=new refreshRoomController();
+		this.runWorker=refreshRoomController.getRunWorker();
+	}
+
 
 }

@@ -30,7 +30,7 @@ public class ButtonCellexecuteOrder extends TableCell<OrderVO,Boolean>{
 				
 				OrderVO ordervo = getTableView().getItems().get( getIndex() );
 				viewcontrol.clientid.setText(ordervo.getUser_id().get());
-				viewcontrol.orderid.setText(ordervo.getOrder_id().get());
+				viewcontrol.num.setText(ordervo.getOrder_id().get());
 				viewcontrol.begintime.setText(ordervo.getStartTime().get());
 				viewcontrol.latesettime.setText(ordervo.getDeadline().get());
 				viewcontrol.backtime.setText(ordervo.getEndTime().get());

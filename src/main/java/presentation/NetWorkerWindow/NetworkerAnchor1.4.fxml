@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.NetWorkerWindow.NetworkerAnchor1_4Controller">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="29.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" />
       <GridPane layoutX="192.0" layoutY="206.0">
@@ -30,11 +30,11 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Button layoutX="321.0" layoutY="429.0" mnemonicParsing="false" text="添加" />
-      <TableView layoutX="90.0" layoutY="49.0" prefHeight="333.0" prefWidth="530.0">
+      <Button fx:id="viewNetsaleBt" layoutX="321.0" layoutY="429.0" mnemonicParsing="false" onAction="#ViewNetsaleClicked" text="添加" />
+      <TableView fx:id="NetsaleList" layoutX="90.0" layoutY="49.0" prefHeight="333.0" prefWidth="530.0">
         <columns>
-          <TableColumn prefWidth="468.0" text="C1" />
-          <TableColumn prefWidth="61.0" text="C2" />
+          <TableColumn fx:id="netsaleColumn" prefWidth="468.0" text="网站营销人员id" />
+          <TableColumn fx:id="viewColumn" prefWidth="61.0" text="查看" />
         </columns>
       </TableView>
    </children>

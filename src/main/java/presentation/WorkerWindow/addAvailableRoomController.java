@@ -17,6 +17,7 @@ import vo.RoomVO;
 
 public class addAvailableRoomController {
 	@SuppressWarnings("rawtypes")
+	//房间类型
 	@FXML
 	ChoiceBox cb;
 	@FXML
@@ -38,6 +39,10 @@ public class addAvailableRoomController {
 	public addAvailableRoomController(){
 				
 	}
+	
+	/**
+	 * 点击增加促销策略
+	 */
 	
 	@SuppressWarnings("static-access")
 	public void addClicked(){
@@ -71,7 +76,7 @@ public class addAvailableRoomController {
 	
 	@SuppressWarnings("unchecked")
 	public void initialize(){
-//		System.out.println("hhhhhhhhhhh");
+		//初始化choice box
 		cb.getItems().addAll("标准间","大床房","商务间");
 		cb.setValue("标准间");
 	}

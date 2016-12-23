@@ -31,15 +31,11 @@
             <AnchorPane prefHeight="500.0" prefWidth="200.0">
                <children>
                   <Button fx:id="viewInfoBt" layoutX="31.0" layoutY="33.0" mnemonicParsing="false" onAction="#viewInfoClicked" text="Button" AnchorPane.bottomAnchor="450.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <Button fx:id="modifyInfoBt" layoutY="50.0" mnemonicParsing="false" onAction="#modifyInfoClicked" text="Button" AnchorPane.bottomAnchor="400.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" />
-                  <Button fx:id="payCreditBt" layoutY="100.0" mnemonicParsing="false" onAction="#payCreditClicked" text="Button" AnchorPane.bottomAnchor="350.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0" />
-                  <Button fx:id="viewOrderBt" layoutX="14.0" layoutY="150.0" mnemonicParsing="false" onAction="#ViewOrderClicked" text="Button" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0" />
-                  <Button fx:id="viewHotelBt" layoutY="200.0" mnemonicParsing="false" onAction="#ViewHotelClicked" text="Button" AnchorPane.bottomAnchor="250.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200.0" />
-                  <Button fx:id="searchHotelBt" layoutY="250.0" mnemonicParsing="false" onAction="#SearchHotelClicked" text="Button" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="250.0" />
-                  <Button fx:id="undoOrderBt" layoutY="300.0" mnemonicParsing="false" onAction="#UndoOrderClicked" text="Button" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="300.0" />
-                  <Button fx:id="evaluateOrderBt" layoutY="350.0" mnemonicParsing="false" onAction="#EvaluateOrderClicked" text="Button" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="350.0" />
-                  <Button fx:id="reserveHotelBt" layoutX="14.0" layoutY="400.0" mnemonicParsing="false" onAction="#ReserveHotelClicked" text="Button" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="400.0" />
-                  <Button fx:id="memberRegisterBt" layoutX="22.0" layoutY="435.0" mnemonicParsing="false" onAction="#RegisterMemberClicked" text="Button" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="450.0" />
+                  <Button fx:id="payCreditBt" layoutY="50.0" mnemonicParsing="false" onAction="#payCreditClicked" text="Button" AnchorPane.bottomAnchor="400.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" />
+                  <Button fx:id="viewOrderBt" layoutY="100.0" mnemonicParsing="false" onAction="#ViewOrderClicked" text="Button" AnchorPane.bottomAnchor="350.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0" />
+                  <Button fx:id="viewHotelBt" layoutY="150.0" mnemonicParsing="false" onAction="#ViewHotelClicked" text="Button" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0" />
+                  <Button fx:id="searchHotelBt" layoutY="200.0" mnemonicParsing="false" onAction="#SearchHotelClicked" text="Button" AnchorPane.bottomAnchor="250.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200.0" />
+                  <Button fx:id="memberRegisterBt" layoutY="250.0" mnemonicParsing="false" onAction="#RegisterMemberClicked" text="Button" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="250.0" />
                </children>
             </AnchorPane>
          </content>

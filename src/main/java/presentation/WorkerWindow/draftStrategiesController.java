@@ -121,10 +121,10 @@ public class draftStrategiesController {
 			if(time.getText()!=null){
 				PromotionVO vo2=new PromotionVO();
 				if(people.getValue()=="所有人"){
-					vo2=new PromotionVO(straName.getText(), "ALL", Double.parseDouble((String) discount.getValue()), time.getText(), runWorker.getWorkerVO().getHotel_id());
+					vo2=new PromotionVO(straName.getText(), "ALL", Double.parseDouble((String) discount.getValue()), time.getText(), runWorker.getWorkerVO().getHotel_id().get());
 				}
 				else{
-					vo2=new PromotionVO(straName.getText(), "MEMBER", Double.parseDouble((String) discount.getValue()), time.getText(), runWorker.getWorkerVO().getHotel_id());
+					vo2=new PromotionVO(straName.getText(), "MEMBER", Double.parseDouble((String) discount.getValue()), time.getText(), runWorker.getWorkerVO().getHotel_id().get());
 
 				}
 				
@@ -170,7 +170,7 @@ public class draftStrategiesController {
 		
 		try {
 			PromotionVO vo3=new PromotionVO();
-			vo3=new PromotionVO(straName.getText(), "ALL", Double.parseDouble((String) discount.getValue()), time.getText(), runWorker.getWorkerVO().getHotel_id());
+			vo3=new PromotionVO(straName.getText(), "ALL", Double.parseDouble((String) discount.getValue()), time.getText(), runWorker.getWorkerVO().getHotel_id().get());
 		    PromotionController pController=new PromotionController();	
 			resultMessage=pController.delPromotion(vo3);
 		} catch (Exception e) {

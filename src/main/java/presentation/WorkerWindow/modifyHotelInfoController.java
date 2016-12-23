@@ -49,14 +49,14 @@ public class modifyHotelInfoController {
 		level.getItems().addAll("5","4","3","2","1");
 		level.setValue("5");
 		HotelController hController=new HotelController();
-		this.hotelVO=hController.seekHotel(runWorker.getWorkerVO().getHotel_id());
+		this.hotelVO=hController.seekHotel(runWorker.getWorkerVO().getHotel_id().get());
 		hotelname.setText(hotelVO.getHotelName().get());
 	}
 	
 	@SuppressWarnings("static-access")
 	public void saveClicked() throws RemoteException{
 		HotelController hController=new HotelController();
-		this.hotelVO=hController.seekHotel(runWorker.getWorkerVO().getHotel_id());
+		this.hotelVO=hController.seekHotel(runWorker.getWorkerVO().getHotel_id().get());
 		HotelVO vo=new HotelVO();
 //		vo=hotelVO;
 		if(address.getText()!=null&&introduce.getText()!=null&&area.getText()!=null&&service.getText()!=null&&level.getValue()!=null){
@@ -66,6 +66,10 @@ public class modifyHotelInfoController {
 			try {
 				resultMessage=hotelController.modifyHotel(vo);
 				if(resultMessage==ResultMessage.SUCCESS){
+//					RunWorker run1=new RunWorker();
+//					run1.SetAnchor1(4);
+//					run1.start(new Stage());
+//					this.runWorker.getPrimaryStage().close();
 					RunWarning runWarning=new RunWarning();
 					runWarning.SetWarning("修改成功！");
 					runWarning.start(new Stage());
@@ -90,6 +94,10 @@ public class modifyHotelInfoController {
 	public void setRunModifyHotelInfo(RunModifyHotelInfo runModifyHotelInfo1) throws RemoteException{
 		this.runModifyHotelInfo=runModifyHotelInfo1;
 		initialize();
+	}
+	
+	public void setRunWorker(RunWorker runWorker){
+		this.runWorker=runWorker;
 	}
 
 }

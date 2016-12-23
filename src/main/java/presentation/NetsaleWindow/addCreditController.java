@@ -56,12 +56,19 @@ public class addCreditController {
 	public void searchClicked() throws RemoteException{
 		if(tf.getText()!=null){
 			//需要一个判断该账号是否存在的方法
+			String id1=String.valueOf(tf.getText());
 			ClientController clientController=new ClientController();
-			ResultMessage res=clientController.checkClientExist(tf.getText());
-			if(res==ResultMessage.EXIST){
+			ResultMessage res=clientController.checkClientExist(id1);
+//			System.out.println(id1);
+//			System.out.println(res);
+			if(res==ResultMessage.SUCCESS){
+//				System.out.println(String.valueOf(tf.getText()));
+//				System.out.println("111111111111111111111111");
 				CreditController creditController=new CreditController();
-			    creditVO=creditController.getCredit(tf.getText());
-			    id.setText(creditVO.getUserId());
+//				System.out.println("222222222222222222222");
+			    creditVO=creditController.getCredit(id1);
+//			    System.out.println("333333333333333333333");
+			    id.setText(creditVO.getUserId().get());
 			    credit.setText(String.valueOf(creditVO.getCredit()));
 			}
 			else{
@@ -83,7 +90,7 @@ public class addCreditController {
 		if(money.getText()!=null){
 			int charge=Integer.parseInt(money.getText());
 			CreditController creditController=new CreditController();
-			ResultMessage resultMessage=creditController.deposit(creditVO.getUserId(), charge);
+			ResultMessage resultMessage=creditController.deposit(creditVO.getUserId().get(), charge);
 			if(resultMessage==ResultMessage.SUCCESS){
 				RunWarning rWarning=new RunWarning();
 				rWarning.SetWarning("充值成功！");

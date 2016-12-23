@@ -86,21 +86,18 @@ public class executeOrderController {
 	
 	@SuppressWarnings({ "static-access" })
 	public void initialize() throws RemoteException{
-		this.orderVO=RunWorker.getOrderVO();
-//		System.out.println("hhhhhhhhhhh");
-//		state.getItems().addAll("已执行","未执行","异常","已撤销");
-//		state.setValue("未执行");
-//		System.out.println("hhhhhhhhhhh");
 		
 		try{
 			OrderController controller=new OrderController();
-		currentList=controller.getUndoOrders(runWorker.getWorkerVO().getHotel_id());
+		currentList=controller.getUndoOrders(runWorker.getWorkerVO().getHotel_id().get());
 
 		}
 		catch(Exception e){
 			e.printStackTrace();
 		}
 		
+		
+		//把未执行订单显示到tableview
 		ObservableList<OrderVO> currentListData
         = FXCollections.observableArrayList();
 		currentListData.addAll(currentList);
@@ -124,22 +121,14 @@ public class executeOrderController {
         });
 		
 		
-//		num.setText(order1.getText());
-//		begintime.setText(orderVO.getPredictCheckInTime().get());
-//		latesettime.setText(orderVO.getDeadline().get());
-//		numofPeople.setText(String.valueOf(orderVO.getPeople()));
-//		boolean child=orderVO.isHasChild().get();
-//		if(child==true){
-//			hasChild.setText("有");
-//		}
-//		else{
-//			hasChild.setText("无");
-//		}
-		
 		
 	}
 	
-	@SuppressWarnings({ "static-access", "unused" })
+	/**
+	 * 点击退房按钮
+	 * @throws RemoteException
+	 */
+	@SuppressWarnings({ "static-access" })
 	public void backClicked() throws RemoteException{
 		Date date=new Date();
 		DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -148,8 +137,12 @@ public class executeOrderController {
 		
 		OrderController oController=new OrderController();
 		ResultMessage resultMessage=ResultMessage.FAIL;
-		
+		resultMessage=oController.recordCheckoutTime(num.getText(), time);
 		if(resultMessage==ResultMessage.SUCCESS){
+			RunWorker run1=new RunWorker();
+			run1.SetAnchor1(6);
+			run1.start(new Stage());
+			this.runWorker.getPrimaryStage().close();
 			RunWarning rWarning=new RunWarning();
 			rWarning.SetWarning("修改成功！");
 			rWarning.start(new Stage());
@@ -162,6 +155,10 @@ public class executeOrderController {
 		
 	}
 	
+	
+	/**
+	 * 点击订单执行按钮
+	 */
 	@SuppressWarnings("static-access")
 	public void executeClicked(){
 		  Date date=new Date();
@@ -173,6 +170,13 @@ public class executeOrderController {
 			ResultMessage resultMessage=ResultMessage.FAIL;
 			resultMessage=orderController.evecuteOrder(orderid, time);
 			if(resultMessage==ResultMessage.SUCCESS){
+				/**
+				 * 这边我要做一个刷新，but how？？？？
+				 */
+//				RunWorker run1=new RunWorker();
+//				run1.SetAnchor1(6);
+//				run1.start(new Stage());
+//				this.runWorker.getPrimaryStage().close();
 				RunWarning rWarning=new RunWarning();
 				rWarning.SetWarning("修改成功！");
 				rWarning.start(new Stage());
@@ -189,6 +193,10 @@ public class executeOrderController {
 		  
 	}
 	
+	
+	/**
+	 * 点击撤销按钮
+	 */
 	@SuppressWarnings("static-access")
 	public void undoClicked(){
 		Date date=new Date();
@@ -202,6 +210,10 @@ public class executeOrderController {
 			ResultMessage resultMessage=ResultMessage.FAIL;
 			resultMessage=orderController.undoOrder(client, orderid, time);
 			if(resultMessage==ResultMessage.SUCCESS){
+				RunWorker run1=new RunWorker();
+				run1.SetAnchor1(6);
+				run1.start(new Stage());
+				this.runWorker.getPrimaryStage().close();
 				RunWarning rWarning=new RunWarning();
 				rWarning.SetWarning("修改成功！");
 				rWarning.start(new Stage());
@@ -215,12 +227,13 @@ public class executeOrderController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
 			
 		  
 	}
 	
 	public void setRunWorker(RunWorker rWorker) throws RemoteException{
-//		System.out.println("hhhhhhhhhhh");
 		this.runWorker=rWorker;
 		initialize();
 

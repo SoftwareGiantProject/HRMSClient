@@ -8,9 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import util.ListType;
-import vo.HotelVO;
-import vo.OrderVO;
 import vo.PromotionVO;
 import vo.WorkerVO;
 
@@ -21,9 +18,6 @@ public class RunWorker extends Application{
     private int anchor1=0;
     private static WorkerVO workerVO;
     private static PromotionVO promotionVO;
-    private static OrderVO orderVO=new OrderVO("111", "123456", "15151", "0.00", "0.50", "5.00", "5.41", "4.20", "88.00", "dac", 100, 5, true, ListType.CURRENTLIST, 100);
-//    private static PromotionVO promotionVO=new PromotionVO("双十一", "所有人", 7.0, "20161512103");
-    private static HotelVO hotelVO=new HotelVO("123", "gelinhaotai", "gagagag", "nanda", 4, 4, "good", "hotwater", "222", "nanjing");
     
     public static void main(String[] args) {
         launch(args);
@@ -58,17 +52,7 @@ public class RunWorker extends Application{
     	return workerVO;
     }
     
-//    public static String getHotelid(){
-//    	return workerVO.getHotel_id();
-//    }
     
-    public static void setOrderVO(OrderVO vo){
-    	RunWorker.orderVO=vo;
-    }
-    
-    public static OrderVO getOrderVO(){
-    	return orderVO;
-    }
     
     public static void setPromotionVO(PromotionVO vo){
     	RunWorker.promotionVO=vo;
@@ -78,13 +62,6 @@ public class RunWorker extends Application{
     	return promotionVO;
     }
     
-    public static void setHotelVO(HotelVO vo){
-    	RunWorker.hotelVO=vo;
-    }
-    
-    public static HotelVO getHotelVO(){
-    	return hotelVO;
-    }
 
     /**
      * Initializes the root layout.
@@ -161,18 +138,14 @@ public class RunWorker extends Application{
      */
     public void showTools() {
         try {
-            // Load person overview.
 
             FXMLLoader loader2=new FXMLLoader();
             loader2.setLocation(RunWorker.class.getResource("WorkerMenu.fxml"));
-//            System.out.println("aaaa");
             AnchorPane WorkerMenu=(AnchorPane)loader2.load();
-//            System.out.println("bbbb");
             FXMLLoader loader3=new FXMLLoader();
             loader3.setLocation(RunWorker.class.getResource("State.fxml"));
             AnchorPane State=(AnchorPane)loader3.load();
 
-            // Set person overview into the center of root layout.
             rootLayout.setLeft(WorkerMenu);
             rootLayout.setBottom(State);
             

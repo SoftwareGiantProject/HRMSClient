@@ -95,6 +95,16 @@ public class Client {
 	
 	public ResultMessage check(String id){
 		ResultMessage result = ResultMessage.FAIL;
+		ClientPO po = new ClientPO();
+		try {
+			po = clientDataService.findClient(id);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		if(po != null){
+			result = ResultMessage.SUCCESS;
+		}
 		return result;
 	}
 	
@@ -106,6 +116,31 @@ public class Client {
 			result = login.login(user_id, password);
 		} catch (RemoteException e) {
 			e.printStackTrace();
+		}
+		return result;
+	}
+	
+
+	public ResultMessage modifyPassword(String user_id,String oldPassword, String newPassword) {
+		ResultMessage result = ResultMessage.FAIL;
+		ClientPO client = new ClientPO();
+		
+		try {
+			client = clientDataService.findClient(user_id);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		if(!oldPassword.equals(client.getPassword())){
+			return ResultMessage.FAIL;
+		}
+		else{
+			client.setPassword(newPassword);
+			try {
+				result = clientDataService.modify(client);
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
 		}
 		return result;
 	}
@@ -138,4 +173,5 @@ public class Client {
 		
 		return vo;
 	}
+
 }

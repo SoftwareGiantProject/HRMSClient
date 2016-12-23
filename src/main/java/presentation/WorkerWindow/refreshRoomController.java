@@ -48,7 +48,7 @@ public class refreshRoomController {
 	public void initialize(){
 		RoomController roomController=new RoomController();
 		try{
-			allroom=roomController.getRoomConditionByHotel(runWorker.getWorkerVO().getHotel_id());
+			allroom=roomController.getRoomConditionByHotel(runWorker.getWorkerVO().getHotel_id().get());
 			ObservableList<RoomConditionDateVO> roomListData
             = FXCollections.observableArrayList();
 		    roomListData.addAll(allroom);
@@ -101,6 +101,10 @@ public class refreshRoomController {
 		initialize();
 		System.out.println("hhhhh");
 //		setrooms();
+	}
+	
+	public RunWorker getRunWorker(){
+		return this.runWorker;
 	}
 	
 }

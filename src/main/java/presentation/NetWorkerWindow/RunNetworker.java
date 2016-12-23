@@ -105,44 +105,46 @@ public class RunNetworker extends Application {
 //			System.out.println("wrong");
 //		}
 			switch(anchor1){
-			case 1:
-				FXMLLoader loader1=new FXMLLoader();
-	            loader1.setLocation(RunNetworker.class.getResource("NetworkerAnchor1.1.fxml"));
-	            AnchorPane NetworkerAnchor1=(AnchorPane)loader1.load();
-	            border.setCenter(NetworkerAnchor1);
-	            
-	            break;
+//			case 1:
+//				FXMLLoader loader1=new FXMLLoader();
+//	            loader1.setLocation(RunNetworker.class.getResource("NetworkerAnchor1.1.fxml"));
+//	            AnchorPane NetworkerAnchor1=(AnchorPane)loader1.load();
+//	            border.setCenter(NetworkerAnchor1);
+//	            NetworkerAnchor1_1Controller controller1=loader1.getController();
+//	            controller1.SetRunNetworker(this);
+//	            break;
 			case 2:
 				FXMLLoader loader2=new FXMLLoader();
 	            loader2.setLocation(RunNetworker.class.getResource("NetworkerAnchor1.2.fxml"));
 	            AnchorPane NetworkerAnchor2=(AnchorPane)loader2.load();
 	            border.setCenter(NetworkerAnchor2);
+	            NetworkerAnchor1_2Controller controller2=loader2.getController();
+	            controller2.SetRunNetworker(this);
 	            break;
-			case 3:
-				FXMLLoader loader3=new FXMLLoader();
-	            loader3.setLocation(RunNetworker.class.getResource("NetworkerAnchor1.3.fxml"));
-	            AnchorPane NetworkerAnchor3=(AnchorPane)loader3.load();
-	            border.setCenter(NetworkerAnchor3);
-	            break;
-	            
+//			case 3:
+//				FXMLLoader loader3=new FXMLLoader();
+//	            loader3.setLocation(RunNetworker.class.getResource("NetworkerAnchor1.3.fxml"));
+//	            AnchorPane NetworkerAnchor3=(AnchorPane)loader3.load();
+//	            border.setCenter(NetworkerAnchor3);
+//	            break;
+//	            
 			case 4:
 				FXMLLoader loader4=new FXMLLoader();
 	            loader4.setLocation(RunNetworker.class.getResource("NetworkerAnchor1.4.fxml"));
 	            AnchorPane NetworkerAnchor4=(AnchorPane)loader4.load();
 	            border.setCenter(NetworkerAnchor4);
+	            NetworkerAnchor1_4Controller controller4=loader4.getController();
+	            controller4.SetRunNetworker(this);
 	            break;
 			case 5:
 				FXMLLoader loader5=new FXMLLoader();
 	            loader5.setLocation(RunNetworker.class.getResource("NetworkerAnchor1.5.fxml"));
 	            AnchorPane NetworkerAnchor5=(AnchorPane)loader5.load();
 	            border.setCenter(NetworkerAnchor5);
+	            NetworkerAnchor1_5Controller controller5=loader5.getController();
+	            controller5.SetRunNetworker(this);
 	            break;
-			case 6:
-				FXMLLoader loader6=new FXMLLoader();
-	            loader6.setLocation(RunNetworker.class.getResource("NetworkerAnchor1.6.fxml"));
-	            AnchorPane NetworkerAnchor6=(AnchorPane)loader6.load();
-	            border.setCenter(NetworkerAnchor6);
-	            break;
+			
 	            
 			}
 			

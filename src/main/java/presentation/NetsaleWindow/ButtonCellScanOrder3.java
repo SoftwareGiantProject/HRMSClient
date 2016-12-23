@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
-import presentation.NetsaleWindow.unCommonOrderController;
 import util.ListType;
 import vo.OrderVO;
 

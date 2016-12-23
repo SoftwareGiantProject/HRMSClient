@@ -12,9 +12,11 @@ import javafx.stage.Stage;
 import presentation.ClientWindow.ClientAnchor1_4Controller;
 import presentation.ViewWindow.RunView;
 import vo.ClientVO;
+import vo.NetsaleVO;
 import vo.OrderVO;
+import vo.WorkerVO;
 
-public class ButtonCell1_2 extends TableCell<ClientVO,Boolean> {
+public class ButtonCell1_5 extends TableCell<WorkerVO,Boolean> {
 	ClientAnchor1_4Controller viewcontrol ;
 	public void SetViewcontrol(ClientAnchor1_4Controller controller){
 		this.viewcontrol=controller;
@@ -23,17 +25,17 @@ public class ButtonCell1_2 extends TableCell<ClientVO,Boolean> {
 	
 	final Button cellButton = new Button("查看");
 	
-	ButtonCell1_2(){
+	ButtonCell1_5(){
 		cellButton.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
             public void handle(ActionEvent t) {
 //                	viewcontrol.OrderClicked();
 				
-				ClientVO clientvo = getTableView().getItems().get( getIndex() );
+				WorkerVO workervo = getTableView().getItems().get( getIndex() );
 				//跳转窗口 实现客户查看 修改
 				RunView runView=new RunView();
-				runView.setAnchor1(1);
-				runView.SetClientVO(clientvo);
+				runView.setAnchor1(3);
+				runView.workerVO=workervo;
 				runView.start(new Stage());
 //				viewcontrol.hotelLevel.setText(ordervo.getHotel_id().get());
 //				viewcontrol.businessCircle.setText(ordervo.getStartTime().get());

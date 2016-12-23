@@ -1,6 +1,7 @@
 package presentation.ClientWindow;
 
 import businesslogic.memberbl.MemberController;
+import businesslogic.userbl.networker.NetworkerController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -34,12 +35,23 @@ public class ClientAnchor1_10Controller {
 	
 	
 	public void RegisterClicked(){
+		if(clientvo.getMemberId().get().length()!=0){
+			RunWarning runWarning=new RunWarning();
+			runWarning.SetWarning("您已经是会员了！");
+			runWarning.start(new Stage());
+		}else{
+		
 		try{
 		String birthdayString=birthday.getValue().toString();
 		
 		MemberController controller=new MemberController();
 		if(comMember.isSelected()){
-			
+			if(birthdayString.length()==0){
+				RunWarning runWarning=new RunWarning();
+				runWarning.SetWarning("请选择生日！");
+				runWarning.start(new Stage() );
+			}else{
+	
 			ResultMessage result=controller.registerComMember(birthdayString, clientvo.getUserId().get());
 			if(result==ResultMessage.SUCCESS){
 				RunWarning runWarning=new RunWarning();
@@ -52,7 +64,13 @@ public class ClientAnchor1_10Controller {
 				runWarning.SetWarning("注册失败!");
 				runWarning.start(new Stage());
 		}
+			}
 		}else{
+			if(birthdayString.length()==0||corpName.getText().length()==0){
+				RunWarning runWarning=new RunWarning();
+				runWarning.SetWarning("请输入生日和企业名称！");
+				runWarning.start(new Stage());
+			}else{
 			ResultMessage result=controller.registerCorMember(birthdayString, clientvo.getUserId().get(), corpName.getText());
 			if(result==ResultMessage.SUCCESS){
 				RunWarning runWarning=new RunWarning();
@@ -66,8 +84,10 @@ public class ClientAnchor1_10Controller {
 				runWarning.start(new Stage());
 		}
 		}
+			}
 		}catch(Exception e){
 			e.printStackTrace();
+		}
 		}
 	}
 	public void corpMemberClicked(){

@@ -62,5 +62,9 @@ public class runModifyRoomCondition extends Application{
 		setlayout();
 		
 	}
+	
+	 public Stage getPrimaryStage() {
+	        return primarystage;
+	    }
 
 }

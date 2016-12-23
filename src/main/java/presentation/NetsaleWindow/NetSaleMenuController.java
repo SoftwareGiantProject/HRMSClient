@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import presentation.WorkerWindow.ScanOrdersController;
 import vo.NetsaleVO;
 
 public class NetSaleMenuController {
@@ -79,9 +80,9 @@ public class NetSaleMenuController {
 	}
 	
 	public void initialize(){
-		NetsaleVO vo=runNetSale.getNetsaleVO();
-		id.setText(vo.getUserId());
-		name.setText(vo.getUserName());
+//		this.netsaleVO=runNetSale.getNetsaleVO();
+//		id.setText(netsaleVO.getUserId());
+//		name.setText(netsaleVO.getUserName());
 	}
 	
 	public void setRunNetsale(RunNetSale rn){

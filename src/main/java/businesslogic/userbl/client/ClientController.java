@@ -54,4 +54,10 @@ public class ClientController implements ClientBLService,ClientInfo,Login{
 		// TODO Auto-generated method stub
 		return client.check(id);
 	}
+
+	@Override
+	public ResultMessage modifyPassword(String user_id,String oldPassword, String newPassword) throws RemoteException {
+		// TODO Auto-generated method stub
+		return client.modifyPassword(user_id,oldPassword,newPassword);
+	}
 }

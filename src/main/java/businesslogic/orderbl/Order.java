@@ -246,7 +246,7 @@ public class Order {
 		ArrayList<OrderVO> result = new ArrayList<>();
 		
 		try {
-			list = DatafactoryImpl.getInstance().getOrderData().getOrderByHotel(hotel_id, "ALLLIST");
+			list = DatafactoryImpl.getInstance().getOrderData().getALLOrderByHotel(hotel_id);
 			for(OrderPO lis : list){
 				result.add(POTOVO(lis));
 			}

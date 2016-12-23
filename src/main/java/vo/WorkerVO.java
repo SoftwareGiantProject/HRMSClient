@@ -3,20 +3,24 @@ package vo;
 
 import java.io.Serializable;
 
+import javax.lang.model.util.SimpleElementVisitor6;
+
+import javafx.beans.property.SimpleStringProperty;
+
 public class WorkerVO implements Serializable{
 
 	//id
-		private String userId;
+		private SimpleStringProperty userId;
 		
 		//酒店id
-		private String hotel_id;
+		private SimpleStringProperty hotel_id;
 		//姓名
-		private String userName;
+		private SimpleStringProperty userName;
 		//密码
-		private String password;
+		private SimpleStringProperty password;
 		
 		//联系方式
-		private String contact;
+		private SimpleStringProperty contact;
 		
 		public WorkerVO(){
 			
@@ -25,53 +29,53 @@ public class WorkerVO implements Serializable{
 		public WorkerVO(String userId,String userName,
 				String password,String contact){
 			super();
-			this.userId=userId;
+			this.userId=new SimpleStringProperty(userId);
 			
-			this.userName=userName;
-			this.password=password;
+			this.userName=new SimpleStringProperty(userName);
+			this.password=new SimpleStringProperty(password);
 			
-			this.contact=contact;
+			this.contact=new SimpleStringProperty(contact);
 			
 		}
 
 		
-		public String getHotel_id() {
+		public SimpleStringProperty getHotel_id() {
 			return hotel_id;
 		}
 
 		public void setHotel_id(String hotel_id) {
-			this.hotel_id = hotel_id;
+			this.hotel_id = new SimpleStringProperty(hotel_id);
 		}
 
-		public String getUserId() {
+		public SimpleStringProperty getUserId() {
 			return userId;
 		}
 
 		public void setUserId(String userId) {
-			this.userId = userId;
+			this.userId = new SimpleStringProperty(userId);
 		}
 
-		public String getUserName() {
+		public SimpleStringProperty getUserName() {
 			return userName;
 		}
 
 		public void setUserName(String userName) {
-			this.userName = userName;
+			this.userName =new SimpleStringProperty(userName) ;
 		}
 
-		public String getPassword() {
+		public SimpleStringProperty getPassword() {
 			return password;
 		}
 
 		public void setPassword(String password) {
-			this.password = password;
+			this.password = new SimpleStringProperty(password);
 		}
 
-		public String getContact() {
+		public SimpleStringProperty getContact() {
 			return contact;
 		}
 
 		public void setContact(String contact) {
-			this.contact = contact;
+			this.contact = new SimpleStringProperty(contact);
 		}
 }

@@ -121,11 +121,11 @@ public class Worker {
 	private WorkerPO vo2po(WorkerVO vo){
 		WorkerPO po = new WorkerPO();
 		
-		po.setContact(vo.getContact());
-		po.setHotel_id(vo.getHotel_id());
-		po.setPassword(vo.getPassword());
-		po.setUserId(vo.getUserId());
-		po.setUserName(vo.getUserName());
+		po.setContact(vo.getContact().get());
+		po.setHotel_id(vo.getHotel_id().get());
+		po.setPassword(vo.getPassword().get());
+		po.setUserId(vo.getUserId().get());
+		po.setUserName(vo.getUserName().get());
 		
 		return po;
 	}

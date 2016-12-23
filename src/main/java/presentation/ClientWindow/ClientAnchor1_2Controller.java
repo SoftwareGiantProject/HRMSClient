@@ -1,10 +1,14 @@
 package presentation.ClientWindow;
 
+import javax.imageio.spi.RegisterableService;
+
 import businesslogic.userbl.client.ClientController;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import presentation.ViewWindow.RunView;
 import presentation.WarningWindow.RunWarning;
 import util.ResultMessage;
 import vo.ClientVO;
@@ -18,8 +22,10 @@ public class ClientAnchor1_2Controller {
 	TextField phone;
 	@FXML
 	Label credit;
+	@FXML
+	Button modifyPasswordBt;
 	
-	ClientVO client;
+	public ClientVO client;
 	
 	RunClient1 runClient1;
 	
@@ -27,6 +33,14 @@ public class ClientAnchor1_2Controller {
 	
 	public ClientAnchor1_2Controller(){
 		
+	}
+	
+	
+	public void modifyPasswordClicked(){
+		RunView runView=new RunView();
+		runView.setAnchor1(4);
+		runView.SetClientVO(client);
+		runView.start(new Stage());
 	}
 	//点击修改信息 监听
 	public void modifyClicked(){

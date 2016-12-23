@@ -44,4 +44,13 @@ public interface ClientBLService {
 	 */
 	public ResultMessage checkClientExist(String id)throws RemoteException;
 	
+	/**
+	 * 修改密码
+	 * @param user_id
+	 * @param oldPassword
+	 * @param newPassword
+	 * @return
+	 * @throws RemoteException
+	 */
+	public ResultMessage modifyPassword(String user_id,String oldPassword,String newPassword)throws RemoteException;
 }

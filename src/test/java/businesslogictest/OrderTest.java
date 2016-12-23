@@ -165,6 +165,7 @@ public class OrderTest {
 	}
 	*/
 	
+	/**
 	@Test
 	public void testGetExecutedOrderByHotelClient(){
 		String hotel_id = "h001";
@@ -175,6 +176,33 @@ public class OrderTest {
 		list = orderController.getExecutedOrderByHotelClient(hotel_id, client_id);
 	
 
+		for(OrderVO vo : list){
+			System.out.println(vo.getOrder_id());
+			System.out.println(vo.getUser_id());
+			System.out.println(vo.getHotel_id());
+			System.out.println(vo.getOrderPrice());
+			System.out.println(vo.getStartTime());
+			System.out.println(vo.getEndTime());
+			System.out.println(vo.getDeadline());
+			System.out.println(vo.getExecuteTime());
+			System.out.println(vo.getPredictCheckInTime());
+			System.out.println(vo.getPredictCheckOutTime());
+			System.out.println(vo.getRoomType());
+			System.out.println(vo.getNumber());
+			System.out.println(vo.getPeople());
+			System.out.println(vo.isHasChild());
+			System.out.println(vo.getListType());
+		}
+	}
+	*/
+	
+	@Test
+	public void testGetAllOrders(){
+		String hotel_id = "h001";
+		
+		ArrayList<OrderVO> list = new ArrayList<>();
+		list = orderController.getAllOrders(hotel_id);
+		System.out.println(list.size());
 		for(OrderVO vo : list){
 			System.out.println(vo.getOrder_id());
 			System.out.println(vo.getUser_id());

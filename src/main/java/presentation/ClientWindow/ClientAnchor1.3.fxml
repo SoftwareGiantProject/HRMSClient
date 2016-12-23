@@ -36,5 +36,6 @@
       <TextField fx:id="price" layoutX="307.0" layoutY="293.0" />
       <Label layoutX="89.0" layoutY="373.0" text="*充值金额说明：每一元人民币对应100点信用值，充值金额必须为一元的整数倍" textFill="#f2360c" />
       <Button layoutX="344.0" layoutY="440.0" mnemonicParsing="false" onAction="#payCreditClicked" text="充值" />
+      <Button fx:id="historyBt" layoutX="38.0" layoutY="440.0" mnemonicParsing="false" onAction="#historyClicked" text="充值历史" />
    </children>
 </AnchorPane>

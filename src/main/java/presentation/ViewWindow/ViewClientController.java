@@ -19,14 +19,11 @@ public class ViewClientController {
 	@FXML
 	Button close;
 	
-	RunView rv;
-	ClientVO clientvo;
-	public void initialize(){
-		clientid.setText(clientvo.getUserId().get());
-		clientname.setText(clientvo.getUserName().get());
-		phone.setText(clientvo.getContact().get());
-		credit.setText(String.valueOf(clientvo.getCredit().get()));
-		birthday.setText(clientvo.getBirthday().get());
+	public static RunView rv;
+	 
+    public static ClientVO clientvo;
+	public void initialize() {
+//		System.out.println("ll"+clientvo.getUserId().get());
 		
 	}
 	public void CloseClicked(){
@@ -35,7 +32,17 @@ public class ViewClientController {
 	
 	public void SetRunView(RunView runview){
 		this.rv=runview;
-		this.clientvo=rv.clientVO;
+		
+		this.clientvo=runview.GetClientVO();
+		
+//		System.out.println("gg"+clientvo.getUserId().get());
+		clientid.setText(clientvo.getUserId().get());
+		clientname.setText(clientvo.getUserName().get());
+		phone.setText(clientvo.getContact().get());
+		credit.setText(String.valueOf(clientvo.getCredit().get()));
+		birthday.setText(clientvo.getBirthday().get());
+		initialize();
+		
 	}
 
 }

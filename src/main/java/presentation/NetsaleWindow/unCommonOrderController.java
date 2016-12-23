@@ -49,9 +49,14 @@ public class unCommonOrderController {
 	Label state;
 	
 	@FXML
-	Button undo;
+	Button undohalf;
+	
+	@FXML
+	Button undoall;
 	
 	ArrayList<OrderVO> abnormallist;
+	
+	RunNetSale netSale;
 	
 	
 	public unCommonOrderController(){
@@ -102,7 +107,7 @@ public class unCommonOrderController {
 	}
 	
 	@SuppressWarnings("static-access")
-	public void undoClicked(){
+	public void undohalfClicked(){
 		ButtonCellScanOrder3 bcs=new ButtonCellScanOrder3();
 		OrderVO vo2=bcs.getOrderVO();
 		try {
@@ -111,8 +116,17 @@ public class unCommonOrderController {
 			String time=format.format(date);
 			OrderController oController2=new OrderController();
 //			vo2=new OrderVO(vo2.getUser_id().get(), vo2.getHotel_id().get(), vo2.getStartTime().get(), vo2.getPredictCheckInTime().get(), vo2.getPredictCheckOutTime().get(), vo2.getRoomType().get(), vo2.getNumber().get(), vo2.getPeople().get(), vo2.isHasChild().get(), ListType.UNDOLIST);
-			ResultMessage resultMessage=oController2.undoOrder(vo2.getUser_id().get(), vo2.getOrder_id().get(),time );
+//			ResultMessage resultMessage=oController2.undoOrder(vo2.getUser_id().get(), vo2.getOrder_id().get(),time );
+			ResultMessage resultMessage=oController2.cancelAbnormalOrder(vo2.getOrder_id().get(), false, time);
 			if(resultMessage==ResultMessage.SUCCESS){
+				try{
+					RunNetSale rn=new RunNetSale();
+					rn.setanchor1(2);
+					rn.start(new Stage());
+					this.netSale.getPrimaryStage().close();
+					}catch (Exception e){
+						e.printStackTrace();
+					}
 				RunWarning runWarning=new RunWarning();
 				runWarning.SetWarning("撤销成功！");
 				runWarning.start(new Stage());
@@ -129,7 +143,48 @@ public class unCommonOrderController {
 		
 	}
 	
+	@SuppressWarnings("static-access")
+	public void undoallClicked(){
+		ButtonCellScanOrder3 bcs=new ButtonCellScanOrder3();
+		OrderVO vo2=bcs.getOrderVO();
+		try {
+			Date date=new Date();
+			DateFormat format=new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+			String time=format.format(date);
+			OrderController oController2=new OrderController();
+//			vo2=new OrderVO(vo2.getUser_id().get(), vo2.getHotel_id().get(), vo2.getStartTime().get(), vo2.getPredictCheckInTime().get(), vo2.getPredictCheckOutTime().get(), vo2.getRoomType().get(), vo2.getNumber().get(), vo2.getPeople().get(), vo2.isHasChild().get(), ListType.UNDOLIST);
+//			ResultMessage resultMessage=oController2.undoOrder(vo2.getUser_id().get(), vo2.getOrder_id().get(),time );
+			ResultMessage resultMessage=oController2.cancelAbnormalOrder(vo2.getOrder_id().get(), true, time);
+			if(resultMessage==ResultMessage.SUCCESS){
+//				netSale.getPrimaryStage().close();
+//				System.out.println("000000000");
+				try{
+					RunNetSale rn=new RunNetSale();
+					rn.setanchor1(2);
+					rn.start(new Stage());
+					this.netSale.getPrimaryStage().close();
+					}catch (Exception e){
+						e.printStackTrace();
+					}
+				RunWarning runWarning=new RunWarning();
+				runWarning.SetWarning("撤销成功！");
+				runWarning.start(new Stage());
+			}
+			else{
+				RunWarning runWarning=new RunWarning();
+				runWarning.SetWarning("撤销失败！");
+				runWarning.start(new Stage());
+			}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	
+	public void setNetSale(RunNetSale rSale){
+		this.netSale=rSale;
+	}
 	
 	
 

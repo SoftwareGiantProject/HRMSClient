@@ -132,10 +132,10 @@ public class Netsale {
 	private NetsalePO vo2po(NetsaleVO vo){
 		NetsalePO po = new NetsalePO();
 		
-		po.setContact(vo.getContact());
-		po.setPassword(vo.getPassword());
-		po.setUserId(vo.getUserId());
-		po.setUserName(vo.getUserName());
+		po.setContact(vo.getContact().get());
+		po.setPassword(vo.getPassword().get());
+		po.setUserId(vo.getUserId().get());
+		po.setUserName(vo.getUserName().get());
 		
 		return po;
 	}

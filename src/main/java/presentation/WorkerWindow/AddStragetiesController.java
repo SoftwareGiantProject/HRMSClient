@@ -43,23 +43,22 @@ public class AddStragetiesController {
 		discount.setValue("9");
 	}
 	
+	
+	/**
+	 * 点击保存按钮
+	 */
 	@SuppressWarnings("static-access")
 	public void saveCliked(){
 		if(straname.getText()!=null&&time.getText()!=null){
 			PromotionVO promotion=new PromotionVO();
 			if(object.getValue()=="所有人"){
-				promotion=new PromotionVO(straname.getText(),"ALL",Double.parseDouble( (String) discount.getValue()), time.getText(),runworker.getWorkerVO().getHotel_id() );
+				promotion=new PromotionVO(straname.getText(),"ALL",Double.parseDouble( (String) discount.getValue()), time.getText(),runworker.getWorkerVO().getHotel_id().get() );
 
 			}
 			else{
-				promotion=new PromotionVO(straname.getText(), "MEMBER",Double.parseDouble( (String) discount.getValue()), time.getText(),runworker.getWorkerVO().getHotel_id() );
+				promotion=new PromotionVO(straname.getText(), "MEMBER",Double.parseDouble( (String) discount.getValue()), time.getText(),runworker.getWorkerVO().getHotel_id().get() );
 
 			}
-//			promotion=new PromotionVO(straname.getText(), String.valueOf(object.getValue()),Double.parseDouble( (String) discount.getValue()), time.getText(),runworker.getWorkerVO().getHotel_id() );
-			//PromotionController pController1=new PromotionController();
-//			if(promotion.getPromoitonObject().equals("所有人")){
-//				
-//			}
 			addforall(promotion);
 		}
 		else{
@@ -69,6 +68,10 @@ public class AddStragetiesController {
 		}
 	}
 	
+	/**
+	 * 用来保存到数据库的
+	 * @param p
+	 */
 	@SuppressWarnings("static-access")
 	public void addforall(PromotionVO p){
 		PromotionController pController1=new PromotionController();
@@ -91,25 +94,6 @@ public class AddStragetiesController {
 		
 	}
 	
-//	public void addforcommon(PromotionVO p){
-//		PromotionController pController1=new PromotionController();
-//		try {
-//			ResultMessage resultMessage=pController1.addMemberPromotion(p);
-//			if(resultMessage==ResultMessage.SUCCESS){
-//				RunWarning runWarning=new RunWarning();
-//				runWarning.SetWarning("已成功添加该促销策略");
-//				runWarning.start(new Stage());
-//			}
-//			else{
-//				RunWarning runWarning=new RunWarning();
-//				runWarning.SetWarning("添加失败");
-//				runWarning.start(new Stage());
-//			}
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//			e.printStackTrace();
-//		}
-//	}
 	
 	public void setRunAddStrategies(RunAddStrategies run1){
 		this.runAddStrategies=run1;

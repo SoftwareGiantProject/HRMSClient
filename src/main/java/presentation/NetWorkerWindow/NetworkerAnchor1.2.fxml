@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.NetWorkerWindow.NetworkerAnchor1_2Controller">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="29.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" />
       <GridPane layoutX="192.0" layoutY="206.0">
@@ -29,10 +29,10 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <TableView layoutX="29.0" layoutY="45.0" prefHeight="428.0" prefWidth="597.0">
+      <TableView fx:id="ClientList" layoutX="29.0" layoutY="45.0" prefHeight="428.0" prefWidth="597.0">
         <columns>
-          <TableColumn prefWidth="523.0" text="客户 " />
-          <TableColumn prefWidth="72.0" text="查看" />
+          <TableColumn fx:id="ClientColumn" prefWidth="523.0" text="客户 " />
+          <TableColumn fx:id="modifyColumn" prefWidth="72.0" text="查看" />
         </columns>
       </TableView>
    </children>

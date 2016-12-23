@@ -32,8 +32,8 @@ public class NetworkerAnchor1_2Controller {
 	
 	ArrayList<ClientVO> clientArray;
 	
-	RunNetworker runNetworker;
-	NetworkerVO networkerVO;
+	public static RunNetworker runNetworker;
+	public static NetworkerVO networkerVO;
 	public NetworkerAnchor1_2Controller(){
 		
 	}
@@ -52,6 +52,7 @@ public class NetworkerAnchor1_2Controller {
 		try{
 		NetworkerController controller=new NetworkerController();
 		clientArray=controller.getAllClientInfo();
+//		System.out.println(clientArray.size());
 		
 		
 		ObservableList<ClientVO> ClientData= FXCollections.observableArrayList();

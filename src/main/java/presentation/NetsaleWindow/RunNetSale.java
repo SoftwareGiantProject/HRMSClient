@@ -18,15 +18,18 @@ public class RunNetSale extends Application{
 	private int anchor1=0;
 	
 	OrderVO ordervo;
-	NetsaleVO netsalevo;
+	static NetsaleVO netsalevo;
 
 	@Override
 	public void start(Stage primaryStage) {
 		try{
 			this.primaryStage = primaryStage;
             this.primaryStage.setTitle("网站营销人员");
+//            System.out.println("去你妈的大西瓜22222");
 		    setBorder();
+//		    System.out.println("去你妈的大西瓜11111");
             setTools();
+//            System.out.println("去你妈的大西瓜");
 		    setNetsale();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -36,11 +39,11 @@ public class RunNetSale extends Application{
 	}
 	
 	public void setNetSaleVO(NetsaleVO vo){
-		netsalevo=vo;
+		RunNetSale.netsalevo=vo;
 	}
 	
 	public NetsaleVO getNetsaleVO(){
-		return netsalevo;
+		return this.netsalevo;
 	}
 	
 	public void setOrderVO(OrderVO vo){
@@ -86,6 +89,7 @@ public class RunNetSale extends Application{
 //          AnchorPane NetworkerAnchor1=(AnchorPane)loader1.load();
             FXMLLoader loader2=new FXMLLoader();
             loader2.setLocation(RunNetSale.class.getResource("NetSaleMenu.fxml"));
+//            System.out.println("老子在这里");
             AnchorPane NetSaleMenu=(AnchorPane)loader2.load();
             FXMLLoader loader3=new FXMLLoader();
             loader3.setLocation(RunNetSale.class.getResource("State.fxml"));

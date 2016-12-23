@@ -101,7 +101,7 @@ public class LoginAnchorController {
 			}
 		}else if(accountField.getText().charAt(0)=='n'){
 			NetworkerController lg=new NetworkerController();
-			System.out.println(accountField.getText()+passwordField.getText());
+//			System.out.println(accountField.getText()+passwordField.getText());
 			ResultMessage rm=lg.login(accountField.getText(), passwordField.getText());
 			if(rm==ResultMessage.SUCCESS){
 				RunNetworker rc=new RunNetworker();

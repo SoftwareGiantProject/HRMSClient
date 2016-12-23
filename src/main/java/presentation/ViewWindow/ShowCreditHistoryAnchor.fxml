@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.ViewWindow.ShowCreditController">
+   <children>
+      <TableView fx:id="historyList" layoutX="20.0" layoutY="22.0" prefHeight="356.0" prefWidth="560.0">
+        <columns>
+          <TableColumn fx:id="timeColumn" prefWidth="327.0" text="时间" />
+          <TableColumn fx:id="changeColumn" prefWidth="117.0" text="变化" />
+            <TableColumn fx:id="creditColumn" prefWidth="113.0" text="信用值" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

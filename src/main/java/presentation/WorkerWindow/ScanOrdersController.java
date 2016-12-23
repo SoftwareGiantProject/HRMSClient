@@ -101,23 +101,56 @@ public class ScanOrdersController {
 
 		try{
 			OrderController controller=new OrderController();
-			allList=controller.getAllOrders(runWorker.getWorkerVO().getHotel_id());
-		currentList=controller.getUndoOrders(runWorker.getWorkerVO().getHotel_id());
-		historyList=controller.getExecutedOrders(runWorker.getWorkerVO().getHotel_id());
-		abnormalList=controller.getAbnormalOrders(runWorker.getWorkerVO().getHotel_id());
-		undoList=controller.getReversedOrders(runWorker.getWorkerVO().getHotel_id());
+			allList=controller.getAllOrders(runWorker.getWorkerVO().getHotel_id().get());
+		currentList=controller.getUndoOrders(runWorker.getWorkerVO().getHotel_id().get());
+		historyList=controller.getExecutedOrders(runWorker.getWorkerVO().getHotel_id().get());
+		abnormalList=controller.getAbnormalOrders(runWorker.getWorkerVO().getHotel_id().get());
+		undoList=controller.getReversedOrders(runWorker.getWorkerVO().getHotel_id().get());
 
 		}
 		catch(Exception e){
 			e.printStackTrace();
 		}
 		
+		
+		
 	}
 	
+//	public void setAll(){
+//		try{
+//			OrderController controller=new OrderController();
+//			allList=controller.getAllOrders(runWorker.getWorkerVO().getHotel_id());
+//		}
+//		catch(Exception e){
+//			e.printStackTrace();
+//		}
+//		ObservableList<OrderVO> allListData
+//		=FXCollections.observableArrayList();
+//		allListData.addAll(allList);
+//		tableView.setItems(allListData);
+//		ordercolum.setCellValueFactory(cellData->cellData.getValue().getOrder_id());
+//		
+//		viewColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<OrderVO, Boolean>, ObservableValue<Boolean>>() {
+//            @Override
+//            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<OrderVO, Boolean> p) {
+//                return new SimpleBooleanProperty(p.getValue()!=null);
+//            }
+//        });
+//
+//        viewColumn.setCellFactory(new Callback<TableColumn<OrderVO, Boolean>, TableCell<OrderVO, Boolean>>() {
+//            @Override
+//            public TableCell<OrderVO, Boolean> call(TableColumn<OrderVO, Boolean> p) {
+//            	ButtonCellScanOrder bc=new ButtonCellScanOrder();
+//            	bc.SetViewcontrol(GetScanOrdersController());
+//                return bc;
+//            }
+//        });
+//	}
+//	
 	public  void executedClicked(){
 		try{
 			OrderController controller=new OrderController();
-			historyList=controller.getExecutedOrders(runWorker.getWorkerVO().getHotel_id());
+			historyList=controller.getExecutedOrders(runWorker.getWorkerVO().getHotel_id().get());
 		}
 		catch(Exception e){
 			e.printStackTrace();
@@ -195,6 +228,13 @@ public class ScanOrdersController {
 	}
 	
 	public void undoClicked(){
+		try{
+			OrderController controller=new OrderController();
+			undoList=controller.getReversedOrders(runWorker.getWorkerVO().getHotel_id().get());
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
 		ObservableList<OrderVO> undoListData
 		=FXCollections.observableArrayList();
 		undoListData.addAll(undoList);
@@ -221,6 +261,10 @@ public class ScanOrdersController {
 	public  void setRunWorker(RunWorker runWorker) throws RemoteException{
 		this.runWorker=runWorker;
 		initialize();
+//		System.out.println("111111111111111111");
+//		setAll();
+//		System.out.println("222222222222222222");
+		
 	}
 	
 

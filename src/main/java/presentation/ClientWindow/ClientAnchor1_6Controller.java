@@ -1,9 +1,9 @@
 package presentation.ClientWindow;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-
-
+import businesslogic.hotelbl.HotelController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -49,8 +49,8 @@ public class ClientAnchor1_6Controller {
 	ClientVO client;
 	RunClient1 runClient;
 	
-	@FXML
-	Label test;
+//	@FXML
+//	Label test;
 	
 	
 	public ClientAnchor1_6Controller(){
@@ -79,8 +79,18 @@ public class ClientAnchor1_6Controller {
 
 	public void initialize(){
 		
+		star.getItems().addAll("1","2","3","4","5");
+		roomType.getItems().addAll("标准间","大床房","商务间");
+//		test.setText("已连接");
+		sequece.getItems().addAll("价格从低到高","星级从低到高","评分从高到低");
+		try {
+			HotelController controller=new HotelController();
+			
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		test.setText("已连接");
 		
 		
 		//添加星级下拉框

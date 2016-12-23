@@ -2,6 +2,7 @@ package presentation.ClientWindow;
 
 import com.sun.prism.paint.Color;
 
+import businesslogic.userbl.client.ClientController;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -76,6 +77,7 @@ public class ClientAnchor2Controller {
 		
 		RunClient1 rc=new RunClient1();
 		rc.SetAnchor1(2);
+		rc.SetClientVO(new ClientController().getClientInfo(runClient1.GetClientVO().getUserId().get()));
 		rc.start(new Stage());
 
 		this.runClient1.getPrimaryStage().close();
@@ -86,6 +88,7 @@ public class ClientAnchor2Controller {
 		try{
 		RunClient1 rc=new RunClient1();
 		rc.SetAnchor1(1);
+		rc.SetClientVO(new ClientController().getClientInfo(runClient1.GetClientVO().getUserId().get()));
 		rc.start(new Stage());
 		this.runClient1.getPrimaryStage().close();
 		}catch (Exception e){
@@ -98,6 +101,7 @@ public class ClientAnchor2Controller {
 		try{
 			RunClient1 rc=new RunClient1();
 			rc.SetAnchor1(3);
+			rc.SetClientVO(new ClientController().getClientInfo(runClient1.GetClientVO().getUserId().get()));
 			rc.start(new Stage());
 			this.runClient1.getPrimaryStage().close();
 			}catch (Exception e){
@@ -110,6 +114,7 @@ public class ClientAnchor2Controller {
 		try{
 			RunClient1 rc=new RunClient1();
 			rc.SetAnchor1(4);
+			rc.SetClientVO(new ClientController().getClientInfo(runClient1.GetClientVO().getUserId().get()));
 			rc.start(new Stage());
 			this.runClient1.getPrimaryStage().close();
 			}catch (Exception e){
@@ -122,6 +127,7 @@ public class ClientAnchor2Controller {
 		try{
 			RunClient1 rc=new RunClient1();
 			rc.SetAnchor1(5);
+			rc.SetClientVO(new ClientController().getClientInfo(runClient1.GetClientVO().getUserId().get()));
 			rc.start(new Stage());
 			this.runClient1.getPrimaryStage().close();
 			}catch (Exception e){
@@ -133,6 +139,7 @@ public class ClientAnchor2Controller {
 		try{
 			RunClient1 rc=new RunClient1();
 			rc.SetAnchor1(6);
+			rc.SetClientVO(new ClientController().getClientInfo(runClient1.GetClientVO().getUserId().get()));
 			rc.start(new Stage());
 			this.runClient1.getPrimaryStage().close();
 			}catch (Exception e){
@@ -144,6 +151,7 @@ public class ClientAnchor2Controller {
 		try{
 			RunClient1 rc=new RunClient1();
 			rc.SetAnchor1(7);
+			rc.SetClientVO(new ClientController().getClientInfo(runClient1.GetClientVO().getUserId().get()));
 			rc.start(new Stage());
 			this.runClient1.getPrimaryStage().close();
 			}catch (Exception e){
@@ -156,6 +164,7 @@ public class ClientAnchor2Controller {
 		try{
 			RunClient1 rc=new RunClient1();
 			rc.SetAnchor1(8);
+			rc.SetClientVO(new ClientController().getClientInfo(runClient1.GetClientVO().getUserId().get()));
 			rc.start(new Stage());
 			this.runClient1.getPrimaryStage().close();
 			}catch (Exception e){
@@ -167,6 +176,7 @@ public class ClientAnchor2Controller {
 		try{
 			RunClient1 rc=new RunClient1();
 			rc.SetAnchor1(9);
+			rc.SetClientVO(new ClientController().getClientInfo(runClient1.GetClientVO().getUserId().get()));
 			rc.start(new Stage());
 			this.runClient1.getPrimaryStage().close();
 			}catch (Exception e){
@@ -178,6 +188,7 @@ public class ClientAnchor2Controller {
 		try{
 			RunClient1 rc=new RunClient1();
 			rc.SetAnchor1(10);
+			rc.SetClientVO(new ClientController().getClientInfo(runClient1.GetClientVO().getUserId().get()));
 			rc.start(new Stage());
 			this.runClient1.getPrimaryStage().close();
 			}catch (Exception e){
@@ -191,17 +202,22 @@ public class ClientAnchor2Controller {
 		viewInfoBt.setText("信息查看");
 //		viewInfoBt.setGraphic(new ImageView(new Image("file:src/lib/Client.png")));
 //		viewInfoBt=new Button("信息查看",new ImageView("file:src/lib/Client.png"));
-		type.setText("客户");
+		
+		if(RunClient1.GetClientVO().getMemberId().get().length()==0){
+			type.setText("客户");
+		}else{
+			type.setText("客户(会员)");
+		}
 		name.setText(RunClient1.GetClientVO().getUserName().get());
 		id.setText(RunClient1.GetClientVO().getUserId().get());
-		modifyInfoBt.setText("维护信息");
+//		modifyInfoBt.setText("维护信息");
 		payCreditBt.setText("信用充值");
 		viewOrderBt.setText("浏览订单");
 		viewHotelBt.setText("浏览预定过的酒店");
 		searchHotelBt.setText("搜索酒店");
-		undoOrderBt.setText("撤销订单");
-		evaluateOrderBt.setText("订单评价");
-		reserveHotelBt.setText("酒店预订");
+//		undoOrderBt.setText("撤销订单");
+//		evaluateOrderBt.setText("订单评价");
+//		reserveHotelBt.setText("酒店预订");
 		memberRegisterBt.setText("注册会员");
 		
 	}
