@@ -10,10 +10,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.WorkerWindow.HotelInfoViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
 	<children>
 		<Line endX="700.0" layoutX="500.0" layoutY="127.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-		<ImageView fx:id="image" fitHeight="100.0" fitWidth="157.0" layoutX="60.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="385.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="15.0" />
+		<ImageView fitHeight="100.0" fitWidth="157.0" layoutX="60.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="385.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="15.0" />
 		<Label fx:id="name" layoutX="219.0" layoutY="24.0" prefHeight="100.0" prefWidth="466.0" text="Label" AnchorPane.bottomAnchor="385.0" AnchorPane.leftAnchor="219.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
 			<font>
 				<Font size="48.0" />

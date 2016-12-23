@@ -80,9 +80,9 @@ public class NetSaleMenuController {
 	}
 	
 	public void initialize(){
-//		this.netsaleVO=runNetSale.getNetsaleVO();
-//		id.setText(netsaleVO.getUserId());
-//		name.setText(netsaleVO.getUserName());
+		this.netsaleVO=runNetSale.getNetsaleVO();
+		id.setText(netsaleVO.getUserId().get());
+		name.setText(netsaleVO.getUserName().get());
 	}
 	
 	public void setRunNetsale(RunNetSale rn){

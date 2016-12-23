@@ -50,18 +50,19 @@ public class HotelInfoViewController {
 	 * 初始化信息
 	 * @throws Exception
 	 */
+	@FXML
 	public void initial() throws Exception{
-		String hotelid=runWorker.getWorkerVO().getHotel_id().get();
-		HotelController hController=new HotelController();
-//		this.hotelVO=hController.seekHotel(hotelid);
-//		HotelVO vo=hotelVO;
-		HotelVO vo=hController.seekHotel(hotelid);
-		name.setText(vo.getHotelName().get());
-		location.setText(vo.getHotelAddress().get());
-		introduction.setText(vo.getHotelIntro().get());
-		area.setText(vo.getHotelArea().get());
-		sheshi.setText(vo.getHotelServe().get());
-		level.setText(String.valueOf(vo.getHotel_level()));
+//		String hotelid=runWorker.getWorkerVO().getHotel_id().get();
+//		HotelController hController=new HotelController();
+////		this.hotelVO=hController.seekHotel(hotelid);
+////		HotelVO vo=hotelVO;
+//		HotelVO vo=hController.seekHotel(hotelid);
+//		name.setText(vo.getHotelName().get());
+//		location.setText(vo.getHotelAddress().get());
+//		introduction.setText(vo.getHotelIntro().get());
+//		area.setText(vo.getHotelArea().get());
+//		sheshi.setText(vo.getHotelServe().get());
+//		level.setText(String.valueOf(vo.getHotel_level()));
 
 	}
 	
@@ -77,7 +78,18 @@ public class HotelInfoViewController {
 	
 	public void setRunWorker(RunWorker rw) throws Exception{
 		this.runWorker=rw;
-		initial();
+		String hotelid=runWorker.getWorkerVO().getHotel_id().get();
+		HotelController hController=new HotelController();
+		this.hotelVO=hController.seekHotel(hotelid);
+//		HotelVO vo=hotelVO;
+//		HotelVO vo=hController.seekHotel(hotelid);
+//		name.setText(hotelVO.getHotelName().get());
+//		location.setText(vo.getHotelAddress().get());
+//		introduction.setText(vo.getHotelIntro().get());
+//		area.setText(vo.getHotelArea().get());
+//		sheshi.setText(vo.getHotelServe().get());
+//		level.setText(String.valueOf(vo.getHotel_level()));
+//		initial();
 	}
 
 }

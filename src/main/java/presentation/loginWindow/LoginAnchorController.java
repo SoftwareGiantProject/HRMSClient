@@ -24,6 +24,7 @@ import javafx.stage.Stage;
 
 import presentation.ClientWindow.RunClient1;
 import presentation.NetWorkerWindow.RunNetworker;
+import presentation.NetsaleWindow.RunNetSale;
 import presentation.WarningWindow.RunWarning;
 import presentation.WorkerWindow.RunWorker;
 import util.ResultMessage;
@@ -72,7 +73,7 @@ public class LoginAnchorController {
 			ResultMessage rm=workerController.login(accountField.getText(), passwordField.getText());
 			if(rm==ResultMessage.SUCCESS){
 				RunWorker rw=new RunWorker();
-				rw.SetAnchor1(1);;
+				rw.SetAnchor1(1);
 				rw.setWorkerVO(workerController.getWorkerInfo(accountField.getText()));
 				rw.start(new Stage());
 				runLogin.getPrimaryStage().close();
@@ -88,16 +89,19 @@ public class LoginAnchorController {
 			NetsaleController netsaleController=new NetsaleController();
 			ResultMessage rm=netsaleController.login(accountField.getText(), passwordField.getText());
 			if(rm==ResultMessage.SUCCESS){
-//				RunNetSale rw=new RunNetSale();
-//				rw.SetAnchor1(1);;
-//				rw.setWorkerVO(workerController.getWorkerInfo(accountField.getText()));
-//				rw.start(new Stage());
-//				runLogin.getPrimaryStage().close();
+//				RunNetSale
+				RunNetSale rns=new RunNetSale();
+				rns.setanchor1(1);
+				rns.setNetSaleVO(netsaleController.getNetsaleInfo(accountField.getText()));
+				rns.start(new Stage());
+//				System.out.println("去你妈的大西瓜*2");
+				runLogin.getPrimaryStage().close();
 			}else{
 				//添加 登录失败弹窗
 				RunWarning rw=new RunWarning();
 				rw.SetWarning("登录失败！");
 				rw.start(new Stage());
+
 			}
 		}else if(accountField.getText().charAt(0)=='n'){
 			NetworkerController lg=new NetworkerController();

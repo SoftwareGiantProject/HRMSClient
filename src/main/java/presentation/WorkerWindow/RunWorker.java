@@ -90,7 +90,7 @@ public class RunWorker extends Application{
     		switch (anchor1){
     		case 1:
     			FXMLLoader loader1=new FXMLLoader();
-    	        loader1.setLocation(RunWorker.class.getResource("HotelInfoView.fxml"));
+    	        loader1.setLocation(RunWorker.class.getResource("HotelInfo.fxml"));
     	        AnchorPane HotelInfoView=(AnchorPane)loader1.load();
     	        rootLayout.setCenter(HotelInfoView);
     	        break;

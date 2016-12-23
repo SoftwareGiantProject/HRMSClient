@@ -17,8 +17,8 @@ public class RunNetSale extends Application{
 	private Stage primaryStage;
 	private int anchor1=0;
 	
-	OrderVO ordervo;
-	static NetsaleVO netsalevo;
+	static OrderVO ordervo;
+	private static NetsaleVO netsalevo;
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -38,26 +38,23 @@ public class RunNetSale extends Application{
 		
 	}
 	
-	public void setNetSaleVO(NetsaleVO vo){
+	public static void setNetSaleVO(NetsaleVO vo){
 		RunNetSale.netsalevo=vo;
 	}
 	
-	public NetsaleVO getNetsaleVO(){
-		return this.netsalevo;
+	public static NetsaleVO getNetsaleVO(){
+		return netsalevo;
 	}
 	
-	public void setOrderVO(OrderVO vo){
+	public  static void setOrderVO(OrderVO vo){
 		ordervo=vo;
 	}
 	
-	public OrderVO getOrderVO(){
+	public  static OrderVO getOrderVO(){
 		return ordervo;
 	}
 	
 	
-//	public RunNetSale(){
-//		
-//	}
 
     public void setanchor1(int anchor1){
     	this.anchor1=anchor1;

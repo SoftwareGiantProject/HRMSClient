@@ -100,6 +100,7 @@ public class Client {
 			po = clientDataService.findClient(id);
 		} catch (RemoteException e) {
 			e.printStackTrace();
+			
 		}
 		
 		if(po != null){

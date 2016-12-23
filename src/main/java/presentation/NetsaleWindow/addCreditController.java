@@ -54,7 +54,7 @@ public class addCreditController {
 	
 	@SuppressWarnings("static-access")
 	public void searchClicked() throws RemoteException{
-		if(tf.getText()!=null){
+		if(tf.getText().length() != 0){
 			//需要一个判断该账号是否存在的方法
 			String id1=String.valueOf(tf.getText());
 			ClientController clientController=new ClientController();
@@ -69,7 +69,7 @@ public class addCreditController {
 			    creditVO=creditController.getCredit(id1);
 //			    System.out.println("333333333333333333333");
 			    id.setText(creditVO.getUserId().get());
-			    credit.setText(String.valueOf(creditVO.getCredit()));
+			    credit.setText(String.valueOf(creditVO.getCredit().get()));
 			}
 			else{
 				RunWarning rWarning=new RunWarning();
@@ -87,7 +87,7 @@ public class addCreditController {
 	
 	@SuppressWarnings("static-access")
 	public void rechargeClicked() throws RemoteException{
-		if(money.getText()!=null){
+		if(money.getText().length()!= 0){
 			int charge=Integer.parseInt(money.getText());
 			CreditController creditController=new CreditController();
 			ResultMessage resultMessage=creditController.deposit(creditVO.getUserId().get(), charge);

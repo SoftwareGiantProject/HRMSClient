@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.NetSaleWindow.addCreditController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.NetsaleWindow.addCreditController">
 	<children>
 		<Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="35.0" layoutX="27.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="119.0" />
 		<Label layoutX="27.0" layoutY="14.0" prefHeight="35.0" prefWidth="119.0" text="    客户编号">
