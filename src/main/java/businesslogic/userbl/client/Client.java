@@ -41,7 +41,7 @@ public class Client {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		return ResultMessage.SUCCESS;
+		return result;
 	}
 	
 	public ClientVO getClientInfo(String user_id)throws RemoteException{
