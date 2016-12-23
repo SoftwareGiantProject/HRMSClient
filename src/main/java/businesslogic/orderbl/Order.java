@@ -345,10 +345,10 @@ public class Order {
 			e.printStackTrace();
 			// TODO: handle exception
 		}
-		String pridictInTime = po.getPredictCheckInTime();
-		String deadLine = getDeadline(pridictInTime);
-		String time = getTime(pridictInTime);
-		String undo_time = undoTime;
+		String pridictInTime = po.getPredictCheckInTime();  //预定入住时间 yyyy-mm-dd
+		String deadLine = getDeadline(pridictInTime);       //最晚入住时间 yyyy-mm-dd-hh-mm-ss
+		String time = getTime(pridictInTime);				//扣除信用的限定时间 yyyy-mm-dd-hh-mm-ss
+		String undo_time = undoTime;						//撤销订单时间
 		ResultMessage resultMessage2 = ResultMessage.FAIL;
 		ResultMessage resultMessage3 = ResultMessage.FAIL;
 		ArrayList<RoomConditionDateVO> roomCon = roomController.getRoomConditionByOrder(order_id);
