@@ -3,6 +3,7 @@ package presentation.ViewWindow;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 import vo.ClientVO;
 import vo.NetsaleVO;
 
@@ -26,7 +27,10 @@ public class ViewNetsaleController {
 //		birthday.setText(clientvo.getBirthday().get());
 	}
 	public void CloseClicked(){
-		rv.getPrimaryStage().close();
+		RunView runView=new RunView();
+		runView.setAnchor1(6);
+		runView.start(new Stage());
+		this.rv.getPrimaryStage().close();
 	}
 	
 	public void SetRunView(RunView runview){
@@ -36,11 +40,11 @@ public class ViewNetsaleController {
 //		System.out.println(netsalevo.getUserId().get());
 		
 		netsaleid.setText(netsalevo.getUserId().get());
-		netsalename.setText("gg");
+		netsalename.setText(netsalevo.getUserName().get());
 		phone.setText(netsalevo.getContact().get());
 		initialize();
 //		System.out.println("gg"+clientvo.getUserId().get());
-		
+		close.setText("修改");
 	}
 
 }

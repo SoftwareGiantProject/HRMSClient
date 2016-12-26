@@ -102,7 +102,7 @@ public class Order {
 	 * @param client_id
 	 * @return
 	 */
-	public ArrayList<OrderVO> getExecutedOrderByHotelClient(String hotel_id, String client_id){
+	public ArrayList<OrderVO> getExcutedOrderByHotelClient(String hotel_id, String client_id){
 		ArrayList<OrderVO> result = new ArrayList<>();
 		ArrayList<OrderVO> list1 = getExecutedOrders(hotel_id);
 		ArrayList<OrderVO> list2 = viewExecutedOrderByClient(client_id);
@@ -507,7 +507,7 @@ public class Order {
 		
 		
 		if(!(clientController.getClientInfo(client_id).getType().equals(MemberType.NONE))){
-			if(compareTime(startTime, time1) && compareTime(time2, endTime)){
+			if(compareTime2(startTime, time1) && compareTime2(time2, endTime)){
 				for(int i = 0; i < areaList.length; i++){
 					if(areaList[i].equals(area)){
 						return true;
@@ -542,7 +542,7 @@ public class Order {
 		}
 		
 		if(seller.equals("web") || seller.equals(hotel_id)){
-			if(compareTime(startTime, time1) && compareTime(time2, endTime)){
+			if(compareTime2(startTime, time1) && compareTime2(time2, endTime)){
 				if(object.equals("ALL") || object.equals(client)){
 					return true;
 				}
@@ -572,6 +572,29 @@ public class Order {
 		return temp;
 		
 	}
+	
+
+	/**
+	 *  返回该客户在该酒店的所有订单
+	 * @param hotel_id
+	 * @param client_id
+	 * @return
+	 */
+	public ArrayList<OrderVO> getAllOrderByHotelClient(String hotel_id, String client_id) {
+		ArrayList<OrderVO> list = new ArrayList<>();
+		ArrayList<OrderPO> poList = new ArrayList<>();
+		try {
+			poList = DatafactoryImpl.getInstance().getOrderData().getAllOrderByClientHotel(client_id, hotel_id);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		for(OrderPO po : poList){
+			list.add(POTOVO(po));
+		}
+		return list;
+	}
+
 	
 	/**
 	 * 
@@ -707,6 +730,35 @@ public class Order {
 	}
 	
 	/**
+	 * time1 <= time2返回true,否则返回false
+	 * @param time1
+	 * @param time2
+	 * @return
+	 */
+	private boolean compareTime2(String time1, String time2){
+		SimpleDateFormat sim = new SimpleDateFormat("yyyy-MM-dd");
+		Date date1 = new Date();
+		Date date2 = new Date();
+		try {
+			date1 = sim.parse(time1);
+			date2 = sim.parse(time2);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Calendar aCalendar = Calendar.getInstance();
+		Calendar bCalendar = Calendar.getInstance();
+		aCalendar.setTime(date1);
+		bCalendar.setTime(date2);
+		int temp = aCalendar.compareTo(bCalendar);
+		if(temp <= 0){
+			return true;
+		}
+		return false;
+	}
+
+	/**
 	 * 
 	 * @param time1
 	 * @param time2
@@ -830,6 +882,7 @@ public class Order {
 		
 	}
 
-	
+
+
 	
 }

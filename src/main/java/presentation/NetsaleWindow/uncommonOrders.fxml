@@ -20,7 +20,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-		<Button fx:id="undohalf" layoutX="213.0" layoutY="430.0" mnemonicParsing="false" onAction="#undohalfClicked" opacity="0.08" prefHeight="40.0" prefWidth="176.0" text="撤销该异常订单" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="311.0">
+		<Button fx:id="undohalf" layoutX="220.0" layoutY="430.0" mnemonicParsing="false" onAction="#undohalfClicked" prefHeight="40.0" prefWidth="194.0" text="撤销并恢复一半信用" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="286.0">
 			<font>
 				<Font size="15.0" />
 			</font>
@@ -154,7 +154,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="undoall" layoutX="445.0" layoutY="430.0" mnemonicParsing="false" onAction="#undoallClicked" opacity="0.1" prefHeight="40.0" prefWidth="194.0" text="撤销并恢复全部信用">
+      <Button fx:id="undoall" layoutX="445.0" layoutY="430.0" mnemonicParsing="false" onAction="#undoallClicked" prefHeight="40.0" prefWidth="194.0" text="撤销并恢复全部信用" AnchorPane.bottomAnchor="30.0">
          <font>
             <Font size="18.0" />
          </font></Button>

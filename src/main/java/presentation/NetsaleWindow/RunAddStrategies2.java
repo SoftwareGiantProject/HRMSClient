@@ -58,6 +58,10 @@ public class RunAddStrategies2 extends Application{
 		setlayout();
 		
 	}
+	
+	public Stage getPrimaryStage(){
+		return primarystage;
+	}
 
 
 }

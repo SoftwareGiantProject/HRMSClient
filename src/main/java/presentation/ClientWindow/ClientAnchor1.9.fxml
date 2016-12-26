@@ -12,13 +12,13 @@
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fefeff" height="207.0" layoutX="20.0" layoutY="84.0" stroke="BLACK" strokeType="INSIDE" width="659.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f7f9fc" height="62.0" layoutX="19.0" layoutY="433.0" stroke="BLACK" strokeType="INSIDE" width="659.0" />
-      <Label layoutX="83.0" layoutY="84.0" text="地址">
+      <Label layoutX="35.0" layoutY="84.0" text="地址">
          <font>
-            <Font size="24.0" />
+            <Font size="18.0" />
          </font></Label>
-      <Label layoutX="83.0" layoutY="115.0" text="简介">
+      <Label layoutX="35.0" layoutY="115.0" text="简介">
          <font>
-            <Font size="24.0" />
+            <Font size="18.0" />
          </font></Label>
       <ImageView fitHeight="44.0" fitWidth="60.0" layoutX="309.0" layoutY="433.0" pickOnBounds="true" preserveRatio="true" />
       <Button layoutX="303.0" layoutY="433.0" mnemonicParsing="false" opacity="0.0" prefHeight="44.0" prefWidth="80.0" text="修改" />
@@ -32,44 +32,44 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Label layoutX="59.0" layoutY="147.0" text="所属商圈">
+      <Label layoutX="35.0" layoutY="147.0" text="所属商圈">
          <font>
-            <Font size="24.0" />
+            <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="59.0" layoutY="182.0" text="设施服务">
+      <Label layoutX="35.0" layoutY="182.0" text="设施服务">
          <font>
-            <Font size="24.0" />
+            <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="83.0" layoutY="214.0" text="星级">
+      <Label layoutX="35.0" layoutY="214.0" text="星级">
          <font>
-            <Font size="24.0" />
+            <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="hotelAddress" layoutX="376.0" layoutY="84.0" text="Label">
+      <Label fx:id="hotelAddress" layoutX="140.0" layoutY="84.0" text="Label">
          <font>
-            <Font size="24.0" />
+            <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="hotelIntro" layoutX="376.0" layoutY="115.0" text="Label">
+      <Label fx:id="hotelIntro" layoutX="140.0" layoutY="115.0" text="Label">
          <font>
-            <Font size="24.0" />
+            <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="businessCircle" layoutX="376.0" layoutY="147.0" text="Label">
+      <Label fx:id="businessCircle" layoutX="140.0" layoutY="147.0" text="Label">
          <font>
-            <Font size="24.0" />
+            <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="serve" layoutX="376.0" layoutY="182.0" text="Label">
+      <Label fx:id="serve" layoutX="140.0" layoutY="182.0" text="Label">
          <font>
-            <Font size="24.0" />
+            <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="hotelLevel" layoutX="376.0" layoutY="214.0" text="Label">
+      <Label fx:id="hotelLevel" layoutX="140.0" layoutY="214.0" text="Label">
          <font>
-            <Font size="24.0" />
+            <Font size="18.0" />
          </font>
       </Label>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fbfdff" height="125.0" layoutX="19.0" layoutY="300.0" stroke="BLACK" strokeType="INSIDE" width="659.0" />
@@ -109,15 +109,46 @@
          </font>
       </Label>
       <TextField fx:id="roomNum" layoutX="496.0" layoutY="381.0" prefHeight="30.0" prefWidth="156.0" />
-      <Label layoutX="83.0" layoutY="250.0" text="评价">
+      <Label layoutX="35.0" layoutY="250.0" text="评价">
          <font>
-            <Font size="24.0" />
+            <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="hotelScore" layoutX="376.0" layoutY="250.0" text="Label">
+      <Label fx:id="hotelScore" layoutX="140.0" layoutY="250.0" text="Label">
          <font>
-            <Font size="24.0" />
+            <Font size="18.0" />
          </font>
       </Label>
+      <Label layoutX="469.0" layoutY="84.0" text="大床房">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="469.0" layoutY="115.0" text="标准间">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="469.0" layoutY="147.0" text="商务间">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="dachuangfang" layoutX="584.0" layoutY="84.0" text="label">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="biaozhunjian" layoutX="584.0" layoutY="115.0" text="label">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="shangwujian" layoutX="584.0" layoutY="147.0" text="label">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="viewHistory" layoutX="457.0" layoutY="250.0" mnemonicParsing="false" onAction="#viewHistoryClicked" text="查看在该酒店的历史订单" />
    </children>
 </AnchorPane>

@@ -13,7 +13,9 @@ public interface OrderBLService {
 	
 	public void update();
 
-	public ArrayList<OrderVO> getExecutedOrderByHotelClient(String hotel_id, String client_id);
+	public ArrayList<OrderVO> getAllOrderByHotelClient(String hotel_id,String client_id);
+	
+	public ArrayList<OrderVO> getExcutedOrderByHotelClient(String hotel_id, String client_id);
 	
 	public ArrayList<OrderVO> getExecutedOrders(String hotel_id);
 	

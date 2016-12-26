@@ -8,6 +8,7 @@ import com.mysql.fabric.xmlrpc.base.Array;
 import businesslogic.controllerfactory.ControllerFactory;
 import businesslogic.roombl.RoomController;
 import dataservice.datafactory.DatafactoryImpl;
+import javafx.beans.property.SimpleBooleanProperty;
 import po.HotelEvaluationPO;
 import po.HotelPO;
 import po.RoomPO;
@@ -174,26 +175,6 @@ public class Hotel {
 		return result;		
 	}
 	
-	private int[] getRank_int(int []a){
-		int n = a.length;
-		int result[] = new int[n];
-		for(int i = 0; i < n; i++){
-			result[i] = 0;
-		}
-		
-		for(int i = 0; i < n; i++){
-			for(int j = 0; j < n; j++){
-				if(i == j){
-					continue;
-				}
-				if(a[i] > a[j]){
-					++result[i];
-				}
-			}
-		}
-		return result;		
-	}
-	
 	/**
 	 * 
 	 * @param room ArrayList<RoomVO>
@@ -212,7 +193,27 @@ public class Hotel {
 			}
 		}
 		return room.get(location);
+	
+	}
 
+	private int[] getRank_int(int []a){
+		int n = a.length;
+		int result[] = new int[n];
+		for(int i = 0; i < n; i++){
+			result[i] = 0;
+		}
+		
+		for(int i = 0; i < n; i++){
+			for(int j = 0; j < n; j++){
+				if(i == j){
+					continue;
+				}
+				if(a[i] > a[j]){
+					++result[i];
+				}
+			}
+		}
+		return result;		
 	}
 	
 	/**
@@ -508,7 +509,7 @@ public class Hotel {
 		try{
 			list = DatafactoryImpl.getInstance().getHotelData().getAllHotels();
 			for(HotelPO lis : list){
-				if(hotelvo.getHotelId().equals(lis.getHotelId())){
+				if(hotelvo.getHotelId().get().equals(lis.getHotelId())){
 					return ResultMessage.EXIST;
 				}
 			}
@@ -616,15 +617,15 @@ public class Hotel {
 	 * @param client_id
 	 * @return
 	 */
-	public ResultMessage judgeReserved(String hotel_id, String client_id) {
+	public SimpleBooleanProperty judgeReserved(String hotel_id, String client_id) {
 		ArrayList<HotelVO> list = new ArrayList<>();
 		list = viewReservedHotel(client_id);
 		for(HotelVO temp : list){
 			if(temp.getHotelId().get() .equals(hotel_id)){
-				return ResultMessage.RESERVED;
+				return new SimpleBooleanProperty(true);
 			}
 		}
-		return ResultMessage.UNRESERVED;
+		return new SimpleBooleanProperty(false);
 	}
 	
 	/**
@@ -632,7 +633,7 @@ public class Hotel {
 	 * @param vo
 	 * @return
 	 */
-	public ResultMessage judgeHasRoom(String hotel_id) {
+	public SimpleBooleanProperty judgeHasRoom(String hotel_id) {
 		ArrayList<RoomVO> list = new ArrayList<>();
 		
 		try {
@@ -643,10 +644,10 @@ public class Hotel {
 		
 		for(RoomVO vo : list){
 			if(vo.getRoomCondition().equals(RoomCondition.UNRESERVED)){
-				return ResultMessage.HASROOM;
+				return new SimpleBooleanProperty(true);
 			}
 		}
-		return ResultMessage.NOROOM;
+		return new SimpleBooleanProperty(false);
 	}
 	
 	public HotelVO PoToVo(HotelPO po) {

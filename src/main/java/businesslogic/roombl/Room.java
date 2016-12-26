@@ -192,17 +192,23 @@ public class Room {
 		String today = getNowTime();
 		String LastDay = getLastTime();
 		int room_num = num;
+		System.out.println(LastDay);
+		System.out.println(checkout_time);
 		//预定日期存在问题
 		if(compare(today, checkin_time) < 0){
+			System.out.println(1);
 			return ResultMessage.error;
 		}
 		if(compare(checkin_time, checkout_time) <= 0) {
+			System.out.println(2);
 			return ResultMessage.error;
 		}
 		if(compare(checkout_time, LastDay) < -1){
+			System.out.println(3);
 			return ResultMessage.error;
 		}
 		if(room_num <= 0){
+			System.out.println(4);
 			return ResultMessage.error;
 		}
 		ArrayList<RoomPO> list = new ArrayList<>();
@@ -409,21 +415,24 @@ public class Room {
 	 */
 	private int compare(String date1, String date2){
 		SimpleDateFormat sim = new SimpleDateFormat("yyyy-MM-dd");
-		int temp = -19;
+		int temp = 0;
 		try {
 			Date time1 = sim.parse(date1);
 			Date time2 = sim.parse(date2);
 			Calendar aCalendar = Calendar.getInstance();
+			Calendar bCalendar = Calendar.getInstance();
 			aCalendar.setTime(time1);
-	        int day1 = aCalendar.get(Calendar.DAY_OF_YEAR);
-            aCalendar.setTime(time2);
-            int day2 = aCalendar.get(Calendar.DAY_OF_YEAR);
-            temp = day2 - day1;
+            bCalendar.setTime(time2);
+            while(aCalendar.before(bCalendar)){
+            	temp++;
+            	aCalendar.add(Calendar.DAY_OF_YEAR, 1);
+            }
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
+		
         return temp;
 		
 	}

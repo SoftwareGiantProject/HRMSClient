@@ -24,10 +24,8 @@
             </Label>
             <TextField fx:id="accountField" layoutX="319.0" layoutY="216.0" />
             <PasswordField fx:id="passwordField" layoutX="319.0" layoutY="276.0" />
-            <Button fx:id="loginButton" layoutX="254.0" layoutY="348.0" mnemonicParsing="false" onAction="#LoginClicked" text="登录" />
-            <Button fx:id="regiserButton" layoutX="468.0" layoutY="348.0" mnemonicParsing="false" text="注册" />
-            <ImageView fx:id="login" fitHeight="30.0" fitWidth="45.0" layoutX="210.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="register" fitHeight="30.0" fitWidth="45.0" layoutX="430.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="loginButton" layoutX="346.0" layoutY="348.0" mnemonicParsing="false" onAction="#LoginClicked" text="登录" />
+            <ImageView fx:id="login" fitHeight="30.0" fitWidth="45.0" layoutX="300.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="logo" fitHeight="58.0" fitWidth="187.0" layoutX="336.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="167.0" />
          </children>
       </AnchorPane>

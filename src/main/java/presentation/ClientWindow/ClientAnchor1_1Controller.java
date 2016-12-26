@@ -37,6 +37,8 @@ public class ClientAnchor1_1Controller {
 			e.printStackTrace();
 		}
 	}
+	
+	
 	public void initialize(){
 		try{
 			//需要调用

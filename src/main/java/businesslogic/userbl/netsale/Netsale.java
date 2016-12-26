@@ -71,6 +71,13 @@ public class Netsale {
 		
 		ResultMessage result = ResultMessage.FAIL;
 		
+		ArrayList<NetsaleVO> list = getAllNetsale();
+		for(NetsaleVO netsale : list){
+			if(netsale.getUserId().get().equals(vo.getUserId().get())){
+				return result;
+			}
+		}
+		
 		try {
 			result = netsaleDataService.add(po);
 		} catch (RemoteException e) {

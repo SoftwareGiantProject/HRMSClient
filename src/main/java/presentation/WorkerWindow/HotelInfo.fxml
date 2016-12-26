@@ -9,11 +9,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.WorkerWindow.HotelInfoViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.WorkerWindow.HotelInfoController">
    <children>
-      <ImageView fx:id="image" fitHeight="97.0" fitWidth="171.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="name" layoutX="212.0" layoutY="21.0" text="Label">
+      <ImageView fx:id="imageView" fitHeight="97.0" fitWidth="171.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="hotelname" layoutX="212.0" layoutY="21.0" text="Label">
          <font>
             <Font size="64.0" />
          </font>
@@ -59,29 +58,29 @@
       </GridPane>
       <GridPane layoutX="185.0" layoutY="130.0" prefHeight="271.0" prefWidth="453.0" AnchorPane.topAnchor="130.0">
          <children>
-            <Label fx:id="location" text="Label">
+            <Label fx:id="address" text="Label">
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="introduction" text="Label" GridPane.rowIndex="1">
+            <Label fx:id="introduce" text="Label" GridPane.rowIndex="1">
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
             <Label fx:id="area" text="Label" GridPane.rowIndex="2">
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="sheshi" text="Label" GridPane.rowIndex="3">
+            <Label fx:id="service" text="Label" GridPane.rowIndex="3">
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
             <Label fx:id="level" text="Label" GridPane.rowIndex="4">
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
          </children>
@@ -97,7 +96,7 @@
          </rowConstraints>
       </GridPane>
       <Line endX="600.0" layoutX="100.0" layoutY="410.0" startX="-100.0" />
-      <Button fx:id="modify" layoutX="366.0" layoutY="432.0" mnemonicParsing="false" onAction="#modifyClicked" prefHeight="44.0" prefWidth="91.0" text="修改">
+      <Button fx:id="modify" layoutX="305.0" layoutY="434.0" mnemonicParsing="false" onAction="#modifyClicked" prefHeight="44.0" prefWidth="91.0" text="修改">
          <font>
             <Font size="18.0" />
          </font>

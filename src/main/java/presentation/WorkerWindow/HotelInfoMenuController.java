@@ -4,10 +4,13 @@ package presentation.WorkerWindow;
 
 
 
+import businesslogic.hotelbl.HotelController;
+import businesslogic.userbl.worker.WorkerController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import vo.WorkerVO;
 
@@ -45,20 +48,36 @@ public class HotelInfoMenuController {
 	@FXML
 	Button executeorders;
 	
+	WorkerController workerController;
+	
+	BorderPane rootLayout;
+	
 	RunWorker runWorker;
 		WorkerVO workerVO;
+		
+	public void setBorder(){
+		this.rootLayout=runWorker.getRootLayout();
+	}
 	
 	public HotelInfoMenuController(){
 		
 	}
+	
+	
 	//点击 维护信息
+	@SuppressWarnings("static-access")
 	public void hotelInfoClicked() throws Exception{
 		
 		RunWorker rc=new RunWorker();
+//		String id=runWorker.getWorkerVO().getHotel_id().get();
+//		String name=new HotelController().getNmaeById(id);
+//		rc.setHotelVO(new HotelController().seekHotel(name));
 		rc.SetAnchor1(1);
+		rc.setWorkerVO(new WorkerController().getWorkerInfo(RunWorker.getWorkerVO().getUserId().get()));
 		rc.start(new Stage());
 
 		this.runWorker.getPrimaryStage().close();
+		
 	}
 	
 	//点击 添加住房
@@ -66,11 +85,27 @@ public class HotelInfoMenuController {
 		try{
 		RunWorker rc=new RunWorker();
 		rc.SetAnchor1(2);
+		RunWorker.setWorkerVO(new WorkerController().getWorkerInfo(RunWorker.getWorkerVO().getUserId().get()));
 		rc.start(new Stage());
 		this.runWorker.getPrimaryStage().close();
 		}catch (Exception e){
 			e.printStackTrace();
 		}
+		
+//		FXMLLoader loader2=new FXMLLoader();
+//        loader2.setLocation(HotelInfoMenuController.class.getResource("addAvailbleRoom.fxml"));
+//        AnchorPane addAvailbleRoom;
+//        System.out.println("Save here");
+//		try {
+//			addAvailbleRoom = (AnchorPane)loader2.load();
+//			
+//			rootLayout.setCenter(addAvailbleRoom);
+//			
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+        
 	}
 	
 	//点击 制定促销策略
@@ -78,6 +113,7 @@ public class HotelInfoMenuController {
 		try{
 			RunWorker rc=new RunWorker();
 			rc.SetAnchor1(3);
+			rc.setWorkerVO(new WorkerController().getWorkerInfo(rc.getWorkerVO().getUserId().get()));
 			rc.start(new Stage());
 			this.runWorker.getPrimaryStage().close();
 			}catch (Exception e){
@@ -91,6 +127,7 @@ public class HotelInfoMenuController {
 		try{
 			RunWorker rc=new RunWorker();
 			rc.SetAnchor1(4);
+			rc.setWorkerVO(new WorkerController().getWorkerInfo(rc.getWorkerVO().getUserId().get()));
 			rc.start(new Stage());
 			this.runWorker.getPrimaryStage().close();
 			}catch (Exception e){
@@ -103,6 +140,7 @@ public class HotelInfoMenuController {
 		try{
 			RunWorker rc=new RunWorker();
 			rc.SetAnchor1(5);
+			rc.setWorkerVO(new WorkerController().getWorkerInfo(rc.getWorkerVO().getUserId().get()));
 			rc.start(new Stage());
 			this.runWorker.getPrimaryStage().close();
 			}catch (Exception e){
@@ -116,6 +154,7 @@ public class HotelInfoMenuController {
 		try{
 			RunWorker rc=new RunWorker();
 			rc.SetAnchor1(6);
+			rc.setWorkerVO(new WorkerController().getWorkerInfo(rc.getWorkerVO().getUserId().get()));
 			rc.start(new Stage());
 			this.runWorker.getPrimaryStage().close();
 			}catch (Exception e){

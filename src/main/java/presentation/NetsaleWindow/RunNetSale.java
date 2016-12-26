@@ -25,11 +25,8 @@ public class RunNetSale extends Application{
 		try{
 			this.primaryStage = primaryStage;
             this.primaryStage.setTitle("网站营销人员");
-//            System.out.println("去你妈的大西瓜22222");
 		    setBorder();
-//		    System.out.println("去你妈的大西瓜11111");
             setTools();
-//            System.out.println("去你妈的大西瓜");
 		    setNetsale();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -72,6 +69,7 @@ public class RunNetSale extends Application{
             // Show the scene containing the root layout.
             Scene scene = new Scene(border);
             primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -81,19 +79,14 @@ public class RunNetSale extends Application{
 	public void setTools(){
 		try {
             // Load person overview.
-//			FXMLLoader loader1=new FXMLLoader();
-//          loader1.setLocation(RunNetworker.class.getResource("NetworkerAnchor1.1.fxml"));
-//          AnchorPane NetworkerAnchor1=(AnchorPane)loader1.load();
             FXMLLoader loader2=new FXMLLoader();
             loader2.setLocation(RunNetSale.class.getResource("NetSaleMenu.fxml"));
-//            System.out.println("老子在这里");
             AnchorPane NetSaleMenu=(AnchorPane)loader2.load();
             FXMLLoader loader3=new FXMLLoader();
             loader3.setLocation(RunNetSale.class.getResource("State.fxml"));
             AnchorPane State=(AnchorPane)loader3.load();
 
             // Set person overview into the center of root layout.
-//            border.setCenter(NetworkerAnchor1);
             border.setLeft(NetSaleMenu);
             border.setBottom(State);
             

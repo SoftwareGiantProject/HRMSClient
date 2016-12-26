@@ -65,8 +65,10 @@ public class strategiesManagementController {
 	}
 	
 	public strategiesManagementController(){
-//		this.promotionVO=runWorker.getPromotionVO();
+		
 	}
+	
+	
 	@SuppressWarnings("unchecked")
 	public void initialize(){
 		try {
@@ -116,7 +118,7 @@ public class strategiesManagementController {
 	@SuppressWarnings("static-access")
 	public void modifyClicked(){
 		try {
-			if(time.getText()!=null){
+			if(time.getText().length()!=0){
 				PromotionVO vo2=new PromotionVO();
 				if(people.getValue()=="所有人"){
 					vo2=new PromotionVO(straName.getText(), "ALL", Double.parseDouble((String) discount.getValue()), time.getText(), "web");
@@ -164,7 +166,7 @@ public class strategiesManagementController {
 	
 	@SuppressWarnings("static-access")
 	public void deleteClicked(){
-ResultMessage resultMessage=ResultMessage.FAIL;
+        ResultMessage resultMessage=ResultMessage.FAIL;
 		
 		try {
 			PromotionVO vo3=new PromotionVO();

@@ -13,7 +13,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Stage;
 import javafx.util.Callback;
+import presentation.ViewWindow.RunView;
 import vo.ClientVO;
 import vo.NetsaleVO;
 import vo.NetworkerVO;
@@ -39,7 +41,9 @@ public class NetworkerAnchor1_4Controller {
 	
 	
 	public void ViewNetsaleClicked(){
-		
+		RunView runView=new RunView();
+		runView.setAnchor1(8);
+		runView.start(new Stage());
 	}
 	
 	

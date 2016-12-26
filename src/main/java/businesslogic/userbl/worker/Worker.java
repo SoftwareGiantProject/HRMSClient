@@ -91,6 +91,12 @@ public class Worker {
 		WorkerPO po = vo2po(vo);
 		
 		ResultMessage result = ResultMessage.FAIL;
+		ArrayList<WorkerVO> list = getAllWorker();
+		for(WorkerVO workerVO : list){
+			if(workerVO.getUserId().get().equals(vo.getUserId().get())){
+				return result;
+			}
+		}
 		
 		try {
 			result = workerDataService.add(po);

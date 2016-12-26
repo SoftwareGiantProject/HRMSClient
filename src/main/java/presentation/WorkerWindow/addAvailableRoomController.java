@@ -46,7 +46,7 @@ public class addAvailableRoomController {
 	
 	@SuppressWarnings("static-access")
 	public void addClicked(){
-		if(cb.getValue()!=null&&roomid.getText()!=null&&price.getText()!=null&&hotelid.getText()!=null){
+		if(cb.getValue()!=null&&roomid.getText().length()!=0&&price.getText().length()!=0&&hotelid.getText().length()!=0){
 			RoomVO vo=rVo;
 			
 			vo=new RoomVO((String) cb.getValue(), Integer.parseInt(price.getText()), roomid.getText(), hotelid.getText(), RoomCondition.UNRESERVED);
@@ -61,7 +61,7 @@ public class addAvailableRoomController {
 				}
 				else{
 					RunWarning rw=new RunWarning();
-				    rw.SetWarning("成功失败！");
+				    rw.SetWarning("添加失败！");
 				    rw.start(new Stage());
 				}
 				

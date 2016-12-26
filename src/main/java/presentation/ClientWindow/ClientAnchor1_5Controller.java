@@ -74,6 +74,7 @@ public class ClientAnchor1_5Controller {
 		return this;
 	}
 	
+	
 	public void initialize(){
 		try{
 		//初始化表格

@@ -72,8 +72,8 @@
             <TextField fx:id="address" />
             <TextField fx:id="area" GridPane.rowIndex="2" />
             <TextField fx:id="service" GridPane.rowIndex="3" />
-            <TextArea fx:id="introduce" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
             <ChoiceBox fx:id="level" prefHeight="23.0" prefWidth="376.0" GridPane.rowIndex="4" />
+            <TextField fx:id="introduce" GridPane.rowIndex="1" />
 			</children>
 		</GridPane>
 		<Button fx:id="save" layoutX="270.0" layoutY="356.0" mnemonicParsing="false" onAction="#saveClicked" prefHeight="30.0" prefWidth="60.0" text="保存" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="270.0" />

@@ -35,8 +35,8 @@ public class LoginAnchorController {
 	PasswordField passwordField;
 	@FXML
 	ImageView login;
-	@FXML
-	ImageView register;
+//	@FXML
+//	ImageView register;
 	@FXML
 	Button loginButton;
 	@FXML
@@ -73,7 +73,7 @@ public class LoginAnchorController {
 			ResultMessage rm=workerController.login(accountField.getText(), passwordField.getText());
 			if(rm==ResultMessage.SUCCESS){
 				RunWorker rw=new RunWorker();
-				rw.SetAnchor1(1);
+				rw.SetAnchor1(1);;
 				rw.setWorkerVO(workerController.getWorkerInfo(accountField.getText()));
 				rw.start(new Stage());
 				runLogin.getPrimaryStage().close();
@@ -101,9 +101,8 @@ public class LoginAnchorController {
 				RunWarning rw=new RunWarning();
 				rw.SetWarning("登录失败！");
 				rw.start(new Stage());
-
-			}
-		}else if(accountField.getText().charAt(0)=='n'){
+				}
+			}else if(accountField.getText().charAt(0)=='n'){
 			NetworkerController lg=new NetworkerController();
 //			System.out.println(accountField.getText()+passwordField.getText());
 			ResultMessage rm=lg.login(accountField.getText(), passwordField.getText());
@@ -151,7 +150,7 @@ public class LoginAnchorController {
         // Initialize the person table with the two columns.
 		try{
 		       login.setImage(new Image("file:src/lib/yes.png"));
-		       register.setImage(new Image("file:src/lib/no.png"));
+//		       register.setImage(new Image("file:src/lib/no.png"));
 		       
 		        }catch(Exception e){
 		        	e.printStackTrace();

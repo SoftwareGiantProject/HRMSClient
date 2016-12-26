@@ -58,5 +58,9 @@ public class RunModifyHotelInfo extends Application{
 		setlayout();
 		
 	}
+	
+	public Stage getPrimarystage(){
+		return this.primarystage;
+	}
 
 }

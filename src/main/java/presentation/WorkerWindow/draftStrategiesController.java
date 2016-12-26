@@ -118,7 +118,7 @@ public class draftStrategiesController {
 	@SuppressWarnings("static-access")
 	public void modifyClicked(){
 		try {
-			if(time.getText()!=null){
+			if(time.getText().length()!=0){
 				PromotionVO vo2=new PromotionVO();
 				if(people.getValue()=="所有人"){
 					vo2=new PromotionVO(straName.getText(), "ALL", Double.parseDouble((String) discount.getValue()), time.getText(), runWorker.getWorkerVO().getHotel_id().get());

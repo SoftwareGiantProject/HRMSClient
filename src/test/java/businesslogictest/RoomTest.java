@@ -51,12 +51,12 @@ public class RoomTest {
     }
     */
 	
-	/**
+	
 	@Test
 	public void testreserve(){
-		assertEquals(ResultMessage.SUCCESS,controller.reserve("大床房", 1,"Hotel001", "2016-12-16", "2016-12-17"));
+		assertEquals(ResultMessage.SUCCESS,controller.reserve("大床房", 1,"h001", "2016-12-26", "2016-12-27","112412"));
 	}
-	*/
+	
 	
 	/**
 	@Test
@@ -66,6 +66,7 @@ public class RoomTest {
 	}
 	*/
 	
+	/**
 	@Test
 	public void testGetRoomConditionByhotel(){
 		String hotel_id = "h001";
@@ -80,6 +81,6 @@ public class RoomTest {
 			System.out.println(vo.getRoomDate().get());
 			System.out.println(vo.getRoomNumber().get());
 		}
-				
 	}
+	*/
 }

@@ -1,5 +1,9 @@
 package vo;
 
+import java.rmi.RemoteException;
+
+import businesslogic.hotelbl.HotelController;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -26,6 +30,12 @@ public class HotelVO {
 	
 	SimpleStringProperty city;
 	
+	SimpleBooleanProperty isReserved;
+	
+	public SimpleBooleanProperty hasRoom;
+	
+	
+	
 	
 	public HotelVO(String hotel_id,String hotel_name,String hotel_address,String hotel_area,int hotel_level,double hotel_score,String hotel_intro,
 			String hotel_serve,String hotel_room,String city){
@@ -39,10 +49,24 @@ public class HotelVO {
 		this.hotel_score =new SimpleDoubleProperty( hotel_score);
 		this.hotel_intro=new SimpleStringProperty(hotel_intro);
 		this.city =new SimpleStringProperty( city);
+		try {
+			hasRoom=new HotelController().judgeHasRoom(hotel_id);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	
-	
+	public SimpleBooleanProperty getReserved(String clientid) {
+		
+			try {
+				return new HotelController().judgeReserved(hotel_id.get(), clientid);
+			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
+				return new SimpleBooleanProperty(false);
+			}
+		
+	}
 	public SimpleStringProperty getCity(){
 		return city;
 	}

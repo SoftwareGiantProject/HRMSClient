@@ -67,7 +67,7 @@ public class ClientAnchor1_8Controller {
 			warning.start(new Stage());
 		}else{
 			RunWarning warning =new RunWarning();
-			warning.SetWarning("评价提交失败！");
+			warning.SetWarning("此订单此前已评价！");
 			warning.start(new Stage());
 		}
 		}
@@ -76,9 +76,17 @@ public class ClientAnchor1_8Controller {
 		}
 		
 	}
+	
+	@FXML
 	public void initialize(){
 		//要得到具体的hotelvo 对象
 		try{
+			clientvo=runClient.GetClientVO();
+			try{
+			ordervo=runClient.GetOrderVO();
+			}catch(NullPointerException e){
+				e.printStackTrace();
+			}
 		HotelController controller=new HotelController();
 		hotelvo=controller.seekHotel(controller.getNmaeById(ordervo.getHotel_id().get()));
 		
@@ -100,14 +108,9 @@ public class ClientAnchor1_8Controller {
 	
 	public void SetRunClient(RunClient1 runClient){
 		this.runClient=runClient;
-		clientvo=runClient.GetClientVO();
-		try{
-		ordervo=runClient.GetOrderVO();
-		}catch(NullPointerException e){
-			e.printStackTrace();
-		}
 		
-		initialize();
+		
+//		initialize();
 		
 	}
 

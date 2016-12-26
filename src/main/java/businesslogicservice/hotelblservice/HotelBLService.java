@@ -6,6 +6,8 @@ import util.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.beans.property.SimpleBooleanProperty;
+
 public interface HotelBLService {
 
 	public String getNmaeById (String hotel_id);
@@ -27,6 +29,6 @@ public interface HotelBLService {
 	public ArrayList<HotelVO> viewReservedHotel(String user_id);
 	public ResultMessage modifyHotel(HotelVO vo);
 	public ResultMessage evaluateHotel(HotelEvaluationVO vo, String hotel_name);
-	public ResultMessage judgeReserved(String hotel_id,String client_id);
-	public ResultMessage judgeHasRoom(String hotel_id);
+	public SimpleBooleanProperty judgeReserved(String hotel_id,String client_id);
+	public SimpleBooleanProperty judgeHasRoom(String hotel_id);
 }

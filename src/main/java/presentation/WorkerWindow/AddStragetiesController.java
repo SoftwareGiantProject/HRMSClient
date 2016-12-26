@@ -49,7 +49,7 @@ public class AddStragetiesController {
 	 */
 	@SuppressWarnings("static-access")
 	public void saveCliked(){
-		if(straname.getText()!=null&&time.getText()!=null){
+		if(straname.getText().length()!=0&&time.getText().length()!=0){
 			PromotionVO promotion=new PromotionVO();
 			if(object.getValue()=="所有人"){
 				promotion=new PromotionVO(straname.getText(),"ALL",Double.parseDouble( (String) discount.getValue()), time.getText(),runworker.getWorkerVO().getHotel_id().get() );
@@ -78,6 +78,7 @@ public class AddStragetiesController {
 		try {
 			ResultMessage resultMessage=pController1.addPromotion(p);
 			if(resultMessage==ResultMessage.SUCCESS){
+				runAddStrategies.getPrimaryStage().close();
 				RunWarning runWarning=new RunWarning();
 				runWarning.SetWarning("已成功添加该促销策略");
 				runWarning.start(new Stage());
@@ -97,7 +98,7 @@ public class AddStragetiesController {
 	
 	public void setRunAddStrategies(RunAddStrategies run1){
 		this.runAddStrategies=run1;
-		initialize();
+//		initialize();
 	}
 	
 	public void setRunworker(RunWorker worker){

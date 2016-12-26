@@ -111,9 +111,9 @@ public class OrderController implements OrderBLService{
 	}
 
 	@Override
-	public ArrayList<OrderVO> getExecutedOrderByHotelClient(String hotel_id, String client_id) {
+	public ArrayList<OrderVO> getExcutedOrderByHotelClient(String hotel_id, String client_id) {
 		// TODO Auto-generated method stub
-		return order.getExecutedOrderByHotelClient(hotel_id, client_id);
+		return order.getExcutedOrderByHotelClient(hotel_id, client_id);
 	}
 
 	@Override
@@ -133,6 +133,12 @@ public class OrderController implements OrderBLService{
 	public ResultMessage cancelAbnormalOrder(String order_id, Boolean All, String time) throws RemoteException {
 		// TODO Auto-generated method stub
 		return order.cancelAbnormalOrder(order_id, All, time);
+	}
+
+	@Override
+	public ArrayList<OrderVO> getAllOrderByHotelClient(String hotel_id, String client_id) {
+		// TODO Auto-generated method stub
+		return order.getAllOrderByHotelClient(hotel_id,client_id);
 	}
 	
 	

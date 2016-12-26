@@ -1,23 +1,27 @@
 package presentation.WorkerWindow;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
 
+import org.junit.experimental.theories.Theories;
+
+import businesslogic.hotelbl.HotelController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import vo.PromotionVO;
+import vo.HotelVO;
 import vo.WorkerVO;
 
 
 public class RunWorker extends Application{
 	private Stage primaryStage;
-    private BorderPane rootLayout;
+    BorderPane rootLayout;
     private int anchor1=0;
-    private static WorkerVO workerVO;
-    private static PromotionVO promotionVO;
+    private static WorkerVO workerVO=new WorkerVO("0000", "00000","0000", "0000", "00000");
+    private static HotelVO hotelVO;
     
     public static void main(String[] args) {
         launch(args);
@@ -39,10 +43,35 @@ public class RunWorker extends Application{
     		e.printStackTrace();
     	}
 
-
     }
     
+    public void close(){
+    	try {
+			this.primaryStage.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+    }
+    
+   public static void setHotelVO(HotelVO vo){
+	   RunWorker.hotelVO=vo;
+   }
    
+   public static HotelVO getHotelVO(){
+	   String hotelid=workerVO.getHotel_id().get();
+	   HotelController hotelController;
+	try {
+		hotelController = new HotelController();
+		String hotelname=hotelController.getNmaeById(hotelid);
+		   hotelVO=hotelController.seekHotel(hotelname);
+		   
+	} catch (RemoteException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	   return hotelVO;
+   }
     
     public static void setWorkerVO(WorkerVO worker){
     	RunWorker.workerVO=worker;
@@ -52,15 +81,18 @@ public class RunWorker extends Application{
     	return workerVO;
     }
     
-    
-    
-    public static void setPromotionVO(PromotionVO vo){
-    	RunWorker.promotionVO=vo;
+    public  BorderPane getRootLayout(){
+    	return this.rootLayout;
     }
     
-    public static PromotionVO getPromotionVO(){
-    	return promotionVO;
-    }
+    
+//    public static void setPromotionVO(PromotionVO vo){
+//    	RunWorker.promotionVO=vo;
+//    }
+//    
+//    public static PromotionVO getPromotionVO(){
+//    	return promotionVO;
+//    }
     
 
     /**
@@ -153,6 +185,9 @@ public class RunWorker extends Application{
             //set controller
             HotelInfoMenuController controller2=loader2.getController();
             controller2.setRunWorker(this);
+            
+//        	HotelInfoController hotelInfoController=new HotelInfoController();
+//        	hotelInfoController.setRunWorker(this);
             
         } catch (IOException e) {
             e.printStackTrace();

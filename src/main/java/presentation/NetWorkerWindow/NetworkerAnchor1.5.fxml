@@ -17,7 +17,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Button fx:id="addHotelBt" layoutX="281.0" layoutY="422.0" mnemonicParsing="false" onAction="#AddHotelClicked" text="添加酒店" />
+      <Button fx:id="addHotelBt" layoutX="138.0" layoutY="416.0" mnemonicParsing="false" onAction="#AddHotelClicked" text="添加酒店" />
       <TableView fx:id="List" layoutX="46.0" layoutY="54.0" prefHeight="298.0" prefWidth="573.0">
         <columns>
           <TableColumn fx:id="hotelColumn" prefWidth="358.0" text="酒店id" />
@@ -25,5 +25,6 @@
             <TableColumn fx:id="viewColumn" prefWidth="69.0" text="查看" />
         </columns>
       </TableView>
+      <Button fx:id="addWorkerBt" layoutX="391.0" layoutY="416.0" mnemonicParsing="false" onAction="#AddWorkerClicked" text="添加酒店工作人员" />
    </children>
 </AnchorPane>

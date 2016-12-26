@@ -196,6 +196,7 @@ public class OrderTest {
 	}
 	*/
 	
+	/**
 	@Test
 	public void testGetAllOrders(){
 		String hotel_id = "h001";
@@ -221,4 +222,5 @@ public class OrderTest {
 			System.out.println(vo.getListType());
 		}
 	}
+	*/
 }

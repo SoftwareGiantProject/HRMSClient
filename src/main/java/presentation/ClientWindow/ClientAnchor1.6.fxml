@@ -11,33 +11,33 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.ClientWindow.ClientAnchor1_6Controller">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8fafc" height="339.0" layoutX="7.0" layoutY="149.0" stroke="BLACK" strokeType="INSIDE" width="683.0" />
-      <Label layoutX="192.0" layoutY="54.0" text="星级" />
-      <Label layoutX="28.0" layoutY="54.0" text="城市" />
-      <Label layoutX="111.0" layoutY="54.0" text="商圈" />
+      <Label layoutX="22.0" layoutY="110.0" text="星级" />
+      <Label layoutX="22.0" layoutY="24.0" text="城市" />
+      <Label layoutX="22.0" layoutY="64.0" text="商圈" />
       <Label layoutX="298.0" layoutY="54.0" text="价格" />
-      <Label layoutX="395.0" layoutY="54.0" text="房间类型" />
-      <ComboBox fx:id="star" layoutX="180.0" layoutY="94.0" prefHeight="20.0" prefWidth="53.0" />
-      <ComboBox fx:id="city" layoutX="18.0" layoutY="94.0" prefHeight="20.0" prefWidth="39.0" />
-      <ComboBox fx:id="businessCircle" layoutX="100.0" layoutY="94.0" prefHeight="20.0" prefWidth="53.0" />
-      <ComboBox fx:id="roomType" layoutX="399.0" layoutY="94.0" prefHeight="20.0" prefWidth="53.0" />
-      <ComboBox fx:id="sequece" layoutX="636.0" layoutY="129.0" prefHeight="20.0" prefWidth="30.0" />
+      <Label layoutX="408.0" layoutY="54.0" text="房间类型" />
+      <ComboBox fx:id="star" layoutX="74.0" layoutY="104.0" prefHeight="32.0" prefWidth="129.0" />
+      <ComboBox fx:id="city" layoutX="74.0" layoutY="18.0" onAction="#cityChoosed" prefHeight="32.0" prefWidth="129.0" />
+      <ComboBox fx:id="businessCircle" layoutX="74.0" layoutY="60.0" prefHeight="32.0" prefWidth="129.0" />
+      <ComboBox fx:id="roomType" layoutX="495.0" layoutY="42.0" prefHeight="38.0" prefWidth="129.0" />
+      <ComboBox fx:id="sequece" layoutX="524.0" layoutY="119.0" prefHeight="30.0" prefWidth="162.0" />
       <TableView fx:id="List" editable="true" layoutX="5.0" layoutY="150.0" prefHeight="339.0" prefWidth="683.0">
          <columns>
-            <TableColumn prefWidth="401.0" text="酒店名称" />
-            <TableColumn prefWidth="119.0" text="能否下单" />
-            <TableColumn prefWidth="91.0" text="是否预定过" />
-            <TableColumn prefWidth="71.0" text="查看" />
+            <TableColumn fx:id="HotelColumn" prefWidth="408.0" text="酒店名称" />
+            <TableColumn fx:id="canBookColumn" editable="false" prefWidth="112.0" text="能否下单" />
+            <TableColumn fx:id="isReservedColumn" editable="false" prefWidth="94.0" text="是否预定过" />
+            <TableColumn fx:id="viewColumn" prefWidth="68.0" text="查看" />
          </columns>
       </TableView>
-      <Button fx:id="searchDown" layoutX="649.0" layoutY="89.0" mnemonicParsing="false" text="搜索" />
+      <Button fx:id="searchDown" layoutX="649.0" layoutY="89.0" mnemonicParsing="false" onAction="#searchClicked" text="搜索" />
       <Label fx:id="test" layoutX="306.0" layoutY="-47.0" text="未连接" />
-      <TextField layoutX="243.0" layoutY="89.0" prefHeight="20.0" prefWidth="53.0" />
-      <TextField layoutX="330.0" layoutY="89.0" prefHeight="20.0" prefWidth="53.0" />
+      <TextField fx:id="leftPrice" layoutX="243.0" layoutY="89.0" prefHeight="20.0" prefWidth="53.0" />
+      <TextField fx:id="rightPrice" layoutX="330.0" layoutY="89.0" prefHeight="20.0" prefWidth="53.0" />
       <Label layoutX="304.0" layoutY="88.0" text="~">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <RadioButton layoutX="468.0" layoutY="94.0" mnemonicParsing="false" text="只显示预定过的酒店" />
+      <RadioButton fx:id="reserved" layoutX="487.0" layoutY="94.0" mnemonicParsing="false" text="只显示预定过的酒店" />
    </children>
 </AnchorPane>

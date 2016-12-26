@@ -45,7 +45,7 @@ public class AddStrageties2Controller {
 	
 	@SuppressWarnings("static-access")
 	public void saveCliked(){
-		if(straname.getText()!=null&&time.getText()!=null){
+		if(straname.getText().length()!=0&&time.getText().length()!=0){
 			PromotionVO promotion=new PromotionVO();
 			if(object.getValue()=="所有人"){
 				promotion=new PromotionVO(straname.getText(),"ALL",Double.parseDouble( (String) discount.getValue()), time.getText(),"web" );
@@ -75,6 +75,7 @@ public class AddStrageties2Controller {
 		try {
 			ResultMessage resultMessage=pController1.addPromotion(p);
 			if(resultMessage==ResultMessage.SUCCESS){
+				this.runAddStrategies.getPrimaryStage().close();
 				RunWarning runWarning=new RunWarning();
 				runWarning.SetWarning("已成功添加该促销策略");
 				runWarning.start(new Stage());
@@ -113,7 +114,7 @@ public class AddStrageties2Controller {
 	
 	public void setRunAddStrategies2(RunAddStrategies2 run1){
 		this.runAddStrategies=run1;
-		initialize();
+//		initialize();
 	}
 	
 	public void setRunworker(RunNetSale sale){

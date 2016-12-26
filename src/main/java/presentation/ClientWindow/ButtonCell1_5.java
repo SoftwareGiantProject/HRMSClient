@@ -62,7 +62,7 @@ public class ButtonCell1_5 extends TableCell<HotelVO,Boolean> {
 				try{
 				OrderController controller=new OrderController();
 				ArrayList<OrderVO> orderList=
-controller.getExecutedOrderByHotelClient(hotelvo.getHotelId().get(), viewcontrol.clientvo.getUserId().get());
+controller.getAllOrderByHotelClient(hotelvo.getHotelId().get(), viewcontrol.clientvo.getUserId().get());
 				ObservableList<OrderVO> orderListData =FXCollections.observableArrayList();
 				orderListData.addAll(orderList);
 				viewcontrol.hotelOrderList.setItems(orderListData);

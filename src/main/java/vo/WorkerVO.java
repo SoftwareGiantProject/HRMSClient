@@ -26,11 +26,11 @@ public class WorkerVO implements Serializable{
 			
 		}
 		
-		public WorkerVO(String userId,String userName,
+		public WorkerVO(String userId,String userName,String hotelid,
 				String password,String contact){
 			super();
 			this.userId=new SimpleStringProperty(userId);
-			
+			this.hotel_id=new SimpleStringProperty(hotelid);
 			this.userName=new SimpleStringProperty(userName);
 			this.password=new SimpleStringProperty(password);
 			

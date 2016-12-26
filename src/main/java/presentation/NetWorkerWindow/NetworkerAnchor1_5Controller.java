@@ -14,7 +14,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Stage;
 import javafx.util.Callback;
+import presentation.ViewWindow.RunView;
 import vo.NetsaleVO;
 import vo.NetworkerVO;
 import vo.WorkerVO;
@@ -30,6 +32,8 @@ public class NetworkerAnchor1_5Controller {
 	TableColumn<WorkerVO,Boolean>viewColumn;
 	@FXML
 	Button addHotelBt;
+	@FXML
+	Button addWorkerBt;
 	
 	
 	
@@ -42,7 +46,14 @@ public class NetworkerAnchor1_5Controller {
 	}
 	
 	public void AddHotelClicked(){
-		
+		RunView runView=new RunView();
+		runView.setAnchor1(10);
+		runView.start(new Stage());
+	}
+	public void AddWorkerClicked(){
+		RunView runView=new RunView();
+		runView.setAnchor1(9);
+		runView.start(new Stage());
 	}
 	
 	
@@ -85,7 +96,7 @@ public class NetworkerAnchor1_5Controller {
 		
 		this.runNetworker=runNetworker;
 		networkerVO=runNetworker.GetNetWorkerVO();
-		System.out.println("gg");
+//		System.out.println("gg");
 		initialize();
 		
 	}
