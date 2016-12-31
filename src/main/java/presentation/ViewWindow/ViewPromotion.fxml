@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.ViewWindow.ViewPromotionController">
+   <children>
+      <Label layoutX="56.0" layoutY="88.0" prefHeight="32.0" prefWidth="103.0" text="初始价格为：" />
+      <Label layoutX="55.0" layoutY="29.0" text="成功生成订单！" />
+      <Label fx:id="oldprice" layoutX="225.0" layoutY="94.0" text="Label" />
+      <Label layoutX="55.0" layoutY="170.0" text="享受促销策略" />
+      <Label fx:id="promotionname" layoutX="225.0" layoutY="170.0" text="Label" />
+      <Label layoutX="55.0" layoutY="252.0" text="实际价格为：" />
+      <Label fx:id="newprice" layoutX="225.0" layoutY="252.0" text="Label" />
+      <Label layoutX="334.0" layoutY="170.0" text="折扣：" />
+      <Label fx:id="promotioncount" layoutX="436.0" layoutY="170.0" text="Label" />
+   </children>
+</AnchorPane>
